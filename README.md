@@ -9,8 +9,8 @@ Framework for text formatting written on Swift 4.0.
 
 ## Features
 
-| Features |
-
+| |Features |
+--------------------------|------------------------------------------------------------
 
 ## Example
 
