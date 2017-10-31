@@ -9,19 +9,26 @@ Framework for text formatting written on Swift 4.0.
 
 ## Features
 
- |Features |
-|------------------------------------------------------------|
-Convert string in string with format and vice versa
+| |Features |
+|-------------------|------------------------------------------------------------|
+:performing_arts:| Convert string into formatted string and vice versa
+:bicyclist:| Formatting text during typing
+:hash:| Set format using '#' characters like '### ##-###'
+:paperclip:| Set prefix for editing string
+:see_no_evil:| Symbols input control with RegEx
+:globe_with_meridians:| Works with textField/textView/etc with common interface
+:gift:| Ready to use subclasses of UITextField and UITextView
+:mag:| Allows easy to set attributes for string in range
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo and run `pod install` from the Example directory first.
 
 ## Requirements
 
 - iOS 8.0+
 - Swift 4.0 +
-- Xcode 9.0.1 +
+- Xcode 9.0 +
 
 ## Installation
 
