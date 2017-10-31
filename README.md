@@ -29,7 +29,7 @@ pod 'AnyFormatKit'
 ### Import
 
 ```swift
-import LightTextInput
+import AnyFormatKit
 ```
 
 ### Formatting with TextFormatter
