@@ -1,0 +1,6 @@
+framework module Pods_AnyFormatKit_Example {
+  umbrella header "Pods-AnyFormatKit_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "AnyFormatKit",
+  "version": "0.1.0",
+  "summary": "A short description of AnyFormatKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/luximetr/AnyFormatKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "luximetr": "alexandr.orlov@brander.ua"
+  },
+  "source": {
+    "git": "https://github.com/luximetr/AnyFormatKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "AnyFormatKit/Classes/**/*"
+}
