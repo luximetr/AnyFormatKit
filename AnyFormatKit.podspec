@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'Simple text formatting in Swift.'
 
   s.description      = <<-DESC
-This library provide to format text with format like "## ##-###", where # - replaceble symbol. Support format all string or character by character input.
+This framework provide to format text with format like "## ##-###", where # - replaceble symbol. Support format all string or character by character input.
                        DESC
 
   s.homepage         = 'https://github.com/luximetr/AnyFormatKit'

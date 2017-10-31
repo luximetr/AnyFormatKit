@@ -5,6 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 [![Platform](https://img.shields.io/cocoapods/p/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 
+Framework for text formatting written on Swift 4.0.
+
+## Features
+
+| Features |
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
