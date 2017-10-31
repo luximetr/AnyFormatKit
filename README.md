@@ -11,6 +11,7 @@ Framework for text formatting written on Swift 4.0.
 
  |Features |
 |------------------------------------------------------------|
+Convert string in string with format and vice versa
 
 ## Example
 
