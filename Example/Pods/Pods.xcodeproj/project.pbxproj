@@ -8,8 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		08651861C48ABE71834CE85ADAEF5F40 /* Pods-AnyFormatKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A8E753B236B80AE6E806CDF240747F /* Pods-AnyFormatKit_Tests-dummy.m */; };
-		2315DEBCD03BA3D46A275B43DE8B47B3 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65ABA44D39F2DB898881101CE0BFEA /* ReplaceMe.swift */; };
 		292408DAE7E493A578D33F5FC9E23B98 /* Pods-AnyFormatKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD4D0071FCF3F04B4ACC5AE45DA7CB4 /* Pods-AnyFormatKit_Example-dummy.m */; };
+		30EE73231FA8AB1500B1A2B9 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73081FA8AB1400B1A2B9 /* MulticastDelegate.swift */; };
+		30EE73241FA8AB1500B1A2B9 /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE730B1FA8AB1400B1A2B9 /* TextInputFormatter.swift */; };
+		30EE73251FA8AB1500B1A2B9 /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE730C1FA8AB1400B1A2B9 /* TextFormatter.swift */; };
+		30EE73261FA8AB1500B1A2B9 /* TextInputFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE730E1FA8AB1400B1A2B9 /* TextInputFormatterProtocol.swift */; };
+		30EE73271FA8AB1500B1A2B9 /* TextFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE730F1FA8AB1400B1A2B9 /* TextFormatterProtocol.swift */; };
+		30EE73281FA8AB1500B1A2B9 /* TextInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73111FA8AB1500B1A2B9 /* TextInputController.swift */; };
+		30EE73291FA8AB1500B1A2B9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73131FA8AB1500B1A2B9 /* String+Extension.swift */; };
+		30EE732A1FA8AB1500B1A2B9 /* AttributedTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73161FA8AB1500B1A2B9 /* AttributedTextInputField.swift */; };
+		30EE732B1FA8AB1500B1A2B9 /* AttributedTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73171FA8AB1500B1A2B9 /* AttributedTextInputView.swift */; };
+		30EE732C1FA8AB1500B1A2B9 /* AttributedStringConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73181FA8AB1500B1A2B9 /* AttributedStringConstructor.swift */; };
+		30EE732D1FA8AB1500B1A2B9 /* TextInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73191FA8AB1500B1A2B9 /* TextInputDelegate.swift */; };
+		30EE732E1FA8AB1500B1A2B9 /* TextInputFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE731B1FA8AB1500B1A2B9 /* TextInputFieldDelegate.swift */; };
+		30EE732F1FA8AB1500B1A2B9 /* TextInputFieldDelegateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE731C1FA8AB1500B1A2B9 /* TextInputFieldDelegateCall.swift */; };
+		30EE73301FA8AB1500B1A2B9 /* TextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE731D1FA8AB1500B1A2B9 /* TextInputField.swift */; };
+		30EE73311FA8AB1500B1A2B9 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE731E1FA8AB1500B1A2B9 /* TextInput.swift */; };
+		30EE73321FA8AB1500B1A2B9 /* TextInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73201FA8AB1500B1A2B9 /* TextInputViewDelegate.swift */; };
+		30EE73331FA8AB1500B1A2B9 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73211FA8AB1500B1A2B9 /* TextInputView.swift */; };
+		30EE73341FA8AB1500B1A2B9 /* TextInputViewDelegateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EE73221FA8AB1500B1A2B9 /* TextInputViewDelegateCall.swift */; };
 		3ED09139CAAB9B08849769D5AE0D7114 /* AnyFormatKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EDE3614765324726E1DFC275A32D46 /* AnyFormatKit-dummy.m */; };
 		4C0F73426C47B5872A019FF2DAE4A60E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		5596B290E5CEB7732DAB25EAD98BA2B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -32,8 +49,26 @@
 /* Begin PBXFileReference section */
 		14A6C23A0ADF1B91933576CCCE077959 /* Pods-AnyFormatKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyFormatKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		27213B3F47B1D910D41CD37A1D82323F /* Pods-AnyFormatKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyFormatKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		30EE73081FA8AB1400B1A2B9 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		30EE730B1FA8AB1400B1A2B9 /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
+		30EE730C1FA8AB1400B1A2B9 /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
+		30EE730E1FA8AB1400B1A2B9 /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
+		30EE730F1FA8AB1400B1A2B9 /* TextFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatterProtocol.swift; sourceTree = "<group>"; };
+		30EE73111FA8AB1500B1A2B9 /* TextInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputController.swift; sourceTree = "<group>"; };
+		30EE73131FA8AB1500B1A2B9 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		30EE73161FA8AB1500B1A2B9 /* AttributedTextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputField.swift; sourceTree = "<group>"; };
+		30EE73171FA8AB1500B1A2B9 /* AttributedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputView.swift; sourceTree = "<group>"; };
+		30EE73181FA8AB1500B1A2B9 /* AttributedStringConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringConstructor.swift; sourceTree = "<group>"; };
+		30EE73191FA8AB1500B1A2B9 /* TextInputDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputDelegate.swift; sourceTree = "<group>"; };
+		30EE731B1FA8AB1500B1A2B9 /* TextInputFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegate.swift; sourceTree = "<group>"; };
+		30EE731C1FA8AB1500B1A2B9 /* TextInputFieldDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegateCall.swift; sourceTree = "<group>"; };
+		30EE731D1FA8AB1500B1A2B9 /* TextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputField.swift; sourceTree = "<group>"; };
+		30EE731E1FA8AB1500B1A2B9 /* TextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		30EE73201FA8AB1500B1A2B9 /* TextInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegate.swift; sourceTree = "<group>"; };
+		30EE73211FA8AB1500B1A2B9 /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		30EE73221FA8AB1500B1A2B9 /* TextInputViewDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegateCall.swift; sourceTree = "<group>"; };
 		31365E83B97C21A96E0224CF6F1B4AF4 /* AnyFormatKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AnyFormatKit.xcconfig; sourceTree = "<group>"; };
-		38DA5EAB06944BE86D1F01805E0B488D /* AnyFormatKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AnyFormatKit.modulemap; sourceTree = "<group>"; };
+		38DA5EAB06944BE86D1F01805E0B488D /* AnyFormatKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AnyFormatKit.modulemap; sourceTree = "<group>"; };
 		3A42123367727A4A6C6BAF5DE4483337 /* Pods-AnyFormatKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AnyFormatKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		45A8E753B236B80AE6E806CDF240747F /* Pods-AnyFormatKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AnyFormatKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		46604395A445CCD3E74F83EBAF4D9F11 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,22 +79,21 @@
 		65F2A6DF6FA73C690652B0F7B31D8898 /* AnyFormatKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AnyFormatKit-prefix.pch"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		67BE8F9019B0C2C51D72CD37E85E70A3 /* Pods-AnyFormatKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnyFormatKit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		71893E83C04D710F1FA8D5D50E597D5D /* Pods_AnyFormatKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AnyFormatKit_Tests.framework; path = "Pods-AnyFormatKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71893E83C04D710F1FA8D5D50E597D5D /* Pods_AnyFormatKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFormatKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		766F221CF2CFEFD15CF0461FC8DD4E85 /* Pods-AnyFormatKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AnyFormatKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		77FE1B32B570206F2D6EA0D2EC23F4AD /* Pods-AnyFormatKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyFormatKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7A26D45FE980C5C7F02AA6692F913791 /* Pods-AnyFormatKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AnyFormatKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		7F0E6A994A9AD5534777EE41521B0C80 /* Pods-AnyFormatKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnyFormatKit_Tests-resources.sh"; sourceTree = "<group>"; };
 		824D6F5A210088952B9094831CD43F73 /* Pods-AnyFormatKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AnyFormatKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		88F386544B542137F3707B251B02AB04 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AnyFormatKit.framework; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C55D3163E25F4571DCACF9295294737 /* Pods-AnyFormatKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AnyFormatKit_Tests.modulemap"; sourceTree = "<group>"; };
+		88F386544B542137F3707B251B02AB04 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C55D3163E25F4571DCACF9295294737 /* Pods-AnyFormatKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AnyFormatKit_Tests.modulemap"; sourceTree = "<group>"; };
 		8DC2FD31A5FA45F10C594AFAE368FB4E /* AnyFormatKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AnyFormatKit-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9AAAF93653649EAC08DD63979FB5F8ED /* Pods_AnyFormatKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AnyFormatKit_Example.framework; path = "Pods-AnyFormatKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9AAAF93653649EAC08DD63979FB5F8ED /* Pods_AnyFormatKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFormatKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD4D0071FCF3F04B4ACC5AE45DA7CB4 /* Pods-AnyFormatKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AnyFormatKit_Example-dummy.m"; sourceTree = "<group>"; };
-		CB65ABA44D39F2DB898881101CE0BFEA /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = AnyFormatKit/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		CC525B7095185AB9FCAC33762D0C019A /* Pods-AnyFormatKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnyFormatKit_Example-resources.sh"; sourceTree = "<group>"; };
 		D24A2C693218D47A048F70E85AE79ADD /* Pods-AnyFormatKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AnyFormatKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EBC9FBA518D1385A9EF3D9E7335E8B96 /* Pods-AnyFormatKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AnyFormatKit_Example.modulemap"; sourceTree = "<group>"; };
+		EBC9FBA518D1385A9EF3D9E7335E8B96 /* Pods-AnyFormatKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AnyFormatKit_Example.modulemap"; sourceTree = "<group>"; };
 		F0F700F7630D44193F656A7389F0F4E7 /* Pods-AnyFormatKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnyFormatKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		FE03894E740DC455A4CE898533DF08C0 /* Pods-AnyFormatKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyFormatKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,10 +143,112 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		30EE73071FA8AB1400B1A2B9 /* MulticastDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				30EE73081FA8AB1400B1A2B9 /* MulticastDelegate.swift */,
+			);
+			name = MulticastDelegate;
+			path = AnyFormatKit/Classes/MulticastDelegate;
+			sourceTree = "<group>";
+		};
+		30EE73091FA8AB1400B1A2B9 /* TextFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				30EE730D1FA8AB1400B1A2B9 /* TextFormatterProtocols */,
+				30EE730A1FA8AB1400B1A2B9 /* TextInputFormatters */,
+			);
+			name = TextFormatter;
+			path = AnyFormatKit/Classes/TextFormatter;
+			sourceTree = "<group>";
+		};
+		30EE730A1FA8AB1400B1A2B9 /* TextInputFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				30EE730C1FA8AB1400B1A2B9 /* TextFormatter.swift */,
+				30EE730B1FA8AB1400B1A2B9 /* TextInputFormatter.swift */,
+			);
+			path = TextInputFormatters;
+			sourceTree = "<group>";
+		};
+		30EE730D1FA8AB1400B1A2B9 /* TextFormatterProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				30EE730F1FA8AB1400B1A2B9 /* TextFormatterProtocol.swift */,
+				30EE730E1FA8AB1400B1A2B9 /* TextInputFormatterProtocol.swift */,
+			);
+			path = TextFormatterProtocols;
+			sourceTree = "<group>";
+		};
+		30EE73101FA8AB1500B1A2B9 /* TextInputControllers */ = {
+			isa = PBXGroup;
+			children = (
+				30EE73111FA8AB1500B1A2B9 /* TextInputController.swift */,
+			);
+			name = TextInputControllers;
+			path = AnyFormatKit/Classes/TextInputControllers;
+			sourceTree = "<group>";
+		};
+		30EE73121FA8AB1500B1A2B9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				30EE73131FA8AB1500B1A2B9 /* String+Extension.swift */,
+			);
+			name = Categories;
+			path = AnyFormatKit/Classes/Categories;
+			sourceTree = "<group>";
+		};
+		30EE73141FA8AB1500B1A2B9 /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				30EE731E1FA8AB1500B1A2B9 /* TextInput.swift */,
+				30EE73191FA8AB1500B1A2B9 /* TextInputDelegate.swift */,
+				30EE73151FA8AB1500B1A2B9 /* AttributedTextInput */,
+				30EE731A1FA8AB1500B1A2B9 /* TextInputField */,
+				30EE731F1FA8AB1500B1A2B9 /* TextInputView */,
+			);
+			name = TextInput;
+			path = AnyFormatKit/Classes/TextInput;
+			sourceTree = "<group>";
+		};
+		30EE73151FA8AB1500B1A2B9 /* AttributedTextInput */ = {
+			isa = PBXGroup;
+			children = (
+				30EE73181FA8AB1500B1A2B9 /* AttributedStringConstructor.swift */,
+				30EE73161FA8AB1500B1A2B9 /* AttributedTextInputField.swift */,
+				30EE73171FA8AB1500B1A2B9 /* AttributedTextInputView.swift */,
+			);
+			path = AttributedTextInput;
+			sourceTree = "<group>";
+		};
+		30EE731A1FA8AB1500B1A2B9 /* TextInputField */ = {
+			isa = PBXGroup;
+			children = (
+				30EE731D1FA8AB1500B1A2B9 /* TextInputField.swift */,
+				30EE731B1FA8AB1500B1A2B9 /* TextInputFieldDelegate.swift */,
+				30EE731C1FA8AB1500B1A2B9 /* TextInputFieldDelegateCall.swift */,
+			);
+			path = TextInputField;
+			sourceTree = "<group>";
+		};
+		30EE731F1FA8AB1500B1A2B9 /* TextInputView */ = {
+			isa = PBXGroup;
+			children = (
+				30EE73211FA8AB1500B1A2B9 /* TextInputView.swift */,
+				30EE73201FA8AB1500B1A2B9 /* TextInputViewDelegate.swift */,
+				30EE73221FA8AB1500B1A2B9 /* TextInputViewDelegateCall.swift */,
+			);
+			path = TextInputView;
+			sourceTree = "<group>";
+		};
 		5611B989ADEE4FB33FD212775E3662E0 /* AnyFormatKit */ = {
 			isa = PBXGroup;
 			children = (
-				CB65ABA44D39F2DB898881101CE0BFEA /* ReplaceMe.swift */,
+				30EE73121FA8AB1500B1A2B9 /* Categories */,
+				30EE73071FA8AB1400B1A2B9 /* MulticastDelegate */,
+				30EE73091FA8AB1400B1A2B9 /* TextFormatter */,
+				30EE73141FA8AB1500B1A2B9 /* TextInput */,
+				30EE73101FA8AB1500B1A2B9 /* TextInputControllers */,
 				8784412D6AAA24CC350B2FEF5E06C839 /* Support Files */,
 			);
 			name = AnyFormatKit;
@@ -321,8 +457,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30EE732B1FA8AB1500B1A2B9 /* AttributedTextInputView.swift in Sources */,
+				30EE73291FA8AB1500B1A2B9 /* String+Extension.swift in Sources */,
+				30EE732C1FA8AB1500B1A2B9 /* AttributedStringConstructor.swift in Sources */,
+				30EE73241FA8AB1500B1A2B9 /* TextInputFormatter.swift in Sources */,
+				30EE73281FA8AB1500B1A2B9 /* TextInputController.swift in Sources */,
 				3ED09139CAAB9B08849769D5AE0D7114 /* AnyFormatKit-dummy.m in Sources */,
-				2315DEBCD03BA3D46A275B43DE8B47B3 /* ReplaceMe.swift in Sources */,
+				30EE732F1FA8AB1500B1A2B9 /* TextInputFieldDelegateCall.swift in Sources */,
+				30EE73301FA8AB1500B1A2B9 /* TextInputField.swift in Sources */,
+				30EE73331FA8AB1500B1A2B9 /* TextInputView.swift in Sources */,
+				30EE73321FA8AB1500B1A2B9 /* TextInputViewDelegate.swift in Sources */,
+				30EE73261FA8AB1500B1A2B9 /* TextInputFormatterProtocol.swift in Sources */,
+				30EE732A1FA8AB1500B1A2B9 /* AttributedTextInputField.swift in Sources */,
+				30EE73341FA8AB1500B1A2B9 /* TextInputViewDelegateCall.swift in Sources */,
+				30EE73231FA8AB1500B1A2B9 /* MulticastDelegate.swift in Sources */,
+				30EE73251FA8AB1500B1A2B9 /* TextFormatter.swift in Sources */,
+				30EE732E1FA8AB1500B1A2B9 /* TextInputFieldDelegate.swift in Sources */,
+				30EE732D1FA8AB1500B1A2B9 /* TextInputDelegate.swift in Sources */,
+				30EE73271FA8AB1500B1A2B9 /* TextFormatterProtocol.swift in Sources */,
+				30EE73311FA8AB1500B1A2B9 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
