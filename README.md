@@ -80,7 +80,7 @@ formatter.unformattedText(from: "99 888-77") // 9988877
 ```
 ### Formatting during typing
 
-It is necessary to create TextInputController instance with formatter for formatting during typing. You need to implement TextInput protocol in your own `UITextField`/UITextView/something else or use ready solutions (TextInputField/TextInputView) by subclassing. It is necessary to set controllers's textInput property.
+It is necessary to create TextInputController instance with formatter for formatting during typing. You need to implement `TextInput` protocol in your own `UITextField`/`UITextView`/something else or use ready solutions (`TextInputField`/`TextInputView`) by subclassing. It is necessary to set controllers's `textInput` property.
 
 ```swift
 let textInputController = TextInputController()
@@ -91,10 +91,10 @@ textInputController.textInput = textInput // setting textInput
 let formatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
 textInputController.formatter = formatter // setting formatter
 ```
-Controller listens shouldChangeTextIn delegate method. But you can also add more than one delegate if needed. Methods of delegates, that should return Bool value gather with `&&` operator. Therefore, if one of delegates returns false, that means that textInput will receive false. If you want send true to textInput, all delegates must return true.
+Controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of delegates, that should return `Bool` value gather with `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want send `true` to `textInput`, all delegates must return `true`.
 
-You can set allowedSymbolsRegex to formatter to filter input symbols with regex. All symbols, that satisfy to RegEx will be able to typing in textInput.
-This property only applies to inputed symbols from keybord, but not for prefix.
+You can set `allowedSymbolsRegex` to the formatter to filter input symbols with regex. All symbols, that satisfy to RegEx will be available for typing in the `textInput`.
+This property only applies to inputed symbols from keyboard, but not to prefix.
 
 ```swift
 inputFieldFormatter.allowedSymbolsRegex = "[0-9]" // allowed only numbers
@@ -102,7 +102,7 @@ inputFieldFormatter.allowedSymbolsRegex = "[0-9]" // allowed only numbers
 
 ### Attributes for range
 
-To set attributes for string at range use addAttributes(_, range) method for textInput.
+To set attributes for string at range use `addAttributes(_:range:)` method for `textInput`.
 ```swift
 textInput.addAttributes([.foregroundColor : UIColor.lightGray], range: NSRange(location: 0, length: 3))
 ```
