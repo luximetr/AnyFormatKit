@@ -27,8 +27,8 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 ## Requirements
 
 - iOS 8.0+
-- Swift 4.0 +
-- Xcode 9.0 +
+- Swift 4.0+
+- Xcode 9.0+
 
 ## Installation
 
@@ -57,7 +57,7 @@ let customFormatter = TextFormatter(textPattern: "###-###custom###-###")
 customFormatter.formattedText(from: "111222333444") // 111-222custom333-444
 ```
 
-You can also set own symbol in pattern
+You can also set your own symbol in the pattern
 
 ```swift
 let cardFormatter = TextFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
@@ -80,7 +80,8 @@ formatter.unformattedText(from: "99 888-77") // 9988877
 ```
 ### Formatting during typing
 
-For formatting during typing is necessary to create TextInputController instance with formatter. You need to implement TextInput protocol in your own UITextField/UITextView/someone else or use ready solutions (TextInputField/TextInputView) by subclassing. It need to set controllers's textInput property.
+It is necessary to create TextInputController instance with formatter for formatting during typing. You need to implement TextInput protocol in your own `UITextField`/UITextView/something else or use ready solutions (TextInputField/TextInputView) by subclassing. It is necessary to set controllers's textInput property.
+
 ```swift
 let textInputController = TextInputController()
 
@@ -90,7 +91,7 @@ textInputController.textInput = textInput // setting textInput
 let formatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
 textInputController.formatter = formatter // setting formatter
 ```
-Controller listen shouldChangeTextIn delegate method. But you can also add more than one delegate if needed. Methods of delegates, that should return Bool value gather with && operator. Such if one of delegates return false, that meens textInput will receive false. If you want to receive true to textInput, all delegates must return true.
+Controller listens shouldChangeTextIn delegate method. But you can also add more than one delegate if needed. Methods of delegates, that should return Bool value gather with `&&` operator. Therefore, if one of delegates returns false, that means that textInput will receive false. If you want send true to textInput, all delegates must return true.
 
 You can set allowedSymbolsRegex to formatter to filter input symbols with regex. All symbols, that satisfy to RegEx will be able to typing in textInput.
 This property only applies to inputed symbols from keybord, but not for prefix.

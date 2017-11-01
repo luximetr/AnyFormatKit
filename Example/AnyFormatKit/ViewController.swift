@@ -38,22 +38,23 @@ private extension ViewController {
   }
   
   func configureSelfView() {
-    view.backgroundColor = UIColor.lightGray
+    view.backgroundColor = UIColor(white: 0.97, alpha: 1.0)
   }
   
   func configureTextField() {
     view.addSubview(textInputField)
-    textInputField.defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.darkGray]
-    textInputField.addAttributes([.foregroundColor : UIColor.lightGray], range: NSRange(location: 0, length: 3))
+    textInputField.defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.brown]
+    textInputField.addAttributes([.foregroundColor : UIColor.black], range: NSRange(location: 0, length: 3))
     textInputField.addAttributes([.kern: 2.0], range: NSRange(location: 3, length: 7))
-    textInputField.backgroundColor = UIColor.white
+    textInputField.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
     textInputField.textInputDelegates.add(delegate: self)
   }
   
   func configureTextView() {
     view.addSubview(textInputView)
-    textInputView.addAttributes([.foregroundColor : UIColor.lightGray], range: NSRange(location: 0, length: 3))
-    textInputView.typingAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.darkGray]
+    textInputView.typingAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.brown]
+    textInputView.addAttributes([.foregroundColor : UIColor.black], range: NSRange(location: 0, length: 3))
+    textInputView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
   }
   
   func configureFormatter() {
