@@ -14,5 +14,5 @@ This framework provide to format text with format like "## ##-###", where # - re
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'AnyFormatKit/Classes/**/*'
+  s.source_files = 'Source/**/*'
 end
