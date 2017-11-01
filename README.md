@@ -91,10 +91,10 @@ textInputController.textInput = textInput // setting textInput
 let formatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
 textInputController.formatter = formatter // setting formatter
 ```
-Controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of delegates, that should return `Bool` value gather with `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want send `true` to `textInput`, all delegates must return `true`.
+The controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of the delegates, that should return `Bool` value gather with `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want send `true` to `textInput`, all delegates must return `true`.
 
-You can set `allowedSymbolsRegex` to the formatter to filter input symbols with regex. All symbols, that satisfy to RegEx will be available for typing in the `textInput`.
-This property only applies to inputed symbols from keyboard, but not to prefix.
+You can set `allowedSymbolsRegex` to the formatter to filter input symbols with the RegEx. All symbols, that satisfy to the RegEx will be available for typing in the `textInput`.
+This property only applies to inputed symbols from the keyboard, but not to the prefix.
 
 ```swift
 inputFieldFormatter.allowedSymbolsRegex = "[0-9]" // allowed only numbers
