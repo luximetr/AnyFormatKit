@@ -32,12 +32,22 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ## Installation
 
+### CocoaPods
+
 AnyFormatKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'AnyFormatKit'
 ```
+
+### Carthage
+
+To integrate AnyFormatKit into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+github "luximetr/AnyFormatKit" ~> 0.1.1
+
+Run `carthage update` to build the framework and drag the built `AnyFormatKit.framework` into your Xcode project.
 
 ## Usage
 
