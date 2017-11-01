@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 [![Platform](https://img.shields.io/cocoapods/p/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 
-Framework for text formatting written on Swift 4.0.
+Text formatting framework written on Swift 4.0.
 
 ## Features
 
@@ -91,9 +91,9 @@ textInputController.textInput = textInput // setting textInput
 let formatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
 textInputController.formatter = formatter // setting formatter
 ```
-The controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of the delegates, that should return `Bool` value gather with `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want send `true` to `textInput`, all delegates must return `true`.
+The controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of the delegates, that should return `Bool` value gather using `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want to send `true` to `textInput`, all delegates must return `true`.
 
-You can set `allowedSymbolsRegex` to the formatter to filter input symbols with the RegEx. All symbols, that satisfy to the RegEx will be available for typing in the `textInput`.
+You can set `allowedSymbolsRegex` to the formatter to filter input symbols with the RegEx. All symbols, that satisfy the RegEx will be available for typing in the `textInput`.
 This property only applies to inputed symbols from the keyboard, but not to the prefix.
 
 ```swift
