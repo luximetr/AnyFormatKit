@@ -11,9 +11,24 @@
 		307EA2561FAA1D0000DE439D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307EA2541FAA1D0000DE439D /* Main.storyboard */; };
 		307EA2581FAA1D0000DE439D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307EA2571FAA1D0000DE439D /* Assets.xcassets */; };
 		307EA25B1FAA1D0000DE439D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307EA2591FAA1D0000DE439D /* LaunchScreen.storyboard */; };
-		30B95D5E1FAA240400BFF81F /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B95D5F1FAA240400BFF81F /* AnyFormatKit.framework */; };
 		30B95D611FAA242600BFF81F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B95D601FAA242600BFF81F /* ViewController.swift */; };
+		30C5F53D1FAB6A3B003711D1 /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B95D5D1FAA23E800BFF81F /* AnyFormatKit.framework */; };
+		30C5F53E1FAB6A3B003711D1 /* AnyFormatKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30B95D5D1FAA23E800BFF81F /* AnyFormatKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		30C5F53F1FAB6A3B003711D1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				30C5F53E1FAB6A3B003711D1 /* AnyFormatKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		307EA24D1FAA1D0000DE439D /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B95D5E1FAA240400BFF81F /* AnyFormatKit.framework in Frameworks */,
+				30C5F53D1FAB6A3B003711D1 /* AnyFormatKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +103,7 @@
 				307EA2491FAA1D0000DE439D /* Sources */,
 				307EA24A1FAA1D0000DE439D /* Frameworks */,
 				307EA24B1FAA1D0000DE439D /* Resources */,
+				30C5F53F1FAB6A3B003711D1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,6 +303,7 @@
 		307EA2601FAA1D0000DE439D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87GS5B9N5U;
@@ -302,6 +319,7 @@
 		307EA2611FAA1D0000DE439D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87GS5B9N5U;

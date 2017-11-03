@@ -35,26 +35,33 @@ private extension ViewController {
     configureFormatter()
     configureTextFieldController()
     configureTextViewController()
+    setupFirstResponder()
   }
   
   func configureSelfView() {
-    view.backgroundColor = UIColor(white: 0.97, alpha: 1.0)
+    view.backgroundColor = UIColor.black
   }
   
   func configureTextField() {
     view.addSubview(textInputField)
-    textInputField.defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.brown]
-    textInputField.addAttributes([.foregroundColor : UIColor.black], range: NSRange(location: 0, length: 3))
-    textInputField.addAttributes([.kern: 2.0], range: NSRange(location: 3, length: 7))
-    textInputField.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+    textInputField.backgroundColor = UIColor.black
+    textInputField.tintColor = UIColor.black
+    textInputField.font = UIFont.systemFont(ofSize: 22, weight: .regular)
+    textInputField.textColor = UIColor.white
+    
     textInputField.textInputDelegates.add(delegate: self)
+    textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
   func configureTextView() {
     view.addSubview(textInputView)
-    textInputView.typingAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.brown]
-    textInputView.addAttributes([.foregroundColor : UIColor.black], range: NSRange(location: 0, length: 3))
-    textInputView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
+    textInputView.backgroundColor = UIColor.black
+    textInputView.tintColor = ColorConstants.gray
+    
+    textInputView.typingAttributes = [
+      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
+      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+    textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
   func configureFormatter() {
@@ -69,6 +76,10 @@ private extension ViewController {
   func configureTextViewController() {
     textInputViewController.textInput = textInputView
     textInputViewController.formatter = inputFieldFormatter
+  }
+  
+  func setupFirstResponder() {
+    _ = textInputField.becomeFirstResponder()
   }
 }
 
@@ -87,4 +98,9 @@ extension ViewController: TextInputDelegate {
 private struct LayoutConstants {
   static let textInputFieldFrame = CGRect(x: 20, y: 40, width: UIScreen.main.bounds.width - 40, height: 40)
   static let textInputViewFrame = CGRect(x: 20, y: 100, width: UIScreen.main.bounds.width - 40, height: 40)
+}
+
+private struct ColorConstants {
+  static let yellow = UIColor(red: 255 / 255, green: 236 / 255, blue: 0 / 255, alpha: 1.0)
+  static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
 }

@@ -112,6 +112,8 @@ textInputController.formatter = formatter // setting formatter
 ```
 The controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of the delegates, that should return `Bool` value gather using `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want to send `true` to `textInput`, all delegates must return `true`.
 
+![AnyFormatKitDemo: Simple text formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/demo.gif)
+
 You can set `allowedSymbolsRegex` to the formatter to filter input symbols with the RegEx. All symbols, that satisfy the RegEx will be available for typing in the `textInput`.
 This property only applies to inputed symbols from the keyboard, but not to the prefix.
 

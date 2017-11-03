@@ -13,9 +13,21 @@ public class AttributedTextInputView: UITextView {
   // MARK: - Fields
   /// Overriden text, that set text with attributes to attributedText property
   override public var text: String! {
-    set { super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
-        newValue: newValue, commonAttributes: typingAttributes) }
-    get { return super.attributedText?.string }
+    set {
+      if !typingAttributes.isEmpty {
+        super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
+          newValue: newValue, commonAttributes: typingAttributes)
+      } else {
+        super.text = newValue
+      }
+    }
+    get {
+      if typingAttributes.isEmpty {
+        return super.attributedText?.string
+      } else {
+        return super.text
+      }
+    }
   }
   
   /// Common attributes for all string during typing
