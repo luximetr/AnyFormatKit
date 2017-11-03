@@ -17,7 +17,8 @@ class ViewController: UIViewController {
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   
-  let inputFieldFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
+  let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
+  let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -30,9 +31,10 @@ class ViewController: UIViewController {
 private extension ViewController {
   func initConfigure() {
     configureSelfView()
+    configureTitleLabels()
     configureTextField()
     configureTextView()
-    configureFormatter()
+    configureFormatters()
     configureTextFieldController()
     configureTextViewController()
     setupFirstResponder()
@@ -42,14 +44,30 @@ private extension ViewController {
     view.backgroundColor = UIColor.black
   }
   
+  func configureTitleLabels() {
+    let phoneNumberTitleLabel = UILabel(frame: LayoutConstants.phoneNumberLabelFrame)
+    phoneNumberTitleLabel.textColor = UIColor.white
+    phoneNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular )
+    phoneNumberTitleLabel.text = "Phone number: "
+    
+    let cardNumberTitleLabel = UILabel(frame: LayoutConstants.cardNumberLabelFrame)
+    cardNumberTitleLabel.textColor = UIColor.white
+    cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    cardNumberTitleLabel.text = "Card number: "
+    
+    view.addSubview(phoneNumberTitleLabel)
+    view.addSubview(cardNumberTitleLabel)
+  }
+  
   func configureTextField() {
     view.addSubview(textInputField)
     textInputField.backgroundColor = UIColor.black
-    textInputField.tintColor = UIColor.black
-    textInputField.font = UIFont.systemFont(ofSize: 22, weight: .regular)
-    textInputField.textColor = UIColor.white
+    textInputField.tintColor = ColorConstants.gray
     
     textInputField.textInputDelegates.add(delegate: self)
+    textInputField.defaultTextAttributes = [
+      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
     textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
@@ -61,21 +79,24 @@ private extension ViewController {
     textInputView.typingAttributes = [
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
-    textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
+    textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
+    
+    textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
   }
   
-  func configureFormatter() {
-    inputFieldFormatter.allowedSymbolsRegex = "[0-9]"
+  func configureFormatters() {
+    phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
+    cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
   }
   
   func configureTextFieldController() {
     textInputFieldController.textInput = textInputField
-    textInputFieldController.formatter = inputFieldFormatter
+    textInputFieldController.formatter = phoneNumberFormatter
   }
   
   func configureTextViewController() {
     textInputViewController.textInput = textInputView
-    textInputViewController.formatter = inputFieldFormatter
+    textInputViewController.formatter = cardNumberFormatter
   }
   
   func setupFirstResponder() {
@@ -96,8 +117,10 @@ extension ViewController: TextInputDelegate {
 
 // MARK: - Constants
 private struct LayoutConstants {
-  static let textInputFieldFrame = CGRect(x: 20, y: 40, width: UIScreen.main.bounds.width - 40, height: 40)
-  static let textInputViewFrame = CGRect(x: 20, y: 100, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let textInputFieldFrame = CGRect(x: 20, y: 65, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let textInputViewFrame = CGRect(x: 16, y: 165, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let phoneNumberLabelFrame = CGRect(x: 20, y: 40, width: UIScreen.main.bounds.width - 40, height: 20)
+  static let cardNumberLabelFrame = CGRect(x: 20, y: 140, width: UIScreen.main.bounds.width - 40, height: 20)
 }
 
 private struct ColorConstants {
