@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302872331FB5C577002DF90A /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302872321FB5C577002DF90A /* SumTextFormatter.swift */; };
+		302872351FB5C592002DF90A /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302872341FB5C592002DF90A /* SumTextInputFormatter.swift */; };
 		307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */; };
 		307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* TextFormatter.swift */; };
 		307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302872321FB5C577002DF90A /* SumTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
+		302872341FB5C592002DF90A /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2171FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		302872311FB5C54E002DF90A /* SumFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				302872321FB5C577002DF90A /* SumTextFormatter.swift */,
+				302872341FB5C592002DF90A /* SumTextInputFormatter.swift */,
+			);
+			path = SumFormatters;
+			sourceTree = "<group>";
+		};
 		307EA2131FAA1B5B00DE439D /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +125,7 @@
 			children = (
 				307EA2181FAA1B5B00DE439D /* TextFormatterProtocols */,
 				307EA2151FAA1B5B00DE439D /* TextInputFormatters */,
+				302872311FB5C54E002DF90A /* SumFormatters */,
 			);
 			path = TextFormatter;
 			sourceTree = "<group>";
@@ -378,6 +392,7 @@
 				307EA2381FAA1B5B00DE439D /* TextInputDelegate.swift in Sources */,
 				307EA23F1FAA1B5B00DE439D /* TextInputViewDelegateCall.swift in Sources */,
 				307EA23B1FAA1B5B00DE439D /* TextInputField.swift in Sources */,
+				302872331FB5C577002DF90A /* SumTextFormatter.swift in Sources */,
 				307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */,
 				307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */,
 				307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
@@ -385,6 +400,7 @@
 				307EA23D1FAA1B5B00DE439D /* TextInputViewDelegate.swift in Sources */,
 				307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */,
 				307EA2401FAA1B5B00DE439D /* TextInputController.swift in Sources */,
+				302872351FB5C592002DF90A /* SumTextInputFormatter.swift in Sources */,
 				307EA2371FAA1B5B00DE439D /* AttributedStringConstructor.swift in Sources */,
 				307EA23C1FAA1B5B00DE439D /* TextInput.swift in Sources */,
 				307EA2421FAA1B5B00DE439D /* MulticastDelegate.swift in Sources */,
