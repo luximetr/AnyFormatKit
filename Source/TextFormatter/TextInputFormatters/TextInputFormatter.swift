@@ -70,7 +70,6 @@ public class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
 
 // MARK: - Private
 private extension TextInputFormatter {
-  /// Correcting content with current content, range and replacement string
   /**
    Correcting content with current content, range and replacement string
    
@@ -179,7 +178,6 @@ private extension TextInputFormatter {
    
    - Returns: Offset for caret from beginning of textPattern while insert characters in textInput
   */
-  /// Calculate offset for caret, when characters will insert
   func offsetForInsert(from location: Int, replacementLength: Int) -> Int {
     let startIndex = textPattern.index(textPattern.startIndex, offsetBy: location)
     let searchRange = startIndex..<textPattern.endIndex
