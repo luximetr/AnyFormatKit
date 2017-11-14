@@ -1,5 +1,2 @@
-set -ev
-bundle exec rake:units
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
-	bundle exec rake test:integration
-fi
+#!/bin/bash
+xcodebuild -workspace ../AnyFormatKit.xcworkspace -scheme "AnyFormatKit" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.1' test
