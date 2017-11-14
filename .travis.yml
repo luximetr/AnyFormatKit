@@ -1,3 +1,12 @@
 
 osx_image: xcode9
 language: swift
+xcode_workspace: AnyFormatKit.xcworkspace
+xcode_scheme: 
+  - AnyFormatKit
+  - AnyFormatKitTests
+  - iOS Example
+
+branches:
+  only:
+    - develop
