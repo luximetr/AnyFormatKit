@@ -18,6 +18,4 @@ class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
   func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
     return false
   }
-  
-  
 }

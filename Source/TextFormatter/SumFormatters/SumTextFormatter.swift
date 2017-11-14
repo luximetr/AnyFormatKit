@@ -8,41 +8,76 @@
 
 import Foundation
 
-class SumTextFormatter: TextFormatterProtocol {
-  var allowsFloats: Bool
-  var prefix: String?
-  var suffix: String?
+public class SumTextFormatter: TextFormatterProtocol {
+  public var allowsFloats: Bool {
+    set {
+      numberFormatter.allowsFloats = newValue
+      
+    }
+    get { return numberFormatter.allowsFloats }
+  }
+  public var prefix: String?
+  public var suffix: String?
   
-  var decimalSeparator: String
-  var groupingSeparator: String
+  public var decimalSeparator: String {
+    set { numberFormatter.currencyDecimalSeparator = newValue }
+    get { return numberFormatter.currencyDecimalSeparator }
+  }
+  public var groupingSeparator: String {
+    set { numberFormatter.currencyGroupingSeparator = newValue }
+    get { return numberFormatter.currencyGroupingSeparator }
+  }
   
-  var minimumIntegerDigits: Int
-  var maximumIntegerDigits: Int
-  var minimumFractionDigits: Int
-  var maximumFractionDigits: Int
+  public var minimumIntegerDigits: Int {
+    set { numberFormatter.minimumIntegerDigits = newValue }
+    get { return numberFormatter.minimumIntegerDigits }
+  }
+  public var maximumIntegerDigits: Int {
+    set { numberFormatter.maximumIntegerDigits = newValue }
+    get { return numberFormatter.maximumIntegerDigits }
+  }
+  public var minimumFractionDigits: Int {
+    set { numberFormatter.minimumFractionDigits = newValue }
+    get { return numberFormatter.minimumFractionDigits }
+  }
+  public var maximumFractionDigits: Int {
+    set { numberFormatter.maximumFractionDigits = newValue }
+    get { return numberFormatter.maximumFractionDigits }
+  }
   
-  var minusSign: String
-  var groupingSize: Int
+  public var minusSign: String {
+    set { numberFormatter.minusSign = newValue }
+    get { return numberFormatter.minusSign }
+  }
+  public var groupingSize: Int {
+    set { numberFormatter.groupingSize = newValue }
+    get { return numberFormatter.groupingSize }
+  }
   
   internal let numberFormatter = NumberFormatter()
   
   public init() {
-    allowsFloats = numberFormatter.allowsFloats
-    decimalSeparator = numberFormatter.decimalSeparator
-    groupingSeparator = numberFormatter.groupingSeparator
-    minimumIntegerDigits = numberFormatter.minimumIntegerDigits
-    maximumIntegerDigits = numberFormatter.maximumIntegerDigits
-    minimumFractionDigits = numberFormatter.minimumFractionDigits
-    maximumFractionDigits = numberFormatter.maximumFractionDigits
-    minusSign = numberFormatter.minusSign
-    groupingSize = numberFormatter.groupingSize
+    numberFormatter.numberStyle = .currency
+    numberFormatter.currencyCode = String()
+    numberFormatter.currencySymbol = String()
   }
   
-  func formattedText(from unformatted: String?) -> String? {
-    return unformatted
+  public func formattedText(from unformatted: String?) -> String? {
+    guard
+      let unformatted = unformatted,
+      let doubleValue = Double(unformatted) else {
+        return nil
+    }
+    let number = NSNumber(floatLiteral: doubleValue)
+    return numberFormatter.string(from: number)
   }
   
-  func unformattedText(from formatted: String?) -> String? {
-    return formatted
+  public func unformattedText(from formatted: String?) -> String? {
+    guard
+      let formatted = formatted,
+      let number = numberFormatter.number(from: formatted) else {
+      return nil
+    }
+    return number.stringValue
   }
 }

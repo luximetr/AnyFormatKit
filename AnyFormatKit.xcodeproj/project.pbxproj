@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		302872331FB5C577002DF90A /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302872321FB5C577002DF90A /* SumTextFormatter.swift */; };
 		302872351FB5C592002DF90A /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302872341FB5C592002DF90A /* SumTextInputFormatter.swift */; };
+		302872371FB5EA39002DF90A /* SumFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302872361FB5EA39002DF90A /* SumFormatterTests.swift */; };
 		307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */; };
 		307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* TextFormatter.swift */; };
 		307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		302872321FB5C577002DF90A /* SumTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
 		302872341FB5C592002DF90A /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
+		302872361FB5EA39002DF90A /* SumFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatterTests.swift; sourceTree = "<group>"; };
 		307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2171FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */,
+				302872361FB5EA39002DF90A /* SumFormatterTests.swift */,
 				30FE6FE81FAA13D30024D1B1 /* Info.plist */,
 			);
 			path = Tests;
@@ -411,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302872371FB5EA39002DF90A /* SumFormatterTests.swift in Sources */,
 				30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
