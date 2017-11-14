@@ -9,4 +9,4 @@ xcode_scheme:
 
 branches:
   only:
-    - develop
+    - SumFormatting
