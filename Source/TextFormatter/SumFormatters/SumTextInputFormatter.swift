@@ -8,14 +8,17 @@
 
 import Foundation
 
-class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
+public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
+    
+    public var prefix: String?
+    
 //  var prefix: String?
   
-  var formattedPrefix: String?
+  public var formattedPrefix: String?
   
-  var allowedSymbolsRegex: String?
+  public var allowedSymbolsRegex: String?
   
-  func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
+  public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
     return false
   }
   

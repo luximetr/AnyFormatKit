@@ -8,41 +8,177 @@
 
 import Foundation
 
-class SumTextFormatter: TextFormatterProtocol {
-  var allowsFloats: Bool
-  var prefix: String?
-  var suffix: String?
-  
-  var decimalSeparator: String
-  var groupingSeparator: String
-  
-  var minimumIntegerDigits: Int
-  var maximumIntegerDigits: Int
-  var minimumFractionDigits: Int
-  var maximumFractionDigits: Int
-  
-  var minusSign: String
-  var groupingSize: Int
-  
-  internal let numberFormatter = NumberFormatter()
-  
-  public init() {
-    allowsFloats = numberFormatter.allowsFloats
-    decimalSeparator = numberFormatter.decimalSeparator
-    groupingSeparator = numberFormatter.groupingSeparator
-    minimumIntegerDigits = numberFormatter.minimumIntegerDigits
-    maximumIntegerDigits = numberFormatter.maximumIntegerDigits
-    minimumFractionDigits = numberFormatter.minimumFractionDigits
-    maximumFractionDigits = numberFormatter.maximumFractionDigits
-    minusSign = numberFormatter.minusSign
-    groupingSize = numberFormatter.groupingSize
-  }
-  
-  func formattedText(from unformatted: String?) -> String? {
-    return unformatted
-  }
-  
-  func unformattedText(from formatted: String?) -> String? {
-    return formatted
-  }
+public class SumTextFormatter: TextFormatterProtocol {
+    
+    public var minimumDecimalCharacters: Int = 2
+    private var numberOfNeededCharacters: Int = 0
+    
+    var prefixStr: String?
+    var suffixStr: String?
+    var decimalSeparator: String = "."
+    var groupingSeparator: String = ","
+    
+    var textPattern: String
+    var specialSymbol: Character
+
+    private let possibleDividers = CharacterSet(charactersIn: ".,")
+    internal let numberFormatter = NumberFormatter()
+
+    public init(textPattern: String, specialSymbol: Character = "#") {
+        self.textPattern = textPattern
+        self.specialSymbol = specialSymbol
+        
+        extractDataFromPattern()
+    }
+    
+    private func extractDataFromPattern() {
+        self.suffixStr = getSuffix(from: textPattern, specialSymbol: specialSymbol)
+        self.prefixStr = getPrefix(from: textPattern, specialSymbol: specialSymbol)
+        self.decimalSeparator = getDecimalSeparator(from: textPattern, specialSymbol: specialSymbol)
+        self.groupingSeparator = getGroupingSeparator(from: textPattern, specialSymbol: specialSymbol)
+    }
+    
+    private func getPrefix(from pattern: String, specialSymbol: Character) -> String {
+        var result = ""
+        for i in pattern.enumerated() {
+            if i.element == specialSymbol {
+                let index = pattern.index(pattern.startIndex, offsetBy: i.offset)
+                result = String(pattern[pattern.startIndex..<index])
+                break
+            }
+        }
+        return result
+    }
+    
+    private func getSuffix(from pattern: String, specialSymbol: Character) -> String {
+        var result = ""
+        var i = pattern.length
+        while (i > 0) {
+            i -= 1
+            if let currentChar = pattern.characterAt(i), currentChar == specialSymbol {
+                let index = pattern.index(pattern.endIndex, offsetBy: -(pattern.length - i - 1))
+                result = String(pattern[index..<pattern.endIndex])
+                break
+            }
+        }
+        return result
+    }
+    
+    private func getDecimalSeparator(from pattern: String, specialSymbol: Character) -> String {
+        var result = ""
+        var i = pattern.length - (suffixStr?.length ?? 0)
+        while (i > 0) {
+            i -= 1
+            if let currentChar = pattern.characterAt(i), currentChar != specialSymbol {
+                var tmpResult = ""
+                var j = i
+                
+                while (pattern.characterAt(j) != specialSymbol) {
+                    guard let char = pattern.characterAt(j) else { break }
+                    tmpResult.append(char)
+                    j -= 1
+                }
+                
+                result = String(tmpResult.reversed())
+                break
+            }
+        }
+        return result
+    }
+    
+    private func getGroupingSeparator(from pattern: String, specialSymbol: Character) -> String {
+        var result = ""
+        var i = prefixStr?.length ?? 0
+        while (i < pattern.length) {
+            if let currentChar = pattern.characterAt(i), currentChar != specialSymbol {
+                var j = i
+                while (pattern.characterAt(j) != specialSymbol) {
+                    guard let char = pattern.characterAt(j) else { break }
+                    result.append(char)
+                    j += 1
+                }
+                break
+            }
+            i+=1
+        }
+        return result
+    }
+    
+    func isRequireSubstitute(symbol: Character) -> Bool {
+        return symbol == specialSymbol
+    }
+    
+    private func stringForDecimal(decimal: Int) -> String {
+        var result = ""
+        let reversString = String(String(decimal).characters.reversed())
+        let isNegative = decimal < 0
+        var reversLenght = reversString.characters.count
+        if isNegative {
+            // for minus symbol
+            reversLenght -= 1
+        }
+        for i in 0..<reversLenght {
+            guard let currentChar = reversString.characterAt(i) else { continue }
+            result.append(currentChar)
+            if i % 3 == 2, i != 0, i != reversLenght - 1 {
+                result.append(groupingSeparator)
+            }
+        }
+        if isNegative {
+            result.append("-")
+        }
+        return String(result.characters.reversed())
+    }
+    
+    
+    public func formattedText(from unformatted: String?) -> String? {
+        
+        guard let unformattedString = unformatted else { return nil }
+        guard !(unformattedString.isEmpty) else { return unformattedString }
+        
+        let doubleSeparator = decimalSeparator
+        var resultString = ""
+
+        resultString.append(prefixStr ?? "")
+        
+        var doubleStringValue = unformattedString.components(separatedBy: possibleDividers).joined(separator: doubleSeparator)
+        if doubleStringValue.characterAt(0) == Character(doubleSeparator) {
+          doubleStringValue.insert("0", at: doubleStringValue.startIndex)
+        }
+
+        guard let doubleValue = Double(doubleStringValue) else {
+          return unformattedString
+        }
+        let decimalValue = Int(doubleValue)
+        resultString.append(stringForDecimal(decimal: decimalValue))
+
+        if doubleStringValue.contains(doubleSeparator) {
+          resultString.append(doubleSeparator)
+          if doubleStringValue.characterAt(doubleStringValue.length - 1) != Character(doubleSeparator) {
+            let floatString = doubleStringValue.components(separatedBy: doubleSeparator)[1]
+            resultString.append(String(floatString))
+            if minimumDecimalCharacters - floatString.length > 0 {
+                let neededCharacters = minimumDecimalCharacters - floatString.length
+                numberOfNeededCharacters = neededCharacters
+                for _ in 0..<neededCharacters { resultString.append("0") }
+            }
+          }
+        }
+        resultString.append(suffixStr ?? "")
+        return resultString
+    }
+    
+    public func unformattedText(from formatted: String?) -> String? {
+        guard let formattedString = formatted else { return nil }
+        
+        var withoutSuffix = formattedString.replacingOccurrences(of: suffixStr ?? "", with: "")
+        withoutSuffix.removeLast(numberOfNeededCharacters)
+        
+        let unformattedString = withoutSuffix
+            .replacingOccurrences(of: prefixStr ?? "", with: "")
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: groupingSeparator, with: "")
+        
+        return unformattedString
+    }
 }

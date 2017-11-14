@@ -13,17 +13,25 @@ class ViewController: UIViewController {
   // MARK: - Fields
   let textInputFieldController = TextInputController()
   let textInputViewController = TextInputController()
-  
+  let sumInputController = TextInputController()
+    
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   
   let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+  //let sumFormatter = SumTextInputFormatter
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    initConfigure()
+    
+    let sm = SumTextFormatter(textPattern: "ABC#,###$")
+    let formatted = sm.formattedText(from: "1234567")
+    print(formatted)
+    print(sm.unformattedText(from: formatted))
+    
+    //initConfigure()
   }
 }
 
@@ -33,10 +41,10 @@ private extension ViewController {
     configureSelfView()
     configureTitleLabels()
     configureTextField()
-    configureTextView()
+    //configureTextView()
     configureFormatters()
     configureTextFieldController()
-    configureTextViewController()
+    //configureTextViewController()
     setupFirstResponder()
   }
   
