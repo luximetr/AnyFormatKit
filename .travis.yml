@@ -9,10 +9,6 @@ xcode_scheme:
   - AnyFormatKitTests
   - iOS Example
 
-branches:
-  only:
-    - SumFormatting
-
 script: ./run-tests.sh
 
 notifications:
