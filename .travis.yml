@@ -13,4 +13,4 @@ branches:
   only:
     - SumFormatting
 
-script: ./scripts/run-tests.sh
+script: ./run-tests.sh
