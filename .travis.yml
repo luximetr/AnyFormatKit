@@ -18,4 +18,7 @@ script: ./run-tests.sh
 
 notifications:
   email:
-    - luximetr.notification@gmail.com
+    recipients:
+      - luximetr.notification@gmail.com
+    on_success: always
+    on_failure: always
