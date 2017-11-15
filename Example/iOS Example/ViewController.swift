@@ -11,16 +11,16 @@ import AnyFormatKit
 
 class ViewController: UIViewController {
   // MARK: - Fields
-  //let textInputFieldController = TextInputController()
+  let textInputFieldController = TextInputController()
   //let textInputViewController = TextInputController()
   let sumInputController = TextInputController()
     
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   //let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   
-  //let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
+  let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   //let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-  let sumFormatter = SumTextInputFormatter(textPattern: "#,###$", specialSymbol: "#")
+    let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,###.# $$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -70,7 +70,8 @@ private extension ViewController {
     textInputField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
-    textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
+    //textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
+    textInputField.content = sumFormatter.formattedText(from: "123456")
   }
   
 //  func configureTextView() {
@@ -88,14 +89,16 @@ private extension ViewController {
 //  }
   
   func configureFormatters() {
+    //sumFormatter.allowedSymbolsRegex = "^[0-9]{1,2}([,.][0-9]{1,2})?$"
     //phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
     //cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
   }
   
   func configureTextFieldController() {
     sumInputController.textInput = textInputField
-    //textInputFieldController.textInput = textInputField
-    //textInputFieldController.formatter = phoneNumberFormatter
+    sumInputController.formatter = sumFormatter
+//    textInputFieldController.textInput = textInputField
+//    textInputFieldController.formatter = phoneNumberFormatter
   }
   
   func configureTextViewController() {

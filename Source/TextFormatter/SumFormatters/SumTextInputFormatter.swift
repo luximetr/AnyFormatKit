@@ -22,10 +22,113 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
 
     public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
         
+        var internalRange = range
+        
+        if text.isEmpty {
+            let newRange = correctRangeForDeleting(from: textInput.content, at: internalRange)
+            guard let newRangeUnwrapped = newRange else { return false }
+            internalRange = newRangeUnwrapped
+        } else if text == "," || text == "." {
+            if !isCorrectSeparatorInserting() { return false }
+        } else {
+            if !isCorrectInserting(from: textInput.content, at: internalRange) { return false }
+        }
+        
+        guard let oldString = textInput.content as NSString? else { return false }
+        let newString = oldString.replacingCharacters(in: internalRange, with: text)
+        
+        if decimalSeparator != groupingSeparator {
+            guard newString.components(separatedBy: decimalSeparator).count < 3 else { return false }
+        }
+        guard var newUnformatted = unformattedText(from: newString) else { return false }
+        
+        newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
+        let newFormatted = formattedText(from: newUnformatted)
+        
+        textInput.content = newFormatted
+        
+        guard let newFormattedUnwrapped = newFormatted else { return false }
+        correctCarretPosition(textInput: textInput, range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)
+        
         return false
     }
     
+    private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
+        var offset = range.location + range.length + (newString.length - oldString.length)
+        if oldString.isEmpty {
+            offset -= suffixStr?.length ?? 0
+        }
+        if offset < prefixStr?.length ?? 0 {
+            offset = prefixStr?.length ?? 0
+        }
+        return offset
+    }
     
-  
-  
+    private func correctCarretPosition(textInput: TextInput, range: NSRange, oldString: String, newString: String) {
+        let beginning = textInput.beginningOfDocument
+        let offset = rangeOffset(range: range, oldString: String(oldString), newString: newString)
+        let cursorLocation = textInput.position(from: beginning, offset: offset)
+        if let cursor = cursorLocation {
+            textInput.selectedTextRange = textInput.textRange(from: cursor, to: cursor)
+        }
+    }
+    
+    private func stringOnlyWithAllowedSymbols(from string: String) -> String {
+        var result = ""
+        if let regex = allowedSymbolsRegex {
+            let regexPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
+            
+            for character in string {
+                if regexPredicate.evaluate(with: String(character)) {
+                    result.append(character)
+                }
+            }
+        } else {
+            return string
+        }
+        return result
+    }
+    
+    private func correctRangeForDeleting(from string: String?, at range: NSRange) -> NSRange? {
+        guard let unformatted = unformattedText(from: string), !unformatted.isEmpty else { return nil }
+        guard let text = string else { return nil }
+        
+        if range.length == 1 {
+            if range.location > text.length - (suffixStr?.length ?? 0) - 1 ||
+                range.location < (prefixStr?.length ?? 0)
+            { return nil }
+        } else {
+            
+            var lowerBound = range.lowerBound
+            var upperBound = range.upperBound
+            
+            if range.lowerBound < (prefixStr?.length ?? 0) {
+                lowerBound = (prefixStr?.length ?? 0)
+            }
+            
+            if range.upperBound > text.length - (suffixStr?.length ?? 0)  {
+                upperBound = text.length - (suffixStr?.length ?? 0)
+            }
+            
+            let newRange = NSRange(location: lowerBound, length: upperBound - lowerBound)
+            return newRange
+        }
+        
+        return range
+    }
+    
+    private func isCorrectInserting(from string: String?, at range: NSRange) -> Bool {
+        guard let text = string else { return false }
+        
+        if range.location > (text.length - (suffixStr?.length ?? 0)) ||
+            range.location < (prefixStr?.length ?? 0)
+        { return false }
+        
+        return true
+    }
+    
+    private func isCorrectSeparatorInserting() -> Bool {
+        if decimalSeparator.isEmpty || decimalSeparator == groupingSeparator { return false } //Decimal not allowed
+        return true
+    }
 }

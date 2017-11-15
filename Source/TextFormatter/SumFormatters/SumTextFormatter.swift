@@ -10,8 +10,7 @@ import Foundation
 
 public class SumTextFormatter: TextFormatterProtocol {
     
-    public var minimumDecimalCharacters: Int = 2
-    private var numberOfNeededCharacters: Int = 0
+    public var maximumDecimalCharacters: Int = 2
     
     var prefixStr: String?
     var suffixStr: String?
@@ -110,9 +109,9 @@ public class SumTextFormatter: TextFormatterProtocol {
     
     private func stringForDecimal(decimal: Int) -> String {
         var result = ""
-        let reversString = String(String(decimal).characters.reversed())
+        let reversString = String(String(decimal).reversed())
         let isNegative = decimal < 0
-        var reversLenght = reversString.characters.count
+        var reversLenght = reversString.length
         if isNegative {
             // for minus symbol
             reversLenght -= 1
@@ -127,43 +126,45 @@ public class SumTextFormatter: TextFormatterProtocol {
         if isNegative {
             result.append("-")
         }
-        return String(result.characters.reversed())
+        return String(result.reversed())
     }
     
     
     public func formattedText(from unformatted: String?) -> String? {
         
         guard let unformattedString = unformatted else { return nil }
-        guard !(unformattedString.isEmpty) else { return unformattedString }
+        guard !(unformattedString.isEmpty) else { return "\(prefixStr ?? "")\(suffixStr ?? "")" }
         
-        let doubleSeparator = decimalSeparator
         var resultString = ""
+        var hasIncompletedDecimal = false
 
         resultString.append(prefixStr ?? "")
         
-        var doubleStringValue = unformattedString.components(separatedBy: possibleDividers).joined(separator: doubleSeparator)
-        if doubleStringValue.characterAt(0) == Character(doubleSeparator) {
+        var doubleStringValue = unformattedString.components(separatedBy: possibleDividers).joined(separator: decimalSeparator)
+        if doubleStringValue.characterAt(0) == Character(decimalSeparator) {
           doubleStringValue.insert("0", at: doubleStringValue.startIndex)
         }
-
-        guard let doubleValue = Double(doubleStringValue) else {
-          return unformattedString
+        
+        if doubleStringValue.characterAt(doubleStringValue.length - 1) == Character(decimalSeparator) {
+            doubleStringValue.append("0")
+            hasIncompletedDecimal = true
         }
+        
+        guard let doubleValue = Double(doubleStringValue) else { return unformattedString }
+
         let decimalValue = Int(doubleValue)
         resultString.append(stringForDecimal(decimal: decimalValue))
 
-        if doubleStringValue.contains(doubleSeparator) {
-          resultString.append(doubleSeparator)
-          if doubleStringValue.characterAt(doubleStringValue.length - 1) != Character(doubleSeparator) {
-            let floatString = doubleStringValue.components(separatedBy: doubleSeparator)[1]
-            resultString.append(String(floatString))
-            if minimumDecimalCharacters - floatString.length > 0 {
-                let neededCharacters = minimumDecimalCharacters - floatString.length
-                numberOfNeededCharacters = neededCharacters
-                for _ in 0..<neededCharacters { resultString.append("0") }
-            }
+        if doubleStringValue.contains(decimalSeparator) {
+          resultString.append(decimalSeparator)
+          if doubleStringValue.characterAt(doubleStringValue.length - 1) != Character(decimalSeparator) {
+            let floatString = doubleStringValue.components(separatedBy: decimalSeparator)[1]
+            resultString.append(correctedDecimalPart(from: floatString))
+            
           }
         }
+        
+        if hasIncompletedDecimal { resultString.removeLast() }
         resultString.append(suffixStr ?? "")
         return resultString
     }
@@ -171,14 +172,20 @@ public class SumTextFormatter: TextFormatterProtocol {
     public func unformattedText(from formatted: String?) -> String? {
         guard let formattedString = formatted else { return nil }
         
-        var withoutSuffix = formattedString.replacingOccurrences(of: suffixStr ?? "", with: "")
-        withoutSuffix.removeLast(numberOfNeededCharacters)
-        
-        let unformattedString = withoutSuffix
+        let unformattedString = formattedString
+            .replacingOccurrences(of: suffixStr ?? "", with: "")
             .replacingOccurrences(of: prefixStr ?? "", with: "")
             .replacingOccurrences(of: " ", with: "")
             .replacingOccurrences(of: groupingSeparator, with: "")
         
         return unformattedString
+    }
+    
+    private func correctedDecimalPart(from string: String) -> String {
+        if string.length <= maximumDecimalCharacters { return string }
+        var tmpString = string
+        let numberOfExcessSymbols = tmpString.length - maximumDecimalCharacters
+        tmpString.removeLast(numberOfExcessSymbols)
+        return tmpString
     }
 }
