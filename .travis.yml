@@ -14,3 +14,7 @@ branches:
     - SumFormatting
 
 script: ./run-tests.sh
+
+notifications:
+  email:
+    - luximetr.notification@gmail.com

@@ -19,11 +19,6 @@ class SumFormatterTests: XCTestCase {
     sumFormatter.minimumFractionDigits = 2
   }
   
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-  
   func test5000dot00ValueFormatting() {
     let expectedString = "5 000.00"
     let formattedString = sumFormatter.formattedText(from: "5000.00")
@@ -42,35 +37,17 @@ class SumFormatterTests: XCTestCase {
     XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
   }
   
-//  func test0commaValueFormatting() {
-//    let expectedString = "0.00"
-//    let formattedString = sumFormatter.formattedText(from: "0,")
-//    XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
-//  }
-  
   func testDot0ValueFormatting() {
     let expectedString = "0.00"
     let formattedString = sumFormatter.formattedText(from: ".0")
     XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
   }
   
-//  func testComma0ValueFormatting() {
-//    let expectedString = "0.00"
-//    let formattedString = sumFormatter.formattedText(from: ",0")
-//    XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
-//  }
-  
   func test0ValueFormatting() {
     let expectedString = "0.00"
     let formattedString = sumFormatter.formattedText(from: "0")
     XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
   }
-
-//  func testDotValueFormatting() {
-//    let expectedString = "0.00"
-//    let formattedString = sumFormatter.formattedText(from: ".")
-//    XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
-//  }
 
   func testSingleNumberFormatting() {
     let expectedString = "1.00"
