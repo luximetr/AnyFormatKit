@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TextInputField: AttributedTextInputField, TextInput {
+public class  TextInputField: AttributedTextInputField, TextInput {
   // MARK: - TextInput
   public var content: String? {
     set { super.text = newValue }

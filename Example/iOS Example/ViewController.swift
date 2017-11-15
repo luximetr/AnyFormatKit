@@ -11,27 +11,21 @@ import AnyFormatKit
 
 class ViewController: UIViewController {
   // MARK: - Fields
-  let textInputFieldController = TextInputController()
-  let textInputViewController = TextInputController()
+  //let textInputFieldController = TextInputController()
+  //let textInputViewController = TextInputController()
   let sumInputController = TextInputController()
     
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
-  let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
+  //let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   
-  let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
-  let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-  //let sumFormatter = SumTextInputFormatter
+  //let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
+  //let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+  let sumFormatter = SumTextInputFormatter(textPattern: "#,###$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    let sm = SumTextFormatter(textPattern: "ABC#,###$")
-    let formatted = sm.formattedText(from: "1234567")
-    print(formatted)
-    print(sm.unformattedText(from: formatted))
-    
-    //initConfigure()
+    initConfigure()
   }
 }
 
@@ -79,32 +73,34 @@ private extension ViewController {
     textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
-  func configureTextView() {
-    view.addSubview(textInputView)
-    textInputView.backgroundColor = UIColor.black
-    textInputView.tintColor = ColorConstants.gray
-    
-    textInputView.typingAttributes = [
-      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
-      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
-    textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
-    
-    textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
-  }
+//  func configureTextView() {
+//    view.addSubview(textInputView)
+//    textInputView.backgroundColor = UIColor.black
+//    textInputView.tintColor = ColorConstants.gray
+//
+//    textInputView.typingAttributes = [
+//      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
+//      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+//    textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
+//
+//    textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
+//
+//  }
   
   func configureFormatters() {
-    phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
-    cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
+    //phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
+    //cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
   }
   
   func configureTextFieldController() {
-    textInputFieldController.textInput = textInputField
-    textInputFieldController.formatter = phoneNumberFormatter
+    sumInputController.textInput = textInputField
+    //textInputFieldController.textInput = textInputField
+    //textInputFieldController.formatter = phoneNumberFormatter
   }
   
   func configureTextViewController() {
-    textInputViewController.textInput = textInputView
-    textInputViewController.formatter = cardNumberFormatter
+    //textInputViewController.textInput = textInputView
+    //textInputViewController.formatter = cardNumberFormatter
   }
   
   func setupFirstResponder() {
