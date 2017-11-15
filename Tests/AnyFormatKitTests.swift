@@ -21,8 +21,4 @@ class AnyFormatKitTests: XCTestCase {
     let formattedString = phoneNumberFormatter.formattedText(from: "3")
     XCTAssert(expectedString == formattedString, "\(expectedString) must be equal to \(String(describing: formattedString))")
   }
-  
-  func testError() {
-    XCTAssert(false)
-  }
 }
