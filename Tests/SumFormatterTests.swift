@@ -54,10 +54,4 @@ class SumFormatterTests: XCTestCase {
     let formattedString = sumFormatter.formattedText(from: "1")
     XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
   }
-  
-  func testEmptyStringFormatting() {
-    let expectedString = ""
-    let formattedString = sumFormatter.formattedText(from: "")
-    XCTAssert(expectedString == formattedString, "\(expectedString) not equal to \(String(describing: formattedString))")
-  }
 }
