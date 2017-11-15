@@ -10,18 +10,25 @@ import Foundation
 
 public class SumTextFormatter: TextFormatterProtocol {
     
+    private static let maxIntSize = String(Int.max).length - 1
+    
     public var maximumDecimalCharacters: Int = 2
+    public var maximumIntegerCharacters: Int = 14 {
+        didSet {
+            if maximumIntegerCharacters > SumTextFormatter.maxIntSize { maximumIntegerCharacters = SumTextFormatter.maxIntSize }
+        }
+    }
     
     var prefixStr: String?
     var suffixStr: String?
     var decimalSeparator: String = "."
     var groupingSeparator: String = ","
+    var numberOfCharactersInGroup = 3
     
     var textPattern: String
     var specialSymbol: Character
 
     private let possibleDividers = CharacterSet(charactersIn: ".,")
-    internal let numberFormatter = NumberFormatter()
 
     public init(textPattern: String, specialSymbol: Character = "#") {
         self.textPattern = textPattern
@@ -188,4 +195,6 @@ public class SumTextFormatter: TextFormatterProtocol {
         tmpString.removeLast(numberOfExcessSymbols)
         return tmpString
     }
+    
+    
 }

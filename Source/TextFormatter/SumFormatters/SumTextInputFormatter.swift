@@ -119,10 +119,15 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
     
     private func isCorrectInserting(from string: String?, at range: NSRange) -> Bool {
         guard let text = string else { return false }
+        guard let unformated = unformattedText(from: string) else { return false }
         
         if range.location > (text.length - (suffixStr?.length ?? 0)) ||
             range.location < (prefixStr?.length ?? 0)
         { return false }
+        
+        guard let integerPart = unformated.components(separatedBy: decimalSeparator).first,
+              integerPart.length < maximumIntegerCharacters
+        else { return false }
         
         return true
     }
