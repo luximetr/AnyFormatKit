@@ -9,6 +9,11 @@ xcode_scheme:
   - AnyFormatKitTests
   - iOS Example
 
+branches:
+  only:
+    - master
+    - develop
+
 script: ./run-tests.sh
 
 notifications:
