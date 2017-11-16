@@ -33,7 +33,6 @@ public class SumTextFormatter: TextFormatterProtocol {
     public init(textPattern: String, specialSymbol: Character = "#") {
         self.textPattern = textPattern
         self.specialSymbol = specialSymbol
-        
         extractDataFromPattern()
     }
     
