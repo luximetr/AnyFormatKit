@@ -16,12 +16,29 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
 
     public var allowedSymbolsRegex: String?
 
+    
+    // MARK: - Init
+    /**
+     Initializes formatter with patternString
+     
+     - Parameters:
+     - textPattern: String with special characters, that will be used for formatting
+     - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
+     */
     public override init(textPattern: String, specialSymbol: Character = "#") {
         super.init(textPattern: textPattern, specialSymbol: specialSymbol)
         self.prefix = prefixStr
         self.formattedPrefix = prefixStr
     }
 
+    // MARK: - Public
+    /**
+    Method, that called when textInput starts editing
+    
+    - Parameters:
+    - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
+    
+    */
     public func didBeginEditing(_ textInput: TextInput) {
         guard let suffix = suffixStr else { return }
         
@@ -34,6 +51,17 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
         }
     }
     
+    
+    /**
+     Method, that allow correct character by character input with specified format
+     
+     - Parameters:
+     - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
+     - range: Range, that determine which symbols must to be replaced
+     - replacementString: String, that will replace old content in determined range
+     
+     - Returns: Always return false (correct of textInput's content in method's body)
+     */
     public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
         
         var internalRange = range
@@ -67,6 +95,7 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
         return false
     }
     
+    // MARK: - Private
     private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
         var offset = range.location + range.length + (newString.length - oldString.length)
         if oldString.isEmpty {

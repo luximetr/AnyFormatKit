@@ -25,7 +25,19 @@ public class SumTextFormatter: TextFormatterProtocol {
     var groupingSeparator: String = ","
     var numberOfCharactersInGroup = 3
     
+    /*
+     A mask, used for formatting input data. Can has a prefix (optional),
+                                             an integer part with separator,
+                                             a decimal part with separator(optional)
+                                             and a suffix(optional)
+     Examples (special symbol == "#"):
+        "Suf #,###.# $" -> "Suf 1,234,567.12 $"
+        "# ##$" -> "12 34 56$"
+        "# ###.#" -> "123 456.78"
+     */
     var textPattern: String
+    
+    // Symbol that will be replace by input symbols
     var specialSymbol: Character
 
     private let possibleDividers = CharacterSet(charactersIn: ".,")
