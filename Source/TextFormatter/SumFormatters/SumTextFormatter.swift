@@ -42,6 +42,7 @@ public class SumTextFormatter: TextFormatterProtocol {
         self.prefixStr = getPrefix(from: textPattern, specialSymbol: specialSymbol)
         self.decimalSeparator = getDecimalSeparator(from: textPattern, specialSymbol: specialSymbol)
         self.groupingSeparator = getGroupingSeparator(from: textPattern, specialSymbol: specialSymbol)
+        self.numberOfCharactersInGroup = getNumberOfCharactersInGroup(from: textPattern, specialSymbol: specialSymbol)
     }
     
     private func getPrefix(from pattern: String, specialSymbol: Character) -> String {
@@ -110,6 +111,23 @@ public class SumTextFormatter: TextFormatterProtocol {
         return result
     }
     
+    private func getNumberOfCharactersInGroup(from pattern: String, specialSymbol: Character) -> Int {
+        var result = 0
+        var i = prefixStr?.length ?? 0
+        while (i < pattern.length) {
+            if let currentChar = pattern.characterAt(i), currentChar.description == groupingSeparator {
+                var j = i + 1
+                while (pattern.characterAt(j) == specialSymbol && j < pattern.length) {
+                    result += 1
+                    j += 1
+                }
+                break
+            }
+            i+=1
+        }
+        return result
+    }
+    
     func isRequireSubstitute(symbol: Character) -> Bool {
         return symbol == specialSymbol
     }
@@ -126,7 +144,7 @@ public class SumTextFormatter: TextFormatterProtocol {
         for i in 0..<reversLenght {
             guard let currentChar = reversString.characterAt(i) else { continue }
             result.append(currentChar)
-            if i % 3 == 2, i != 0, i != reversLenght - 1 {
+            if i % numberOfCharactersInGroup == (numberOfCharactersInGroup - 1), i != 0, i != reversLenght - 1 {
                 result.append(groupingSeparator)
             }
         }
@@ -195,6 +213,4 @@ public class SumTextFormatter: TextFormatterProtocol {
         tmpString.removeLast(numberOfExcessSymbols)
         return tmpString
     }
-    
-    
 }

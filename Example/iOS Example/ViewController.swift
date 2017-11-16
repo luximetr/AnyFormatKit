@@ -20,7 +20,7 @@ class ViewController: UIViewController {
   
   let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   //let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-    let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,#65#.# $$", specialSymbol: "#")
+    let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,###.# $$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -71,7 +71,6 @@ private extension ViewController {
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
     //textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
-    textInputField.content = sumFormatter.formattedText(from: "123456")
   }
   
 //  func configureTextView() {
@@ -98,6 +97,7 @@ private extension ViewController {
   func configureTextFieldController() {
     sumInputController.textInput = textInputField
     sumInputController.formatter = sumFormatter
+    textInputField.content = sumFormatter.formattedText(from: "123456")
 //    textInputFieldController.textInput = textInputField
 //    textInputFieldController.formatter = phoneNumberFormatter
   }

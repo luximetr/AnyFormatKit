@@ -9,7 +9,8 @@
 import Foundation
 
 /// Controller for object, that conform to TextInput protocol, allow correct content during typing with formatter
-public class TextInputController: TextInputDelegate {
+public class
+TextInputController: TextInputDelegate {
   // MARK: - Fields
   /// Object, that conform to TextInput protocol
   public var textInput: TextInput? {
@@ -47,8 +48,13 @@ public class TextInputController: TextInputDelegate {
     }
     return true
   }
+    
+    public func textInputDidBeginEditing(_ textInput: TextInput) {
+        if let formatter = formatter {
+            formatter.didBeginEditing(textInput)
+        }
+    }
 }
-
 // MARK: - Private
 private extension TextInputController {
   /// Set and format current prefix

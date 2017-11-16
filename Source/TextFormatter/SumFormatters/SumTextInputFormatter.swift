@@ -18,8 +18,22 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
 
     public override init(textPattern: String, specialSymbol: Character = "#") {
         super.init(textPattern: textPattern, specialSymbol: specialSymbol)
+        self.prefix = prefixStr
+        self.formattedPrefix = prefixStr
     }
 
+    public func didBeginEditing(_ textInput: TextInput) {
+        guard let suffix = suffixStr else { return }
+        
+        let offset = (textInput.content?.length ?? 0) - suffix.length
+        
+        let newCursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: offset)
+        
+        if let cursor = newCursorLocation {
+            textInput.selectedTextRange = textInput.textRange(from: cursor, to: cursor)
+        }
+    }
+    
     public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
         
         var internalRange = range
@@ -58,8 +72,8 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
         if oldString.isEmpty {
             offset -= suffixStr?.length ?? 0
         }
-        if offset < prefixStr?.length ?? 0 {
-            offset = prefixStr?.length ?? 0
+        if offset < prefix?.length ?? 0 {
+            offset = prefix?.length ?? 0
         }
         return offset
     }
@@ -95,15 +109,15 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
         
         if range.length == 1 {
             if range.location > text.length - (suffixStr?.length ?? 0) - 1 ||
-                range.location < (prefixStr?.length ?? 0)
+                range.location < (prefix?.length ?? 0)
             { return nil }
         } else {
             
             var lowerBound = range.lowerBound
             var upperBound = range.upperBound
             
-            if range.lowerBound < (prefixStr?.length ?? 0) {
-                lowerBound = (prefixStr?.length ?? 0)
+            if range.lowerBound < (prefix?.length ?? 0) {
+                lowerBound = (prefix?.length ?? 0)
             }
             
             if range.upperBound > text.length - (suffixStr?.length ?? 0)  {
@@ -122,7 +136,7 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
         guard let unformated = unformattedText(from: string) else { return false }
         
         if range.location > (text.length - (suffixStr?.length ?? 0)) ||
-            range.location < (prefixStr?.length ?? 0)
+            range.location < (prefix?.length ?? 0)
         { return false }
         
         guard let integerPart = unformated.components(separatedBy: decimalSeparator).first,

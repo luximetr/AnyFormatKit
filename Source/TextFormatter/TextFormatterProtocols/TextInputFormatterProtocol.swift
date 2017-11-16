@@ -32,4 +32,13 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
    */
   func shouldChangeTextIn(
     textInput: TextInput, range: NSRange, replacementString text: String) -> Bool
+    
+    
+  func didBeginEditing(_ textInput: TextInput)
+}
+
+extension TextInputFormatterProtocol {
+    public func didBeginEditing(_ textInput: TextInput) {
+        
+    }
 }
