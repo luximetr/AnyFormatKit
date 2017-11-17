@@ -19,7 +19,7 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
   // Regular expression, that discript allowed characters for input
   var allowedSymbolsRegex: String? { set get }
   
-  // MARK: - Public
+  // MARK: - open
   /**
    Method, that allow correct character by character input with specified format
    

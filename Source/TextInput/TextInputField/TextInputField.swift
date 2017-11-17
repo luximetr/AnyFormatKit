@@ -8,38 +8,38 @@
 
 import UIKit
 
-public class TextInputField: AttributedTextInputField, TextInput {
+open class TextInputField: AttributedTextInputField, TextInput {
   // MARK: - TextInput
-  public var content: String? {
+  open var content: String? {
     set { super.text = newValue }
     get { return super.text }
   }
   
-  public var attributedContent: NSAttributedString? {
+  open var attributedContent: NSAttributedString? {
     set { super.attributedText = newValue }
     get { return super.attributedText }
   }
   
-  private(set) public var textInputDelegates = MulticastDelegate<TextInputDelegate>()
+  private(set) open var textInputDelegates = MulticastDelegate<TextInputDelegate>()
   
   /// Multicast delegate for TextInputField delegate methods
-  private(set) public var textInputFieldDelegates = MulticastDelegate<TextInputFieldDelegate>()
+  private(set) open var textInputFieldDelegates = MulticastDelegate<TextInputFieldDelegate>()
   
   // MARK: - Unavailable fields
   @available(*, unavailable, message: "use content instead")
-  public override var text: String? {
+  open override var text: String? {
     set { super.text = newValue }
     get { return super.text }
   }
   
   @available(*, unavailable, message: "use attributedContent instead")
-  public override var attributedText: NSAttributedString? {
+  open override var attributedText: NSAttributedString? {
     set { super.attributedText = newValue }
     get { return super.attributedText }
   }
   
   @available(*, unavailable, message: "use textInputDelegates and textInputFieldDelegates instead")
-  public override var delegate: UITextFieldDelegate? {
+  open override var delegate: UITextFieldDelegate? {
     set { super.delegate = newValue }
     get { return super.delegate }
   }

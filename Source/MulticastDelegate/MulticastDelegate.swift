@@ -9,7 +9,7 @@
 import Foundation
 
 /// Multiple delegate implementation
-public class MulticastDelegate <T> {
+open class MulticastDelegate <T> {
   /// List of delegates
   private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
   
@@ -19,7 +19,7 @@ public class MulticastDelegate <T> {
    - Parameters
      - delegate: Object, that what to be delegate
   */
-  public func add(delegate: T) {
+  open func add(delegate: T) {
     delegates.add(delegate as AnyObject)
   }
   
@@ -29,7 +29,7 @@ public class MulticastDelegate <T> {
    - Parameters:
      - delegate: Object, that must to be deleted from delegate list
   */
-  public func remove(delegate: T) {
+  open func remove(delegate: T) {
     for oneDelegate in delegates.allObjects.reversed() {
       if oneDelegate === delegate as AnyObject {
         delegates.remove(oneDelegate)
@@ -43,7 +43,7 @@ public class MulticastDelegate <T> {
    - Parameters:
      - invocation: Closure, that will call for all delegates
   */
-  public func invoke(invocation: (T) -> ()) {
+  open func invoke(invocation: (T) -> ()) {
     for delegate in delegates.allObjects.reversed() {
       if let castedDelegate = delegate as? T {
         invocation(castedDelegate)

@@ -37,7 +37,7 @@ class AttributedStringConstructor {
      - newAttributes: Dictionary of attributes with values
      - range: Range in string, that will format will attributes
   */
-  public func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
+  open func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
     for (attributedKey, value) in newAttributes {
       if attributesWithRange[range] != nil {
         attributesWithRange[range]?[attributedKey] = value
@@ -54,7 +54,7 @@ class AttributedStringConstructor {
      - attribute: Attribute, that will remove
      - range: Range, that was set with attribute, range is a key for remove
   */
-  public func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
+  open func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
     if attributesWithRange[range] != nil {
       attributesWithRange[range]?.removeValue(forKey: attribute)
     } else {
@@ -63,7 +63,7 @@ class AttributedStringConstructor {
   }
   
   /// Remove all attributes
-  public func removeAllAttributes() {
+  open func removeAllAttributes() {
     attributesWithRange.removeAll()
   }
 }

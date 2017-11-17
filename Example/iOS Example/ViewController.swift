@@ -127,3 +127,9 @@ private struct ColorConstants {
   static let yellow = UIColor(red: 255 / 255, green: 236 / 255, blue: 0 / 255, alpha: 1.0)
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
 }
+
+class SumFormatter: TextInputFormatter {
+  override func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
+    return true
+  }
+}

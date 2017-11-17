@@ -11,7 +11,7 @@ import UIKit
 /// Calling methods of textInputDelegates and textInputViewDelegates with UITextViewDelegate's methods
 extension TextInputView: UITextViewDelegate {
   // MARK: - TextInputDelegate
-  public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+  open func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
     guard let textInput = textView as? TextInputView else { return true }
     var shouldBegin = true
     textInputDelegates.invoke { delegate in
@@ -20,14 +20,14 @@ extension TextInputView: UITextViewDelegate {
     return shouldBegin
   }
   
-  public func textViewDidBeginEditing(_ textView: UITextView) {
+  open func textViewDidBeginEditing(_ textView: UITextView) {
     guard let textInput = textView as? TextInputView else { return }
     textInputDelegates.invoke { delegate in
       delegate.textInputDidBeginEditing(textInput)
     }
   }
   
-  public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+  open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
     guard let textInput = textView as? TextInputView else { return true }
     var shouldEnd = true
     textInputDelegates.invoke { delegate in
@@ -36,14 +36,14 @@ extension TextInputView: UITextViewDelegate {
     return shouldEnd
   }
   
-  public func textViewDidEndEditing(_ textView: UITextView) {
+  open func textViewDidEndEditing(_ textView: UITextView) {
     guard let textInput = textView as? TextInputView else { return }
     textInputDelegates.invoke { delegate in
       delegate.textInputDidEndEditing(textInput)
     }
   }
   
-  public func textView(_ textView: UITextView,
+  open func textView(_ textView: UITextView,
                 shouldChangeTextIn range: NSRange,
                 replacementText text: String) -> Bool {
     guard let textInput = textView as? TextInputView else { return true }
@@ -56,14 +56,14 @@ extension TextInputView: UITextViewDelegate {
   }
   
   // MARK: - TextInputViewDelegate
-  public func textViewDidChange(_ textView: UITextView) {
+  open func textViewDidChange(_ textView: UITextView) {
     guard let textInput = textView as? TextInputView else { return }
     textInputViewDelegates.invoke { delegate in
       delegate.textInputDidChange(textInput)
     }
   }
   
-  public func textViewDidChangeSelection(_ textView: UITextView) {
+  open func textViewDidChangeSelection(_ textView: UITextView) {
     guard let textInput = textView as? TextInputView else { return }
     textInputViewDelegates.invoke { delegate in
       delegate.textInputDidChangeSelection(textInput)
@@ -71,7 +71,7 @@ extension TextInputView: UITextViewDelegate {
   }
   
   @available(iOS 10.0, *)
-  public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+  open func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
     guard let textInput = textView as? TextInputView else { return true }
     var shouldInteract = true
     textInputViewDelegates.invoke { delegate in
@@ -85,7 +85,7 @@ extension TextInputView: UITextViewDelegate {
   }
   
   @available(iOS 10.0, *)
-  public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+  open func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
     guard let textInput = textView as? TextInputView else { return true }
     var shouldInteract = true
     textInputViewDelegates.invoke { delegate in

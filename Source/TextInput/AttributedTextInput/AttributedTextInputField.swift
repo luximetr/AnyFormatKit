@@ -9,10 +9,10 @@
 import UIKit
 
 /// Subclass of UITextField, that work always with attributedText even when you use text
-public class AttributedTextInputField: UITextField {
+open class AttributedTextInputField: UITextField {
   // MARK: - Fields
   /// Overriden text, that set text with attributes to attributedText property
-  override public var text: String? {
+  override open var text: String? {
     set { super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
       newValue: newValue, commonAttributes: defaultTextAttributes) }
     get { return super.attributedText?.string }
@@ -20,7 +20,7 @@ public class AttributedTextInputField: UITextField {
   
   /// Common attributes for all string during typing
   private var commonAttributes = [String : Any]()
-  override public var defaultTextAttributes: [String : Any] {
+  override open var defaultTextAttributes: [String : Any] {
     set { commonAttributes = newValue }
     get { return commonAttributes }
   }
@@ -28,7 +28,7 @@ public class AttributedTextInputField: UITextField {
   /// String constructor, that contain dictionaries of attributes, that will apply for input text
   private let attributedStringConstructor = AttributedStringConstructor()
 
-  // MARK: - Public
+  // MARK: - open
   
   /**
    Add attributes for range
@@ -37,7 +37,7 @@ public class AttributedTextInputField: UITextField {
      - newAttributes: Dictionary of attributes with values
      - range: Range in string, that will format will attributes
    */
-  public func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
+  open func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
     attributedStringConstructor.addAttributes(newAttributes, range: range)
   }
   
@@ -48,12 +48,12 @@ public class AttributedTextInputField: UITextField {
      - attribute: Attribute, that will remove
      - range: Range, that was set with attribute, range is a key for remove
    */
-  public func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
+  open func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
     attributedStringConstructor.removeAttribute(attribute, range: range)
   }
   
   /// Remove all attributes
-  public func removeAllAttributes() {
+  open func removeAllAttributes() {
     attributedStringConstructor.removeAllAttributes()
   }
 }

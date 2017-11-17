@@ -11,7 +11,7 @@ import UIKit
 /// Calling methods of textInputDelegates and textInputFieldDelegates with UITextFieldDelegate methods
 extension TextInputField: UITextFieldDelegate {
   // MARK: - TextInputDelegate
-   public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+   open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     guard let textInput = textField as? TextInputField else { return true }
     var shouldBegin = true
     textInputDelegates.invoke { delegate in
@@ -20,14 +20,14 @@ extension TextInputField: UITextFieldDelegate {
     return shouldBegin
   }
   
-  public func textFieldDidBeginEditing(_ textField: UITextField) {
+  open func textFieldDidBeginEditing(_ textField: UITextField) {
     guard let textInput = textField as? TextInputField else { return }
     textInputDelegates.invoke { delegate in
       delegate.textInputDidBeginEditing(textInput)
     }
   }
 
-  public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+  open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
     guard let textInput = textField as? TextInputField else { return true }
     var shouldEnd = true
     textInputDelegates.invoke { delegate in
@@ -36,14 +36,14 @@ extension TextInputField: UITextFieldDelegate {
     return shouldEnd
   }
   
-  public func textFieldDidEndEditing(_ textField: UITextField) {
+  open func textFieldDidEndEditing(_ textField: UITextField) {
     guard let textInput = textField as? TextInputField else { return }
     textInputDelegates.invoke { delegate in
       delegate.textInputDidEndEditing(textInput)
     }
   }
   
-  public func textField(_ textField: UITextField,
+  open func textField(_ textField: UITextField,
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
     guard let textInput = textField as? TextInputField else { return true }
@@ -56,7 +56,7 @@ extension TextInputField: UITextFieldDelegate {
   }
   
   // MARK: - TextInputFieldDelegate
-  public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+  open func textFieldShouldClear(_ textField: UITextField) -> Bool {
     guard let textInput = textField as? TextInputField else { return true }
     var shouldClear = true
     textInputFieldDelegates.invoke { delegate in
@@ -65,7 +65,7 @@ extension TextInputField: UITextFieldDelegate {
     return shouldClear
   }
   
-  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+  open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     guard let textInput = textField as? TextInputField else { return true }
     var shouldReturn = true
     textInputFieldDelegates.invoke { delegate in
@@ -75,7 +75,7 @@ extension TextInputField: UITextFieldDelegate {
   }
   
   @available(iOS 10.0, *)
-  public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+  open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
     guard let textInput = textField as? TextInputField else { return }
     textInputFieldDelegates.invoke { delegate in
       delegate.textInputDidEndEditing(textInput, reason: reason)

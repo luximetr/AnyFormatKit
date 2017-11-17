@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class TextFormatter: TextFormatterProtocol {
+open class TextFormatter: TextFormatterProtocol {
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"
-  public let textPattern: String
+  open let textPattern: String
   
   /// Symbol that will be replace by input symbols
-  public let patternSymbol: Character
+  open let patternSymbol: Character
   
   // MARK: - Init
   /**
@@ -40,7 +40,7 @@ public class TextFormatter: TextFormatterProtocol {
    
    - Returns: Formatted text with current textPattern
   */
-  public func formattedText(from unformatted: String?) -> String? {
+  open func formattedText(from unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
     var formatted = String.init()
     var unformattedIndex = 0
@@ -69,7 +69,7 @@ public class TextFormatter: TextFormatterProtocol {
    
    - Returns: string converted into unformatted with current textPattern
   */
-  public func unformattedText(from formatted: String?) -> String? {
+  open func unformattedText(from formatted: String?) -> String? {
     guard let formatted = formatted else { return nil }
     var unformatted = String()
     var formattedIndex = 0

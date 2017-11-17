@@ -9,19 +9,19 @@
 import Foundation
 
 /// Class, that represent formatter for TextInput in real-time (using shouldChangeTextIn method)
-public class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
+open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
   // MARK: - Fields
   
   /// String, that always will be at beggining of text
-  private(set) public var prefix: String?
+  private(set) open var prefix: String?
   
   /// String, that represent current prefix with current format
-  public var formattedPrefix: String? {
+  open var formattedPrefix: String? {
     return formattedText(from: prefix)
   }
   
   // Regular expression, that discript allowed characters for input
-  public var allowedSymbolsRegex: String? = nil
+  open var allowedSymbolsRegex: String? = nil
   
   // MARK: - Init
   /**
@@ -39,7 +39,7 @@ public class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
   
-  // MARK: - Public
+  // MARK: - open
   /**
    Method, that allow correct character by character input with specified format
    
@@ -50,7 +50,7 @@ public class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
    
      - Returns: Always return false (correct of textInput's content in method's body)
   */
-  public func shouldChangeTextIn(
+  open func shouldChangeTextIn(
     textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
     if let formattedPrefix = formattedText(from: prefix),
       !formattedPrefix.isEmpty,

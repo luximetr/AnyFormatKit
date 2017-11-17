@@ -26,6 +26,7 @@
 		307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA22D1FAA1B5B00DE439D /* String+Extension.swift */; };
 		307EA2421FAA1B5B00DE439D /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA22F1FAA1B5B00DE439D /* MulticastDelegate.swift */; };
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
+		30C156001FBC4DCC00C7229D /* SumFormatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumFormatingTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
 		30FE6FE21FAA13D30024D1B1 /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */; };
 		30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */; };
@@ -65,6 +66,7 @@
 		307EA22F1FAA1B5B00DE439D /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		307EA2301FAA1B5B00DE439D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
+		30C155FF1FBC4DCC00C7229D /* SumFormatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatingTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +202,14 @@
 			path = MulticastDelegate;
 			sourceTree = "<group>";
 		};
+		30C155FE1FBC4DA800C7229D /* SumFormatTests */ = {
+			isa = PBXGroup;
+			children = (
+				30C155FF1FBC4DCC00C7229D /* SumFormatingTests.swift */,
+			);
+			name = SumFormatTests;
+			sourceTree = "<group>";
+		};
 		30C5F5381FAB6561003711D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		30FE6FE51FAA13D30024D1B1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				30C155FE1FBC4DA800C7229D /* SumFormatTests */,
 				30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */,
 				30FE6FE81FAA13D30024D1B1 /* Info.plist */,
 			);
@@ -412,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C156001FBC4DCC00C7229D /* SumFormatingTests.swift in Sources */,
 				30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

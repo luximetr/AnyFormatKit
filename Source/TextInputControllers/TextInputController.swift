@@ -9,17 +9,17 @@
 import Foundation
 
 /// Controller for object, that conform to TextInput protocol, allow correct content during typing with formatter
-public class TextInputController: TextInputDelegate {
+open class TextInputController: TextInputDelegate {
   // MARK: - Fields
   /// Object, that conform to TextInput protocol
-  public var textInput: TextInput? {
+  open var textInput: TextInput? {
     didSet {
       textInput?.textInputDelegates.add(delegate: self)
       setPrefixToTextInput()
     }
   }
   /// Formatter, that apply format for text during editing
-  public var formatter: TextInputFormatterProtocol? {
+  open var formatter: TextInputFormatterProtocol? {
     didSet {
       setPrefixToTextInput()
     }
@@ -37,7 +37,7 @@ public class TextInputController: TextInputDelegate {
   }
   
   // MARK: - TextInputDelegate
-  public func textInput(_ textInput: TextInput,
+  open func textInput(_ textInput: TextInput,
                  shouldChangeTextIn range: NSRange,
                  replacementText text: String) -> Bool {
     if let formatter = formatter {
