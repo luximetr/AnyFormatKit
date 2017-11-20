@@ -13,12 +13,15 @@ class ViewController: UIViewController {
   // MARK: - Fields
   let textInputFieldController = TextInputController()
   let textInputViewController = TextInputController()
+  let sumInputController = TextInputController()
   
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
+  let sumTextInputField = TextInputField(frame: LayoutConstants.sumTextInputFieldFrame)
   
   let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+  let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,###.# $$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -32,10 +35,10 @@ private extension ViewController {
   func initConfigure() {
     configureSelfView()
     configureTitleLabels()
-    configureTextField()
+    configureTextFields()
     configureTextView()
     configureFormatters()
-    configureTextFieldController()
+    configureTextFieldControllers()
     configureTextViewController()
     setupFirstResponder()
   }
@@ -55,11 +58,17 @@ private extension ViewController {
     cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
     cardNumberTitleLabel.text = "Card number: "
     
+    let sumTitleLabel = UILabel(frame: LayoutConstants.sumLabelFrame)
+    sumTitleLabel.textColor = UIColor.white
+    sumTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    sumTitleLabel.text = "Enter sum: "
+    
     view.addSubview(phoneNumberTitleLabel)
     view.addSubview(cardNumberTitleLabel)
+    view.addSubview(sumTitleLabel)
   }
   
-  func configureTextField() {
+  func configureTextFields() {
     view.addSubview(textInputField)
     textInputField.backgroundColor = UIColor.black
     textInputField.tintColor = ColorConstants.gray
@@ -69,6 +78,15 @@ private extension ViewController {
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
     textInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
+    
+    view.addSubview(sumTextInputField)
+    sumTextInputField.backgroundColor = UIColor.black
+    sumTextInputField.tintColor = ColorConstants.gray
+    
+    sumTextInputField.textInputDelegates.add(delegate: self)
+    sumTextInputField.defaultTextAttributes = [
+      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
   }
   
   func configureTextView() {
@@ -82,16 +100,22 @@ private extension ViewController {
     textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
     
     textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
+    
   }
   
   func configureFormatters() {
     phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
     cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
+    sumFormatter.allowedSymbolsRegex = "[0-9.]*"
   }
   
-  func configureTextFieldController() {
+  func configureTextFieldControllers() {
     textInputFieldController.textInput = textInputField
     textInputFieldController.formatter = phoneNumberFormatter
+    
+    sumInputController.textInput = sumTextInputField
+    sumInputController.formatter = sumFormatter
+    sumTextInputField.content = sumFormatter.formattedText(from: "")
   }
   
   func configureTextViewController() {
@@ -117,19 +141,17 @@ extension ViewController: TextInputDelegate {
 
 // MARK: - Constants
 private struct LayoutConstants {
+  
   static let textInputFieldFrame = CGRect(x: 20, y: 65, width: UIScreen.main.bounds.width - 40, height: 40)
   static let textInputViewFrame = CGRect(x: 16, y: 165, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let sumTextInputFieldFrame = CGRect(x: 20, y: 265, width: UIScreen.main.bounds.width - 40, height: 40)
+  
   static let phoneNumberLabelFrame = CGRect(x: 20, y: 40, width: UIScreen.main.bounds.width - 40, height: 20)
   static let cardNumberLabelFrame = CGRect(x: 20, y: 140, width: UIScreen.main.bounds.width - 40, height: 20)
+  static let sumLabelFrame = CGRect(x: 20, y: 240, width: UIScreen.main.bounds.width - 40, height: 20)
 }
 
 private struct ColorConstants {
   static let yellow = UIColor(red: 255 / 255, green: 236 / 255, blue: 0 / 255, alpha: 1.0)
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
-}
-
-class SumFormatter: TextInputFormatter {
-  override func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
-    return true
-  }
 }
