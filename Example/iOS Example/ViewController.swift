@@ -21,7 +21,7 @@ class ViewController: UIViewController {
   
   let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-  let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,###.# $$", specialSymbol: "#")
+  let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #.###,# $$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -106,7 +106,7 @@ private extension ViewController {
   func configureFormatters() {
     phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
     cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
-    sumFormatter.allowedSymbolsRegex = "[0-9.]*"
+    sumFormatter.allowedSymbolsRegex = "[0-9.,]*"
   }
   
   func configureTextFieldControllers() {

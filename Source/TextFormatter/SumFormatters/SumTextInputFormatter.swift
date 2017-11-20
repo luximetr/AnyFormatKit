@@ -65,19 +65,21 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
     public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
         
         var internalRange = range
+        var isDecimalSeparatorInsertion = false
         
         if text.isEmpty {
             let newRange = correctRangeForDeleting(from: textInput.content, at: internalRange)
             guard let newRangeUnwrapped = newRange else { return false }
             internalRange = newRangeUnwrapped
         } else if text == "," || text == "." {
+            isDecimalSeparatorInsertion = true
             if !isCorrectSeparatorInserting() { return false }
         } else {
             if !isCorrectInserting(from: textInput.content, at: internalRange) { return false }
         }
         
         guard let oldString = textInput.content as NSString? else { return false }
-        let newString = oldString.replacingCharacters(in: internalRange, with: text)
+        let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
         
         if decimalSeparator != groupingSeparator {
             guard newString.components(separatedBy: decimalSeparator).count < 3 else { return false }

@@ -173,7 +173,8 @@ public class SumTextFormatter: TextFormatterProtocol {
         
         var resultString = ""
         var hasIncompletedDecimal = false
-
+        var isSpecialFormat = false // Decimal separator other than '.'
+        
         resultString.append(prefixStr ?? "")
         
         var doubleStringValue = unformattedString.components(separatedBy: possibleDividers).joined(separator: decimalSeparator)
@@ -186,8 +187,15 @@ public class SumTextFormatter: TextFormatterProtocol {
             hasIncompletedDecimal = true
         }
         
+        if !(decimalSeparator.isEmpty), decimalSeparator != "." {
+            isSpecialFormat = true
+            doubleStringValue = specialFormatted(string: doubleStringValue, shouldFormat: true)
+        }
+        
         guard let doubleValue = Double(doubleStringValue) else { return unformattedString }
-
+        
+        if isSpecialFormat { doubleStringValue = specialFormatted(string: doubleStringValue, shouldFormat: false) }
+        
         let decimalValue = Int(doubleValue)
         resultString.append(stringForDecimal(decimal: decimalValue))
 
@@ -223,5 +231,13 @@ public class SumTextFormatter: TextFormatterProtocol {
         let numberOfExcessSymbols = tmpString.length - maximumDecimalCharacters
         tmpString.removeLast(numberOfExcessSymbols)
         return tmpString
+    }
+    
+    private func specialFormatted(string: String, shouldFormat: Bool) -> String {
+        if shouldFormat {
+            return string.replacingOccurrences(of: decimalSeparator, with: ".")
+        } else {
+            return string.replacingOccurrences(of: ".", with: decimalSeparator)
+        }
     }
 }
