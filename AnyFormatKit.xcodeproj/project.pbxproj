@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		307DCD4A1FC2CFA700889A52 /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */; };
+		307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */; };
 		307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */; };
 		307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* TextFormatter.swift */; };
 		307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
+		307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
 		307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2171FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		307DCD471FC2CFA700889A52 /* SumFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */,
+				307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */,
+			);
+			path = SumFormatters;
+			sourceTree = "<group>";
+		};
 		307EA2131FAA1B5B00DE439D /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +123,7 @@
 		307EA2141FAA1B5B00DE439D /* TextFormatter */ = {
 			isa = PBXGroup;
 			children = (
+				307DCD471FC2CFA700889A52 /* SumFormatters */,
 				307EA2181FAA1B5B00DE439D /* TextFormatterProtocols */,
 				307EA2151FAA1B5B00DE439D /* TextInputFormatters */,
 			);
@@ -394,7 +408,9 @@
 				307EA2341FAA1B5B00DE439D /* TextFormatterProtocol.swift in Sources */,
 				307EA2381FAA1B5B00DE439D /* TextInputDelegate.swift in Sources */,
 				307EA23F1FAA1B5B00DE439D /* TextInputViewDelegateCall.swift in Sources */,
+				307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */,
 				307EA23B1FAA1B5B00DE439D /* TextInputField.swift in Sources */,
+				307DCD4A1FC2CFA700889A52 /* SumTextInputFormatter.swift in Sources */,
 				307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */,
 				307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */,
 				307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
