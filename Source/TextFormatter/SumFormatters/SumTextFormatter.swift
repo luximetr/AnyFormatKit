@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class SumTextFormatter: TextFormatterProtocol {
-  private static let maxIntSize = String(Int.max).length - 1
+open class SumTextFormatter: TextFormatterProtocol {
+  private static let maxIntSize = String(Int.max).count - 1
   
-  public var maximumDecimalCharacters: Int = 2
-  public var maximumIntegerCharacters: Int = 14 {
+  open var maximumDecimalCharacters: Int = 2
+  open var maximumIntegerCharacters: Int = 14 {
     didSet {
       if maximumIntegerCharacters > SumTextFormatter.maxIntSize { maximumIntegerCharacters = SumTextFormatter.maxIntSize }
     }
@@ -37,22 +37,22 @@ public class SumTextFormatter: TextFormatterProtocol {
   var textPattern: String
   
   // Symbol that will be replace by input symbols
-  var specialSymbol: Character
+  var patternSymbol: Character
   
   private let possibleDividers = CharacterSet(charactersIn: ".,")
   
-  public init(textPattern: String, specialSymbol: Character = "#") {
+  public init(textPattern: String, patternSymbol: Character = "#") {
     self.textPattern = textPattern
-    self.specialSymbol = specialSymbol
+    self.patternSymbol = patternSymbol
     extractDataFromPattern()
   }
   
   private func extractDataFromPattern() {
-    self.suffixStr = getSuffix(from: textPattern, specialSymbol: specialSymbol)
-    self.prefixStr = getPrefix(from: textPattern, specialSymbol: specialSymbol)
-    self.decimalSeparator = getDecimalSeparator(from: textPattern, specialSymbol: specialSymbol)
-    self.groupingSeparator = getGroupingSeparator(from: textPattern, specialSymbol: specialSymbol)
-    self.numberOfCharactersInGroup = getNumberOfCharactersInGroup(from: textPattern, specialSymbol: specialSymbol)
+    self.suffixStr = getSuffix(from: textPattern, specialSymbol: patternSymbol)
+    self.prefixStr = getPrefix(from: textPattern, specialSymbol: patternSymbol)
+    self.decimalSeparator = getDecimalSeparator(from: textPattern, specialSymbol: patternSymbol)
+    self.groupingSeparator = getGroupingSeparator(from: textPattern, specialSymbol: patternSymbol)
+    self.numberOfCharactersInGroup = getNumberOfCharactersInGroup(from: textPattern, specialSymbol: patternSymbol)
   }
   
   private func getPrefix(from pattern: String, specialSymbol: Character) -> String {
@@ -69,11 +69,11 @@ public class SumTextFormatter: TextFormatterProtocol {
   
   private func getSuffix(from pattern: String, specialSymbol: Character) -> String {
     var result = ""
-    var i = pattern.length
+    var i = pattern.count
     while (i > 0) {
       i -= 1
       if let currentChar = pattern.characterAt(i), currentChar == specialSymbol {
-        let index = pattern.index(pattern.endIndex, offsetBy: -(pattern.length - i - 1))
+        let index = pattern.index(pattern.endIndex, offsetBy: -(pattern.count - i - 1))
         result = String(pattern[index..<pattern.endIndex])
         break
       }
@@ -83,7 +83,7 @@ public class SumTextFormatter: TextFormatterProtocol {
   
   private func getDecimalSeparator(from pattern: String, specialSymbol: Character) -> String {
     var result = ""
-    var i = pattern.length - (suffixStr?.length ?? 0)
+    var i = pattern.count - (suffixStr?.count ?? 0)
     while (i > 0) {
       i -= 1
       if let currentChar = pattern.characterAt(i), currentChar != specialSymbol {
@@ -105,8 +105,8 @@ public class SumTextFormatter: TextFormatterProtocol {
   
   private func getGroupingSeparator(from pattern: String, specialSymbol: Character) -> String {
     var result = ""
-    var i = prefixStr?.length ?? 0
-    while (i < pattern.length) {
+    var i = prefixStr?.count ?? 0
+    while (i < pattern.count) {
       if let currentChar = pattern.characterAt(i), currentChar != specialSymbol {
         var j = i
         while (pattern.characterAt(j) != specialSymbol) {
@@ -123,11 +123,11 @@ public class SumTextFormatter: TextFormatterProtocol {
   
   private func getNumberOfCharactersInGroup(from pattern: String, specialSymbol: Character) -> Int {
     var result = 0
-    var i = prefixStr?.length ?? 0
-    while (i < pattern.length) {
+    var i = prefixStr?.count ?? 0
+    while (i < pattern.count) {
       if let currentChar = pattern.characterAt(i), currentChar.description == groupingSeparator {
         var j = i + 1
-        while (pattern.characterAt(j) == specialSymbol && j < pattern.length) {
+        while (pattern.characterAt(j) == specialSymbol && j < pattern.count) {
           result += 1
           j += 1
         }
@@ -139,14 +139,14 @@ public class SumTextFormatter: TextFormatterProtocol {
   }
   
   func isRequireSubstitute(symbol: Character) -> Bool {
-    return symbol == specialSymbol
+    return symbol == patternSymbol
   }
   
   private func stringForDecimal(decimal: Int) -> String {
     var result = ""
     let reversString = String(String(decimal).reversed())
     let isNegative = decimal < 0
-    var reversLenght = reversString.length
+    var reversLenght = reversString.count
     if isNegative {
       // for minus symbol
       reversLenght -= 1
@@ -165,7 +165,7 @@ public class SumTextFormatter: TextFormatterProtocol {
   }
   
   
-  public func formattedText(from unformatted: String?) -> String? {
+  open func formattedText(from unformatted: String?) -> String? {
     
     guard let unformattedString = unformatted else { return nil }
     guard !(unformattedString.isEmpty) else { return "\(prefixStr ?? "")\(suffixStr ?? "")" }
@@ -181,7 +181,7 @@ public class SumTextFormatter: TextFormatterProtocol {
       doubleStringValue.insert("0", at: doubleStringValue.startIndex)
     }
     
-    if doubleStringValue.characterAt(doubleStringValue.length - 1) == Character(decimalSeparator) {
+    if doubleStringValue.characterAt(doubleStringValue.count - 1) == Character(decimalSeparator) {
       doubleStringValue.append("0")
       hasIncompletedDecimal = true
     }
@@ -200,7 +200,7 @@ public class SumTextFormatter: TextFormatterProtocol {
     
     if doubleStringValue.contains(decimalSeparator) {
       resultString.append(decimalSeparator)
-      if doubleStringValue.characterAt(doubleStringValue.length - 1) != Character(decimalSeparator) {
+      if doubleStringValue.characterAt(doubleStringValue.count - 1) != Character(decimalSeparator) {
         let floatString = doubleStringValue.components(separatedBy: decimalSeparator)[1]
         resultString.append(correctedDecimalPart(from: floatString))
         
@@ -212,7 +212,7 @@ public class SumTextFormatter: TextFormatterProtocol {
     return resultString
   }
   
-  public func unformattedText(from formatted: String?) -> String? {
+  open func unformattedText(from formatted: String?) -> String? {
     guard let formattedString = formatted else { return nil }
     
     let unformattedString = formattedString
@@ -225,9 +225,9 @@ public class SumTextFormatter: TextFormatterProtocol {
   }
   
   private func correctedDecimalPart(from string: String) -> String {
-    if string.length <= maximumDecimalCharacters { return string }
+    if string.count <= maximumDecimalCharacters { return string }
     var tmpString = string
-    let numberOfExcessSymbols = tmpString.length - maximumDecimalCharacters
+    let numberOfExcessSymbols = tmpString.count - maximumDecimalCharacters
     tmpString.removeLast(numberOfExcessSymbols)
     return tmpString
   }

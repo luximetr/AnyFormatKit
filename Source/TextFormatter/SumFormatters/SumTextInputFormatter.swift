@@ -24,8 +24,8 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
    - textPattern: String with special characters, that will be used for formatting
    - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
    */
-  public override init(textPattern: String, specialSymbol: Character = "#") {
-    super.init(textPattern: textPattern, specialSymbol: specialSymbol)
+  public override init(textPattern: String, patternSymbol: Character = "#") {
+    super.init(textPattern: textPattern, patternSymbol: patternSymbol)
     self.prefix = prefixStr
     self.formattedPrefix = prefixStr
   }
@@ -41,7 +41,7 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
   public func didBeginEditing(_ textInput: TextInput) {
     guard let suffix = suffixStr else { return }
     
-    let offset = (textInput.content?.length ?? 0) - suffix.length
+    let offset = (textInput.content?.count ?? 0) - suffix.count
     
     let newCursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: offset)
     
@@ -98,12 +98,12 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
   
   // MARK: - Private
   private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
-    var offset = range.location + range.length + (newString.length - oldString.length)
+    var offset = range.location + range.length + (newString.count - oldString.count)
     if oldString.isEmpty {
-      offset -= suffixStr?.length ?? 0
+      offset -= suffixStr?.count ?? 0
     }
-    if offset < prefix?.length ?? 0 {
-      offset = prefix?.length ?? 0
+    if offset < prefix?.count ?? 0 {
+      offset = prefix?.count ?? 0
     }
     return offset
   }
@@ -138,20 +138,20 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
     guard let text = string else { return nil }
     
     if range.length == 1 {
-      if range.location > text.length - (suffixStr?.length ?? 0) - 1 ||
-        range.location < (prefix?.length ?? 0)
+      if range.location > text.count - (suffixStr?.count ?? 0) - 1 ||
+        range.location < (prefix?.count ?? 0)
       { return nil }
     } else {
       
       var lowerBound = range.lowerBound
       var upperBound = range.upperBound
       
-      if range.lowerBound < (prefix?.length ?? 0) {
-        lowerBound = (prefix?.length ?? 0)
+      if range.lowerBound < (prefix?.count ?? 0) {
+        lowerBound = (prefix?.count ?? 0)
       }
       
-      if range.upperBound > text.length - (suffixStr?.length ?? 0)  {
-        upperBound = text.length - (suffixStr?.length ?? 0)
+      if range.upperBound > text.count - (suffixStr?.count ?? 0)  {
+        upperBound = text.count - (suffixStr?.count ?? 0)
       }
       
       let newRange = NSRange(location: lowerBound, length: upperBound - lowerBound)
@@ -165,12 +165,12 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
     guard let text = string else { return false }
     guard let unformated = unformattedText(from: string) else { return false }
     
-    if range.location > (text.length - (suffixStr?.length ?? 0)) ||
-      range.location < (prefix?.length ?? 0)
+    if range.location > (text.count - (suffixStr?.count ?? 0)) ||
+      range.location < (prefix?.count ?? 0)
     { return false }
     
     guard let integerPart = unformated.components(separatedBy: decimalSeparator).first,
-      integerPart.length < maximumIntegerCharacters
+      integerPart.count < maximumIntegerCharacters
       else { return false }
     
     return true
