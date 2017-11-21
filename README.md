@@ -27,7 +27,13 @@ Text formatting framework written on Swift 4.0.
 
 To run the example project, clone the repo and run `pod install` from the Example directory first.
 
+### Phone number example
+
 ![AnyFormatKitDemo: Simple text formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/demo.gif)
+
+### Currency example
+
+![AnyFormatKitCurrencyDemo: Currency formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/currencyDemo.gif)
 
 ## Requirements
 
