@@ -29,7 +29,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ### Phone number example
 
-![AnyFormatKitDemo: Simple text formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/SumFormatterTesting/Assets/demo.gif)
+![AnyFormatKitDemo: Simple text formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/demo.gif)
 
 ### Currency example
 
