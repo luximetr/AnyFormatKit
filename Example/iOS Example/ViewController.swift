@@ -14,14 +14,13 @@ class ViewController: UIViewController {
   let textInputFieldController = TextInputController()
   let textInputViewController = TextInputController()
   let sumInputController = TextInputController()
-  
   let textInputField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let textInputView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   let sumTextInputField = TextInputField(frame: LayoutConstants.sumTextInputFieldFrame)
   
   let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-  let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #,###.# $$", specialSymbol: "#")
+  let sumFormatter = SumTextInputFormatter(textPattern: "Your input: #.###,# $$", specialSymbol: "#")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -93,20 +92,19 @@ private extension ViewController {
     view.addSubview(textInputView)
     textInputView.backgroundColor = UIColor.black
     textInputView.tintColor = ColorConstants.gray
-    
+
     textInputView.typingAttributes = [
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
     textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
-    
+
     textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
-    
   }
   
   func configureFormatters() {
     phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
     cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
-    sumFormatter.allowedSymbolsRegex = "[0-9.]*"
+    sumFormatter.allowedSymbolsRegex = "[0-9.,]*"
   }
   
   func configureTextFieldControllers() {
@@ -141,11 +139,9 @@ extension ViewController: TextInputDelegate {
 
 // MARK: - Constants
 private struct LayoutConstants {
-  
   static let textInputFieldFrame = CGRect(x: 20, y: 65, width: UIScreen.main.bounds.width - 40, height: 40)
   static let textInputViewFrame = CGRect(x: 16, y: 165, width: UIScreen.main.bounds.width - 40, height: 40)
   static let sumTextInputFieldFrame = CGRect(x: 20, y: 265, width: UIScreen.main.bounds.width - 40, height: 40)
-  
   static let phoneNumberLabelFrame = CGRect(x: 20, y: 40, width: UIScreen.main.bounds.width - 40, height: 20)
   static let cardNumberLabelFrame = CGRect(x: 20, y: 140, width: UIScreen.main.bounds.width - 40, height: 20)
   static let sumLabelFrame = CGRect(x: 20, y: 240, width: UIScreen.main.bounds.width - 40, height: 20)

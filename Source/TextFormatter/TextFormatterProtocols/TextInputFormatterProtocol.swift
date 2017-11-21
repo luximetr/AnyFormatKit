@@ -32,4 +32,19 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
    */
   func shouldChangeTextIn(
     textInput: TextInput, range: NSRange, replacementString text: String) -> Bool
+    
+
+    /**
+     Optionl method, that called when textInput starts editing
+     
+     - Parameters:
+     - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
+    
+     */
+  func didBeginEditing(_ textInput: TextInput)
+}
+
+  //MARK: - Optional methods
+extension TextInputFormatterProtocol {
+    public func didBeginEditing(_ textInput: TextInput) {}
 }
