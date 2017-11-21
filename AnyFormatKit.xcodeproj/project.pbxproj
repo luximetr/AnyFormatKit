@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		306EBE991FC4268200E49BB8 /* NegativeSumFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */; };
+		306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */; };
 		307DCD4A1FC2CFA700889A52 /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */; };
 		307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */; };
 		307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeSumFormatTests.swift; sourceTree = "<group>"; };
+		306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatBoundaryTests.swift; sourceTree = "<group>"; };
 		307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
 		307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
 		307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumUSFormatTests.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 			children = (
 				30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */,
 				307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */,
+				306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */,
+				306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */,
 			);
 			name = SumFormatTests;
 			sourceTree = "<group>";
@@ -443,8 +449,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */,
+				306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */,
 				307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */,
 				30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */,
+				306EBE991FC4268200E49BB8 /* NegativeSumFormatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
