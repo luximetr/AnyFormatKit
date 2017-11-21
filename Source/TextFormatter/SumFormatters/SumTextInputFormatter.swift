@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
-  public var prefix: String?
+open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
+  open var prefix: String?
   
-  public var formattedPrefix: String?
+  open var formattedPrefix: String?
   
-  public var allowedSymbolsRegex: String?
+  open var allowedSymbolsRegex: String?
   
   
   // MARK: - Init
@@ -38,7 +38,7 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
    - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
    
    */
-  public func didBeginEditing(_ textInput: TextInput) {
+  open func didBeginEditing(_ textInput: TextInput) {
     guard let suffix = suffixStr else { return }
     
     let offset = (textInput.content?.count ?? 0) - suffix.count
@@ -61,7 +61,7 @@ public class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol
    
    - Returns: Always return false (correct of textInput's content in method's body)
    */
-  public func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
+  open func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
     
     var internalRange = range
     var isDecimalSeparatorInsertion = false
