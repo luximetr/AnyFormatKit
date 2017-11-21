@@ -33,7 +33,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ### Currency example
 
-![AnyFormatKitCurrencyDemo: Currency formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/SumFormatterTesting/Assets/currencyDemo.gif)
+![AnyFormatKitCurrencyDemo: Currency formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/currencyDemo.gif)
 
 ## Requirements
 
