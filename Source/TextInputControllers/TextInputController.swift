@@ -47,12 +47,23 @@ open class TextInputController: TextInputDelegate {
     }
     return true
   }
+  
+  open func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
+    return true
+  }
     
-    public func textInputDidBeginEditing(_ textInput: TextInput) {
-        if let formatter = formatter {
-            formatter.didBeginEditing(textInput)
-        }
+  open func textInputDidBeginEditing(_ textInput: TextInput) {
+    if let formatter = formatter {
+      formatter.didBeginEditing(textInput)
     }
+  }
+  
+  open func textInputShouldEndEditing(_ textInput: TextInput) -> Bool {
+    return true
+  }
+  
+  open func textInputDidEndEditing(_ textInput: TextInput) {
+  }
 }
 
 // MARK: - Private
