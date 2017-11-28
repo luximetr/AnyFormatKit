@@ -28,20 +28,20 @@ open class TextInputView: AttributedTextInputView, TextInput {
   // MARK: - Unavailable fields
   @available(*, unavailable, message: "use content instead")
   open override var text: String! {
-    set { super.text = newValue }
-    get { return super.text }
+    set {}
+    get { return nil }
   }
   
   @available(*, unavailable, message: "use attributedContent instead")
   open override var attributedText: NSAttributedString! {
-    set { super.attributedText = newValue }
-    get { return super.attributedText }
+    set {}
+    get { return nil }
   }
   
   @available(*, unavailable, message: "use textInputDelegates and inputTextViewDelegates instead")
   open override var delegate: UITextViewDelegate? {
-    get { return super.delegate }
-    set { super.delegate = newValue }
+    set {}
+    get { return nil }
   }
   
   // MARK: - Init
