@@ -64,6 +64,25 @@ open class TextInputController: TextInputDelegate {
   
   open func textInputDidEndEditing(_ textInput: TextInput) {
   }
+  
+  // MARK: - Public
+  open func unformattedText() -> String? {
+    guard let textInput = textInput else { return nil }
+    if let formatter = formatter {
+      return formatter.unformattedText(from: textInput.content)
+    } else {
+      return textInput.content
+    }
+  }
+  
+  open func setAndFormatText(_ text: String?) {
+    guard let textInput = textInput else { return }
+    if let formatter = formatter {
+      textInput.content = formatter.formattedText(from: text)
+    } else {
+      textInput.content = text
+    }
+  }
 }
 
 // MARK: - Private

@@ -97,8 +97,6 @@ private extension ViewController {
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
     textInputView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
-
-    textInputView.content = cardNumberFormatter.formattedText(from: "4111012345672390")
   }
   
   func configureFormatters() {
@@ -119,6 +117,8 @@ private extension ViewController {
   func configureTextViewController() {
     textInputViewController.textInput = textInputView
     textInputViewController.formatter = cardNumberFormatter
+    
+    textInputViewController.setAndFormatText("4111012345672390")
   }
   
   func setupFirstResponder() {
