@@ -154,7 +154,7 @@ open class SumTextFormatter: TextFormatterProtocol {
     for i in 0..<reversLenght {
       guard let currentChar = reversString.characterAt(i) else { continue }
       result.append(currentChar)
-      if i % numberOfCharactersInGroup == (numberOfCharactersInGroup - 1), i != 0, i != reversLenght - 1 {
+      if i % numberOfCharactersInGroup == (numberOfCharactersInGroup - 1), i != reversLenght - 1 {
         result.append(groupingSeparator)
       }
     }
@@ -167,8 +167,10 @@ open class SumTextFormatter: TextFormatterProtocol {
   
   open func formattedText(from unformatted: String?) -> String? {
     
-    guard let unformattedString = unformatted else { return nil }
+    guard var unformattedString = unformatted else { return nil }
     guard !(unformattedString.isEmpty) else { return "\(prefixStr ?? "")\(suffixStr ?? "")" }
+    
+    unformattedString = correctedIntegers(from: unformattedString)
     
     var resultString = ""
     var hasIncompletedDecimal = false
@@ -239,4 +241,25 @@ open class SumTextFormatter: TextFormatterProtocol {
       return string.replacingOccurrences(of: ".", with: decimalSeparator)
     }
   }
+    
+    private func correctedIntegers(from string: String) -> String {
+        var decimalPart = ""
+        var integerPart = ""
+        
+        if string.contains(decimalSeparator) {
+            guard let position = string.index(of: decimalSeparator.first ?? ".") else { return string }
+            decimalPart = String(string[position..<string.endIndex])
+            integerPart = String(string[string.startIndex..<position])
+        } else {
+            integerPart = string
+        }
+        
+        if integerPart.count > maximumIntegerCharacters {
+            let diff = integerPart.count - maximumIntegerCharacters
+            integerPart.removeLast(diff)
+        }
+        
+        let result = integerPart + decimalPart
+        return result
+    }
 }
