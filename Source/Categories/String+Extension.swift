@@ -35,43 +35,38 @@ extension String {
    
    - Returns: found character or nil
   */
-    
-    func characterAt(_ index: Int) -> Character? {
-        guard index < count else { return nil }
-        return self[self.index(self.startIndex, offsetBy: index)]
+  
+  func characterAt(_ index: Int) -> Character? {
+    guard index < count else { return nil }
+    return self[self.index(self.startIndex, offsetBy: index)]
+  }
+  
+  var first: String {
+    return String(prefix(1))
+  }
+  
+  var last: String {
+    return String(suffix(1))
+  }
+  
+  var uppercaseFirst: String {
+    return first.uppercased() + String(dropFirst())
+  }
+  
+  func addingPercentEncodingForQuery() -> String? {
+    let allowed = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._* ")
+    return addingPercentEncoding(withAllowedCharacters: allowed)?.replacingOccurrences(of: " ", with: "+")
+  }
+  
+  func isOnlyDigits() -> Bool {
+    return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: self))
+  }
+  
+  func slice(from: String, toString: String) -> String? {
+    return (range(of: from)?.upperBound).flatMap { substringFrom in
+      (range(of: toString, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+        String(self[substringFrom..<substringTo])
+      }
     }
-
-    
-    var length: Int {
-        return self.characters.count
-    }
-    
-    var first: String {
-        return String(characters.prefix(1))
-    }
-    
-    var last: String {
-        return String(characters.suffix(1))
-    }
-    
-    var uppercaseFirst: String {
-        return first.uppercased() + String(characters.dropFirst())
-    }
-    
-    func addingPercentEncodingForQuery() -> String? {
-        let allowed = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._* ")
-        return addingPercentEncoding(withAllowedCharacters: allowed)?.replacingOccurrences(of: " ", with: "+")
-    }
-    
-    func isOnlyDigits() -> Bool {
-        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: self))
-    }
-    
-    func slice(from: String, toString: String) -> String? {
-        return (range(of: from)?.upperBound).flatMap { substringFrom in
-            (range(of: toString, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
-                String(self[substringFrom..<substringTo])
-            }
-        }
-    }
+  }
 }

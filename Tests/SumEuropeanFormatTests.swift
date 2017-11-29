@@ -65,6 +65,30 @@ extension SumEuropeanFormatTests {
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
+  
+  func test00dot0Formatting() {
+    let initialString = "00.0"
+    let expectedString = "0,0"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
+  
+  func test00dot00Formatting() {
+    let initialString = "00.00"
+    let expectedString = "0,00"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
+  
+  func test0dot000Formatting() {
+    let initialString = "0.000"
+    let expectedString = "0,00"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
 }
 
 // MARK: - Correct values tests
