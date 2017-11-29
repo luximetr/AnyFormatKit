@@ -27,7 +27,7 @@ class SumFormatBoundaryTests: XCTestCase {
   func testGreaterThanMaxIntegerCharacters() {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "123456"
-    let expectedString = "12345"
+    let expectedString = "12.345"
     let formattedString = sumFormatter.formattedText(from: initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
@@ -36,7 +36,7 @@ class SumFormatBoundaryTests: XCTestCase {
   func testEqualThanMaxIntegerCharacters() {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "12345"
-    let expectedString = "12345"
+    let expectedString = "12.345"
     let formattedString = sumFormatter.formattedText(from: initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
@@ -45,7 +45,7 @@ class SumFormatBoundaryTests: XCTestCase {
   func testLessThanMaxIntegerCharacters() {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "1234"
-    let expectedString = "1234"
+    let expectedString = "1.234"
     let formattedString = sumFormatter.formattedText(from: initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
@@ -93,7 +93,7 @@ class SumFormatBoundaryTests: XCTestCase {
   func testMoreThat14MaxIntegerCharacters() {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = String(repeating: "9", count: 15) // 999999999999999
-    let expectedString = "999.999.999.999.999"
+    let expectedString = "99.999.999.999.999"
     let formattedString = sumFormatter.formattedText(from: initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
