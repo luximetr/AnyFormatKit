@@ -81,7 +81,7 @@ private extension TextInputFormatter {
    - Returns: New String with replaced characters in range from old string
   */
   func correctedContent(currentContent: String?, range: NSRange, replacementFiltered: String) -> String? {
-    guard let oldText = currentContent else { return nil }
+    let oldText = currentContent ?? String()
     
     let correctedRange = unformattedRange(from: range)
     let oldUnformatted = unformattedText(from: oldText) as NSString?
