@@ -40,8 +40,8 @@ open class TextInputView: AttributedTextInputView, TextInput {
   
   @available(*, unavailable, message: "use textInputDelegates and inputTextViewDelegates instead")
   open override var delegate: UITextViewDelegate? {
-    set {}
-    get { return nil }
+    set { super.delegate = newValue }
+    get { return super.delegate }
   }
   
   // MARK: - Init

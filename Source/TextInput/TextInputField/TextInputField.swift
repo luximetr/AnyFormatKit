@@ -40,8 +40,8 @@ open class TextInputField: AttributedTextInputField, TextInput {
   
   @available(*, unavailable, message: "use textInputDelegates and textInputFieldDelegates instead")
   open override var delegate: UITextFieldDelegate? {
-    set {}
-    get { return nil }
+    set { super.delegate = newValue }
+    get { return super.delegate }
   }
 
   // MARK: - Init
