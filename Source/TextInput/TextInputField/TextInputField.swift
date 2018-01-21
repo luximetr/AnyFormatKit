@@ -28,14 +28,14 @@ open class TextInputField: AttributedTextInputField, TextInput {
   // MARK: - Unavailable fields
   @available(*, unavailable, message: "use content instead")
   open override var text: String? {
-    set {}
-    get { return nil }
+    set { super.text = newValue }
+    get { return super.text }
   }
   
   @available(*, unavailable, message: "use attributedContent instead")
   open override var attributedText: NSAttributedString? {
-    set {}
-    get { return nil }
+    set { super.attributedText = newValue }
+    get { return super.attributedText }
   }
   
   @available(*, unavailable, message: "use textInputDelegates and textInputFieldDelegates instead")

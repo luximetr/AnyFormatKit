@@ -22,10 +22,19 @@ class ViewController: UIViewController {
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "#.###,# $")
   
+  let controller = CustomTextViewController()
+  let inputField = CustomTextInputField()
+  
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    initConfigure()
+    
+    view.addSubview(inputField)
+    inputField.frame = LayoutConstants.textInputFieldFrame
+    inputField.layer.borderColor = UIColor.black.cgColor
+    inputField.layer.borderWidth = 1
+    controller.textInput = inputField
+    //initConfigure()
   }
 }
 
