@@ -14,20 +14,13 @@ open class AttributedTextInputView: UITextView {
   /// Overriden text, that set text with attributes to attributedText property
   override open var text: String! {
     set {
+      super.text = newValue
       if !typingAttributes.isEmpty {
         super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
           newValue: newValue, commonAttributes: typingAttributes)
-      } else {
-        super.text = newValue
       }
     }
-    get {
-      if typingAttributes.isEmpty {
-        return super.attributedText?.string
-      } else {
-        return super.text
-      }
-    }
+    get { return super.text }
   }
   
   /// Common attributes for all string during typing

@@ -13,9 +13,17 @@ open class AttributedTextInputField: UITextField {
   // MARK: - Fields
   /// Overriden text, that set text with attributes to attributedText property
   override open var text: String? {
-    set { super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
-      newValue: newValue, commonAttributes: defaultTextAttributes) }
-    get { return super.attributedText?.string }
+    set {
+      super.text = newValue
+      super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
+        newValue: newValue, commonAttributes: defaultTextAttributes)
+    }
+    get { return super.text }
+  }
+  
+  override open var attributedText: NSAttributedString? {
+    set { super.attributedText = newValue }
+    get { return super.attributedText }
   }
   
   /// Common attributes for all string during typing

@@ -28,13 +28,7 @@ class ViewController: UIViewController {
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    view.addSubview(inputField)
-    inputField.frame = LayoutConstants.textInputFieldFrame
-    inputField.layer.borderColor = UIColor.black.cgColor
-    inputField.layer.borderWidth = 1
-    controller.textInput = inputField
-    //initConfigure()
+    initConfigure()
   }
 }
 
@@ -154,6 +148,11 @@ extension ViewController: TextInputDelegate {
   }
   
   func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
+    return true
+  }
+  
+  func textInput(_ textInput: TextInput, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    print("shouldChange \((textInput.content ?? "") + " " + text)")
     return true
   }
 }
