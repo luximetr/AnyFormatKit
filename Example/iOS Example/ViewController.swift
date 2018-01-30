@@ -22,9 +22,6 @@ class ViewController: UIViewController {
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "#.###,# $")
   
-  let controller = CustomTextViewController()
-  let inputField = CustomTextInputField()
-  
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -152,7 +149,7 @@ extension ViewController: TextInputDelegate {
   }
   
   func textInput(_ textInput: TextInput, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    print("shouldChange \((textInput.content ?? "") + " " + text)")
+    print("shouldChange \((textInput.content ?? ""))")
     return true
   }
 }

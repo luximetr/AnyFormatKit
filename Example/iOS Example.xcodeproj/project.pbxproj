@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		303BCE872014E0750073131A /* CustomTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303BCE862014E0750073131A /* CustomTextViewController.swift */; };
-		303BCE892014E17D0073131A /* CustomTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303BCE882014E17D0073131A /* CustomTextInputField.swift */; };
 		307EA2511FAA1D0000DE439D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2501FAA1D0000DE439D /* AppDelegate.swift */; };
 		307EA2561FAA1D0000DE439D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307EA2541FAA1D0000DE439D /* Main.storyboard */; };
 		307EA2581FAA1D0000DE439D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307EA2571FAA1D0000DE439D /* Assets.xcassets */; };
@@ -33,8 +31,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		303BCE862014E0750073131A /* CustomTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextViewController.swift; sourceTree = "<group>"; };
-		303BCE882014E17D0073131A /* CustomTextInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputField.swift; sourceTree = "<group>"; };
 		307EA24D1FAA1D0000DE439D /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		307EA2501FAA1D0000DE439D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		307EA2551FAA1D0000DE439D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,8 +76,6 @@
 			children = (
 				307EA2501FAA1D0000DE439D /* AppDelegate.swift */,
 				30B95D601FAA242600BFF81F /* ViewController.swift */,
-				303BCE862014E0750073131A /* CustomTextViewController.swift */,
-				303BCE882014E17D0073131A /* CustomTextInputField.swift */,
 				307EA2541FAA1D0000DE439D /* Main.storyboard */,
 				307EA2571FAA1D0000DE439D /* Assets.xcassets */,
 				307EA2591FAA1D0000DE439D /* LaunchScreen.storyboard */,
@@ -172,8 +166,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				303BCE872014E0750073131A /* CustomTextViewController.swift in Sources */,
-				303BCE892014E17D0073131A /* CustomTextInputField.swift in Sources */,
 				30B95D611FAA242600BFF81F /* ViewController.swift in Sources */,
 				307EA2511FAA1D0000DE439D /* AppDelegate.swift in Sources */,
 			);

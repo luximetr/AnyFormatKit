@@ -11,7 +11,16 @@ import Foundation
 /// Multiple delegate implementation
 open class MulticastDelegate <T> {
   /// List of delegates
-  private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
+   var delegates = [WeakWrapper]()
+  
+  /**
+   Use the property to check if no delegates are contained there.
+   
+   - Returns: true if the text input's contents should be cleared; otherwise, false.
+   */
+  open var isEmpty: Bool {
+    return delegates.count == 0
+  }
   
   /**
    Add delegate in list of delegates.
@@ -20,7 +29,8 @@ open class MulticastDelegate <T> {
      - delegate: Object, that what to be delegate
   */
   open func add(delegate: T) {
-    delegates.add(delegate as AnyObject)
+    let weakObject = WeakWrapper(value: delegate as AnyObject)
+    delegates.append(weakObject)
   }
   
   /**
@@ -30,10 +40,9 @@ open class MulticastDelegate <T> {
      - delegate: Object, that must to be deleted from delegate list
   */
   open func remove(delegate: T) {
-    for oneDelegate in delegates.allObjects.reversed() {
-      if oneDelegate === delegate as AnyObject {
-        delegates.remove(oneDelegate)
-      }
+    for (index, delegateInArray) in delegates.enumerated().reversed()
+      where delegateInArray === delegate as AnyObject {
+      delegates.remove(at: index)
     }
   }
   
@@ -44,8 +53,8 @@ open class MulticastDelegate <T> {
      - invocation: Closure, that will call for all delegates
   */
   open func invoke(invocation: (T) -> ()) {
-    for delegate in delegates.allObjects.reversed() {
-      if let castedDelegate = delegate as? T {
+    for delegate in delegates {
+      if let castedDelegate = delegate.value as? T {
         invocation(castedDelegate)
       }
     }
@@ -72,4 +81,12 @@ func += <T: AnyObject> (left: MulticastDelegate<T>, right: T) {
 */
 func -= <T: AnyObject> (left: MulticastDelegate<T>, right: T) {
   left.remove(delegate: right)
+}
+
+ class WeakWrapper {
+  weak var value: AnyObject?
+  
+  init(value: AnyObject?) {
+    self.value = value
+  }
 }

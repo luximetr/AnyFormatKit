@@ -16,7 +16,7 @@ public protocol TextInputFieldDelegate: class {
    - Parameters:
      - textInput: The text input containing the text.
    
-   - Retunrs: true if the text input's contents should be cleared; otherwise, false.
+   - Returns: true if the text input's contents should be cleared; otherwise, false.
   */
   func textInputShouldClear(_ textInput: TextInputField) -> Bool
   
