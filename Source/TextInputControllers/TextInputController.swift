@@ -14,7 +14,7 @@ open class TextInputController: TextInputDelegate {
   /// Object, that conform to TextInput protocol
   open var textInput: TextInput? {
     didSet {
-      textInput?.textInputDelegates.add(delegate: self)
+      textInput?.textInputDelegate = self
       setPrefixToTextInput()
     }
   }

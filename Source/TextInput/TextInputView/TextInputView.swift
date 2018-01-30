@@ -20,10 +20,8 @@ open class TextInputView: AttributedTextInputView, TextInput {
     get { return super.attributedText }
   }
   
-  private(set) open var textInputDelegates = MulticastDelegate<TextInputDelegate>()
-  
-  /// multicast delegate for TextInputField delegate methods
-  private(set) open var textInputViewDelegates = MulticastDelegate<TextInputViewDelegate>()
+  open weak var textInputDelegate: TextInputDelegate?
+  open weak var textInputViewDelegate: TextInputViewDelegate?
   
   // MARK: - Unavailable fields
   @available(*, unavailable, message: "use content instead")

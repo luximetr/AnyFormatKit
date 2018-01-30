@@ -12,73 +12,56 @@ import UIKit
 extension TextInputField: UITextFieldDelegate {
   // MARK: - TextInputDelegate
    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-    guard let textInput = textField as? TextInputField else { return true }
-    var shouldBegin = true
-    textInputDelegates.invoke { delegate in
-      shouldBegin = delegate.textInputShouldBeginEditing(textInput) && shouldBegin
-    }
-    return shouldBegin
+    guard
+      let textInput = textField as? TextInputField,
+      let textInputDelegate = textInputDelegate else { return true }
+    return textInputDelegate.textInputShouldBeginEditing(textInput)
   }
   
   open func textFieldDidBeginEditing(_ textField: UITextField) {
     guard let textInput = textField as? TextInputField else { return }
-    textInputDelegates.invoke { delegate in
-      delegate.textInputDidBeginEditing(textInput)
-    }
+    textInputDelegate?.textInputDidBeginEditing(textInput)
   }
 
   open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-    guard let textInput = textField as? TextInputField else { return true }
-    var shouldEnd = true
-    textInputDelegates.invoke { delegate in
-      shouldEnd = delegate.textInputShouldEndEditing(textInput) && shouldEnd
-    }
-    return shouldEnd
+    guard
+      let textInput = textField as? TextInputField,
+      let textInputDelegate = textInputDelegate else { return true }
+    return textInputDelegate.textInputShouldEndEditing(textInput)
   }
   
   open func textFieldDidEndEditing(_ textField: UITextField) {
     guard let textInput = textField as? TextInputField else { return }
-    textInputDelegates.invoke { delegate in
-      delegate.textInputDidEndEditing(textInput)
-    }
+    textInputDelegate?.textInputDidEndEditing(textInput)
   }
   
   open func textField(_ textField: UITextField,
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
-    guard let textInput = textField as? TextInputField else { return true }
-    var shouldChange = true
-    textInputDelegates.invoke { delegate in
-      shouldChange = delegate.textInput(
-        textInput, shouldChangeTextIn: range, replacementText: string) && shouldChange
-    }
-    return shouldChange
+    guard
+      let textInput = textField as? TextInputField,
+      let textInputDelegate = textInputDelegate else { return true }
+    return textInputDelegate.textInput(textInput, shouldChangeTextIn: range, replacementText: string)
   }
   
   // MARK: - TextInputFieldDelegate
   open func textFieldShouldClear(_ textField: UITextField) -> Bool {
-    guard let textInput = textField as? TextInputField else { return true }
-    var shouldClear = true
-    textInputFieldDelegates.invoke { delegate in
-      shouldClear = delegate.textInputShouldClear(textInput) && shouldClear
-    }
-    return shouldClear
+    guard
+      let textInput = textField as? TextInputField,
+      let textInputFieldDelegate = textInputFieldDelegate else { return true }
+    return textInputFieldDelegate.textInputShouldClear(textInput)
   }
   
   open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    guard let textInput = textField as? TextInputField else { return true }
-    var shouldReturn = true
-    textInputFieldDelegates.invoke { delegate in
-      shouldReturn = delegate.textInputShouldReturn(textInput) && shouldReturn
-    }
-    return shouldReturn
+    guard
+      let textInput = textField as? TextInputField,
+      let textInputFieldDelegate = textInputFieldDelegate else { return true }
+    return textInputFieldDelegate.textInputShouldReturn(textInput)
   }
   
   @available(iOS 10.0, *)
   open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
     guard let textInput = textField as? TextInputField else { return }
-    textInputFieldDelegates.invoke { delegate in
-      delegate.textInputDidEndEditing(textInput, reason: reason)
-    }
+    textInputFieldDelegate?.textInputDidEndEditing(textInput, reason: reason)
   }
 }

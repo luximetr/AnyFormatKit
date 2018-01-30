@@ -77,7 +77,6 @@ private extension ViewController {
     phoneNumberField.backgroundColor = UIColor.black
     phoneNumberField.tintColor = ColorConstants.gray
     
-    phoneNumberField.textInputDelegates.add(delegate: self)
     phoneNumberField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
@@ -89,7 +88,6 @@ private extension ViewController {
     sumInputField.backgroundColor = UIColor.black
     sumInputField.tintColor = ColorConstants.gray
     
-    sumInputField.textInputDelegates.add(delegate: self)
     sumInputField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
