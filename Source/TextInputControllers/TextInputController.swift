@@ -25,6 +25,8 @@ open class TextInputController: TextInputDelegate {
     }
   }
   
+  open let observer = Observer<TextInputControllerObserver>()
+  
   // MARK: - Init
   /**
    Initialize controller
@@ -45,10 +47,12 @@ open class TextInputController: TextInputDelegate {
         textInput: textInput, range: range, replacementString: text)
       return shouldChange
     }
+    notifyTextInputDidChangeText(textInput: textInput)
     return true
   }
   
   open func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
+    notifyTextInputWillBeginEditing(textInput: textInput)
     return true
   }
     
@@ -56,14 +60,19 @@ open class TextInputController: TextInputDelegate {
     if let formatter = formatter {
       formatter.didBeginEditing(textInput)
     }
+    notifyTextInputDidBeginEditing(textInput: textInput)
   }
   
   open func textInputShouldEndEditing(_ textInput: TextInput) -> Bool {
+    notifyTextInputWillEndEditing(textInput: textInput)
     return true
   }
   
   open func textInputDidEndEditing(_ textInput: TextInput) {
+    notifyTextInputDidEndEditing(textInput: textInput)
   }
+  
+  
   
   // MARK: - Public
   open func unformattedText() -> String? {
@@ -91,6 +100,44 @@ private extension TextInputController {
   func setPrefixToTextInput() {
     if let formattedPrefix = formatter?.formattedPrefix {
       textInput?.content = formattedPrefix
+    }
+  }
+}
+
+// MARK: - Subscribers notifications
+private extension TextInputController {
+  func notifyTextInputDidChangeText(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidChangeText(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputWillBeginEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputWillBeginEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputDidBeginEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidBeginEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputWillEndEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputWillEndEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputDidEndEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidEndEditing(textInput: textInput, controller: weakSelf)
     }
   }
 }
