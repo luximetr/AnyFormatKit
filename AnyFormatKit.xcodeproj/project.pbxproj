@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3015D364206BC84E007293ED /* SumTextFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015D363206BC84E007293ED /* SumTextFormatter1.swift */; };
+		3015D366206BCBAF007293ED /* SumTextInputFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3015D365206BCBAF007293ED /* SumTextInputFormatter1.swift */; };
 		306CCDFA2020889C0038E05C /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306CCDF92020889C0038E05C /* Observer.swift */; };
 		306EBE991FC4268200E49BB8 /* NegativeSumFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */; };
 		306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3015D363206BC84E007293ED /* SumTextFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatter1.swift; sourceTree = "<group>"; };
+		3015D365206BCBAF007293ED /* SumTextInputFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter1.swift; sourceTree = "<group>"; };
 		306CCDF92020889C0038E05C /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeSumFormatTests.swift; sourceTree = "<group>"; };
 		306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatBoundaryTests.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			children = (
 				307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */,
 				307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */,
+				3015D363206BC84E007293ED /* SumTextFormatter1.swift */,
+				3015D365206BCBAF007293ED /* SumTextInputFormatter1.swift */,
 			);
 			path = SumFormatters;
 			sourceTree = "<group>";
@@ -431,7 +437,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				307EA23A1FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift in Sources */,
+				3015D364206BC84E007293ED /* SumTextFormatter1.swift in Sources */,
 				307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */,
+				3015D366206BCBAF007293ED /* SumTextInputFormatter1.swift in Sources */,
 				307EA23E1FAA1B5B00DE439D /* TextInputView.swift in Sources */,
 				307EA2391FAA1B5B00DE439D /* TextInputFieldDelegate.swift in Sources */,
 				30B3043D2021B96B0029EA5A /* TextInputControllerObserver.swift in Sources */,

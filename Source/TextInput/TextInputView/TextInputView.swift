@@ -36,7 +36,7 @@ open class TextInputView: AttributedTextInputView, TextInput {
     get { return super.attributedText }
   }
   
-  @available(*, unavailable, message: "use textInputDelegates and inputTextViewDelegates instead")
+  @available(*, unavailable, message: "use textInputDelegate and inputTextViewDelegate instead")
   open override var delegate: UITextViewDelegate? {
     set { super.delegate = newValue }
     get { return super.delegate }

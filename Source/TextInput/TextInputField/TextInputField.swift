@@ -36,7 +36,7 @@ open class TextInputField: AttributedTextInputField, TextInput {
     get { return super.attributedText }
   }
   
-  @available(*, unavailable, message: "use textInputDelegates and textInputFieldDelegates instead")
+  @available(*, unavailable, message: "use textInputDelegate and textInputFieldDelegate instead")
   open override var delegate: UITextFieldDelegate? {
     set { super.delegate = newValue }
     get { return super.delegate }

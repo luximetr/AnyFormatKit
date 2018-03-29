@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   let phoneNumberFieldController = TextInputController()
   let cardNumberFieldController = TextInputController()
   let sumInputController = TextInputController()
-  let phoneNumberField = UITextField(frame: LayoutConstants.textInputFieldFrame)
+  let phoneNumberField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let cardNumberView = TextInputView(frame: LayoutConstants.textInputViewFrame)
   let sumInputField = TextInputField(frame: LayoutConstants.sumTextInputFieldFrame)
   
@@ -26,7 +26,6 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     initConfigure()
-    phoneNumberField.delegate  = self
   }
 }
 
@@ -127,7 +126,7 @@ private extension ViewController {
   }
   
   func configureTextFieldControllers() {
-//    phoneNumberFieldController.textInput = phoneNumberField
+    phoneNumberFieldController.textInput = phoneNumberField
     phoneNumberFieldController.formatter = phoneNumberFormatter
     phoneNumberFieldController.observer.addSubscriber(self)
     
