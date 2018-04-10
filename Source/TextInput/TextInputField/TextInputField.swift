@@ -24,18 +24,6 @@ open class TextInputField: AttributedTextInputField, TextInput {
   open weak var textInputFieldDelegate: TextInputFieldDelegate?
   
   // MARK: - Unavailable fields
-  @available(*, unavailable, message: "use content instead")
-  open override var text: String? {
-    set { super.text = newValue }
-    get { return super.text }
-  }
-  
-  @available(*, unavailable, message: "use attributedContent instead")
-  open override var attributedText: NSAttributedString? {
-    set { super.attributedText = newValue }
-    get { return super.attributedText }
-  }
-  
   @available(*, unavailable, message: "use textInputDelegate and textInputFieldDelegate instead")
   open override var delegate: UITextFieldDelegate? {
     set { super.delegate = newValue }

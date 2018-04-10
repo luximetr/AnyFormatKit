@@ -41,7 +41,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
   open func didBeginEditing(_ textInput: TextInput) {
     guard let suffix = suffixStr else { return }
     
-    let offset = (textInput.content?.count ?? 0) - suffix.count
+    let offset = (textInput.text?.count ?? 0) - suffix.count
     
     let newCursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: offset)
     
@@ -67,17 +67,17 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     var isDecimalSeparatorInsertion = false
     
     if text.isEmpty {
-      let newRange = correctRangeForDeleting(from: textInput.content, at: internalRange)
+      let newRange = correctRangeForDeleting(from: textInput.text, at: internalRange)
       guard let newRangeUnwrapped = newRange else { return false }
       internalRange = newRangeUnwrapped
     } else if text == "," || text == "." {
       isDecimalSeparatorInsertion = true
       if !isCorrectSeparatorInserting() { return false }
     } else {
-      if !isCorrectInserting(from: textInput.content, at: internalRange) { return false }
+      if !isCorrectInserting(from: textInput.text, at: internalRange) { return false }
     }
     
-    guard let oldString = textInput.content as NSString? else { return false }
+    guard let oldString = textInput.text as NSString? else { return false }
     let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
     
     if decimalSeparator != groupingSeparator {
@@ -88,7 +88,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
     let newFormatted = formattedText(from: newUnformatted)
     
-    textInput.content = newFormatted
+    textInput.text = newFormatted
     
     guard let newFormattedUnwrapped = newFormatted else { return false }
     correctCarretPosition(textInput: textInput, range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)

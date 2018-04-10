@@ -24,14 +24,12 @@ open class TextInputView: AttributedTextInputView, TextInput {
   open weak var textInputViewDelegate: TextInputViewDelegate?
   
   // MARK: - Unavailable fields
-  @available(*, unavailable, message: "use content instead")
-  open override var text: String! {
+  open override var text: String? {
     set { super.text = newValue }
     get { return super.text }
   }
   
-  @available(*, unavailable, message: "use attributedContent instead")
-  open override var attributedText: NSAttributedString! {
+  open override var attributedText: NSAttributedString? {
     set { super.attributedText = newValue }
     get { return super.attributedText }
   }

@@ -158,7 +158,7 @@ extension ViewController: TextInputDelegate {
   }
   
   func textInput(_ textInput: TextInput, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    print("shouldChange \((textInput.content ?? ""))")
+    print("shouldChange \((textInput.text ?? ""))")
     return true
   }
 }

@@ -78,18 +78,18 @@ open class TextInputController: TextInputDelegate {
   open func unformattedText() -> String? {
     guard let textInput = textInput else { return nil }
     if let formatter = formatter {
-      return formatter.unformattedText(from: textInput.content)
+      return formatter.unformattedText(from: textInput.text)
     } else {
-      return textInput.content
+      return textInput.text
     }
   }
   
   open func setAndFormatText(_ text: String?) {
     guard let textInput = textInput else { return }
     if let formatter = formatter {
-      textInput.content = formatter.formattedText(from: text)
+      textInput.text = formatter.formattedText(from: text)
     } else {
-      textInput.content = text
+      textInput.text = text
     }
   }
 }
@@ -99,7 +99,7 @@ private extension TextInputController {
   /// Set and format current prefix
   func setPrefixToTextInput() {
     if let formattedPrefix = formatter?.formattedPrefix {
-      textInput?.content = formattedPrefix
+      textInput?.text = formattedPrefix
     }
   }
 }
