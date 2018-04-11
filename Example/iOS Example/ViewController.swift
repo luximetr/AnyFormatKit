@@ -90,6 +90,7 @@ private extension ViewController {
     phoneNumberField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
+    
 //    phoneNumberField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
@@ -132,7 +133,7 @@ private extension ViewController {
     
     sumInputController.textInput = sumInputField
     sumInputController.formatter = sumFormatter
-    sumInputField.content = sumFormatter.formattedText(from: "")
+    sumInputField.text = sumFormatter.formattedText(from: "")
   }
   
   func configureTextViewController() {

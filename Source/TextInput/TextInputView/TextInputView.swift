@@ -10,16 +10,6 @@ import UIKit
 
 open class TextInputView: AttributedTextInputView, TextInput {
   // MARK: - TextInput
-  open var content: String? {
-    set { super.text = newValue }
-    get { return super.text }
-  }
-  
-  open var attributedContent: NSAttributedString? {
-    set { super.attributedText = newValue }
-    get { return super.attributedText }
-  }
-  
   open weak var textInputDelegate: TextInputDelegate?
   open weak var textInputViewDelegate: TextInputViewDelegate?
   
