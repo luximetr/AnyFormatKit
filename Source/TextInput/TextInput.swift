@@ -11,11 +11,11 @@ import UIKit
 /// Interface for text input
 public protocol TextInput: UITextInput {
   /// Current string in text input
-  var content: String? { set get }
+  var text: String? { set get }
   
   /// Current attributed string in text input
-  var attributedContent: NSAttributedString? { set get }
+  var attributedText: NSAttributedString? { set get }
   
-  /// Multicast delegate for TextInput delegate methods
-  var textInputDelegates: MulticastDelegate<TextInputDelegate>{ get }
+  /// Delegate for common TextInput methods
+  var textInputDelegate: TextInputDelegate? { set get }
 }

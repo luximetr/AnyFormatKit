@@ -14,7 +14,7 @@ open class TextInputController: TextInputDelegate {
   /// Object, that conform to TextInput protocol
   open var textInput: TextInput? {
     didSet {
-      textInput?.textInputDelegates.add(delegate: self)
+      textInput?.textInputDelegate = self
       setPrefixToTextInput()
     }
   }
@@ -24,6 +24,8 @@ open class TextInputController: TextInputDelegate {
       setPrefixToTextInput()
     }
   }
+  
+  open let observer = Observer<TextInputControllerObserver>()
   
   // MARK: - Init
   /**
@@ -45,10 +47,12 @@ open class TextInputController: TextInputDelegate {
         textInput: textInput, range: range, replacementString: text)
       return shouldChange
     }
+    notifyTextInputDidChangeText(textInput: textInput)
     return true
   }
   
   open func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
+    notifyTextInputWillBeginEditing(textInput: textInput)
     return true
   }
     
@@ -56,31 +60,36 @@ open class TextInputController: TextInputDelegate {
     if let formatter = formatter {
       formatter.didBeginEditing(textInput)
     }
+    notifyTextInputDidBeginEditing(textInput: textInput)
   }
   
   open func textInputShouldEndEditing(_ textInput: TextInput) -> Bool {
+    notifyTextInputWillEndEditing(textInput: textInput)
     return true
   }
   
   open func textInputDidEndEditing(_ textInput: TextInput) {
+    notifyTextInputDidEndEditing(textInput: textInput)
   }
+  
+  
   
   // MARK: - Public
   open func unformattedText() -> String? {
     guard let textInput = textInput else { return nil }
     if let formatter = formatter {
-      return formatter.unformattedText(from: textInput.content)
+      return formatter.unformattedText(from: textInput.text)
     } else {
-      return textInput.content
+      return textInput.text
     }
   }
   
   open func setAndFormatText(_ text: String?) {
     guard let textInput = textInput else { return }
     if let formatter = formatter {
-      textInput.content = formatter.formattedText(from: text)
+      textInput.text = formatter.formattedText(from: text)
     } else {
-      textInput.content = text
+      textInput.text = text
     }
   }
 }
@@ -90,7 +99,45 @@ private extension TextInputController {
   /// Set and format current prefix
   func setPrefixToTextInput() {
     if let formattedPrefix = formatter?.formattedPrefix {
-      textInput?.content = formattedPrefix
+      textInput?.text = formattedPrefix
+    }
+  }
+}
+
+// MARK: - Subscribers notifications
+private extension TextInputController {
+  func notifyTextInputDidChangeText(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidChangeText(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputWillBeginEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputWillBeginEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputDidBeginEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidBeginEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputWillEndEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputWillEndEditing(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputDidEndEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputDidEndEditing(textInput: textInput, controller: weakSelf)
     }
   }
 }

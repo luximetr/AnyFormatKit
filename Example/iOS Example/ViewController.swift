@@ -11,8 +11,8 @@ import AnyFormatKit
 
 class ViewController: UIViewController {
   // MARK: - Fields
-  let textInputFieldController = TextInputController()
-  let textInputViewController = TextInputController()
+  let phoneNumberFieldController = TextInputController()
+  let cardNumberFieldController = TextInputController()
   let sumInputController = TextInputController()
   let phoneNumberField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
   let cardNumberView = TextInputView(frame: LayoutConstants.textInputViewFrame)
@@ -22,13 +22,20 @@ class ViewController: UIViewController {
   let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "#.###,# $")
   
-  let controller = CustomTextViewController()
-  let inputField = CustomTextInputField()
-  
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     initConfigure()
+  }
+}
+
+extension ViewController: UITextFieldDelegate {
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    print("CALLED")
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    print("REASON")
   }
 }
 
@@ -80,11 +87,11 @@ private extension ViewController {
     phoneNumberField.backgroundColor = UIColor.black
     phoneNumberField.tintColor = ColorConstants.gray
     
-    phoneNumberField.textInputDelegates.add(delegate: self)
     phoneNumberField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
-    phoneNumberField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
+    
+//    phoneNumberField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
   func configureSumInputField() {
@@ -92,7 +99,6 @@ private extension ViewController {
     sumInputField.backgroundColor = UIColor.black
     sumInputField.tintColor = ColorConstants.gray
     
-    sumInputField.textInputDelegates.add(delegate: self)
     sumInputField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
@@ -121,19 +127,20 @@ private extension ViewController {
   }
   
   func configureTextFieldControllers() {
-    textInputFieldController.textInput = phoneNumberField
-    textInputFieldController.formatter = phoneNumberFormatter
+    phoneNumberFieldController.textInput = phoneNumberField
+    phoneNumberFieldController.formatter = phoneNumberFormatter
+    phoneNumberFieldController.observer.addSubscriber(self)
     
     sumInputController.textInput = sumInputField
     sumInputController.formatter = sumFormatter
-    sumInputField.content = sumFormatter.formattedText(from: "")
+    sumInputField.text = sumFormatter.formattedText(from: "")
   }
   
   func configureTextViewController() {
-    textInputViewController.textInput = cardNumberView
-    textInputViewController.formatter = cardNumberFormatter
+    cardNumberFieldController.textInput = cardNumberView
+    cardNumberFieldController.formatter = cardNumberFormatter
     
-    textInputViewController.setAndFormatText("4111012345672390")
+    cardNumberFieldController.setAndFormatText("4111012345672390")
   }
   
   func setupFirstResponder() {
@@ -152,8 +159,31 @@ extension ViewController: TextInputDelegate {
   }
   
   func textInput(_ textInput: TextInput, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    print("shouldChange \((textInput.content ?? "") + " " + text)")
+    print("shouldChange \((textInput.text ?? ""))")
     return true
+  }
+}
+
+// MARK: - TextInputControllerObserver
+extension ViewController: TextInputControllerObserver {
+  func textInputWillBeginEditing(textInput: TextInput, controller: TextInputController) {
+    print("textInputWillBeginEditing")
+  }
+  
+  func textInputDidBeginEditing(textInput: TextInput, controller: TextInputController) {
+    print("textInputDidBeginEditing")
+  }
+  
+  func textInputWillEndEditing(textInput: TextInput, controller: TextInputController) {
+    print("textInputWillEndEditing")
+  }
+  
+  func textInputDidEndEditing(textInput: TextInput, controller: TextInputController) {
+    print("textInputDidEndEditing")
+  }
+  
+  func textInputDidChangeText(textInput: TextInput, controller: TextInputController) {
+    print("textInputDidChangeText")
   }
 }
 
