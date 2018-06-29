@@ -25,7 +25,7 @@ open class TextInputController: TextInputDelegate {
     }
   }
   
-  open let observer = Observer<TextInputControllerObserver>()
+  public let observer = Observer<TextInputControllerObserver>()
   
   // MARK: - Init
   /**
