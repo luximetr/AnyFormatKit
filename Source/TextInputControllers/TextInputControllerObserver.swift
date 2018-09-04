@@ -16,7 +16,7 @@ public protocol TextInputControllerObserver {
   func textInputDidEndEditing(textInput: TextInput, controller: TextInputController)
 }
 
-extension TextInputControllerObserver {
+public extension TextInputControllerObserver {
   func textInputDidChangeText(textInput: TextInput, controller: TextInputController) {}
   func textInputWillBeginEditing(textInput: TextInput, controller: TextInputController) {}
   func textInputDidBeginEditing(textInput: TextInput, controller: TextInputController) {}
