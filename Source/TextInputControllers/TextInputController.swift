@@ -45,6 +45,7 @@ open class TextInputController: TextInputDelegate {
     if let formatter = formatter {
       let shouldChange = formatter.shouldChangeTextIn(
         textInput: textInput, range: range, replacementString: text)
+        notifyTextInputDidChangeText(textInput: textInput)
       return shouldChange
     }
     notifyTextInputDidChangeText(textInput: textInput)
@@ -71,8 +72,6 @@ open class TextInputController: TextInputDelegate {
   open func textInputDidEndEditing(_ textInput: TextInput) {
     notifyTextInputDidEndEditing(textInput: textInput)
   }
-  
-  
   
   // MARK: - Public
   open func unformattedText() -> String? {
