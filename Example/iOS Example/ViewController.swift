@@ -127,17 +127,17 @@ private extension ViewController {
   }
   
   func configureTextFieldControllers() {
-    phoneNumberFieldController.textInput = phoneNumberField
+    phoneNumberFieldController.setTextInput(phoneNumberField)
     phoneNumberFieldController.formatter = phoneNumberFormatter
     phoneNumberFieldController.observer.addSubscriber(self)
     
-    sumInputController.textInput = sumInputField
+    sumInputController.setTextInput(sumInputField)
     sumInputController.formatter = sumFormatter
     sumInputField.text = sumFormatter.formattedText(from: "")
   }
   
   func configureTextViewController() {
-    cardNumberFieldController.textInput = cardNumberView
+    cardNumberFieldController.setTextInput(cardNumberView)
     cardNumberFieldController.formatter = cardNumberFormatter
     
     cardNumberFieldController.setAndFormatText("4111012345672390")

@@ -12,12 +12,8 @@ import Foundation
 open class TextInputController: TextInputDelegate {
   // MARK: - Fields
   /// Object, that conform to TextInput protocol
-  open var textInput: TextInput? {
-    didSet {
-      textInput?.textInputDelegate = self
-      setPrefixToTextInput()
-    }
-  }
+  var textInput: TextInput?
+  
   /// Formatter, that apply format for text during editing
   open var formatter: TextInputFormatterProtocol? {
     didSet {
@@ -74,6 +70,12 @@ open class TextInputController: TextInputDelegate {
   }
   
   // MARK: - Public
+  open func setTextInput(_ textInput: TextInput) {
+    self.textInput = textInput
+    textInput.textInputDelegate = self
+    setPrefixToTextInput()
+  }
+  
   open func unformattedText() -> String? {
     guard let textInput = textInput else { return nil }
     if let formatter = formatter {
