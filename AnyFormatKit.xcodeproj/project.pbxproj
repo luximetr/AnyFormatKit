@@ -114,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30212EFE2154BD3200F5785A /* BundleFiles */ = {
+			isa = PBXGroup;
+			children = (
+				307EA2301FAA1B5B00DE439D /* Info.plist */,
+			);
+			path = BundleFiles;
+			sourceTree = "<group>";
+		};
 		306CCDF8202087B60038E05C /* Observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +147,6 @@
 				307EA2141FAA1B5B00DE439D /* TextFormatter */,
 				307EA21B1FAA1B5B00DE439D /* TextInput */,
 				307EA22A1FAA1B5B00DE439D /* TextInputControllers */,
-				307EA2301FAA1B5B00DE439D /* Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 		30FE6FCE1FAA13D30024D1B1 = {
 			isa = PBXGroup;
 			children = (
+				30212EFE2154BD3200F5785A /* BundleFiles */,
 				30C5F5381FAB6561003711D1 /* Assets */,
 				30FE6FF31FAA13F10024D1B1 /* Deployment */,
 				30FE6FF41FAA13FB0024D1B1 /* Documentation */,
@@ -610,7 +618,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = BundleFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -632,7 +640,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Source/Info.plist;
+				INFOPLIST_FILE = BundleFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
