@@ -10,7 +10,7 @@ import Foundation
 class AttributedStringConstructor {
   // MARK: - Fields
   /// Dictionary of attributes with ranges, separate attributes apply to relevant range
-  private var attributesWithRange = [NSRange: [NSAttributedStringKey: Any]]()
+  private var attributesWithRange = [NSRange: [NSAttributedString.Key: Any]]()
   
   /**
    Create string with attributes, that contains attributes from dictionaries
@@ -37,7 +37,7 @@ class AttributedStringConstructor {
      - newAttributes: Dictionary of attributes with values
      - range: Range in string, that will format will attributes
   */
-  open func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
+  open func addAttributes(_ newAttributes: [NSAttributedString.Key: Any], range: NSRange) {
     for (attributedKey, value) in newAttributes {
       if attributesWithRange[range] != nil {
         attributesWithRange[range]?[attributedKey] = value
@@ -54,7 +54,7 @@ class AttributedStringConstructor {
      - attribute: Attribute, that will remove
      - range: Range, that was set with attribute, range is a key for remove
   */
-  open func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
+  open func removeAttribute(_ attribute: NSAttributedString.Key, range: NSRange) {
     if attributesWithRange[range] != nil {
       attributesWithRange[range]?.removeValue(forKey: attribute)
     } else {
@@ -97,10 +97,10 @@ private extension AttributedStringConstructor {
    
    - Returns: Converted dictionary with attributes
   */
-  func convertToAttribute(dictionary: [String: Any]?) -> [NSAttributedStringKey: Any]? {
+  func convertToAttribute(dictionary: [String: Any]?) -> [NSAttributedString.Key: Any]? {
     guard let dictionary = dictionary else { return nil }
     let convertedAttributes = Dictionary(uniqueKeysWithValues:
-      dictionary.lazy.map { (NSAttributedStringKey($0.key), $0.value) }
+      dictionary.lazy.map { (NSAttributedString.Key($0.key), $0.value) }
     )
     return convertedAttributes
   }

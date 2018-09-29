@@ -12,10 +12,10 @@ open class TextFormatter: TextFormatterProtocol {
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"
-  open let textPattern: String
+    public let textPattern: String
   
   /// Symbol that will be replace by input symbols
-  open let patternSymbol: Character
+    public let patternSymbol: Character
   
   // MARK: - Init
   /**
