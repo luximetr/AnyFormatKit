@@ -48,6 +48,10 @@ open class TextInputController: TextInputDelegate {
     return true
   }
   
+  open func textInputWasAskBeginEditing(_ textInput: TextInput) {
+    notifyTextInputWasAskBeginEditing(textInput: textInput)
+  }
+  
   open func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
     notifyTextInputWillBeginEditing(textInput: textInput)
     return true
@@ -111,6 +115,13 @@ private extension TextInputController {
     observer.notifySubscribers { [weak self] subscriber in
       guard let weakSelf = self else { return }
       subscriber.textInputDidChangeText(textInput: textInput, controller: weakSelf)
+    }
+  }
+  
+  func notifyTextInputWasAskBeginEditing(textInput: TextInput) {
+    observer.notifySubscribers { [weak self] subscriber in
+      guard let weakSelf = self else { return }
+      subscriber.textInputWasAskCanBeginEditing(textInput: textInput, controller: weakSelf)
     }
   }
   

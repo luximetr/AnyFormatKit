@@ -15,7 +15,9 @@ extension TextInputView: UITextViewDelegate {
     guard
       let textInput = textView as? TextInputView,
       let textInputDelegate = textInputDelegate else { return true }
-    return textInputDelegate.textInputShouldBeginEditing(textInput)
+    let shouldBegin = textInputDelegate.textInputShouldBeginEditing(textInput)
+    textInputDelegate.textInputWasAskBeginEditing(textInput)
+    return shouldBegin
   }
   
   open func textViewDidBeginEditing(_ textView: UITextView) {

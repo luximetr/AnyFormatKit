@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol TextInputControllerObserver {
+  func textInputWasAskCanBeginEditing(textInput: TextInput, controller: TextInputController)
   func textInputDidChangeText(textInput: TextInput, controller: TextInputController)
   func textInputWillBeginEditing(textInput: TextInput, controller: TextInputController)
   func textInputDidBeginEditing(textInput: TextInput, controller: TextInputController)
@@ -17,6 +18,7 @@ public protocol TextInputControllerObserver {
 }
 
 public extension TextInputControllerObserver {
+  func textInputWasAskCanBeginEditing(textInput: TextInput, controller: TextInputController) {}
   func textInputDidChangeText(textInput: TextInput, controller: TextInputController) {}
   func textInputWillBeginEditing(textInput: TextInput, controller: TextInputController) {}
   func textInputDidBeginEditing(textInput: TextInput, controller: TextInputController) {}

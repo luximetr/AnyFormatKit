@@ -15,7 +15,9 @@ extension TextInputField: UITextFieldDelegate {
     guard
       let textInput = textField as? TextInputField,
       let textInputDelegate = textInputDelegate else { return true }
-    return textInputDelegate.textInputShouldBeginEditing(textInput)
+    let shouldBegin = textInputDelegate.textInputShouldBeginEditing(textInput)
+    textInputDelegate.textInputWasAskBeginEditing(textInput)
+    return shouldBegin
   }
   
   open func textFieldDidBeginEditing(_ textField: UITextField) {

@@ -21,6 +21,14 @@ public protocol TextInputDelegate: class {
   func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool
   
   /**
+   Calls after ask for should begin edting for text input
+   
+   - Parameters:
+     - textInput: The text input in which editing is about to begin.
+  */
+  func textInputWasAskBeginEditing(_ textInput: TextInput)
+  
+  /**
    Tells the delegate that editing began in the specified text input.
    
    - Parameters:
@@ -65,6 +73,7 @@ public protocol TextInputDelegate: class {
 /// Extension for making methods optional
 public extension TextInputDelegate {
   func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool { return true }
+  func textInputWasAskBeginEditing(_ textInput: TextInput) {}
   func textInputDidBeginEditing(_ textInput: TextInput) {}
   func textInputShouldEndEditing(_ textInput: TextInput) -> Bool { return true }
   func textInputDidEndEditing(_ textInput: TextInput) {}
