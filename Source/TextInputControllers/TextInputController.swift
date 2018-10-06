@@ -96,6 +96,7 @@ open class TextInputController: TextInputDelegate {
     } else {
       textInput.text = text
     }
+    notifyTextInputDidChangeText(textInput: textInput)
   }
 }
 
