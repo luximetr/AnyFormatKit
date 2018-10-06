@@ -15,17 +15,17 @@ open class AttributedTextInputView: UITextView {
   override open var text: String! {
     set {
       super.text = newValue
-      if !typingAttributes.isEmpty {
+      if !convertFromNSAttributedStringKeyDictionary(typingAttributes).isEmpty {
         super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
-          newValue: newValue, commonAttributes: typingAttributes)
+          newValue: newValue, commonAttributes: convertFromNSAttributedStringKeyDictionary(typingAttributes))
       }
     }
     get { return super.text }
   }
   
   /// Common attributes for all string during typing
-  private var commonAttributes = [String : Any]()
-  override open var typingAttributes: [String : Any] {
+  private var commonAttributes = [NSAttributedString.Key : Any]()
+  override open var typingAttributes: [NSAttributedString.Key : Any] {
     set { commonAttributes = newValue }
     get { return commonAttributes }
   }
@@ -42,7 +42,7 @@ open class AttributedTextInputView: UITextView {
      - newAttributes: Dictionary of attributes with values
      - range: Range in string, that will format will attributes
    */
-  open func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
+  open func addAttributes(_ newAttributes: [NSAttributedString.Key: Any], range: NSRange) {
     attributedStringConstructor.addAttributes(newAttributes, range: range)
   }
   
@@ -53,7 +53,7 @@ open class AttributedTextInputView: UITextView {
      - attribute: Attribute, that will remove
      - range: Range, that was set with attribute, range is a key for remove
    */
-  open func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
+  open func removeAttribute(_ attribute: NSAttributedString.Key, range: NSRange) {
     attributedStringConstructor.removeAttribute(attribute, range: range)
   }
   
@@ -61,4 +61,9 @@ open class AttributedTextInputView: UITextView {
   open func removeAllAttributes() {
     attributedStringConstructor.removeAllAttributes()
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKeyDictionary(_ input: [NSAttributedString.Key: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }

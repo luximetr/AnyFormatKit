@@ -9,7 +9,7 @@
 import UIKit
 
 /// Interface for text input
-public protocol TextInput: UITextInput,  {
+public protocol TextInput: UITextInput {
   /// Current string in text input
   var text: String? { set get }
   
