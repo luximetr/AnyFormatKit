@@ -139,13 +139,6 @@
 			path = Observer;
 			sourceTree = "<group>";
 		};
-		307DCD471FC2CFA700889A52 /* SumFormatters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SumFormatters;
-			sourceTree = "<group>";
-		};
 		307EA2131FAA1B5B00DE439D /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +157,6 @@
 				3032CFC121D417B1008137EE /* TextFilter */,
 				307EA2181FAA1B5B00DE439D /* TextFormatterProtocols */,
 				307EA2151FAA1B5B00DE439D /* TextInputFormatters */,
-				307DCD471FC2CFA700889A52 /* SumFormatters */,
 			);
 			path = TextFormatter;
 			sourceTree = "<group>";
