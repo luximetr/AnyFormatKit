@@ -8,7 +8,19 @@
 
 import Foundation
 
-open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
+open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
+  public func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
+    return (currentText, 0)
+  }
+  
+  public func format(text: String) -> String {
+    return text
+  }
+  
+  public func unformat(from formatted: String) -> String {
+    return formatted
+  }
+  
   open var prefix: String?
   
   open var formattedPrefix: String?
@@ -42,14 +54,12 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     guard let suffix = suffixStr else { return }
     
     let offset = (textInput.text?.count ?? 0) - suffix.count
-    
     let newCursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: offset)
     
     if let cursor = newCursorLocation {
       textInput.selectedTextRange = textInput.textRange(from: cursor, to: cursor)
     }
   }
-  
   
   /**
    Method, that allow correct character by character input with specified format
@@ -114,6 +124,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     let cursorLocation = textInput.position(from: beginning, offset: offset)
     if let cursor = cursorLocation {
       textInput.selectedTextRange = textInput.textRange(from: cursor, to: cursor)
+      
     }
   }
   

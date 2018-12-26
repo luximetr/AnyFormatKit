@@ -14,14 +14,28 @@ open class TextInputController: TextInputDelegate {
   /// Object, that conform to TextInput protocol
   var textInput: TextInput?
   
+  public var prefix: String? {
+    didSet {
+      setPrefixToTextInput()
+    }
+  }
+  
+  
   /// Formatter, that apply format for text during editing
-  open var formatter: TextInputFormatterProtocol? {
+  open var formatter: TextInputFormatter? {
     didSet {
       setPrefixToTextInput()
     }
   }
   
   public let observer = Observer<TextInputControllerObserver>()
+  
+  private let textFilter = DefaultTextFilter()
+  
+  public var allowedSymbolsRegex: String {
+    set { textFilter.allowedSymbolsRegex = newValue }
+    get { return textFilter.allowedSymbolsRegex }
+  }
   
   // MARK: - Init
   /**
@@ -38,11 +52,24 @@ open class TextInputController: TextInputDelegate {
   open func textInput(_ textInput: TextInput,
                  shouldChangeTextIn range: NSRange,
                  replacementText text: String) -> Bool {
+    if let formattedPrefix = formattedPrefix,
+      !formattedPrefix.isEmpty,
+      range.location < formattedPrefix.count {
+      return false
+    }
     if let formatter = formatter {
-      let shouldChange = formatter.shouldChangeTextIn(
-        textInput: textInput, range: range, replacementString: text)
+      
+      let replacementFiltered = textFilter.filter(string: text)
+      let result = formatter.formatInput(currentText: textInput.text ?? "", range: range, replacementString: replacementFiltered)
+      
+      textInput.text = result.formattedText
+      
+      if let cursorLocation = textInput.position(from: textInput.beginningOfDocument,
+                                                 offset: result.caretBeginOffset) {
+        textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
+      }
         notifyTextInputDidChangeText(textInput: textInput)
-      return shouldChange
+      return false
     }
     notifyTextInputDidChangeText(textInput: textInput)
     return true
@@ -58,9 +85,9 @@ open class TextInputController: TextInputDelegate {
   }
     
   open func textInputDidBeginEditing(_ textInput: TextInput) {
-    if let formatter = formatter {
-      formatter.didBeginEditing(textInput)
-    }
+//    if let formatter = formatter {
+//      formatter.didBeginEditing(textInput)
+//    }
     notifyTextInputDidBeginEditing(textInput: textInput)
   }
   
@@ -82,8 +109,8 @@ open class TextInputController: TextInputDelegate {
   
   open func unformattedText() -> String? {
     guard let textInput = textInput else { return nil }
-    if let formatter = formatter {
-      return formatter.unformattedText(from: textInput.text)
+    if let formatter = formatter, let text = textInput.text {
+      return formatter.unformat(from: text)
     } else {
       return textInput.text
     }
@@ -91,8 +118,8 @@ open class TextInputController: TextInputDelegate {
   
   open func setAndFormatText(_ text: String?) {
     guard let textInput = textInput else { return }
-    if let formatter = formatter {
-      textInput.text = formatter.formattedText(from: text)
+    if let formatter = formatter, let text = text {
+      textInput.text = formatter.format(text: text)
     } else {
       textInput.text = text
     }
@@ -104,9 +131,14 @@ open class TextInputController: TextInputDelegate {
 private extension TextInputController {
   /// Set and format current prefix
   func setPrefixToTextInput() {
-    if let formattedPrefix = formatter?.formattedPrefix {
+    if let formattedPrefix = formattedPrefix {
       textInput?.text = formattedPrefix
     }
+  }
+  
+  var formattedPrefix: String? {
+    guard let formatter = formatter, let prefix = prefix else { return nil }
+    return formatter.format(text: prefix)
   }
 }
 
