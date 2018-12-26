@@ -66,13 +66,7 @@
 		306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatBoundaryTests.swift; sourceTree = "<group>"; };
 		306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumPrefixSufixFormatterTests.swift; sourceTree = "<group>"; };
 		306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatParsingTests.swift; sourceTree = "<group>"; };
-		307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
-		307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
 		307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumUSFormatTests.swift; sourceTree = "<group>"; };
-		307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
-		307EA2171FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
-		307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
-		307EA21A1FAA1B5B00DE439D /* TextFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatterProtocol.swift; sourceTree = "<group>"; };
 		307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputField.swift; sourceTree = "<group>"; };
 		307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputView.swift; sourceTree = "<group>"; };
 		307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringConstructor.swift; sourceTree = "<group>"; };
@@ -148,8 +142,6 @@
 		307DCD471FC2CFA700889A52 /* SumFormatters */ = {
 			isa = PBXGroup;
 			children = (
-				307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */,
-				307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */,
 			);
 			path = SumFormatters;
 			sourceTree = "<group>";
@@ -182,8 +174,6 @@
 			children = (
 				3032CFBE21D412E1008137EE /* DefaultTextFormatter.swift */,
 				3032CFBD21D412E1008137EE /* DefaultTextInputFormatter.swift */,
-				307EA2171FAA1B5B00DE439D /* TextFormatter.swift */,
-				307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */,
 				30A308952072BA7300CFC062 /* CaretPositionCorrector.swift */,
 			);
 			path = TextInputFormatters;
@@ -194,8 +184,6 @@
 			children = (
 				3032CFB921D412BE008137EE /* TextFormatter.swift */,
 				3032CFBA21D412BE008137EE /* TextInputFormatter.swift */,
-				307EA21A1FAA1B5B00DE439D /* TextFormatterProtocol.swift */,
-				307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */,
 			);
 			path = TextFormatterProtocols;
 			sourceTree = "<group>";
