@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TextFilter {
+public protocol TextFilter {
   var allowedSymbolsRegex: String { set get }
   func filter(string: String) -> String
 }
