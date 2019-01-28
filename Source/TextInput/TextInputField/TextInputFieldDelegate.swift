@@ -38,7 +38,7 @@ public protocol TextInputFieldDelegate: class {
      - reason: The reason why editing ended. Use this field to determine whether to incorporate the text editing changes or abandon them.
   */
   @available(iOS 10.0, *)
-  func textInputDidEndEditing(_ textInput: TextInputField, reason: UITextFieldDidEndEditingReason)
+  func textInputDidEndEditing(_ textInput: TextInputField, reason: UITextField.DidEndEditingReason)
 }
 
 // Default implementation
@@ -47,5 +47,5 @@ public extension TextInputFieldDelegate {
   func textInputShouldClear(_ textInput: TextInputField) -> Bool { return true }
   func textInputShouldReturn(_ textInput: TextInputField) -> Bool { return true }
   @available(iOS 10.0, *)
-  func textInputDidEndEditing(_ textInput: TextInputField, reason: UITextFieldDidEndEditingReason) {}
+  func textInputDidEndEditing(_ textInput: TextInputField, reason: UITextField.DidEndEditingReason) {}
 }

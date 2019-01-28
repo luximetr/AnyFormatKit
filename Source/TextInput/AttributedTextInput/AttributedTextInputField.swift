@@ -19,8 +19,8 @@ open class AttributedTextInputField: UITextField {
   }
   
   /// Common attributes for all string during typing
-  private var commonAttributes = [String : Any]()
-  override open var defaultTextAttributes: [String : Any] {
+  private var commonAttributes = [NSAttributedString.Key : Any]()
+  override open var defaultTextAttributes: [NSAttributedString.Key : Any] {
     set { commonAttributes = newValue }
     get { return commonAttributes }
   }
@@ -37,7 +37,7 @@ open class AttributedTextInputField: UITextField {
      - newAttributes: Dictionary of attributes with values
      - range: Range in string, that will format will attributes
    */
-  open func addAttributes(_ newAttributes: [NSAttributedStringKey: Any], range: NSRange) {
+  open func addAttributes(_ newAttributes: [NSAttributedString.Key: Any], range: NSRange) {
     attributedStringConstructor.addAttributes(newAttributes, range: range)
   }
   
@@ -48,7 +48,7 @@ open class AttributedTextInputField: UITextField {
      - attribute: Attribute, that will remove
      - range: Range, that was set with attribute, range is a key for remove
    */
-  open func removeAttribute(_ attribute: NSAttributedStringKey, range: NSRange) {
+  open func removeAttribute(_ attribute: NSAttributedString.Key, range: NSRange) {
     attributedStringConstructor.removeAttribute(attribute, range: range)
   }
   
