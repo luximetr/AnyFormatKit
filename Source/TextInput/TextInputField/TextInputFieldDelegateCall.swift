@@ -75,7 +75,7 @@ extension TextInputField: UITextFieldDelegate {
   }
   
   @available(iOS 10.0, *)
-  open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+  open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
     guard let textInput = textField as? TextInputField else { return }
     textInputFieldDelegates.invoke { delegate in
       delegate.textInputDidEndEditing(textInput, reason: reason)
