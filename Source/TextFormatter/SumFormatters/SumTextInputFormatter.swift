@@ -140,7 +140,12 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     if range.length == 1 {
       if range.location > text.count - (suffixStr?.count ?? 0) - 1 ||
         range.location < (prefix?.count ?? 0)
-      { return nil }
+      {
+        return nil
+      } else if let deleteRange = Range(range, in: text), text[deleteRange] == groupingSeparator {
+        let newRange = NSRange(location: range.location - 1, length: range.length )
+        return newRange
+      }
     } else {
       
       var lowerBound = range.lowerBound
