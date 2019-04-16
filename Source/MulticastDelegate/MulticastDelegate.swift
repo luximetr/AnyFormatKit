@@ -12,7 +12,10 @@ import Foundation
 open class MulticastDelegate <T> {
   /// List of delegates
   private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
-  
+
+  /// Public init. The generated init is 'internal'
+  public init() {}
+
   /**
    Add delegate in list of delegates.
    
