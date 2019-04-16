@@ -90,10 +90,16 @@ private extension ViewController {
     sumInputField.tintColor = ColorConstants.gray
     
     sumInputField.textInputDelegates.add(delegate: self)
+    sumInputField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     sumInputField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
     sumInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 2))
+  }
+
+  @objc
+  func textDidChange(_ field: UITextField) {
+    print("textDidChange \(field)")
   }
   
   func configureTextView() {

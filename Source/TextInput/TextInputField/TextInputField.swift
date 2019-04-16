@@ -11,7 +11,10 @@ import UIKit
 open class TextInputField: AttributedTextInputField, TextInput {
   // MARK: - TextInput
   open var content: String? {
-    set { super.text = newValue }
+    set {
+      super.text = newValue
+      sendActions(for: .editingChanged)
+    }
     get { return super.text }
   }
   
