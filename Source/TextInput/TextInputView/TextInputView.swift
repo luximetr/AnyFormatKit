@@ -38,10 +38,10 @@ open class TextInputView: AttributedTextInputView, TextInput {
     get { return nil }
   }
   
-  @available(*, unavailable, message: "use textInputDelegates and inputTextViewDelegates instead")
+//  @available(*, unavailable, message: "use textInputDelegates and inputTextViewDelegates instead")
   open override var delegate: UITextViewDelegate? {
-    set {}
-    get { return nil }
+    set { super.delegate = newValue }
+    get { return super.delegate }
   }
   
   // MARK: - Init

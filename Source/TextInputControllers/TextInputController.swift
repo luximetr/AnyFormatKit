@@ -40,10 +40,18 @@ open class TextInputController: TextInputDelegate {
   open func textInput(_ textInput: TextInput,
                  shouldChangeTextIn range: NSRange,
                  replacementText text: String) -> Bool {
+    if let formattedPrefix = formattedPrefix,
+      !formattedPrefix.isEmpty,
+      range.location < formattedPrefix.count {
+      return false
+    }
     if let formatter = formatter {
-      let shouldChange = formatter.shouldChangeTextIn(
-        textInput: textInput, range: range, replacementString: text)
-      return shouldChange
+      let result = formatter.formatInput(currentText: textInput.content ?? "", range: range, replacementString: text)
+      textInput.content = result.formattedText
+      if let cursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: result.caretBeginOffset) {
+        textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
+      }
+      return false
     }
     return true
   }
@@ -92,5 +100,9 @@ private extension TextInputController {
     if let formattedPrefix = formatter?.formattedPrefix {
       textInput?.content = formattedPrefix
     }
+  }
+  
+  var formattedPrefix: String? {
+    return formatter?.formattedPrefix
   }
 }
