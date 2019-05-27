@@ -71,7 +71,20 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
   }
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
-    return ("", 0)
+    let unformattedRange = self.unformattedRange(from: range)
+    let oldUnformattedText = (unformattedText(from: currentText) ?? "") as NSString
+    
+    let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
+    let formattedText = self.formattedText(from: newText) ?? ""
+    
+    let caretOffset = getCorrectedCaretPosition(range: range, replacementString: text)
+    
+    return (formattedText, caretOffset)
+  }
+  
+  private func getCorrectedCaretPosition(range: NSRange, replacementString: String) -> Int {
+    let offset = caretPositionCorrector.calculateCaretPositionOffset(originalRange: range, replacementFiltered: replacementString)
+    return offset
   }
 }
 
