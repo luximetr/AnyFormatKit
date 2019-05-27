@@ -23,6 +23,8 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
   // Regular expression, that discript allowed characters for input
   open var allowedSymbolsRegex: String? = nil
   
+  private let caretPositionCorrector: CaretPositionCorrector
+  
   // MARK: - Init
   /**
    Initializes formatter with patternString
@@ -36,6 +38,7 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
        patternSymbol: Character = TextFormatterConstants.defaultPatternSymbol,
        prefix: String? = nil) {
     self.prefix = prefix
+    self.caretPositionCorrector = CaretPositionCorrector(textPattern: textPattern, patternSymbol: patternSymbol)
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
   
@@ -65,6 +68,10 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
     correctCaretPosition(in: textInput, originalRange: range, replacementFiltered: replacementFiltered)
     
     return false
+  }
+  
+  open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
+    return ("", 0)
   }
 }
 
@@ -117,76 +124,13 @@ private extension TextInputFormatter {
   */
   func correctCaretPosition(
     in textInput: TextInput, originalRange range: NSRange, replacementFiltered: String) {
-    var offset = 0
-    if replacementFiltered.isEmpty {
-      offset = offsetForRemove(current: range.location)
-    } else {
-      offset = offsetForInsert(from: range.location, replacementLength: replacementFiltered.count)
-    }
+    let offset = caretPositionCorrector.calculateCaretPositionOffset(
+      originalRange: range, replacementFiltered: replacementFiltered)
     if let cursorLocation = textInput.position(from: textInput.beginningOfDocument,
                                                offset: offset) {
       DispatchQueue.main.async {
         textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
       }
-    }
-  }
-  
-  /**
-   Find indexes of patterns symbols in range
-   
-   - Parameters:
-     - searchRange: Range in string for searching indexes
-   
-   - Returns: Array of indexes of characters, that equal to patternSymbol in textPattern
-  */
-  func indexesOfPatternSymbols(in searchRange: Range<String.Index>) -> [String.Index] {
-    var indexes: [String.Index] = []
-    var tempRange = searchRange
-    while let range = textPattern.range(
-      of: String(patternSymbol), options: .caseInsensitive, range: tempRange, locale: nil) {
-        tempRange = range.upperBound..<tempRange.upperBound
-        indexes.append(range.lowerBound)
-    }
-    return indexes
-  }
-  
-  /**
-   Calculate offset for caret, when characters will remove
-   
-   - Parameters:
-     - current: Current location of caret
-   
-   - Returns: Offset for caret from beginning of textPattern while remove characters in textInput
-  */
-  func offsetForRemove(current location: Int) -> Int {
-    let startIndex = textPattern.startIndex
-    let searchRange = startIndex..<textPattern.index(startIndex, offsetBy: location)
-    let indexes = indexesOfPatternSymbols(in: searchRange)
-    
-    if let lastIndex = indexes.last {
-      return lastIndex.utf16Offset(in: textPattern) + 1
-    }
-    return 0
-  }
-  
-  /**
-   Calculate offset for caret, when characters will insert
-   
-   - Parameters:
-     - from: Current location of caret
-     - replacementLength: Length of replacement string
-   
-   - Returns: Offset for caret from beginning of textPattern while insert characters in textInput
-  */
-  func offsetForInsert(from location: Int, replacementLength: Int) -> Int {
-    let startIndex = textPattern.index(textPattern.startIndex, offsetBy: location)
-    let searchRange = startIndex..<textPattern.endIndex
-    let indexes = indexesOfPatternSymbols(in: searchRange)
-    
-    if replacementLength <= indexes.count {
-      return textPattern.distance(from: textPattern.startIndex, to: indexes[replacementLength - 1]) + 1
-    } else {
-      return textPattern.distance(from: textPattern.startIndex, to: textPattern.endIndex)
     }
   }
 }

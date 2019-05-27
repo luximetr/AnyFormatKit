@@ -35,6 +35,7 @@
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
 		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
+		30D7EAA1229C54840014E31B /* CaretPositionCorrector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */; };
 		30FE6FE21FAA13D30024D1B1 /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */; };
 		30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */; };
 		30FE70541FAA16890024D1B1 /* AnyFormatKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */; };
@@ -81,6 +82,7 @@
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
+		30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositionCorrector.swift; sourceTree = "<group>"; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTests.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				307EA22B1FAA1B5B00DE439D /* TextInputController.swift */,
+				30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */,
 			);
 			path = TextInputControllers;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				307EA23D1FAA1B5B00DE439D /* TextInputViewDelegate.swift in Sources */,
 				307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */,
 				307EA2401FAA1B5B00DE439D /* TextInputController.swift in Sources */,
+				30D7EAA1229C54840014E31B /* CaretPositionCorrector.swift in Sources */,
 				307EA2371FAA1B5B00DE439D /* AttributedStringConstructor.swift in Sources */,
 				307EA23C1FAA1B5B00DE439D /* TextInput.swift in Sources */,
 				307EA2421FAA1B5B00DE439D /* MulticastDelegate.swift in Sources */,

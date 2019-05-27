@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
+
 /// Interface for formatter of TextInput, that allow change format of text during input
 public protocol TextInputFormatterProtocol: TextFormatterProtocol {
   /// String, that always will be at beggining of textPattern text during typing
@@ -42,6 +44,9 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
     
      */
   func didBeginEditing(_ textInput: TextInput)
+  
+  func formatInput(
+    currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue
 }
 
   //MARK: - Optional methods

@@ -96,6 +96,10 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     return false
   }
   
+  open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
+    return ("", 0)
+  }
+  
   // MARK: - Private
   private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
     var offset = range.location + range.length + (newString.count - oldString.count)
