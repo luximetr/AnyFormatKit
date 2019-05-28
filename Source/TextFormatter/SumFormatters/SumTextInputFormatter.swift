@@ -63,8 +63,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     } else {
       if !isCorrectInserting(from: currentText, at: internalRange) { return emptyResult }
     }
-    
-    guard let oldString = currentText as NSString? else { return emptyResult }
+    let oldString = currentText as NSString
     let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
     
     if decimalSeparator != groupingSeparator {
@@ -73,13 +72,11 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     guard var newUnformatted = unformattedText(from: newString) else { return emptyResult }
     
     newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
-    let newFormatted = formattedText(from: newUnformatted)
+    let newFormatted = formattedText(from: newUnformatted) ?? ""
     
+    let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormatted)
     
-    guard let newFormattedUnwrapped = newFormatted else { return emptyResult }
-    let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)
-    
-    return (newFormattedUnwrapped, caretOffset)
+    return (newFormatted, caretOffset)
   }
   
   
