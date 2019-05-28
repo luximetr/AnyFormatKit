@@ -15,7 +15,7 @@ open class AttributedTextInputField: UITextField {
   override open var text: String? {
     set { super.attributedText = attributedStringConstructor.attributedStringWithAttributes(
       newValue: newValue, commonAttributes: convertFromNSAttributedStringKeyDictionary(defaultTextAttributes)) }
-    get { return super.attributedText?.string }
+    get { return super.text }
   }
   
   /// Common attributes for all string during typing

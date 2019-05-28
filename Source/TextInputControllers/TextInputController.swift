@@ -46,7 +46,8 @@ open class TextInputController: TextInputDelegate {
       return false
     }
     if let formatter = formatter {
-      let result = formatter.formatInput(currentText: textInput.content ?? "", range: range, replacementString: text)
+      let replacementFiltered = text.filter(regex: formatter.allowedSymbolsRegex)
+      let result = formatter.formatInput(currentText: textInput.content ?? "", range: range, replacementString: replacementFiltered)
       textInput.content = result.formattedText
       if let cursorLocation = textInput.position(from: textInput.beginningOfDocument, offset: result.caretBeginOffset) {
         textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
