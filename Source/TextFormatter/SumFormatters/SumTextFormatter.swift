@@ -42,14 +42,21 @@ open class SumTextFormatter: TextFormatterProtocol {
   }
   
   
+  private let unformattedDecimalSeparator = "."
+  private let negativePrefix = "-"
+  
   open func formattedText(from unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
     guard !unformatted.isEmpty else { return "" }
     guard unformatted != negativePrefix else { return negativePrefix }
-    let correctedUnformatted = unformatted.replacingOccurrences(of: ",", with: unformattedDecimalSeparator)
+    var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
     let number = NSDecimalNumber(string: correctedUnformatted)
     numberFormatter.minimumFractionDigits = calculateMinimumFractionDigits(unformatted: correctedUnformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
     return numberFormatter.string(from: number)
+  }
+  
+  private func correctUnformatted(_ unformatted: String, decimalSeparator: String) -> String {
+    return unformatted.replacingOccurrences(of: ",", with: decimalSeparator)
   }
   
   private var decimalSeparator: String {
@@ -67,17 +74,6 @@ open class SumTextFormatter: TextFormatterProtocol {
     guard parts.count > 1 else { return 0 }
     return parts[1].count
   }
-  
-  private let unformattedDecimalSeparator = "."
-  private let negativePrefix = "-"
-  private var unformattedNumberFormatter: NumberFormatter = {
-    let numberFormatter = NumberFormatter()
-    numberFormatter.allowsFloats = true
-    numberFormatter.maximumFractionDigits = Int.max
-    numberFormatter.maximumIntegerDigits = Int.max
-    numberFormatter.decimalSeparator = "."
-    return numberFormatter
-  }()
   
   open func unformattedText(from formatted: String?) -> String? {
     guard let number = numberFormatter.number(from: formatted ?? "") else { return nil }
