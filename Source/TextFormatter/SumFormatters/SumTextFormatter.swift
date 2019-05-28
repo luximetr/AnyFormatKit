@@ -37,7 +37,7 @@ open class SumTextFormatter: TextFormatterProtocol {
     numberFormatter.allowsFloats = true
     numberFormatter.usesGroupingSeparator = true
     numberFormatter.roundingMode = .down
-    numberFormatter.negativePrefix = "-"
+    numberFormatter.negativePrefix = result.prefix + "-"
     self.numberFormatter = numberFormatter
   }
   

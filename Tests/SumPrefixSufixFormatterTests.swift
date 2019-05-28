@@ -74,6 +74,15 @@ class SumPrefixSufixFormatterTests: XCTestCase {
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
   
+  func testDolarPrefixNegativeValueFormatting() {
+    let formatter = SumTextFormatter(textPattern: "$#,###.##")
+    let initialString = "-123.45"
+    let expectedString = "$-123.45"
+    let formattedString = formatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
+  
   func testDotPrefixFormatting() {
     let formatter = SumTextFormatter(textPattern: ".#,###.##")
     let initialString = "123.45"
