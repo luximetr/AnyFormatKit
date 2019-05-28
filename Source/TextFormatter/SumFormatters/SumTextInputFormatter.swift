@@ -97,8 +97,37 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
   }
 
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
+    var internalRange = range
+    var isDecimalSeparatorInsertion = false
+    let emptyResult = (currentText, range.upperBound)
     
-    return ("", 0)
+    if text.isEmpty {
+      let newRange = correctRangeForDeleting(from: currentText, at: internalRange)
+      guard let newRangeUnwrapped = newRange else { return emptyResult }
+      internalRange = newRangeUnwrapped
+    } else if text == "," || text == "." {
+      isDecimalSeparatorInsertion = true
+      if !isCorrectSeparatorInserting() { return emptyResult }
+    } else {
+      if !isCorrectInserting(from: currentText, at: internalRange) { return emptyResult }
+    }
+    
+    guard let oldString = currentText as NSString? else { return emptyResult }
+    let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
+    
+    if decimalSeparator != groupingSeparator {
+      guard newString.components(separatedBy: decimalSeparator).count < 3 else { return emptyResult }
+    }
+    guard var newUnformatted = unformattedText(from: newString) else { return emptyResult }
+    
+    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
+    let newFormatted = formattedText(from: newUnformatted)
+    
+    
+    guard let newFormattedUnwrapped = newFormatted else { return emptyResult }
+    let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)
+    
+    return (newFormattedUnwrapped, caretOffset)
   }
 
   // MARK: - Private
