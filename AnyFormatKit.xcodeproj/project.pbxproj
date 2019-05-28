@@ -11,7 +11,6 @@
 		306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */; };
 		306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */; };
 		306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */; };
-		307DCD4A1FC2CFA700889A52 /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */; };
 		307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */; };
 		307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */; };
 		307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* TextInputFormatter.swift */; };
@@ -36,6 +35,8 @@
 		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
 		30D7EAA1229C54840014E31B /* CaretPositionCorrector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */; };
+		30D7EAA4229C65570014E31B /* SumFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7EAA3229C65570014E31B /* SumFormatParser.swift */; };
+		30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */; };
 		30FE6FE21FAA13D30024D1B1 /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */; };
 		30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */; };
 		30FE70541FAA16890024D1B1 /* AnyFormatKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */; };
@@ -83,6 +84,8 @@
 		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
 		30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositionCorrector.swift; sourceTree = "<group>"; };
+		30D7EAA3229C65570014E31B /* SumFormatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParser.swift; sourceTree = "<group>"; };
+		30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParserTests.swift; sourceTree = "<group>"; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTests.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 		307DCD471FC2CFA700889A52 /* SumFormatters */ = {
 			isa = PBXGroup;
 			children = (
+				30D7EAA3229C65570014E31B /* SumFormatParser.swift */,
 				307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */,
 				307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */,
 			);
@@ -236,6 +240,7 @@
 				306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */,
 				306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */,
 				306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */,
+				30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */,
 			);
 			name = SumFormatTests;
 			sourceTree = "<group>";
@@ -433,13 +438,13 @@
 				307EA23A1FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift in Sources */,
 				307EA2311FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */,
 				307EA23E1FAA1B5B00DE439D /* TextInputView.swift in Sources */,
+				30D7EAA4229C65570014E31B /* SumFormatParser.swift in Sources */,
 				307EA2391FAA1B5B00DE439D /* TextInputFieldDelegate.swift in Sources */,
 				307EA2341FAA1B5B00DE439D /* TextFormatterProtocol.swift in Sources */,
 				307EA2381FAA1B5B00DE439D /* TextInputDelegate.swift in Sources */,
 				307EA23F1FAA1B5B00DE439D /* TextInputViewDelegateCall.swift in Sources */,
 				307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */,
 				307EA23B1FAA1B5B00DE439D /* TextInputField.swift in Sources */,
-				307DCD4A1FC2CFA700889A52 /* SumTextInputFormatter.swift in Sources */,
 				307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */,
 				307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */,
 				307EA2321FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
@@ -461,6 +466,7 @@
 				306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */,
 				306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */,
 				30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */,
+				30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */,
 				306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */,
 				307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */,
 				30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */,
