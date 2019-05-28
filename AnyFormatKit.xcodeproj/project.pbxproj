@@ -39,11 +39,11 @@
 		30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */; };
 		30D7EAA8229D343E0014E31B /* SumTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */; };
 		30D7EAAB229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md in Resources */ = {isa = PBXBuildFile; fileRef = 30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */; };
+		30D7EAAD229D56D20014E31B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 30D7EAAC229D56D20014E31B /* README.md */; };
 		30FE6FE21FAA13D30024D1B1 /* AnyFormatKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */; };
 		30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */; };
 		30FE70541FAA16890024D1B1 /* AnyFormatKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */; };
 		30FE70561FAA16910024D1B1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70551FAA16910024D1B1 /* LICENSE */; };
-		30FE70581FAA16970024D1B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70571FAA16970024D1B1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,13 +89,13 @@
 		30D7EAA3229C65570014E31B /* SumFormatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParser.swift; sourceTree = "<group>"; };
 		30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParserTests.swift; sourceTree = "<group>"; };
 		30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 0.2.0 MigrationGuide.md"; sourceTree = "<group>"; };
+		30D7EAAC229D56D20014E31B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTests.swift; sourceTree = "<group>"; };
 		30FE6FE81FAA13D30024D1B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyFormatKit.podspec; sourceTree = "<group>"; };
 		30FE70551FAA16910024D1B1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		30FE70571FAA16970024D1B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,7 +300,7 @@
 		30FE6FF41FAA13FB0024D1B1 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
-				30FE70571FAA16970024D1B1 /* README.md */,
+				30D7EAAC229D56D20014E31B /* README.md */,
 				30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
 			);
 			path = Documentation;
@@ -401,8 +401,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D7EAAD229D56D20014E31B /* README.md in Resources */,
 				30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */,
-				30FE70581FAA16970024D1B1 /* README.md in Resources */,
 				30D7EAAB229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md in Resources */,
 				30BD66911FAC789A002BFA4A /* demo.gif in Resources */,
 				30FE70561FAA16910024D1B1 /* LICENSE in Resources */,

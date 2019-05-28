@@ -43,7 +43,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ## Migration Guides
 
-- [AnyFormatKit 0.2.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/develop/AnyFormatKit%200.2.0%20MigrationGuide.md)
+- [AnyFormatKit 0.2.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%200.2.0%20MigrationGuide.md)
 
 ## Installation
 
@@ -67,7 +67,7 @@ $ pod install
 To integrate AnyFormatKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "luximetr/AnyFormatKit" ~> 0.1.1
+github "luximetr/AnyFormatKit" ~> 0.2.0
 ```
 
 Run `carthage update` to build the framework and drag the built `AnyFormatKit.framework` into your Xcode project.
