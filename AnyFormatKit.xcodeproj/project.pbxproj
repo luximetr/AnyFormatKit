@@ -87,6 +87,7 @@
 		30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositionCorrector.swift; sourceTree = "<group>"; };
 		30D7EAA3229C65570014E31B /* SumFormatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParser.swift; sourceTree = "<group>"; };
 		30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatParserTests.swift; sourceTree = "<group>"; };
+		30D7EAA9229D4D3F0014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 0.2.0 MigrationGuide.md"; sourceTree = "<group>"; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTests.swift; sourceTree = "<group>"; };
@@ -299,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				30FE70571FAA16970024D1B1 /* README.md */,
+				30D7EAA9229D4D3F0014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
 			);
 			name = Documentation;
 			sourceTree = "<group>";

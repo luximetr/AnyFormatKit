@@ -32,6 +32,9 @@ open class SumTextFormatter: TextFormatterProtocol {
   open var decimalSeparator: String {
     return numberFormatter.decimalSeparator
   }
+  open var numberOfCharactersInGroup: Int {
+    return numberFormatter.groupingSize
+  }
   
   public init(numberFormatter: NumberFormatter) {
     self.numberFormatter = numberFormatter

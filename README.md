@@ -41,6 +41,10 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 - Swift 4.0+
 - Xcode 9.0+
 
+## Migration Guides
+
+- [AnyFormatKit 0.2.0 MigrationGuide]()
+
 ## Installation
 
 ### CocoaPods
