@@ -32,7 +32,7 @@ open class SumTextFormatter: TextFormatterProtocol {
   open var decimalSeparator: String {
     return numberFormatter.decimalSeparator
   }
-  open var numberOfCharactersInGroup: Int {
+  open var groupingSize: Int {
     return numberFormatter.groupingSize
   }
   
@@ -123,14 +123,5 @@ open class SumTextFormatter: TextFormatterProtocol {
       .replacingOccurrences(of: groupingSeparator, with: "")
     
     return unformattedString
-  }
-  
-  @available(*, deprecated, message: "Use suffix: String instead")
-  open var suffixStr: String? {
-    return numberFormatter.positiveSuffix
-  }
-  @available(*, deprecated, message: "Use prefix: String instead")
-  open var prefixStr: String? {
-    return numberFormatter.positivePrefix
   }
 }

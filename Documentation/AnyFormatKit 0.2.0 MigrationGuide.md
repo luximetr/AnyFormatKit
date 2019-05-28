@@ -20,22 +20,6 @@ Now maximumFractionDigits parse from format (number of '#' after decimal separat
 SumTextInputFormatter(textPattern: "#.###,#### $") // 4 '#' after ',' - maximumFractionDigits
 ```
 
-#### Number of characters in group
-
-Variable. that allow control number of characters in group now get-only.
-
-```swift
-// var numberOfCharactersInGroup = 3
-open var numberOfCharactersInGroup: Int {
-  return numberFormatter.groupingSize
-}
-```
-Now numberOfCharactersInGroup parse from format (number of '#' between grouping separator and decimal separator).
-
-```swift
-SumTextInputFormatter(textPattern: "#.###,#### $") // 3 '#' between '.' and ',' - numberOfCharactersInGroup
-```
-
 ## Updates 
 
 #### Format input method
