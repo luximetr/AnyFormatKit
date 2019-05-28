@@ -9,7 +9,6 @@
 import Foundation
 
 open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
-  open var prefix: String?
 
   open var formattedPrefix: String?
 
@@ -26,8 +25,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
    */
   public override init(textPattern: String, patternSymbol: Character = "#") {
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
-    self.prefix = prefixStr
-    self.formattedPrefix = prefixStr
+    self.formattedPrefix = prefix
   }
 
   // MARK: - Public
@@ -39,7 +37,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
 
    */
   open func didBeginEditing(_ textInput: TextInput) {
-    guard let suffix = suffixStr else { return }
+    guard let suffix = suffix else { return }
 
     let offset = (textInput.content?.count ?? 0) - suffix.count
 
@@ -48,52 +46,6 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     if let cursor = newCursorLocation {
       textInput.selectedTextRange = textInput.textRange(from: cursor, to: cursor)
     }
-  }
-
-
-  /**
-   Method, that allow correct character by character input with specified format
-
-   - Parameters:
-   - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
-   - range: Range, that determine which symbols must to be replaced
-   - replacementString: String, that will replace old content in determined range
-
-   - Returns: Always return false (correct of textInput's content in method's body)
-   */
-  open func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
-
-    var internalRange = range
-    var isDecimalSeparatorInsertion = false
-
-    if text.isEmpty {
-      let newRange = correctRangeForDeleting(from: textInput.content, at: internalRange)
-      guard let newRangeUnwrapped = newRange else { return false }
-      internalRange = newRangeUnwrapped
-    } else if text == "," || text == "." {
-      isDecimalSeparatorInsertion = true
-      if !isCorrectSeparatorInserting() { return false }
-    } else {
-      if !isCorrectInserting(from: textInput.content, at: internalRange) { return false }
-    }
-
-    guard let oldString = textInput.content as NSString? else { return false }
-    let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
-
-    if decimalSeparator != groupingSeparator {
-      guard newString.components(separatedBy: decimalSeparator).count < 3 else { return false }
-    }
-    guard var newUnformatted = unformattedText(from: newString) else { return false }
-
-    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
-    let newFormatted = formattedText(from: newUnformatted)
-
-    textInput.content = newFormatted
-
-    guard let newFormattedUnwrapped = newFormatted else { return false }
-    correctCarretPosition(textInput: textInput, range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)
-
-    return false
   }
 
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
@@ -129,12 +81,59 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     
     return (newFormattedUnwrapped, caretOffset)
   }
+  
+  
+  /**
+   Method, that allow correct character by character input with specified format
+   
+   - Parameters:
+   - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
+   - range: Range, that determine which symbols must to be replaced
+   - replacementString: String, that will replace old content in determined range
+   
+   - Returns: Always return false (correct of textInput's content in method's body)
+   */
+  @available(*, deprecated, message: "use formatInput() instead")
+  open func shouldChangeTextIn(textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
+    
+    var internalRange = range
+    var isDecimalSeparatorInsertion = false
+    
+    if text.isEmpty {
+      let newRange = correctRangeForDeleting(from: textInput.content, at: internalRange)
+      guard let newRangeUnwrapped = newRange else { return false }
+      internalRange = newRangeUnwrapped
+    } else if text == "," || text == "." {
+      isDecimalSeparatorInsertion = true
+      if !isCorrectSeparatorInserting() { return false }
+    } else {
+      if !isCorrectInserting(from: textInput.content, at: internalRange) { return false }
+    }
+    
+    guard let oldString = textInput.content as NSString? else { return false }
+    let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
+    
+    if decimalSeparator != groupingSeparator {
+      guard newString.components(separatedBy: decimalSeparator).count < 3 else { return false }
+    }
+    guard var newUnformatted = unformattedText(from: newString) else { return false }
+    
+    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
+    let newFormatted = formattedText(from: newUnformatted)
+    
+    textInput.content = newFormatted
+    
+    guard let newFormattedUnwrapped = newFormatted else { return false }
+    correctCarretPosition(textInput: textInput, range: internalRange, oldString: String(oldString), newString: newFormattedUnwrapped)
+    
+    return false
+  }
 
   // MARK: - Private
   private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
     var offset = range.location + range.length + (newString.count - oldString.count)
     if oldString.isEmpty {
-      offset -= suffixStr?.count ?? 0
+      offset -= suffix?.count ?? 0
     }
     if offset < prefix?.count ?? 0 {
       offset = prefix?.count ?? 0
@@ -172,7 +171,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     guard let text = string else { return nil }
 
     if range.length == 1 {
-      if range.location > text.count - (suffixStr?.count ?? 0) - 1 ||
+      if range.location > text.count - (suffix?.count ?? 0) - 1 ||
         range.location < (prefix?.count ?? 0)
       {
         return nil
@@ -189,8 +188,8 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
         lowerBound = (prefix?.count ?? 0)
       }
 
-      if range.upperBound > text.count - (suffixStr?.count ?? 0)  {
-        upperBound = text.count - (suffixStr?.count ?? 0)
+      if range.upperBound > text.count - (suffix?.count ?? 0)  {
+        upperBound = text.count - (suffix?.count ?? 0)
       }
 
       let newRange = NSRange(location: lowerBound, length: upperBound - lowerBound)
@@ -204,7 +203,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     guard let text = string else { return false }
     guard let unformated = unformattedText(from: string) else { return false }
 
-    if range.location > (text.count - (suffixStr?.count ?? 0)) ||
+    if range.location > (text.count - (suffix?.count ?? 0)) ||
       range.location < (prefix?.count ?? 0)
     { return false }
 

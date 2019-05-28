@@ -18,10 +18,12 @@ open class SumTextFormatter: TextFormatterProtocol {
   open var maximumDecimalCharacters: Int {
     return numberFormatter.maximumFractionDigits
   }
-  open var suffixStr: String? {
+  open var suffix: String? {
+    guard !numberFormatter.positiveSuffix.isEmpty else { return nil }
     return numberFormatter.positiveSuffix
   }
-  open var prefixStr: String? {
+  open var prefix: String? {
+    guard !numberFormatter.positivePrefix.isEmpty else { return nil }
     return numberFormatter.positivePrefix
   }
   open var groupingSeparator: String {
@@ -59,7 +61,7 @@ open class SumTextFormatter: TextFormatterProtocol {
   
   open func formattedText(from unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
-    guard !unformatted.isEmpty else { return suffixStr }
+    guard !unformatted.isEmpty else { return suffix }
     guard unformatted != negativePrefix else { return negativePrefix }
     
     var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
@@ -112,11 +114,20 @@ open class SumTextFormatter: TextFormatterProtocol {
     let formattedString = formatted
     
     let unformattedString = formattedString
-      .replacingOccurrences(of: suffixStr ?? "", with: "")
-      .replacingOccurrences(of: prefixStr ?? "", with: "")
+      .replacingOccurrences(of: suffix ?? "", with: "")
+      .replacingOccurrences(of: prefix ?? "", with: "")
       .replacingOccurrences(of: " ", with: "")
       .replacingOccurrences(of: groupingSeparator, with: "")
     
     return unformattedString
+  }
+  
+  @available(*, deprecated, message: "Use suffix: String instead")
+  open var suffixStr: String? {
+    return numberFormatter.positiveSuffix
+  }
+  @available(*, deprecated, message: "Use prefix: String instead")
+  open var prefixStr: String? {
+    return numberFormatter.positivePrefix
   }
 }
