@@ -59,13 +59,16 @@ open class SumTextFormatter: TextFormatterProtocol {
   
   open func formattedText(from unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
-    guard !unformatted.isEmpty else { return "" }
+    guard !unformatted.isEmpty else { return suffixStr }
     guard unformatted != negativePrefix else { return negativePrefix }
     
     var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
     correctedUnformatted = correctUnformatted(correctedUnformatted, maximumIntegerDigits: maximumIntegerCharacters, decimalSeparator: unformattedDecimalSeparator, negativePrefix: negativePrefix)
     let number = NSDecimalNumber(string: correctedUnformatted)
-    numberFormatter.minimumFractionDigits = calculateMinimumFractionDigits(unformatted: correctedUnformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
+    let minimumFractionDigits = calculateMinimumFractionDigits(unformatted: correctedUnformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
+    numberFormatter.minimumFractionDigits = minimumFractionDigits
+    let needAlwaysShowDecimalSeparator = minimumFractionDigits == 0 && correctedUnformatted.contains(unformattedDecimalSeparator)
+    numberFormatter.alwaysShowsDecimalSeparator = needAlwaysShowDecimalSeparator
     return numberFormatter.string(from: number)
   }
   
@@ -105,7 +108,15 @@ open class SumTextFormatter: TextFormatterProtocol {
   }
   
   open func unformattedText(from formatted: String?) -> String? {
-    guard let number = numberFormatter.number(from: formatted ?? "") else { return nil }
-    return String(number.floatValue)
+    guard let formatted = formatted else { return nil }
+    let formattedString = formatted
+    
+    let unformattedString = formattedString
+      .replacingOccurrences(of: suffixStr ?? "", with: "")
+      .replacingOccurrences(of: prefixStr ?? "", with: "")
+      .replacingOccurrences(of: " ", with: "")
+      .replacingOccurrences(of: groupingSeparator, with: "")
+    
+    return unformattedString
   }
 }

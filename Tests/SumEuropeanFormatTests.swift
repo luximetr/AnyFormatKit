@@ -167,4 +167,12 @@ extension SumEuropeanFormatTests {
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
+  
+  func testDotAtEndFormatting() {
+    let initialString = "1234567."
+    let expectedString = "1.234.567,"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
 }

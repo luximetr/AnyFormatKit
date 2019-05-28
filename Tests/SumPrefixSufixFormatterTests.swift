@@ -172,4 +172,13 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
+  
+  func testSuffixWithEmptyStringFormatting() {
+    let formatter = SumTextFormatter(textPattern: "# ###.## $")
+    let initialString = ""
+    let expectedString = " $"
+    let resultString = formatter.formattedText(from: initialString)
+    XCTAssert(expectedString == resultString,
+              "\(String(describing: resultString)) must be equal to \(expectedString)")
+  }
 }
