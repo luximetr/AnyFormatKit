@@ -47,7 +47,7 @@ class FormatParsingTests: XCTestCase {
   }
   
   func testDecimalSeparatorParsing() {
-    let formatter = SumTextFormatter(textPattern: "X.XXX,X", patternSymbol: "X")
+    let formatter = SumTextFormatter(textPattern: "X.XXX,XX", patternSymbol: "X")
     let initialString = "12345.12"
     let expectedString = "12.345,12"
     let formattedString = formatter.formattedText(from: initialString)
