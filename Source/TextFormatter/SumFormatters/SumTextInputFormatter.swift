@@ -209,7 +209,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     { return false }
 
     guard let integerPart = unformated.components(separatedBy: decimalSeparator).first,
-      integerPart.count < maximumIntegerCharacters
+      integerPart.count <= maximumIntegerCharacters
       else { return false }
 
     return true
