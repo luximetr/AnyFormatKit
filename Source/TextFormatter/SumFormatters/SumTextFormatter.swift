@@ -49,7 +49,9 @@ open class SumTextFormatter: TextFormatterProtocol {
     guard let unformatted = unformatted else { return nil }
     guard !unformatted.isEmpty else { return "" }
     guard unformatted != negativePrefix else { return negativePrefix }
+    
     var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
+    correctedUnformatted = correctUnformatted(correctedUnformatted, maximumIntegerDigits: maximumIntegerCharacters, decimalSeparator: unformattedDecimalSeparator, negativePrefix: negativePrefix)
     let number = NSDecimalNumber(string: correctedUnformatted)
     numberFormatter.minimumFractionDigits = calculateMinimumFractionDigits(unformatted: correctedUnformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
     return numberFormatter.string(from: number)
@@ -57,6 +59,25 @@ open class SumTextFormatter: TextFormatterProtocol {
   
   private func correctUnformatted(_ unformatted: String, decimalSeparator: String) -> String {
     return unformatted.replacingOccurrences(of: ",", with: decimalSeparator)
+  }
+  
+  private func correctUnformatted(_ unformatted: String, maximumIntegerDigits: Int, decimalSeparator: String, negativePrefix: String) -> String {
+    let decimalPart = unformatted.sliceBefore(substring: decimalSeparator)
+    let floatingPart = unformatted.sliceAfter(substring: decimalSeparator)
+    let correctedDecimalPart = correctUnformattedDecimalPart(decimalPart, maximumIntegerDigits: maximumIntegerDigits, negativePrefix: negativePrefix)
+    if unformatted.contains(decimalSeparator) {
+      return correctedDecimalPart + decimalSeparator + floatingPart
+    } else {
+      return correctedDecimalPart
+    }
+  }
+  
+  private func correctUnformattedDecimalPart(_ decimalPart: String, maximumIntegerDigits: Int, negativePrefix: String) -> String {
+    if !negativePrefix.isEmpty && decimalPart.contains(negativePrefix) {
+      return decimalPart.leftSlice(limit: maximumIntegerDigits + negativePrefix.count)
+    } else {
+      return decimalPart.leftSlice(limit: maximumIntegerDigits)
+    }
   }
   
   private var decimalSeparator: String {

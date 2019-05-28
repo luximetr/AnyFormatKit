@@ -69,4 +69,42 @@ extension String {
       }
     }
   }
+  
+  func sliceAfter(substring: String) -> String {
+    guard self.contains(substring) else { return self }
+    guard count > substring.count else { return "" }
+    guard let lastSubstringCharacter = substring.last else { return "" }
+    guard let substringIndex = firstIndex(of: lastSubstringCharacter) else { return "" }
+    let indexAfterSubstringIndex = index(substringIndex, offsetBy: 1)
+    return String(self[indexAfterSubstringIndex..<endIndex])
+  }
+  
+  func sliceBefore(substring: String) -> String {
+    guard self.contains(substring) else { return self }
+    guard count > substring.count else { return "" }
+    guard let firstSubstringCharacter = substring.first else { return self }
+    guard let substringStartIndex = lastIndex(of: firstSubstringCharacter) else { return self }
+    return String(self[startIndex..<substringStartIndex])
+  }
+  
+  func slice(from: String, to: String) -> String {
+    return sliceAfter(substring: from).sliceBefore(substring: to)
+  }
+  
+  func removePrefix(_ prefix: String) -> String {
+    guard !prefix.isEmpty else { return self }
+    return sliceAfter(substring: prefix)
+  }
+  
+  func removeSuffix(_ suffix: String) -> String {
+    guard !suffix.isEmpty else { return self }
+    return sliceBefore(substring: suffix)
+  }
+  
+  func leftSlice(limit: Int) -> String {
+    guard limit < count else { return self }
+    let rangeBegin = startIndex
+    let rangeEnd = index(startIndex, offsetBy: limit)
+    return String(self[rangeBegin..<rangeEnd])
+  }
 }

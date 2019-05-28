@@ -117,9 +117,9 @@
 		307DCD471FC2CFA700889A52 /* SumFormatters */ = {
 			isa = PBXGroup;
 			children = (
-				30D7EAA3229C65570014E31B /* SumFormatParser.swift */,
 				307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */,
 				307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */,
+				30D7EAA3229C65570014E31B /* SumFormatParser.swift */,
 			);
 			path = SumFormatters;
 			sourceTree = "<group>";

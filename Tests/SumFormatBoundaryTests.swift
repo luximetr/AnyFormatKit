@@ -33,14 +33,34 @@ class SumFormatBoundaryTests: XCTestCase {
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
   
-//  func testGreaterThanMaxIntegerCharactersFloatValue() {
-//    sumFormatter.maximumIntegerCharacters = 5
-//    let initialString = "123456,78"
-//    let expectedString = "12.345"
-//    let formattedString = sumFormatter.formattedText(from: initialString)
-//    XCTAssert(expectedString == formattedString,
-//              "\(String(describing: formattedString)) must be equal to \(expectedString)")
-//  }
+  func testGreaterThanMaxIntegerCharactersCommaFloatValue() {
+    sumFormatter.maximumIntegerCharacters = 5
+    let initialString = "123456,78"
+    let expectedString = "12.345,78"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
+  
+  func testGreaterThanMaxIntegerCharactersWithPrefix() {
+    let sumFormatter = SumTextFormatter(textPattern: "$ #.###,#####")
+    sumFormatter.maximumIntegerCharacters = 5
+    let initialString = "123456,78"
+    let expectedString = "$ 12.345,78"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
+  
+  func testGreaterThanMaxIntegerCharactersWithMinus() {
+    let sumFormatter = SumTextFormatter(textPattern: "$ #.###,#####")
+    sumFormatter.maximumIntegerCharacters = 5
+    let initialString = "-123456,78"
+    let expectedString = "$ -12.345,78"
+    let formattedString = sumFormatter.formattedText(from: initialString)
+    XCTAssert(expectedString == formattedString,
+              "\(String(describing: formattedString)) must be equal to \(expectedString)")
+  }
   
   func testEqualThanMaxIntegerCharacters() {
     sumFormatter.maximumIntegerCharacters = 5
