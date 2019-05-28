@@ -64,7 +64,7 @@ open class SumTextFormatter: TextFormatterProtocol {
   
   open func formattedText(from unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
-    guard !unformatted.isEmpty else { return suffix }
+    guard !unformatted.isEmpty else { return suffix ?? "" }
     guard unformatted != negativePrefix else { return negativePrefix }
     
     var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
