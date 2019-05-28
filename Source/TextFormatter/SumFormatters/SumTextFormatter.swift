@@ -18,6 +18,18 @@ open class SumTextFormatter: TextFormatterProtocol {
   open var maximumDecimalCharacters: Int {
     return numberFormatter.maximumFractionDigits
   }
+  open var suffixStr: String? {
+    return numberFormatter.positiveSuffix
+  }
+  open var prefixStr: String? {
+    return numberFormatter.positivePrefix
+  }
+  open var groupingSeparator: String {
+    return numberFormatter.groupingSeparator
+  }
+  open var decimalSeparator: String {
+    return numberFormatter.decimalSeparator
+  }
   
   public init(numberFormatter: NumberFormatter) {
     self.numberFormatter = numberFormatter
@@ -78,10 +90,6 @@ open class SumTextFormatter: TextFormatterProtocol {
     } else {
       return decimalPart.leftSlice(limit: maximumIntegerDigits)
     }
-  }
-  
-  private var decimalSeparator: String {
-    return numberFormatter.decimalSeparator
   }
   
   private func calculateMinimumFractionDigits(unformatted: String, divider: Character, maximumFractionDigits: Int) -> Int {
