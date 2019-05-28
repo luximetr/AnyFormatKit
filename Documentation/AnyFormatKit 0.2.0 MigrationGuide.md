@@ -4,20 +4,6 @@
 
 ### SumTextFormatter
 
-#### NumberFormatter
-
-Now sum text formatter use NumberFormatter under the hood.
-
-```swift
-private let numberFormatter: NumberFormatter
-```
-Was added init method with number formatter.
-
-```swift
-public init(numberFormatter: NumberFormatter) {
-  self.numberFormatter = numberFormatter
-}
-```
 #### Maximum Decimal Characters
 
 Variable, that allowed to input limited number of characters after decimal separator now get-only.
@@ -68,3 +54,17 @@ FormattedTextValue is a tuple, that use for return formatted text and caret offs
 public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
 ```
 
+#### NumberFormatter
+
+Now sum text formatter use NumberFormatter under the hood.
+
+```swift
+private let numberFormatter: NumberFormatter
+```
+Was added init method with number formatter. Old init method still works.
+
+```swift
+public init(numberFormatter: NumberFormatter) {
+  self.numberFormatter = numberFormatter
+}
+```
