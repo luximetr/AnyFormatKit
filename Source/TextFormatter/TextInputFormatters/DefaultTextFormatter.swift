@@ -1,5 +1,5 @@
 //
-//  TextFormatter.swift
+//  DefaultTextFormatter.swift
 //  TextInput
 //
 //  Created by BRANDERSTUDIO on 23.10.2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class TextFormatter: TextFormatterProtocol {
+open class DefaultTextFormatter: TextFormatterProtocol {
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"

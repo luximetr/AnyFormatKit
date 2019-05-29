@@ -1,5 +1,5 @@
 //
-//  TextInputFormatter.swift
+//  DefaultTextInputFormatter.swift
 //  TextInput
 //
 //  Created by BRANDERSTUDIO on 18.10.2017.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Class, that represent formatter for TextInput in real-time (using shouldChangeTextIn method)
-open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
+open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatterProtocol {
   // MARK: - Fields
   
   /// String, that always will be at beggining of text
@@ -90,7 +90,7 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
 }
 
 // MARK: - Private
-private extension TextInputFormatter {
+private extension DefaultTextInputFormatter {
   /**
    Correcting content with current content, range and replacement string
    

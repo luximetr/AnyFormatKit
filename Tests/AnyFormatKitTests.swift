@@ -10,7 +10,7 @@ import XCTest
 @testable import AnyFormatKit
 
 class AnyFormatKitTests: XCTestCase {
-  let phoneNumberFormatter = TextFormatter(textPattern: "### (###) ##-##-###")
+  let phoneNumberFormatter = DefaultTextFormatter(textPattern: "### (###) ##-##-###")
   
   func testOneSymbolFormatting() {
     let expectedString = "3"
