@@ -53,6 +53,7 @@ open class TextInputFormatter: TextFormatter, TextInputFormatterProtocol {
    
      - Returns: Always return false (correct of textInput's content in method's body)
   */
+  @available(*, deprecated, message: "Use formatInput() instead")
   open func shouldChangeTextIn(
     textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
     if let formattedPrefix = formattedText(from: prefix),
