@@ -19,7 +19,7 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
 //  var formattedPrefix: String? { get }
   
   // Regular expression, that discript allowed characters for input
-  var allowedSymbolsRegex: String? { set get }
+//  var allowedSymbolsRegex: String? { set get }
   
   // MARK: - open
   /**
