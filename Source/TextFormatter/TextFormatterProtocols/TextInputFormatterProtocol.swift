@@ -13,10 +13,10 @@ public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: 
 /// Interface for formatter of TextInput, that allow change format of text during input
 public protocol TextInputFormatterProtocol: TextFormatterProtocol {
   /// String, that always will be at beggining of textPattern text during typing
-  var prefix: String? { get }
+//  var prefix: String? { get }
   
   /// Current prefix with current format
-  var formattedPrefix: String? { get }
+//  var formattedPrefix: String? { get }
   
   // Regular expression, that discript allowed characters for input
   var allowedSymbolsRegex: String? { set get }

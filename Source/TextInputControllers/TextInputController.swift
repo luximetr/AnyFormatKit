@@ -15,13 +15,13 @@ open class TextInputController: TextInputDelegate {
   open var textInput: TextInput? {
     didSet {
       textInput?.textInputDelegates.add(delegate: self)
-      setPrefixToTextInput()
+//      setPrefixToTextInput()
     }
   }
   /// Formatter, that apply format for text during editing
   open var formatter: TextInputFormatterProtocol? {
     didSet {
-      setPrefixToTextInput()
+//      setPrefixToTextInput()
     }
   }
   
@@ -40,11 +40,11 @@ open class TextInputController: TextInputDelegate {
   open func textInput(_ textInput: TextInput,
                  shouldChangeTextIn range: NSRange,
                  replacementText text: String) -> Bool {
-    if let formattedPrefix = formattedPrefix,
-      !formattedPrefix.isEmpty,
-      range.location < formattedPrefix.count {
-      return false
-    }
+//    if let formattedPrefix = formattedPrefix,
+//      !formattedPrefix.isEmpty,
+//      range.location < formattedPrefix.count {
+//      return false
+//    }
     if let formatter = formatter {
       let replacementFiltered = text.filter(regex: formatter.allowedSymbolsRegex)
       let result = formatter.formatInput(currentText: textInput.content ?? "", range: range, replacementString: replacementFiltered)
@@ -97,13 +97,13 @@ open class TextInputController: TextInputDelegate {
 // MARK: - Private
 private extension TextInputController {
   /// Set and format current prefix
-  func setPrefixToTextInput() {
-    if let formattedPrefix = formatter?.formattedPrefix {
-      textInput?.content = formattedPrefix
-    }
-  }
+//  func setPrefixToTextInput() {
+//    if let formattedPrefix = formatter?.formattedPrefix {
+//      textInput?.content = formattedPrefix
+//    }
+//  }
   
-  var formattedPrefix: String? {
-    return formatter?.formattedPrefix
-  }
+//  var formattedPrefix: String? {
+//    return formatter?.formattedPrefix
+//  }
 }
