@@ -13,15 +13,15 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatterPr
   // MARK: - Fields
   
   /// String, that always will be at beggining of text
-  private(set) open var prefix: String?
-  
-  /// String, that represent current prefix with current format
-  open var formattedPrefix: String? {
-    return formattedText(from: prefix)
-  }
-  
-  // Regular expression, that discript allowed characters for input
-  open var allowedSymbolsRegex: String? = nil
+//  private(set) open var prefix: String?
+//
+//  /// String, that represent current prefix with current format
+//  open var formattedPrefix: String? {
+//    return formattedText(from: prefix)
+//  }
+//
+//  // Regular expression, that discript allowed characters for input
+//  open var allowedSymbolsRegex: String? = nil
   
   private let caretPositionCorrector: CaretPositionCorrector
   
@@ -34,10 +34,10 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatterPr
      - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
      - prefix: String, that always will be at beggining of text during editing
   */
-  public init(textPattern: String,
-       patternSymbol: Character = TextFormatterConstants.defaultPatternSymbol,
-       prefix: String? = nil) {
-    self.prefix = prefix
+  public override init(textPattern: String,
+       patternSymbol: Character = TextFormatterConstants.defaultPatternSymbol/*,
+       prefix: String? = nil*/) {
+//    self.prefix = prefix
     self.caretPositionCorrector = CaretPositionCorrector(textPattern: textPattern, patternSymbol: patternSymbol)
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
@@ -53,23 +53,23 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatterPr
    
      - Returns: Always return false (correct of textInput's content in method's body)
   */
-  @available(*, deprecated, message: "Use formatInput() instead")
-  open func shouldChangeTextIn(
-    textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
-    if let formattedPrefix = formattedText(from: prefix),
-      !formattedPrefix.isEmpty,
-      range.location < formattedPrefix.count {
-      return false
-    }
-    let replacementFiltered = text.filter(regex: allowedSymbolsRegex)
-    let newContent = correctedContent(
-      currentContent: textInput.content, range: range, replacementFiltered: replacementFiltered)
-    
-    textInput.content = newContent
-    correctCaretPosition(in: textInput, originalRange: range, replacementFiltered: replacementFiltered)
-    
-    return false
-  }
+//  @available(*, deprecated, message: "Use formatInput() instead")
+//  open func shouldChangeTextIn(
+//    textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
+//    if let formattedPrefix = formattedText(from: prefix),
+//      !formattedPrefix.isEmpty,
+//      range.location < formattedPrefix.count {
+//      return false
+//    }
+//    let replacementFiltered = text.filter(regex: allowedSymbolsRegex)
+//    let newContent = correctedContent(
+//      currentContent: textInput.content, range: range, replacementFiltered: replacementFiltered)
+//
+//    textInput.content = newContent
+//    correctCaretPosition(in: textInput, originalRange: range, replacementFiltered: replacementFiltered)
+//
+//    return false
+//  }
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedRange = self.unformattedRange(from: range)

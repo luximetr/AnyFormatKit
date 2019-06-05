@@ -32,8 +32,8 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
    
    - Returns: Always return false (correct of textInput's content in method's body)
    */
-  func shouldChangeTextIn(
-    textInput: TextInput, range: NSRange, replacementString text: String) -> Bool
+//  func shouldChangeTextIn(
+//    textInput: TextInput, range: NSRange, replacementString text: String) -> Bool
     
 
     /**
