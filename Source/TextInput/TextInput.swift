@@ -17,5 +17,5 @@ public protocol TextInput: UITextInput {
   var attributedContent: NSAttributedString? { set get }
   
   /// Multicast delegate for TextInput delegate methods
-  var textInputDelegates: MulticastDelegate<TextInputDelegate>{ get }
+//  var textInputDelegates: MulticastDelegate<TextInputDelegate>{ get }
 }
