@@ -43,13 +43,13 @@ public protocol TextInputFormatterProtocol: TextFormatterProtocol {
      - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
     
      */
-  func didBeginEditing(_ textInput: TextInput)
+//  func didBeginEditing(_ textInput: TextInput)
   
   func formatInput(
     currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue
 }
 
   //MARK: - Optional methods
-extension TextInputFormatterProtocol {
-    public func didBeginEditing(_ textInput: TextInput) {}
-}
+//extension TextInputFormatterProtocol {
+//    public func didBeginEditing(_ textInput: TextInput) {}
+//}
