@@ -136,15 +136,15 @@ private extension DefaultTextInputFormatter {
      - originalRange: Range of characters in textInput, that will replaced
      - replacementFiltered: Filtered string, that will replace characters in range
   */
-  func correctCaretPosition(
-    in textInput: TextInput, originalRange range: NSRange, replacementFiltered: String) {
-    let offset = caretPositionCorrector.calculateCaretPositionOffset(
-      originalRange: range, replacementFiltered: replacementFiltered)
-    if let cursorLocation = textInput.position(from: textInput.beginningOfDocument,
-                                               offset: offset) {
-      DispatchQueue.main.async {
-        textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
-      }
-    }
-  }
+//  func correctCaretPosition(
+//    in textInput: TextInput, originalRange range: NSRange, replacementFiltered: String) {
+//    let offset = caretPositionCorrector.calculateCaretPositionOffset(
+//      originalRange: range, replacementFiltered: replacementFiltered)
+//    if let cursorLocation = textInput.position(from: textInput.beginningOfDocument,
+//                                               offset: offset) {
+//      DispatchQueue.main.async {
+//        textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
+//      }
+//    }
+//  }
 }
