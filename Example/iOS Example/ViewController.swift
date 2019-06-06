@@ -12,14 +12,14 @@ import AnyFormatKit
 class ViewController: UIViewController {
   // MARK: - Fields
   let textInputFieldController = TextInputController()
-  let textInputViewController = TextInputController()
+  let textInputViewController = TextViewInputController()
   let sumInputController = TextInputController()
-  let phoneNumberField = TextInputField(frame: LayoutConstants.textInputFieldFrame)
-  let cardNumberView = TextInputView(frame: LayoutConstants.textInputViewFrame)
-  let sumInputField = TextInputField(frame: LayoutConstants.sumTextInputFieldFrame)
+  let phoneNumberField = UITextField(frame: LayoutConstants.textInputFieldFrame)
+  let cardNumberView = UITextView(frame: LayoutConstants.textInputViewFrame)
+  let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
-  let phoneNumberFormatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
-  let cardNumberFormatter = TextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+  let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "#.###,# $")
   
   // MARK: - Life Cycle
@@ -77,11 +77,9 @@ private extension ViewController {
     phoneNumberField.backgroundColor = UIColor.black
     phoneNumberField.tintColor = ColorConstants.gray
     
-    phoneNumberField.textInputDelegates.add(delegate: self)
     phoneNumberField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
-    phoneNumberField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 3))
   }
   
   func configureSumInputField() {
@@ -89,12 +87,10 @@ private extension ViewController {
     sumInputField.backgroundColor = UIColor.black
     sumInputField.tintColor = ColorConstants.gray
     
-    sumInputField.textInputDelegates.add(delegate: self)
     sumInputField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     sumInputField.defaultTextAttributes = [
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
-    sumInputField.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 2))
   }
 
   @objc
@@ -114,44 +110,27 @@ private extension ViewController {
     cardNumberView.typingAttributes = [
       NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular),
       NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
-    cardNumberView.addAttributes([.foregroundColor : ColorConstants.yellow], range: NSRange(location: 0, length: 4))
   }
   
   func configureFormatters() {
-    phoneNumberFormatter.allowedSymbolsRegex = "[0-9]"
-    cardNumberFormatter.allowedSymbolsRegex = "[0-9]"
-    sumFormatter.allowedSymbolsRegex = "[0-9.,]"
+    
   }
   
   func configureTextFieldControllers() {
-    textInputFieldController.textInput = phoneNumberField
+    phoneNumberField.delegate = textInputFieldController
     textInputFieldController.formatter = phoneNumberFormatter
     
-    sumInputController.textInput = sumInputField
+    sumInputField.delegate = sumInputController
     sumInputController.formatter = sumFormatter
-    sumInputField.content = sumFormatter.formattedText(from: "")
   }
   
   func configureTextViewController() {
-    textInputViewController.textInput = cardNumberView
+    cardNumberView.delegate = textInputViewController
     textInputViewController.formatter = cardNumberFormatter
-    
-    textInputViewController.setAndFormatText("4111012345672390")
   }
   
   func setupFirstResponder() {
     _ = phoneNumberField.becomeFirstResponder()
-  }
-}
-
-// MARK: - TextInputDelegate
-extension ViewController: TextInputDelegate {
-  func textInputDidBeginEditing(_ textInput: TextInput) {
-    print("textInputDidBeginEditing")
-  }
-  
-  func textInputShouldBeginEditing(_ textInput: TextInput) -> Bool {
-    return true
   }
 }
 
@@ -168,4 +147,57 @@ private struct LayoutConstants {
 private struct ColorConstants {
   static let yellow = UIColor(red: 255 / 255, green: 236 / 255, blue: 0 / 255, alpha: 1.0)
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
+}
+
+class TextInputController: NSObject, UITextFieldDelegate {
+  
+  var formatter: TextInputFormatterProtocol?
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let formatter = formatter else { return true }
+    let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
+    textField.text = result.formattedText
+    textField.setCursorLocation(result.caretBeginOffset)
+    
+    return false
+  }
+}
+
+
+class TextViewInputController: NSObject, UITextViewDelegate {
+  
+  var formatter: TextInputFormatterProtocol?
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    guard let formatter = formatter else { return true }
+    let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+    textView.text = result.formattedText
+    textView.setCursorLocation(result.caretBeginOffset)
+    
+    return false
+  }
+}
+
+private extension UITextField {
+  
+  func setCursorLocation(_ location: Int) {
+    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
+      DispatchQueue.main.async { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
+      }
+    }
+  }
+}
+
+private extension UITextView {
+  
+  func setCursorLocation(_ location: Int) {
+    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
+      DispatchQueue.main.async { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
+      }
+    }
+  }
 }

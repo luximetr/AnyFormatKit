@@ -10,9 +10,9 @@ import Foundation
 
 open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
 
-  open var formattedPrefix: String?
-
-  open var allowedSymbolsRegex: String?
+//  open var formattedPrefix: String?
+//
+//  open var allowedSymbolsRegex: String?
 
   
   // MARK: - Init
@@ -25,7 +25,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
    */
   public override init(textPattern: String, patternSymbol: Character = "#") {
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
-    self.formattedPrefix = prefix
+//    self.formattedPrefix = prefix
   }
 
   // MARK: - Public
@@ -69,9 +69,9 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
     if decimalSeparator != groupingSeparator {
       guard newString.components(separatedBy: decimalSeparator).count < 3 else { return emptyResult }
     }
-    guard var newUnformatted = unformattedText(from: newString) else { return emptyResult }
+    guard let newUnformatted = unformattedText(from: newString) else { return emptyResult }
     
-    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
+//    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
     let newFormatted = formattedText(from: newUnformatted) ?? ""
     
     let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormatted)
@@ -147,21 +147,21 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
 //    }
 //  }
 
-  private func stringOnlyWithAllowedSymbols(from string: String) -> String {
-    var result = ""
-    if let regex = allowedSymbolsRegex {
-      let regexPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-
-      for character in string {
-        if regexPredicate.evaluate(with: String(character)) {
-          result.append(character)
-        }
-      }
-    } else {
-      return string
-    }
-    return result
-  }
+//  private func stringOnlyWithAllowedSymbols(from string: String) -> String {
+//    var result = ""
+//    if let regex = allowedSymbolsRegex {
+//      let regexPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
+//
+//      for character in string {
+//        if regexPredicate.evaluate(with: String(character)) {
+//          result.append(character)
+//        }
+//      }
+//    } else {
+//      return string
+//    }
+//    return result
+//  }
 
   private func correctRangeForDeleting(from string: String?, at range: NSRange) -> NSRange? {
     guard let unformatted = unformattedText(from: string), !unformatted.isEmpty else { return nil }
