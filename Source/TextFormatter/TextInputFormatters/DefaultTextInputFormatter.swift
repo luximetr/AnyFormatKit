@@ -76,7 +76,7 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
     let oldUnformattedText = (unformattedText(from: currentText) ?? "") as NSString
     
     let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
-    let formattedText = self.formattedText(from: newText) ?? ""
+    let formattedText = self.format(newText) ?? ""
     
     let caretOffset = getCorrectedCaretPosition(range: range, replacementString: text)
     
@@ -108,7 +108,7 @@ private extension DefaultTextInputFormatter {
     let oldUnformatted = unformattedText(from: oldText) as NSString?
     
     let newText = oldUnformatted?.replacingCharacters(in: correctedRange, with: replacementFiltered)
-    return formattedText(from: newText)
+    return format(newText)
   }
   
   /**

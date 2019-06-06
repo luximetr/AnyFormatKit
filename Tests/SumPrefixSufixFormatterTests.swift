@@ -15,7 +15,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##")
     let initialString = "123.45"
     let expectedString = "123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -24,7 +24,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "$#,###.##")
     let initialString = "123.45"
     let expectedString = "$123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -33,7 +33,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "$ #,###.##")
     let initialString = "123.45"
     let expectedString = "$ 123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -42,7 +42,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "LongString #,###.##")
     let initialString = "123.45"
     let expectedString = "LongString 123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -51,7 +51,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "1#,###.##")
     let initialString = "123.45"
     let expectedString = "1123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -60,7 +60,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "-#,###.##")
     let initialString = "123.45"
     let expectedString = "-123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -69,7 +69,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "-#,###.##")
     let initialString = "-123.45"
     let expectedString = "--123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -78,7 +78,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "$#,###.##")
     let initialString = "-123.45"
     let expectedString = "$-123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -87,7 +87,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: ".#,###.##")
     let initialString = "123.45"
     let expectedString = ".123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -96,7 +96,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: ",#,###.##")
     let initialString = "123.45"
     let expectedString = ",123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -105,7 +105,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##")
     let initialString = "123.45"
     let expectedString = "123.45"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -114,7 +114,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##$")
     let initialString = "123.45"
     let expectedString = "123.45$"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -123,7 +123,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.## $")
     let initialString = "123.45"
     let expectedString = "123.45 $"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -132,7 +132,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##LongString")
     let initialString = "123.45"
     let expectedString = "123.45LongString"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -141,7 +141,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##.")
     let initialString = "123.45"
     let expectedString = "123.45."
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -150,7 +150,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "#,###.##,")
     let initialString = "123.45"
     let expectedString = "123.45,"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -159,7 +159,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "$#,###.##$")
     let initialString = "123.45"
     let expectedString = "$123.45$"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -168,7 +168,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "LongString#,###.##LongString")
     let initialString = "123.45"
     let expectedString = "LongString123.45LongString"
-    let formattedString = formatter.formattedText(from: initialString)
+    let formattedString = formatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -177,7 +177,7 @@ class SumPrefixSufixFormatterTests: XCTestCase {
     let formatter = SumTextFormatter(textPattern: "# ###.## $")
     let initialString = ""
     let expectedString = " $"
-    let resultString = formatter.formattedText(from: initialString)
+    let resultString = formatter.format(initialString)
     XCTAssert(expectedString == resultString,
               "\(String(describing: resultString)) must be equal to \(expectedString)")
   }

@@ -28,7 +28,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "123456"
     let expectedString = "12.345"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -37,7 +37,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "123456,78"
     let expectedString = "12.345,78"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -47,7 +47,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "123456,78"
     let expectedString = "$ 12.345,78"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -57,7 +57,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "-123456,78"
     let expectedString = "$ -12.345,78"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -66,7 +66,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "12345"
     let expectedString = "12.345"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -75,7 +75,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = "1234"
     let expectedString = "1.234"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -84,7 +84,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = "0.123456"
     let expectedString = "0,12345"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -93,7 +93,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = "0.12345"
     let expectedString = "0,12345"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -102,7 +102,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = "0.1234"
     let expectedString = "0,1234"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -111,7 +111,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = String(repeating: "9", count: 14) // 99999999999999
     let expectedString = "99.999.999.999.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -120,7 +120,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = String(repeating: "9", count: 15) // 999999999999999
     let expectedString = "99.999.999.999.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -129,7 +129,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 14
     let initialString = String(repeating: "9", count: 13) // 9999999999999
     let expectedString = "9.999.999.999.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -138,7 +138,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = String(repeating: "9", count: 6) // 999999
     let expectedString = "99.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -147,7 +147,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = String(repeating: "9", count: 5) // 99999
     let expectedString = "99.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -156,7 +156,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 5
     let initialString = String(repeating: "9", count: 4) // 9999
     let expectedString = "9.999"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -165,7 +165,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 1
     let initialString = String(repeating: "9", count: 5) // 99999
     let expectedString = "9"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }
@@ -174,7 +174,7 @@ class SumFormatBoundaryTests: XCTestCase {
     sumFormatter.maximumIntegerCharacters = 1
     let initialString = String(repeating: "9", count: 1) // 9
     let expectedString = "9"
-    let formattedString = sumFormatter.formattedText(from: initialString)
+    let formattedString = sumFormatter.format(initialString)
     XCTAssert(expectedString == formattedString,
               "\(String(describing: formattedString)) must be equal to \(expectedString)")
   }

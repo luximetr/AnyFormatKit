@@ -72,7 +72,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     guard let newUnformatted = unformattedText(from: newString) else { return emptyResult }
     
 //    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
-    let newFormatted = formattedText(from: newUnformatted) ?? ""
+    let newFormatted = format(newUnformatted) ?? ""
     
     let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormatted)
     

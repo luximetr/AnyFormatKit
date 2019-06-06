@@ -18,7 +18,7 @@ public protocol TextFormatter {
    
    - Returns: Formatted text with current textPattern
    */
-  func formattedText(from unformatted: String?) -> String?
+  func format(_ unformattedText: String?) -> String?
   
   /**
    Method for convert string, that sutisfy current textPattern, into unformatted string

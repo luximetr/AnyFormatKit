@@ -40,16 +40,16 @@ open class DefaultTextFormatter: TextFormatter {
    
    - Returns: Formatted text with current textPattern
   */
-  open func formattedText(from unformatted: String?) -> String? {
-    guard let unformatted = unformatted else { return nil }
+  open func format(_ unformattedText: String?) -> String? {
+    guard let unformattedText = unformattedText else { return nil }
     var formatted = String.init()
     var unformattedIndex = 0
     var patternIndex = 0
     
-    while patternIndex < textPattern.count && unformattedIndex < unformatted.count {
+    while patternIndex < textPattern.count && unformattedIndex < unformattedText.count {
       guard let patternCharacter = textPattern.characterAt(patternIndex) else { break }
       if patternCharacter == patternSymbol {
-        if let unformattedCharacter = unformatted.characterAt(unformattedIndex) {
+        if let unformattedCharacter = unformattedText.characterAt(unformattedIndex) {
           formatted.append(unformattedCharacter)
         }
         unformattedIndex += 1

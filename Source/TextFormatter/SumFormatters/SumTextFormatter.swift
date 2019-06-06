@@ -62,7 +62,7 @@ open class SumTextFormatter: TextFormatter {
   private let unformattedDecimalSeparator = "."
   private let negativePrefix = "-"
   
-  open func formattedText(from unformatted: String?) -> String? {
+  open func format(_ unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
     guard !unformatted.isEmpty else { return suffix ?? "" }
     guard unformatted != negativePrefix else { return negativePrefix }
