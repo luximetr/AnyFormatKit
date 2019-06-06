@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextFormatter: TextFormatterProtocol {
+open class SumTextFormatter: TextFormatter {
   
   private let numberFormatter: NumberFormatter
   

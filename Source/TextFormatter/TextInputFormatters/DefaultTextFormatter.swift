@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class DefaultTextFormatter: TextFormatterProtocol {
+open class DefaultTextFormatter: TextFormatter {
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"
@@ -31,7 +31,7 @@ open class DefaultTextFormatter: TextFormatterProtocol {
     self.patternSymbol = patternSymbol
   }
   
-  // MARK: - TextFormatterProtocol
+  // MARK: - TextFormatter
   /**
    Formatting text with current textPattern
    

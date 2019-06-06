@@ -1,5 +1,5 @@
 //
-//  TextFormatterProtocol.swift
+//  TextFormatter.swift
 //  TextInput
 //
 //  Created by BRANDERSTUDIO on 18.10.2017.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Interface of text formatter
-public protocol TextFormatterProtocol {
+public protocol TextFormatter {
   /**
    Formatting text with current textPattern
    

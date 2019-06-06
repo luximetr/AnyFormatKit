@@ -11,7 +11,7 @@ import Foundation
 public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
 
 /// Interface for formatter of TextInput, that allow change format of text during input
-public protocol TextInputFormatterProtocol: TextFormatterProtocol {
+public protocol TextInputFormatterProtocol: TextFormatter {
   /// String, that always will be at beggining of textPattern text during typing
 //  var prefix: String? { get }
   
