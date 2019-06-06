@@ -8,20 +8,7 @@
 
 import Foundation
 
-/// Class, that represent formatter for TextInput in real-time (using shouldChangeTextIn method)
 open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
-  // MARK: - Fields
-  
-  /// String, that always will be at beggining of text
-//  private(set) open var prefix: String?
-//
-//  /// String, that represent current prefix with current format
-//  open var formattedPrefix: String? {
-//    return formattedText(from: prefix)
-//  }
-//
-//  // Regular expression, that discript allowed characters for input
-//  open var allowedSymbolsRegex: String? = nil
   
   private let caretPositionCorrector: CaretPositionCorrector
   
@@ -35,41 +22,12 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
      - prefix: String, that always will be at beggining of text during editing
   */
   public override init(textPattern: String,
-       patternSymbol: Character = TextFormatterConstants.defaultPatternSymbol/*,
-       prefix: String? = nil*/) {
-//    self.prefix = prefix
+       patternSymbol: Character = TextFormatterConstants.defaultPatternSymbol) {
     self.caretPositionCorrector = CaretPositionCorrector(textPattern: textPattern, patternSymbol: patternSymbol)
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
   
   // MARK: - open
-  /**
-   Method, that allow correct character by character input with specified format
-   
-   - Parameters:
-     - textInput: Object, that conform to TextInput protocol and represent input field with correcting content
-     - range: Range, that determine which symbols must to be replaced
-     - replacementString: String, that will replace old content in determined range
-   
-     - Returns: Always return false (correct of textInput's content in method's body)
-  */
-//  @available(*, deprecated, message: "Use formatInput() instead")
-//  open func shouldChangeTextIn(
-//    textInput: TextInput, range: NSRange, replacementString text: String) -> Bool {
-//    if let formattedPrefix = formattedText(from: prefix),
-//      !formattedPrefix.isEmpty,
-//      range.location < formattedPrefix.count {
-//      return false
-//    }
-//    let replacementFiltered = text.filter(regex: allowedSymbolsRegex)
-//    let newContent = correctedContent(
-//      currentContent: textInput.content, range: range, replacementFiltered: replacementFiltered)
-//
-//    textInput.content = newContent
-//    correctCaretPosition(in: textInput, originalRange: range, replacementFiltered: replacementFiltered)
-//
-//    return false
-//  }
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedRange = self.unformattedRange(from: range)
@@ -127,24 +85,4 @@ private extension DefaultTextInputFormatter {
         .replacingOccurrences(of: String(patternSymbol), with: "").count)
     return newRange
   }
-  
-  /**
-   Find and correct of new caret position
-   
-   - Parameters:
-     - textInput: Text input, that caret position need to correct
-     - originalRange: Range of characters in textInput, that will replaced
-     - replacementFiltered: Filtered string, that will replace characters in range
-  */
-//  func correctCaretPosition(
-//    in textInput: TextInput, originalRange range: NSRange, replacementFiltered: String) {
-//    let offset = caretPositionCorrector.calculateCaretPositionOffset(
-//      originalRange: range, replacementFiltered: replacementFiltered)
-//    if let cursorLocation = textInput.position(from: textInput.beginningOfDocument,
-//                                               offset: offset) {
-//      DispatchQueue.main.async {
-//        textInput.selectedTextRange = textInput.textRange(from: cursorLocation, to: cursorLocation)
-//      }
-//    }
-//  }
 }
