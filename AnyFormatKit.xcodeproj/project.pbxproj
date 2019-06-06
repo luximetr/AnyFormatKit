@@ -17,20 +17,7 @@
 		307EA2321FAA1B5B00DE439D /* DefaultTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */; };
 		307EA2331FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */; };
 		307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */; };
-		307EA2351FAA1B5B00DE439D /* AttributedTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */; };
-		307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */; };
-		307EA2371FAA1B5B00DE439D /* AttributedStringConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */; };
-		307EA2381FAA1B5B00DE439D /* TextInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2201FAA1B5B00DE439D /* TextInputDelegate.swift */; };
-		307EA2391FAA1B5B00DE439D /* TextInputFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2221FAA1B5B00DE439D /* TextInputFieldDelegate.swift */; };
-		307EA23A1FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2231FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift */; };
-		307EA23B1FAA1B5B00DE439D /* TextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2241FAA1B5B00DE439D /* TextInputField.swift */; };
-		307EA23C1FAA1B5B00DE439D /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2251FAA1B5B00DE439D /* TextInput.swift */; };
-		307EA23D1FAA1B5B00DE439D /* TextInputViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2271FAA1B5B00DE439D /* TextInputViewDelegate.swift */; };
-		307EA23E1FAA1B5B00DE439D /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2281FAA1B5B00DE439D /* TextInputView.swift */; };
-		307EA23F1FAA1B5B00DE439D /* TextInputViewDelegateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2291FAA1B5B00DE439D /* TextInputViewDelegateCall.swift */; };
-		307EA2401FAA1B5B00DE439D /* TextInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA22B1FAA1B5B00DE439D /* TextInputController.swift */; };
 		307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA22D1FAA1B5B00DE439D /* String+Extension.swift */; };
-		307EA2421FAA1B5B00DE439D /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA22F1FAA1B5B00DE439D /* MulticastDelegate.swift */; };
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
 		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
@@ -68,20 +55,7 @@
 		307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextFormatter.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
-		307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputField.swift; sourceTree = "<group>"; };
-		307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputView.swift; sourceTree = "<group>"; };
-		307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringConstructor.swift; sourceTree = "<group>"; };
-		307EA2201FAA1B5B00DE439D /* TextInputDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputDelegate.swift; sourceTree = "<group>"; };
-		307EA2221FAA1B5B00DE439D /* TextInputFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegate.swift; sourceTree = "<group>"; };
-		307EA2231FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegateCall.swift; sourceTree = "<group>"; };
-		307EA2241FAA1B5B00DE439D /* TextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputField.swift; sourceTree = "<group>"; };
-		307EA2251FAA1B5B00DE439D /* TextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
-		307EA2271FAA1B5B00DE439D /* TextInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegate.swift; sourceTree = "<group>"; };
-		307EA2281FAA1B5B00DE439D /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
-		307EA2291FAA1B5B00DE439D /* TextInputViewDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegateCall.swift; sourceTree = "<group>"; };
-		307EA22B1FAA1B5B00DE439D /* TextInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputController.swift; sourceTree = "<group>"; };
 		307EA22D1FAA1B5B00DE439D /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		307EA22F1FAA1B5B00DE439D /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
@@ -130,10 +104,8 @@
 		307EA2131FAA1B5B00DE439D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				307EA22E1FAA1B5B00DE439D /* MulticastDelegate */,
 				307EA22C1FAA1B5B00DE439D /* Categories */,
 				307EA2141FAA1B5B00DE439D /* TextFormatter */,
-				307EA21B1FAA1B5B00DE439D /* TextInput */,
 				307EA22A1FAA1B5B00DE439D /* TextInputControllers */,
 			);
 			path = Source;
@@ -167,52 +139,9 @@
 			path = TextFormatterProtocols;
 			sourceTree = "<group>";
 		};
-		307EA21B1FAA1B5B00DE439D /* TextInput */ = {
-			isa = PBXGroup;
-			children = (
-				307EA2251FAA1B5B00DE439D /* TextInput.swift */,
-				307EA2201FAA1B5B00DE439D /* TextInputDelegate.swift */,
-				307EA21C1FAA1B5B00DE439D /* AttributedTextInput */,
-				307EA2211FAA1B5B00DE439D /* TextInputField */,
-				307EA2261FAA1B5B00DE439D /* TextInputView */,
-			);
-			path = TextInput;
-			sourceTree = "<group>";
-		};
-		307EA21C1FAA1B5B00DE439D /* AttributedTextInput */ = {
-			isa = PBXGroup;
-			children = (
-				307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */,
-				307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */,
-				307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */,
-			);
-			path = AttributedTextInput;
-			sourceTree = "<group>";
-		};
-		307EA2211FAA1B5B00DE439D /* TextInputField */ = {
-			isa = PBXGroup;
-			children = (
-				307EA2241FAA1B5B00DE439D /* TextInputField.swift */,
-				307EA2221FAA1B5B00DE439D /* TextInputFieldDelegate.swift */,
-				307EA2231FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift */,
-			);
-			path = TextInputField;
-			sourceTree = "<group>";
-		};
-		307EA2261FAA1B5B00DE439D /* TextInputView */ = {
-			isa = PBXGroup;
-			children = (
-				307EA2281FAA1B5B00DE439D /* TextInputView.swift */,
-				307EA2271FAA1B5B00DE439D /* TextInputViewDelegate.swift */,
-				307EA2291FAA1B5B00DE439D /* TextInputViewDelegateCall.swift */,
-			);
-			path = TextInputView;
-			sourceTree = "<group>";
-		};
 		307EA22A1FAA1B5B00DE439D /* TextInputControllers */ = {
 			isa = PBXGroup;
 			children = (
-				307EA22B1FAA1B5B00DE439D /* TextInputController.swift */,
 				30D7EAA0229C54840014E31B /* CaretPositionCorrector.swift */,
 			);
 			path = TextInputControllers;
@@ -224,14 +153,6 @@
 				307EA22D1FAA1B5B00DE439D /* String+Extension.swift */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		307EA22E1FAA1B5B00DE439D /* MulticastDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				307EA22F1FAA1B5B00DE439D /* MulticastDelegate.swift */,
-			);
-			path = MulticastDelegate;
 			sourceTree = "<group>";
 		};
 		30C155FE1FBC4DA800C7229D /* SumFormatTests */ = {
@@ -440,28 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				307EA23A1FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift in Sources */,
 				307EA2311FAA1B5B00DE439D /* DefaultTextInputFormatter.swift in Sources */,
-				307EA23E1FAA1B5B00DE439D /* TextInputView.swift in Sources */,
 				30D7EAA4229C65570014E31B /* SumFormatParser.swift in Sources */,
-				307EA2391FAA1B5B00DE439D /* TextInputFieldDelegate.swift in Sources */,
 				307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
-				307EA2381FAA1B5B00DE439D /* TextInputDelegate.swift in Sources */,
-				307EA23F1FAA1B5B00DE439D /* TextInputViewDelegateCall.swift in Sources */,
 				307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */,
-				307EA23B1FAA1B5B00DE439D /* TextInputField.swift in Sources */,
 				307EA2411FAA1B5B00DE439D /* String+Extension.swift in Sources */,
-				307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */,
 				307EA2321FAA1B5B00DE439D /* DefaultTextFormatter.swift in Sources */,
-				307EA2351FAA1B5B00DE439D /* AttributedTextInputField.swift in Sources */,
 				30D7EAA8229D343E0014E31B /* SumTextInputFormatter.swift in Sources */,
-				307EA23D1FAA1B5B00DE439D /* TextInputViewDelegate.swift in Sources */,
 				307EA2331FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */,
-				307EA2401FAA1B5B00DE439D /* TextInputController.swift in Sources */,
 				30D7EAA1229C54840014E31B /* CaretPositionCorrector.swift in Sources */,
-				307EA2371FAA1B5B00DE439D /* AttributedStringConstructor.swift in Sources */,
-				307EA23C1FAA1B5B00DE439D /* TextInput.swift in Sources */,
-				307EA2421FAA1B5B00DE439D /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
