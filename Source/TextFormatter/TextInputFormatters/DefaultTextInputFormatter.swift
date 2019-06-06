@@ -73,7 +73,7 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedRange = self.unformattedRange(from: range)
-    let oldUnformattedText = (unformattedText(from: currentText) ?? "") as NSString
+    let oldUnformattedText = (unformat(currentText) ?? "") as NSString
     
     let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
     let formattedText = self.format(newText) ?? ""
@@ -105,7 +105,7 @@ private extension DefaultTextInputFormatter {
     let oldText = currentContent ?? String()
     
     let correctedRange = unformattedRange(from: range)
-    let oldUnformatted = unformattedText(from: oldText) as NSString?
+    let oldUnformatted = unformat(oldText) as NSString?
     
     let newText = oldUnformatted?.replacingCharacters(in: correctedRange, with: replacementFiltered)
     return format(newText)

@@ -69,7 +69,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     if decimalSeparator != groupingSeparator {
       guard newString.components(separatedBy: decimalSeparator).count < 3 else { return emptyResult }
     }
-    guard let newUnformatted = unformattedText(from: newString) else { return emptyResult }
+    guard let newUnformatted = unformat(newString) else { return emptyResult }
     
 //    newUnformatted = stringOnlyWithAllowedSymbols(from: newUnformatted)
     let newFormatted = format(newUnformatted) ?? ""
@@ -164,7 +164,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
 //  }
 
   private func correctRangeForDeleting(from string: String?, at range: NSRange) -> NSRange? {
-    guard let unformatted = unformattedText(from: string), !unformatted.isEmpty else { return nil }
+    guard let unformatted = unformat(string), !unformatted.isEmpty else { return nil }
     guard let text = string else { return nil }
 
     if range.length == 1 {
@@ -198,7 +198,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
 
   private func isCorrectInserting(from string: String?, at range: NSRange) -> Bool {
     guard let text = string else { return false }
-    guard let unformated = unformattedText(from: string) else { return false }
+    guard let unformated = unformat(string) else { return false }
 
     if range.location > (text.count - (suffix?.count ?? 0)) ||
       range.location < (prefix?.count ?? 0)

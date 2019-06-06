@@ -112,7 +112,7 @@ open class SumTextFormatter: TextFormatter {
     return parts[1].count
   }
   
-  open func unformattedText(from formatted: String?) -> String? {
+  open func unformat(_ formatted: String?) -> String? {
     guard let formatted = formatted else { return nil }
     let formattedString = formatted
     

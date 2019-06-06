@@ -69,7 +69,7 @@ open class DefaultTextFormatter: TextFormatter {
    
    - Returns: string converted into unformatted with current textPattern
   */
-  open func unformattedText(from formatted: String?) -> String? {
+  open func unformat(_ formatted: String?) -> String? {
     guard let formatted = formatted else { return nil }
     var unformatted = String()
     var formattedIndex = 0
