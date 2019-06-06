@@ -15,7 +15,7 @@
 		307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */; };
 		307EA2311FAA1B5B00DE439D /* DefaultTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* DefaultTextInputFormatter.swift */; };
 		307EA2321FAA1B5B00DE439D /* DefaultTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */; };
-		307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */; };
+		307EA2331FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */; };
 		307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */; };
 		307EA2351FAA1B5B00DE439D /* AttributedTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */; };
 		307EA2361FAA1B5B00DE439D /* AttributedTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */; };
@@ -66,7 +66,7 @@
 		307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumUSFormatTests.swift; sourceTree = "<group>"; };
 		307EA2161FAA1B5B00DE439D /* DefaultTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextFormatter.swift; sourceTree = "<group>"; };
-		307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterProtocol.swift; sourceTree = "<group>"; };
+		307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
 		307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputField.swift; sourceTree = "<group>"; };
 		307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputView.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */,
-				307EA2191FAA1B5B00DE439D /* TextInputFormatterProtocol.swift */,
+				307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */,
 			);
 			path = TextFormatterProtocols;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				307EA2351FAA1B5B00DE439D /* AttributedTextInputField.swift in Sources */,
 				30D7EAA8229D343E0014E31B /* SumTextInputFormatter.swift in Sources */,
 				307EA23D1FAA1B5B00DE439D /* TextInputViewDelegate.swift in Sources */,
-				307EA2331FAA1B5B00DE439D /* TextInputFormatterProtocol.swift in Sources */,
+				307EA2331FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */,
 				307EA2401FAA1B5B00DE439D /* TextInputController.swift in Sources */,
 				30D7EAA1229C54840014E31B /* CaretPositionCorrector.swift in Sources */,
 				307EA2371FAA1B5B00DE439D /* AttributedStringConstructor.swift in Sources */,

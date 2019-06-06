@@ -151,7 +151,7 @@ private struct ColorConstants {
 
 class TextInputController: NSObject, UITextFieldDelegate {
   
-  var formatter: TextInputFormatterProtocol?
+  var formatter: TextInputFormatter?
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard let formatter = formatter else { return true }
@@ -166,7 +166,7 @@ class TextInputController: NSObject, UITextFieldDelegate {
 
 class TextViewInputController: NSObject, UITextViewDelegate {
   
-  var formatter: TextInputFormatterProtocol?
+  var formatter: TextInputFormatter?
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     guard let formatter = formatter else { return true }

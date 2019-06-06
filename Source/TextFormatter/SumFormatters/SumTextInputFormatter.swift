@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextInputFormatter: SumTextFormatter, TextInputFormatterProtocol {
+open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
 
 //  open var formattedPrefix: String?
 //

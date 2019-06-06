@@ -9,7 +9,7 @@
 import Foundation
 
 /// Class, that represent formatter for TextInput in real-time (using shouldChangeTextIn method)
-open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatterProtocol {
+open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
   // MARK: - Fields
   
   /// String, that always will be at beggining of text

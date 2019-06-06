@@ -1,5 +1,5 @@
 //
-//  TextInputFormatterProtocol.swift
+//  TextInputFormatter.swift
 //  TextInput
 //
 //  Created by BRANDERSTUDIO on 18.10.2017.
@@ -11,7 +11,7 @@ import Foundation
 public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
 
 /// Interface for formatter of TextInput, that allow change format of text during input
-public protocol TextInputFormatterProtocol: TextFormatter {
+public protocol TextInputFormatter: TextFormatter {
   /// String, that always will be at beggining of textPattern text during typing
 //  var prefix: String? { get }
   
@@ -50,6 +50,6 @@ public protocol TextInputFormatterProtocol: TextFormatter {
 }
 
   //MARK: - Optional methods
-//extension TextInputFormatterProtocol {
+//extension TextInputFormatter {
 //    public func didBeginEditing(_ textInput: TextInput) {}
 //}
