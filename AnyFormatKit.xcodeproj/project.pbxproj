@@ -31,6 +31,7 @@
 		30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */; };
 		30FE70541FAA16890024D1B1 /* AnyFormatKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */; };
 		30FE70561FAA16910024D1B1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 30FE70551FAA16910024D1B1 /* LICENSE */; };
+		30FF730F22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FF730E22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		30FE6FE81FAA13D30024D1B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30FE70531FAA16890024D1B1 /* AnyFormatKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyFormatKit.podspec; sourceTree = "<group>"; };
 		30FE70551FAA16910024D1B1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		30FF730E22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterInputTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,8 @@
 		30FE6FE51FAA13D30024D1B1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				30FF730D22AD935C005FBC38 /* DefaultTextInputFormatterTests */,
+				30FF730C22AD1E54005FBC38 /* SumTextInputFormatterTests */,
 				30C155FE1FBC4DA800C7229D /* SumFormatTests */,
 				30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */,
 				30FE6FE81FAA13D30024D1B1 /* Info.plist */,
@@ -225,6 +229,21 @@
 				30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
 			);
 			path = Documentation;
+			sourceTree = "<group>";
+		};
+		30FF730C22AD1E54005FBC38 /* SumTextInputFormatterTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SumTextInputFormatterTests;
+			sourceTree = "<group>";
+		};
+		30FF730D22AD935C005FBC38 /* DefaultTextInputFormatterTests */ = {
+			isa = PBXGroup;
+			children = (
+				30FF730E22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift */,
+			);
+			name = DefaultTextInputFormatterTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FF730F22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift in Sources */,
 				306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */,
 				306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */,
 				30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */,

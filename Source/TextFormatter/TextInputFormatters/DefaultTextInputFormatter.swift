@@ -38,7 +38,7 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
     
     let caretOffset = getCorrectedCaretPosition(range: range, replacementString: text)
     
-    return (formattedText, caretOffset)
+    return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
   }
   
   private func getCorrectedCaretPosition(range: NSRange, replacementString: String) -> Int {

@@ -25,7 +25,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     var internalRange = range
     var isDecimalSeparatorInsertion = false
-    let emptyResult = (currentText, range.upperBound)
+    let emptyResult = FormattedTextValue(formattedText: currentText, caretBeginOffset: range.upperBound)
     
     if text.isEmpty {
       let newRange = correctRangeForDeleting(from: currentText, at: internalRange)
@@ -49,7 +49,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     
     let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormatted)
     
-    return (newFormatted, caretOffset)
+    return FormattedTextValue(formattedText: newFormatted, caretBeginOffset: caretOffset)
   }
 
   // MARK: - Private

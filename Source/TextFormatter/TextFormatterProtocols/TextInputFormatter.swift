@@ -8,7 +8,12 @@
 
 import Foundation
 
-public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
+//public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
+
+public struct FormattedTextValue {
+  public let formattedText: String
+  public let caretBeginOffset: Int
+}
 
 /// Interface for formatter of TextInput, that allow change format of text during input
 public protocol TextInputFormatter: TextFormatter {
