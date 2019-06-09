@@ -8,17 +8,7 @@
 
 import Foundation
 
-// MARK: - String extension
 extension String {
-  
-  /**
-   Find and return character in string by index
-   
-   - Parameters:
-     - index: integer value, of character, that need to find
-   
-   - Returns: found character or nil
-  */
   
   func characterAt(_ index: Int) -> Character? {
     guard index < count else { return nil }
