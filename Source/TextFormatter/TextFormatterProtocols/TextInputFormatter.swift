@@ -10,7 +10,7 @@ import Foundation
 
 //public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
 
-public struct FormattedTextValue {
+public struct FormattedTextValue: Equatable {
   public let formattedText: String
   public let caretBeginOffset: Int
 }
