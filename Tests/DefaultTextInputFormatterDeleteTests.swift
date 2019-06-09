@@ -13,12 +13,6 @@ class DefaultTextInputFormatterDeleteTests: XCTestCase {
   
   private let formatter = DefaultTextInputFormatter(textPattern: "## ## ##")
   
-  override func setUp() {
-  }
-  
-  override func tearDown() {
-  }
-  
   func test12_34to12_3() {
     let actualResult = formatter.formatInput(
       currentText: "12 34",
@@ -161,13 +155,6 @@ class DefaultTextInputFormatterDeleteTests: XCTestCase {
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "", caretBeginOffset: 0)
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
-  }
-  
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
-    }
   }
   
 }
