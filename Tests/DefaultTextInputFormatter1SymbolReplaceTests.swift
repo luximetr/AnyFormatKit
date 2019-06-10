@@ -49,12 +49,12 @@ class DefaultTextInputFormatter1SymbolReplaceTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  func test12I_I34to12_04() {
+  func test12I_I34to12_03_4() {
     let actualResult = formatter.formatInput(
       currentText: "12 34",
       range: NSRange(location: 2, length: 1),
       replacementString: "0")
-    let expectedResult = FormattedTextValue(formattedText: "12 04", caretBeginOffset: 4)
+    let expectedResult = FormattedTextValue(formattedText: "12 03 4", caretBeginOffset: 4)
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
 }
