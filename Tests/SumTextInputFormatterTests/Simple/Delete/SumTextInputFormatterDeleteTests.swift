@@ -11,7 +11,7 @@ import XCTest
 
 class SumTextInputFormatterDeleteTests: XCTestCase {
 
-  let formatter = SumTextInputFormatter(textPattern: "#,###.##")
+  private let formatter = SumTextInputFormatter(textPattern: "#,###.##")
   
   // 1,234.5|6|  ->  1,234.5|
   func test1c234p56to1c234p5() {
