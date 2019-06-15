@@ -13,8 +13,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
 
   private let formatter = SumTextInputFormatter(textPattern: "#,###.##")
   
-  // ""  ->  1
-  func test_to1() {
+  // "|"  ->  1|
+  func test1() {
     let actualResult = formatter.formatInput(
       currentText: "",
       range: NSRange(location: 0, length: 0),
@@ -23,8 +23,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 1  ->  12
-  func test1to12() {
+  // 1|  ->  12|
+  func test2() {
     let actualResult = formatter.formatInput(
       currentText: "1",
       range: NSRange(location: 1, length: 0),
@@ -33,8 +33,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 12  ->  123
-  func test12to123() {
+  // 12|  ->  123|
+  func test3() {
     let actualResult = formatter.formatInput(
       currentText: "12",
       range: NSRange(location: 2, length: 0),
@@ -43,8 +43,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 123  ->  1,234  c = ,
-  func test123to1c234() {
+  // 123|  ->  1,234|
+  func test4() {
     let actualResult = formatter.formatInput(
       currentText: "123",
       range: NSRange(location: 3, length: 0),
@@ -53,8 +53,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 1,234  ->  12,345
-  func test1c234to12c345() {
+  // 1,234|  ->  12,345|
+  func test5() {
     let actualResult = formatter.formatInput(
       currentText: "1,234",
       range: NSRange(location: 5, length: 0),
@@ -63,8 +63,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 12,345  ->  123,456
-  func test12c345to123c456() {
+  // 12,345|  ->  123,456|
+  func test6() {
     let actualResult = formatter.formatInput(
       currentText: "12,345",
       range: NSRange(location: 6, length: 0),
@@ -73,8 +73,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 123,456  ->  1,234,567
-  func test123c456to1c234c567() {
+  // 123,456|  ->  1,234,567|
+  func test7() {
     let actualResult = formatter.formatInput(
       currentText: "123,456",
       range: NSRange(location: 7, length: 0),
@@ -83,8 +83,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 1,234  ->  1,234.  p = .
-  func test1c234to1c234p() {
+  // 1,234|  ->  1,234.|
+  func test8() {
     let actualResult = formatter.formatInput(
       currentText: "1,234",
       range: NSRange(location: 5, length: 0),
@@ -93,8 +93,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 1,234.  ->  1,234.5
-  func test1c234pto1c234p5() {
+  // 1,234.|  ->  1,234.5|
+  func test9() {
     let actualResult = formatter.formatInput(
       currentText: "1,234.",
       range: NSRange(location: 6, length: 0),
@@ -103,8 +103,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 1,234.5  ->  1,234.56
-  func test1c234p5to1c234p56() {
+  // 1,234.5|  ->  1,234.56|
+  func test10() {
     let actualResult = formatter.formatInput(
       currentText: "1,234.5",
       range: NSRange(location: 7, length: 0),
@@ -113,8 +113,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // ""  ->  .
-  func test_toP() {
+  // "|"  ->  .|
+  func test11() {
     let actualResult = formatter.formatInput(
       currentText: "",
       range: NSRange(location: 0, length: 0),
@@ -123,8 +123,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // .  ->  .5
-  func testPtoP5() {
+  // .|  ->  .5|
+  func test12() {
     let actualResult = formatter.formatInput(
       currentText: ".",
       range: NSRange(location: 1, length: 0),
@@ -133,8 +133,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // .5  ->  .56
-  func testP5toP56() {
+  // .5|  ->  .56|
+  func test13() {
     let actualResult = formatter.formatInput(
       currentText: ".5",
       range: NSRange(location: 2, length: 0),
@@ -143,8 +143,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // .56  ->  3.56
-  func testP56to3p56() {
+  // |.56  ->  3|.56
+  func test14() {
     let actualResult = formatter.formatInput(
       currentText: ".56",
       range: NSRange(location: 0, length: 0),
@@ -153,8 +153,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 3.56  ->  23.56
-  func test3p56to23p56() {
+  // |3.56  ->  2|3.56
+  func test15() {
     let actualResult = formatter.formatInput(
       currentText: "3.56",
       range: NSRange(location: 0, length: 0),
@@ -163,8 +163,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 23.56  ->  123.56
-  func test23p56to123p56() {
+  // |23.56  ->  1|23.56
+  func test16() {
     let actualResult = formatter.formatInput(
       currentText: "23.56",
       range: NSRange(location: 0, length: 0),
@@ -173,8 +173,8 @@ class SumTextInputFormatterInputTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
   }
   
-  // 123.56  ->  1,234.56
-  func test123p56to1c234p56() {
+  // 123|.56  ->  1,234|.56
+  func test17() {
     let actualResult = formatter.formatInput(
       currentText: "123.56",
       range: NSRange(location: 3, length: 0),
