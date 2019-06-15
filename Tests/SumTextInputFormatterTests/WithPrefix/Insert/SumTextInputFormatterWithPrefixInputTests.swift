@@ -14,13 +14,13 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
   private let formatter = SumTextInputFormatter(textPattern: "$#,###.##")
   
   // "|"  ->  $1|
-  func test1() {
+  func test1() { // #to_fix
     let actualResult = formatter.formatInput(
       currentText: "",
       range: NSRange(location: 0, length: 0),
       replacementString: "1")
     let expectedResult = FormattedTextValue(formattedText: "$1", caretBeginOffset: 2)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $1|  ->  $12|
@@ -30,7 +30,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 2, length: 0),
       replacementString: "2")
     let expectedResult = FormattedTextValue(formattedText: "$12", caretBeginOffset: 3)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $12|  ->  $123|
@@ -40,7 +40,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 3, length: 0),
       replacementString: "3")
     let expectedResult = FormattedTextValue(formattedText: "$123", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $123|  ->  $1,234|
@@ -50,7 +50,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 4, length: 0),
       replacementString: "4")
     let expectedResult = FormattedTextValue(formattedText: "$1,234", caretBeginOffset: 6)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $1,234|  ->  $12,345|
@@ -60,7 +60,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 6, length: 0),
       replacementString: "5")
     let expectedResult = FormattedTextValue(formattedText: "$12,345", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $12,345|  ->  $12,345.|
@@ -70,7 +70,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 7, length: 0),
       replacementString: ".")
     let expectedResult = FormattedTextValue(formattedText: "$12,345.", caretBeginOffset: 8)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $12,345.|  ->  $12.345.6|
@@ -79,8 +79,8 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       currentText: "$12,345.",
       range: NSRange(location: 8, length: 0),
       replacementString: "6")
-    let expectedResult = FormattedTextValue(formattedText: "$12.345.6", caretBeginOffset: 9)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    let expectedResult = FormattedTextValue(formattedText: "$12,345.6", caretBeginOffset: 9)
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // $12,345.6|  ->  $12,345.67|
@@ -90,7 +90,7 @@ class SumTextInputFormatterWithPrefixInputTests: XCTestCase {
       range: NSRange(location: 9, length: 0),
       replacementString: "7")
     let expectedResult = FormattedTextValue(formattedText: "$12,345.67", caretBeginOffset: 10)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
 
 }

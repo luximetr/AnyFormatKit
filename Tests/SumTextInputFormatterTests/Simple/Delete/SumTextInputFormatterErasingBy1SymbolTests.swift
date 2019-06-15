@@ -20,7 +20,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 8, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "12,345.6", caretBeginOffset: 8)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
 
   // 12,345.|6|  ->  12,345.|
@@ -30,7 +30,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 7, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "12,345.", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12,345|.|  ->  12,345|
@@ -40,7 +40,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 6, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "12,345", caretBeginOffset: 6)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12,34|5|  ->  1,234|
@@ -50,7 +50,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 5, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "1,234", caretBeginOffset: 5)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1,23|4|  ->  123|
@@ -60,7 +60,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 4, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "123", caretBeginOffset: 3)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12|3|  ->  12|
@@ -70,7 +70,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 2, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "12", caretBeginOffset: 2)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1|2|  ->  1|
@@ -80,7 +80,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 1, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "1", caretBeginOffset: 1)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // |1|   ->  "|"
@@ -90,7 +90,7 @@ class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
       range: NSRange(location: 0, length: 1),
       replacementString: "")
     let expectedResult = FormattedTextValue(formattedText: "", caretBeginOffset: 0)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
 }

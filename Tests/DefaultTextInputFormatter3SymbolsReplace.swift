@@ -22,7 +22,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 0, length: 1),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "56 72 34", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1|2| 34  ->  15 67| 34
@@ -32,7 +32,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 1, length: 1),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "15 67 34", caretBeginOffset: 5)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12| |34  ->  12 56 7|3
@@ -42,7 +42,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 2, length: 1),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 56 73", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12 |3|4  ->  12 56 7|4
@@ -52,7 +52,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 3, length: 1),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 56 74", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12 3|4|  ->  12 35 67|
@@ -62,7 +62,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 4, length: 1),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 35 67", caretBeginOffset: 8)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // MARK: - 2 symbols replace
@@ -74,7 +74,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 0, length: 2),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "56 73 4", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1|2 |34  -> 15 67| 34
@@ -84,7 +84,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 1, length: 2),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "15 67 34", caretBeginOffset: 5)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12| 3|4  -> 12 56 7|4
@@ -94,7 +94,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 2, length: 2),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 56 74", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12 |34|  -> 12 56 7|
@@ -104,7 +104,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 3, length: 2),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 56 7", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // MARK: - 3 symbols replace
@@ -116,7 +116,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 0, length: 3),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "56 73 4", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1|2 3|4  -> 15 67| 4
@@ -126,7 +126,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 1, length: 3),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "15 67 4", caretBeginOffset: 5)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 12| 34|  -> 12 56 7|
@@ -136,7 +136,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 2, length: 3),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "12 56 7", caretBeginOffset: 7)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // MARK: - 4 symbols replace
@@ -148,7 +148,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 0, length: 4),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "56 74", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // 1|2 34|  -> 15 67|
@@ -158,7 +158,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 1, length: 4),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "15 67", caretBeginOffset: 5)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
   // MARK: - 5 symbols replace
@@ -170,7 +170,7 @@ class DefaultTextInputFormatter3SymbolsReplace: XCTestCase {
       range: NSRange(location: 0, length: 5),
       replacementString: "567")
     let expectedResult = FormattedTextValue(formattedText: "56 7", caretBeginOffset: 4)
-    XCTAssert(actualResult == expectedResult, "\(expectedResult) must be equal to \(actualResult)")
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
 
 }
