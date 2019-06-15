@@ -28,6 +28,7 @@
 		309BD5B622B2C2FD00BA69EF /* SumTextInputtFormaterWithPrefix3SymbolnsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309BD5B522B2C2FD00BA69EF /* SumTextInputtFormaterWithPrefix3SymbolnsertTests.swift */; };
 		30A0495922B51963001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0495822B51962001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift */; };
 		30A0495B22B520BF001F6282 /* SumTextInputFormatterWithPrefix3SymbolsReplaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0495A22B520BF001F6282 /* SumTextInputFormatterWithPrefix3SymbolsReplaceTests.swift */; };
+		30A0495D22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0495C22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift */; };
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
 		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
@@ -85,6 +86,7 @@
 		309BD5B522B2C2FD00BA69EF /* SumTextInputtFormaterWithPrefix3SymbolnsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputtFormaterWithPrefix3SymbolnsertTests.swift; sourceTree = "<group>"; };
 		30A0495822B51962001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithPrefixInputTests.swift; sourceTree = "<group>"; };
 		30A0495A22B520BF001F6282 /* SumTextInputFormatterWithPrefix3SymbolsReplaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithPrefix3SymbolsReplaceTests.swift; sourceTree = "<group>"; };
+		30A0495C22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift; sourceTree = "<group>"; };
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				30A0495822B51962001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift */,
 				309BD5B522B2C2FD00BA69EF /* SumTextInputtFormaterWithPrefix3SymbolnsertTests.swift */,
 				30A0495A22B520BF001F6282 /* SumTextInputFormatterWithPrefix3SymbolsReplaceTests.swift */,
+				30A0495C22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift */,
 			);
 			name = WithPrefix;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				307F0F4622B03CBC00C52AD2 /* SumTextInputFormatterWithSuffixReplace1SymbolTests.swift in Sources */,
 				307F0F4822B0405A00C52AD2 /* SumTextInputFormatterWithSuffixReplace2SymbolsTests.swift in Sources */,
 				30FF731322ADA53D005FBC38 /* DefaultTextInputFormatter1SymbolReplaceTests.swift in Sources */,
+				30A0495D22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift in Sources */,
 				306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */,
 				30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */,
 				30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */,
