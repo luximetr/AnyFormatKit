@@ -11,7 +11,7 @@ import XCTest
 
 class SumTextInputFormatterErasingBy1SymbolTests: XCTestCase {
   
-  let formatter = SumTextInputFormatter(textPattern: "#,###.##")
+  private let formatter = SumTextInputFormatter(textPattern: "#,###.##")
   
   // 12,345.6|7|  ->  12,345.6|
   func test1() {
