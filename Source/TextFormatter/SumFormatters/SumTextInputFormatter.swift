@@ -23,97 +23,38 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   }
 
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
-    var internalRange = range
-    var isDecimalSeparatorInsertion = false
-    let emptyResult = FormattedTextValue(formattedText: currentText, caretBeginOffset: range.upperBound)
+    let unformattedCurrentText = unformat(currentText) ?? ""
+    let unformattedRange = convertToUnformattedRange(currentText: currentText, unformattedCurrentText: unformattedCurrentText, range: range)
+    let newUnformattedText = unformattedCurrentText.replacingCharacters(in: unformattedRange, with: text)
+    let newFormattedText = format(newUnformattedText) ?? ""
     
-    if text.isEmpty {
-      let newRange = correctRangeForDeleting(from: currentText, at: internalRange)
-      guard let newRangeUnwrapped = newRange else { return emptyResult }
-      internalRange = newRangeUnwrapped
-    } else if text == "," || text == "." {
-      isDecimalSeparatorInsertion = true
-      if !isCorrectSeparatorInserting() { return emptyResult }
-    } else {
-      if !isCorrectInserting(from: currentText, at: internalRange) { return emptyResult }
-    }
-    let oldString = currentText as NSString
-    let newString = oldString.replacingCharacters(in: internalRange, with: isDecimalSeparatorInsertion ? decimalSeparator : text)
+    var lowerBound = unformattedCurrentText.distance(from: unformattedCurrentText.startIndex, to: unformattedRange.lowerBound)
+    lowerBound += text.count
+    lowerBound += newFormattedText.leftSlice(limit: lowerBound).components(separatedBy: groupingSeparator).count - 1
     
-    if decimalSeparator != groupingSeparator {
-      guard newString.components(separatedBy: decimalSeparator).count < 3 else { return emptyResult }
-    }
-    guard let newUnformatted = unformat(newString) else { return emptyResult }
-    
-    let newFormatted = format(newUnformatted) ?? ""
-    
-    let caretOffset = rangeOffset(range: internalRange, oldString: String(oldString), newString: newFormatted)
-    
-    return FormattedTextValue(formattedText: newFormatted, caretBeginOffset: caretOffset)
+    let caretOffset = calculateCaretOffset(replacementString: text, range: range)
+    return FormattedTextValue(formattedText: newFormattedText, caretBeginOffset: lowerBound)
   }
-
-  // MARK: - Private
-  private func rangeOffset(range: NSRange, oldString: String, newString: String) -> Int {
-    var offset = range.location + range.length + (newString.count - oldString.count)
-    if oldString.isEmpty {
-      offset -= suffix?.count ?? 0
+  
+  private func convertToUnformattedRange(currentText: String, unformattedCurrentText: String, range: NSRange) -> Range<String.Index> {
+    let currentTextBeforeRangeLocation = currentText.leftSlice(limit: range.location)
+    let unformattedTextBeforeRangeLocation = removeAllFormatSymbols(text: currentTextBeforeRangeLocation)
+    
+    
+    let textLengthDifference = currentTextBeforeRangeLocation.count - unformattedTextBeforeRangeLocation.count
+    var convertedRange = range
+    
+    convertedRange.location -= textLengthDifference
+    guard let convertedResultRange = Range(convertedRange, in: currentText) else {
+      return currentText.startIndex..<currentText.startIndex
     }
-    if offset < prefix?.count ?? 0 {
-      offset = prefix?.count ?? 0
-    }
-    return offset
+    
+    return convertedResultRange
   }
-
-  private func correctRangeForDeleting(from string: String?, at range: NSRange) -> NSRange? {
-    guard let unformatted = unformat(string), !unformatted.isEmpty else { return nil }
-    guard let text = string else { return nil }
-
-    if range.length == 1 {
-      if range.location > text.count - (suffix?.count ?? 0) - 1 ||
-        range.location < (prefix?.count ?? 0)
-      {
-        return nil
-      } else if let deleteRange = Range(range, in: text), text[deleteRange] == groupingSeparator {
-        let newRange = NSRange(location: range.location - 1, length: range.length )
-        return newRange
-      }
-    } else {
-
-      var lowerBound = range.lowerBound
-      var upperBound = range.upperBound
-
-      if range.lowerBound < (prefix?.count ?? 0) {
-        lowerBound = (prefix?.count ?? 0)
-      }
-
-      if range.upperBound > text.count - (suffix?.count ?? 0)  {
-        upperBound = text.count - (suffix?.count ?? 0)
-      }
-
-      let newRange = NSRange(location: lowerBound, length: upperBound - lowerBound)
-      return newRange
-    }
-
-    return range
-  }
-
-  private func isCorrectInserting(from string: String?, at range: NSRange) -> Bool {
-    guard let text = string else { return false }
-    guard let unformated = unformat(string) else { return false }
-
-    if range.location > (text.count - (suffix?.count ?? 0)) ||
-      range.location < (prefix?.count ?? 0)
-    { return false }
-
-    guard let integerPart = unformated.components(separatedBy: decimalSeparator).first,
-      integerPart.count <= maximumIntegerCharacters
-      else { return false }
-
-    return true
-  }
-
-  private func isCorrectSeparatorInserting() -> Bool {
-    if decimalSeparator.isEmpty || decimalSeparator == groupingSeparator { return false } //Decimal not allowed
-    return true
+  
+  // MARK: - Caret offset calculation
+  
+  private func calculateCaretOffset(replacementString: String, range: NSRange) -> Int {
+    return replacementString.count + range.location
   }
 }

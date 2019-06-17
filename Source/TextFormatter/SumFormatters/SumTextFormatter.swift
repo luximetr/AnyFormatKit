@@ -113,15 +113,20 @@ open class SumTextFormatter: TextFormatter {
   }
   
   open func unformat(_ formatted: String?) -> String? {
-    guard let formatted = formatted else { return nil }
-    let formattedString = formatted
-    
-    let unformattedString = formattedString
-      .replacingOccurrences(of: suffix ?? "", with: "")
-      .replacingOccurrences(of: prefix ?? "", with: "")
-      .replacingOccurrences(of: " ", with: "")
-      .replacingOccurrences(of: groupingSeparator, with: "")
-    
+    guard let formattedString = formatted else { return nil }
+    let unformattedString = removeAllFormatSymbols(text: formattedString)
     return unformattedString
+  }
+  
+  func removeAllFormatSymbols(text: String) -> String {
+    var resultText = text
+    if let prefix = prefix {
+      resultText = resultText.replacingOccurrences(of: prefix, with: "")
+    }
+    if let suffix = suffix {
+      resultText = resultText.replacingOccurrences(of: suffix, with: "")
+    }
+    resultText = resultText.replacingOccurrences(of: groupingSeparator, with: "")
+    return resultText
   }
 }

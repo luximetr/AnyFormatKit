@@ -26,6 +26,14 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     initConfigure()
+    
+    let testFormatter = SumTextInputFormatter(textPattern: "#,###.## $")
+    let result = testFormatter.formatInput(
+      currentText: "1,234,567.89 $",
+      range: NSRange(location: 7, length: 0),
+      replacementString: "0")
+    print(result)
+    print("")
   }
 }
 

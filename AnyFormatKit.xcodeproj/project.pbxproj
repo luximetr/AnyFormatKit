@@ -35,6 +35,8 @@
 		30A0497722B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0497622B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift */; };
 		30A0497922B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0497822B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift */; };
 		30A0497A22B53D7A001F6282 /* SumTextInputFormatterInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0496E22B52F86001F6282 /* SumTextInputFormatterInputTests.swift */; };
+		30A0497D22B7AF3B001F6282 /* SumTextInputFormatterBy1SymbolInputCaretTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0497C22B7AF3B001F6282 /* SumTextInputFormatterBy1SymbolInputCaretTests.swift */; };
+		30A0498222B7B29A001F6282 /* SumTextInputFormatter3SymbolsInsertCaretTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0498122B7B29A001F6282 /* SumTextInputFormatter3SymbolsInsertCaretTests.swift */; };
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
 		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
@@ -97,6 +99,8 @@
 		30A0497422B535CF001F6282 /* SumTextInputFormatterReplace3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterReplace3SymbolsTests.swift; sourceTree = "<group>"; };
 		30A0497622B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterErasingBy1SymbolTests.swift; sourceTree = "<group>"; };
 		30A0497822B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterDelete3SymbolsTests.swift; sourceTree = "<group>"; };
+		30A0497C22B7AF3B001F6282 /* SumTextInputFormatterBy1SymbolInputCaretTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterBy1SymbolInputCaretTests.swift; sourceTree = "<group>"; };
+		30A0498122B7B29A001F6282 /* SumTextInputFormatter3SymbolsInsertCaretTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter3SymbolsInsertCaretTests.swift; sourceTree = "<group>"; };
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
@@ -315,6 +319,49 @@
 			path = Insert;
 			sourceTree = "<group>";
 		};
+		30A0497B22B7AF20001F6282 /* Caret */ = {
+			isa = PBXGroup;
+			children = (
+				30A0497E22B7B23D001F6282 /* Insert */,
+				30A0497F22B7B244001F6282 /* Delete */,
+				30A0498022B7B249001F6282 /* Replace */,
+			);
+			path = Caret;
+			sourceTree = "<group>";
+		};
+		30A0497E22B7B23D001F6282 /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				30A0497C22B7AF3B001F6282 /* SumTextInputFormatterBy1SymbolInputCaretTests.swift */,
+				30A0498122B7B29A001F6282 /* SumTextInputFormatter3SymbolsInsertCaretTests.swift */,
+			);
+			path = Insert;
+			sourceTree = "<group>";
+		};
+		30A0497F22B7B244001F6282 /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		30A0498022B7B249001F6282 /* Replace */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Replace;
+			sourceTree = "<group>";
+		};
+		30A0498322B7C480001F6282 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				30A0496022B5297A001F6282 /* Simple */,
+				307F0F3F22B0355E00C52AD2 /* WithSuffix */,
+				309BD5B422B2C1F400BA69EF /* WithPrefix */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
 		30C155FE1FBC4DA800C7229D /* SumFormatTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,9 +439,8 @@
 		30FF730C22AD1E54005FBC38 /* SumTextInputFormatterTests */ = {
 			isa = PBXGroup;
 			children = (
-				30A0496022B5297A001F6282 /* Simple */,
-				307F0F3F22B0355E00C52AD2 /* WithSuffix */,
-				309BD5B422B2C1F400BA69EF /* WithPrefix */,
+				30A0498322B7C480001F6282 /* Formatter */,
+				30A0497B22B7AF20001F6282 /* Caret */,
 			);
 			path = SumTextInputFormatterTests;
 			sourceTree = "<group>";
@@ -571,7 +617,9 @@
 				30A0495F22B52752001F6282 /* SumTextInputFormatterWithPrefixDelete3SymbolsTests.swift in Sources */,
 				30D1A4CA22AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift in Sources */,
 				309BD5B322B2BBF400BA69EF /* SumTextInputFormatterWithSuffixInsert2SymbolsTests.swift in Sources */,
+				30A0497D22B7AF3B001F6282 /* SumTextInputFormatterBy1SymbolInputCaretTests.swift in Sources */,
 				30A0495922B51963001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift in Sources */,
+				30A0498222B7B29A001F6282 /* SumTextInputFormatter3SymbolsInsertCaretTests.swift in Sources */,
 				306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */,
 				307F0F4222B0373E00C52AD2 /* SumTextInputFormatterWithSuffixDelete2SymbolsTests.swift in Sources */,
 				30FF731522ADA7A4005FBC38 /* DefaultTextInputFormatter2SymbolsReplaceTests.swift in Sources */,
