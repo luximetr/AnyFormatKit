@@ -33,13 +33,13 @@ class SumTextInputFormatterWithSuffixDeleteTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // 12|,|345,67$  ->  1|,345.67$
+  // 12|,|345,67$  ->  12|,345.67$
   func test3() {
     let actualResult = formatter.formatInput(
       currentText: "12,345.67$",
       range: NSRange(location: 2, length: 1),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "1,345.67$", caretBeginOffset: 1)
+    let expectedResult = FormattedTextValue(formattedText: "12,345.67$", caretBeginOffset: 2)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   

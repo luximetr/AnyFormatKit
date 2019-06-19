@@ -60,4 +60,22 @@ extension String {
     let rangeEnd = index(startIndex, offsetBy: limit)
     return String(self[rangeBegin..<rangeEnd])
   }
+  
+  func slice(from: Int, length: Int) -> String? {
+    guard from < count, from + length < count else { return nil }
+    let fromIndex = index(startIndex, offsetBy: from)
+    let toIndex = index(fromIndex, offsetBy: length)
+    return String(self[fromIndex..<toIndex])
+  }
+  
+  func replacingCharacters(in range: NSRange, with replacement: String) -> String {
+    guard range.location <= self.count else { return self }
+    let maxLength = self.count
+    var limitedRange = NSRange(location: range.location, length: range.length)
+    if range.location + range.length > maxLength {
+      limitedRange.length = self.count - range.location
+    }
+    guard let swiftRange = Range(limitedRange, in: self) else { return self }
+    return replacingCharacters(in: swiftRange, with: replacement)
+  }
 }

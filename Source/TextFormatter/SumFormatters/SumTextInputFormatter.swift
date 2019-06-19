@@ -21,6 +21,45 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   public override init(textPattern: String, patternSymbol: Character = "#") {
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
+  
+  override open func format(_ unformatted: String?) -> String? {
+    guard let unformatted = unformatted else { return nil }
+    let minimumFractionDigits = calculateMinimumFractionDigits(unformatted: unformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
+    numberFormatter.minimumFractionDigits = minimumFractionDigits
+    
+    let needAlwaysShowDecimalSeparator = minimumFractionDigits == 0 && unformatted.contains(decimalSeparator)
+    numberFormatter.alwaysShowsDecimalSeparator = needAlwaysShowDecimalSeparator
+    
+    numberFormatter.minimumIntegerDigits = calculateMinimumIntegerDigits(unformatted: unformatted, decimalSeparator: decimalSeparator)
+    if unformatted == decimalSeparator {
+      return (prefix ?? "") + decimalSeparator + (suffix ?? "")
+    } else {
+      return super.format(unformatted)
+    }
+
+  }
+  
+  private func calculateMinimumFractionDigits(unformatted: String, divider: Character, maximumFractionDigits: Int) -> Int {
+    let currentFractionDigitsCount = getFractionDigitsCount(unformatted: unformatted, divider: divider)
+    if currentFractionDigitsCount >= maximumFractionDigits { return maximumFractionDigits }
+    return currentFractionDigitsCount
+  }
+  
+  private func getFractionDigitsCount(unformatted: String, divider: Character) -> Int {
+    let parts = unformatted.split(separator: divider)
+    guard parts.count > 1 else { return 0 }
+    return parts[1].count
+  }
+  
+  private func calculateMinimumIntegerDigits(unformatted: String, decimalSeparator: String) -> Int {
+    let isBeginFromDecimalSeparator = unformatted.hasPrefix(decimalSeparator)
+    let hasIntegerPart = !isBeginFromDecimalSeparator
+    if hasIntegerPart {
+      return 1
+    } else {
+      return 0
+    }
+  }
 
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedCurrentText = unformat(currentText) ?? ""
@@ -28,15 +67,63 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     let newUnformattedText = unformattedCurrentText.replacingCharacters(in: unformattedRange, with: text)
     let newFormattedText = format(newUnformattedText) ?? ""
     
-    var lowerBound = unformattedCurrentText.distance(from: unformattedCurrentText.startIndex, to: unformattedRange.lowerBound)
-    lowerBound += text.count
-    lowerBound += newFormattedText.leftSlice(limit: lowerBound).components(separatedBy: groupingSeparator).count - 1
-    
-    let caretOffset = calculateCaretOffset(replacementString: text, range: range)
-    return FormattedTextValue(formattedText: newFormattedText, caretBeginOffset: lowerBound)
+    let caretOffset = calculateCaretOffset(range: range, replacementText: text, unformattedRange: unformattedRange, currentFormattedText: currentText, newFormattedText: newFormattedText)
+    return FormattedTextValue(formattedText: newFormattedText, caretBeginOffset: caretOffset)
   }
   
-  private func convertToUnformattedRange(currentText: String, unformattedCurrentText: String, range: NSRange) -> Range<String.Index> {
+  private func calculateCaretOffset(
+      range: NSRange,
+      replacementText: String,
+      unformattedRange: NSRange,
+      currentFormattedText: String,
+      newFormattedText: String) -> Int {
+    let isInsert = range.length == 0 && !replacementText.isEmpty
+    let isDelete = range.length != 0 && replacementText.isEmpty
+    
+    let difference = diff(currentFormattedText, newFormattedText)
+    print(difference)
+    
+    if isInsert {
+      return range.location + newFormattedText.count - currentFormattedText.count
+    } else if isDelete {
+      print(prefix)
+      print(range.location)
+      if let prefix = prefix, newFormattedText.hasPrefix(prefix), range.location <= prefix.count {
+        return range.location
+      } else if unformattedRange.location == 0 {
+        return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText)
+      } else {
+        return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText) + 1
+      }
+    } else { // isReplace
+      return range.location + replacementText.count
+    }
+  }
+  
+  private func findIndexOfNumberSymbol(numberOfSymbolsBefore: Int, newFormattedText: String) -> Int {
+    var numberSymbolsCount = 0
+    for (index, character) in newFormattedText.enumerated() {
+      if isDigit(character: character) || character == decimalSeparator.first! {
+        numberSymbolsCount += 1
+      }
+      if numberSymbolsCount >= numberOfSymbolsBefore {
+        return index
+      }
+    }
+    return 0
+  }
+  
+  private func findIndexOfDigitBefore(caretPosition: Int, in currentFormattedString: String) -> Int? {
+    guard caretPosition > 0 else { return nil }
+    return 0
+  }
+  
+  private func isDigit(character: Character) -> Bool {
+    guard let scalar = String(character).unicodeScalars.first else { return false }
+    return CharacterSet.decimalDigits.contains(scalar)
+  }
+  
+  private func convertToUnformattedRange(currentText: String, unformattedCurrentText: String, range: NSRange) -> NSRange {
     let currentTextBeforeRangeLocation = currentText.leftSlice(limit: range.location)
     let unformattedTextBeforeRangeLocation = removeAllFormatSymbols(text: currentTextBeforeRangeLocation)
     
@@ -45,16 +132,90 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     var convertedRange = range
     
     convertedRange.location -= textLengthDifference
-    guard let convertedResultRange = Range(convertedRange, in: currentText) else {
-      return currentText.startIndex..<currentText.startIndex
+    if range.length > 0 {
+      let rangeSlice = currentText.slice(from: range.location, length: range.length) ?? ""
+      let uls = removeAllFormatSymbols(text: rangeSlice)
+      convertedRange.length -= rangeSlice.count - uls.count
     }
     
-    return convertedResultRange
+    return convertedRange
   }
   
   // MARK: - Caret offset calculation
   
   private func calculateCaretOffset(replacementString: String, range: NSRange) -> Int {
     return replacementString.count + range.location
+  }
+}
+
+
+
+// Diff
+
+public func diff(_ before: String, _ after: String) -> (CountableRange<Int>, String)? {
+  #if swift(>=4.0)
+  let result = diff(Array(before), Array(after))
+  #else
+  let result = diff(Array(before.characters), Array(after.characters))
+  #endif
+  
+  return result.flatMap { ($0.0, String($0.1)) }
+}
+
+public func diff<T: Equatable>(_ before: [T], _ after: [T]) -> (CountableRange<Int>, [T])? {
+  return diff(before, after, compare: ==)
+}
+
+public func diff<T>(_ before: [T], _ after: [T], compare: (T, T) -> Bool) -> (CountableRange<Int>, [T])? {
+  let beforeCount = before.count
+  let afterCount = after.count
+  
+  // Find start
+  var commonStart = 0
+  while commonStart < beforeCount && commonStart < afterCount && compare(before[commonStart], after[commonStart]) {
+    commonStart += 1
+  }
+  
+  // Find end
+  var commonEnd = 0
+  while commonEnd + commonStart < beforeCount && commonEnd + commonStart < afterCount && compare(before[beforeCount - 1 - commonEnd], after[afterCount - 1 - commonEnd]) {
+    commonEnd += 1
+  }
+  
+  // Remove
+  if beforeCount != commonStart + commonEnd {
+    let range = commonStart..<(beforeCount - commonEnd)
+    let intersection = commonStart..<(afterCount - commonEnd)
+    return (range, Array(after[intersection]))
+  }
+  
+  // Insert
+  if afterCount != commonStart + commonEnd {
+    let range = commonStart..<(afterCount - commonEnd)
+    return (commonStart..<commonStart, Array(after[range]))
+  }
+  
+  // Already equal
+  return nil
+}
+
+public func diff(_ before: NSString, _ after: NSString) -> (NSRange, NSString)? {
+  let result = diff(Array(before.characters), Array(after.characters))
+  return result.flatMap { range, characters in
+    let string = NSString(characters: characters, length: characters.count)
+    return (NSRange(location: range.startIndex, length: range.count), string)
+  }
+}
+
+
+extension NSString {
+  var characters: [unichar] {
+    var characters = [unichar]()
+    
+    for i in 0..<length {
+      characters.append(character(at: i))
+    }
+    
+    return characters
   }
 }

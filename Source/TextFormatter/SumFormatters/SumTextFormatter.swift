@@ -10,7 +10,7 @@ import Foundation
 
 open class SumTextFormatter: TextFormatter {
   
-  private let numberFormatter: NumberFormatter
+  let numberFormatter: NumberFormatter
   
   open var maximumIntegerCharacters: Int = 14 {
     didSet { numberFormatter.maximumIntegerDigits = maximumIntegerCharacters }
@@ -69,11 +69,9 @@ open class SumTextFormatter: TextFormatter {
     
     var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
     correctedUnformatted = correctUnformatted(correctedUnformatted, maximumIntegerDigits: maximumIntegerCharacters, decimalSeparator: unformattedDecimalSeparator, negativePrefix: negativePrefix)
+    
     let number = NSDecimalNumber(string: correctedUnformatted)
-    let minimumFractionDigits = calculateMinimumFractionDigits(unformatted: correctedUnformatted, divider: ".", maximumFractionDigits: numberFormatter.maximumFractionDigits)
-    numberFormatter.minimumFractionDigits = minimumFractionDigits
-    let needAlwaysShowDecimalSeparator = minimumFractionDigits == 0 && correctedUnformatted.contains(unformattedDecimalSeparator)
-    numberFormatter.alwaysShowsDecimalSeparator = needAlwaysShowDecimalSeparator
+    
     return numberFormatter.string(from: number)
   }
   
@@ -98,18 +96,6 @@ open class SumTextFormatter: TextFormatter {
     } else {
       return decimalPart.leftSlice(limit: maximumIntegerDigits)
     }
-  }
-  
-  private func calculateMinimumFractionDigits(unformatted: String, divider: Character, maximumFractionDigits: Int) -> Int {
-    let currentFractionDigitsCount = getFractionDigitsCount(unformatted: unformatted, divider: divider)
-    if currentFractionDigitsCount >= maximumFractionDigits { return maximumFractionDigits }
-    return currentFractionDigitsCount
-  }
-  
-  private func getFractionDigitsCount(unformatted: String, divider: Character) -> Int {
-    let parts = unformatted.split(separator: divider)
-    guard parts.count > 1 else { return 0 }
-    return parts[1].count
   }
   
   open func unformat(_ formatted: String?) -> String? {

@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		306EBE991FC4268200E49BB8 /* NegativeSumFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */; };
-		306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */; };
-		306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */; };
 		306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */; };
 		307DCD4B1FC2CFA700889A52 /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */; };
-		307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */; };
 		307EA2311FAA1B5B00DE439D /* DefaultTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2161FAA1B5B00DE439D /* DefaultTextInputFormatter.swift */; };
 		307EA2321FAA1B5B00DE439D /* DefaultTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */; };
 		307EA2331FAA1B5B00DE439D /* TextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */; };
@@ -36,7 +32,6 @@
 		30A0497922B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0497822B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift */; };
 		30A0497A22B53D7A001F6282 /* SumTextInputFormatterInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0496E22B52F86001F6282 /* SumTextInputFormatterInputTests.swift */; };
 		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
-		30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
 		30D1A4C822AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1A4C722AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift */; };
 		30D1A4CA22AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1A4C922AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift */; };
@@ -68,13 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeSumFormatTests.swift; sourceTree = "<group>"; };
-		306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFormatBoundaryTests.swift; sourceTree = "<group>"; };
-		306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumPrefixSufixFormatterTests.swift; sourceTree = "<group>"; };
 		306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatParsingTests.swift; sourceTree = "<group>"; };
 		307DCD481FC2CFA700889A52 /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
 		307DCD491FC2CFA700889A52 /* SumTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
-		307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumUSFormatTests.swift; sourceTree = "<group>"; };
 		307EA2161FAA1B5B00DE439D /* DefaultTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA2171FAA1B5B00DE439D /* DefaultTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextFormatter.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
@@ -98,7 +89,6 @@
 		30A0497622B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterErasingBy1SymbolTests.swift; sourceTree = "<group>"; };
 		30A0497822B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterDelete3SymbolsTests.swift; sourceTree = "<group>"; };
 		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
-		30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumEuropeanFormatTests.swift; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
 		30D1A4C722AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSuffixDelete1SymbolTests.swift; sourceTree = "<group>"; };
 		30D1A4C922AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSuffixInputTests.swift; sourceTree = "<group>"; };
@@ -318,11 +308,6 @@
 		30C155FE1FBC4DA800C7229D /* SumFormatTests */ = {
 			isa = PBXGroup;
 			children = (
-				30C155FF1FBC4DCC00C7229D /* SumEuropeanFormatTests.swift */,
-				307DCD4C1FC2F2D700889A52 /* SumUSFormatTests.swift */,
-				306EBE981FC4268200E49BB8 /* NegativeSumFormatTests.swift */,
-				306EBE9A1FC4272400E49BB8 /* SumFormatBoundaryTests.swift */,
-				306EBE9C1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift */,
 				306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */,
 				30D7EAA5229C659B0014E31B /* SumFormatParserTests.swift */,
 			);
@@ -572,7 +557,6 @@
 				30D1A4CA22AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift in Sources */,
 				309BD5B322B2BBF400BA69EF /* SumTextInputFormatterWithSuffixInsert2SymbolsTests.swift in Sources */,
 				30A0495922B51963001F6282 /* SumTextInputFormatterWithPrefixInputTests.swift in Sources */,
-				306EBE9D1FC462B200E49BB8 /* SumPrefixSufixFormatterTests.swift in Sources */,
 				307F0F4222B0373E00C52AD2 /* SumTextInputFormatterWithSuffixDelete2SymbolsTests.swift in Sources */,
 				30FF731522ADA7A4005FBC38 /* DefaultTextInputFormatter2SymbolsReplaceTests.swift in Sources */,
 				307F0F4622B03CBC00C52AD2 /* SumTextInputFormatterWithSuffixReplace1SymbolTests.swift in Sources */,
@@ -580,16 +564,12 @@
 				30FF731322ADA53D005FBC38 /* DefaultTextInputFormatter1SymbolReplaceTests.swift in Sources */,
 				30A0495D22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift in Sources */,
 				306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */,
-				30C156001FBC4DCC00C7229D /* SumEuropeanFormatTests.swift in Sources */,
 				30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */,
 				30FF731122AD9BAB005FBC38 /* DefaultTextInputFormatterDeleteTests.swift in Sources */,
-				306EBE9B1FC4272400E49BB8 /* SumFormatBoundaryTests.swift in Sources */,
-				307DCD4D1FC2F2D700889A52 /* SumUSFormatTests.swift in Sources */,
 				30FE6FE71FAA13D30024D1B1 /* AnyFormatKitTests.swift in Sources */,
 				30824C0F22B17329008E1E4E /* SumTextInputFormatterWithSuffixReplace3SymbolsTests.swift in Sources */,
 				30A0497922B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift in Sources */,
 				30A0497722B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift in Sources */,
-				306EBE991FC4268200E49BB8 /* NegativeSumFormatTests.swift in Sources */,
 				30FF731722ADB380005FBC38 /* DefaultTextInputFormatter3SymbolsReplace.swift in Sources */,
 				30824C1122B176F2008E1E4E /* SumTextInputFormatterWithSuffixReplaceWith0Tests.swift in Sources */,
 				30A0497322B532FC001F6282 /* SumTextInputFormatterInsert3Symbols.swift in Sources */,
