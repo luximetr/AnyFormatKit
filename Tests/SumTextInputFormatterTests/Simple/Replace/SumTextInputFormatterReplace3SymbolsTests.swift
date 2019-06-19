@@ -13,13 +13,13 @@ class SumTextInputFormatterReplace3SymbolsTests: XCTestCase {
  
   let formatter = SumTextInputFormatter(textPattern: "#,###.##")
  
-  // |12,3|45.67  ->  80,9|45.67
-  func test1() { // #to_fix
+  // |12,|345.67  ->  809|,345.67
+  func test1() { // #to_think
     let actualResult = formatter.formatInput(
       currentText: "12,345.67",
       range: NSRange(location: 0, length: 3),
       replacementString: "809")
-    let expectedResult = FormattedTextValue(formattedText: "80,945.67", caretBeginOffset: 4)
+    let expectedResult = FormattedTextValue(formattedText: "809,345.67", caretBeginOffset: 3)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   

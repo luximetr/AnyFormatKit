@@ -74,7 +74,7 @@ class SumTextInputFormatterWithSuffixReplaceWith0Tests: XCTestCase {
   }
   
   // |0.0$  ->  0|.0$
-  func test7() { // #to_fix
+  func test7() { // #to_think
     let actualResult = formatter.formatInput(
       currentText: "0.0$",
       range: NSRange(location: 0, length: 0),
