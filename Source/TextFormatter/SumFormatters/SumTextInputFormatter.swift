@@ -47,6 +47,9 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   
   private func getFractionDigitsCount(unformatted: String, divider: Character) -> Int {
     let parts = unformatted.split(separator: divider)
+    if unformatted.first == divider, parts.count > 0 {
+      return parts[0].count
+    }
     guard parts.count > 1 else { return 0 }
     return parts[1].count
   }
@@ -67,7 +70,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     let newUnformattedText = unformattedCurrentText.replacingCharacters(in: unformattedRange, with: text)
     let newFormattedText = format(newUnformattedText) ?? ""
     
-    let caretOffset = calculateCaretOffset(range: range, replacementText: text, unformattedRange: unformattedRange, currentFormattedText: currentText, newFormattedText: newFormattedText)
+    let caretOffset = calculateCaretOffset(range: range, replacementText: text, unformattedRange: unformattedRange, currentFormattedText: currentText, newFormattedText: newFormattedText, currentUnformattedText: unformattedCurrentText, newUnformattedText: newUnformattedText)
     return FormattedTextValue(formattedText: newFormattedText, caretBeginOffset: caretOffset)
   }
   
@@ -76,18 +79,48 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
       replacementText: String,
       unformattedRange: NSRange,
       currentFormattedText: String,
-      newFormattedText: String) -> Int {
+      newFormattedText: String,
+      currentUnformattedText: String,
+      newUnformattedText: String) -> Int {
     let isInsert = range.length == 0 && !replacementText.isEmpty
     let isDelete = range.length != 0 && replacementText.isEmpty
     
-    let difference = diff(currentFormattedText, newFormattedText)
+    let difference = diff(newFormattedText, currentFormattedText)
     print(difference)
     
     if isInsert {
-      return range.location + newFormattedText.count - currentFormattedText.count
+      let differenceCount = newFormattedText.count - currentFormattedText.count
+      if differenceCount == 0 {
+        if currentFormattedText == newFormattedText {
+          return range.location
+        } else {
+          if range.location + replacementText.count > (newFormattedText.count - (suffix ?? "").count) {
+            return newFormattedText.count - (suffix ?? "").count
+          } else {
+            return range.location + replacementText.count
+          }
+        }
+      } else {
+        let prefixLength = prefix?.count ?? 0
+        var result = 0
+        if let suffix = suffix, newFormattedText.hasSuffix(suffix), range.location == currentFormattedText.count {
+          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1 - suffix.count
+        } else if range.location == currentFormattedText.count {
+          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1
+        } else {
+          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText)
+        }
+        if range.location < prefixLength {
+          result += prefixLength - range.location
+        }
+        return result
+//        if let suffix = suffix, newFormattedText.hasSuffix(suffix), currentFormattedText.isEmpty {
+//          return range.location + differenceCount - suffix.count
+//        } else {
+//          return range.location + differenceCount + (prefix ?? "").count
+//        }
+      }
     } else if isDelete {
-      print(prefix)
-      print(range.location)
       if let prefix = prefix, newFormattedText.hasPrefix(prefix), range.location <= prefix.count {
         return range.location
       } else if unformattedRange.location == 0 {
@@ -100,6 +133,19 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     }
   }
   
+  // for insert
+  private func findIndexOfNumberSymbol(numberOfSymolsFromEnd: Int, newFormattedText: String) -> Int {
+    var numberSymbolsCount = 0
+    for (index, character) in newFormattedText.enumerated().reversed() {
+      numberSymbolsCount += 1
+      if numberSymbolsCount >= numberOfSymolsFromEnd {
+        return index
+      }
+    }
+    return 0
+  }
+  
+  // for delete
   private func findIndexOfNumberSymbol(numberOfSymbolsBefore: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
     for (index, character) in newFormattedText.enumerated() {
@@ -112,11 +158,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     }
     return 0
   }
-  
-  private func findIndexOfDigitBefore(caretPosition: Int, in currentFormattedString: String) -> Int? {
-    guard caretPosition > 0 else { return nil }
-    return 0
-  }
+  //
   
   private func isDigit(character: Character) -> Bool {
     guard let scalar = String(character).unicodeScalars.first else { return false }
