@@ -47,9 +47,6 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   
   private func getFractionDigitsCount(unformatted: String, divider: String) -> Int {
     let parts = unformatted.components(separatedBy: divider)
-    if unformatted.hasPrefix(divider), parts.count > 0 {
-      return parts[0].count
-    }
     guard parts.count > 1 else { return 0 }
     return parts[1].count
   }
@@ -109,13 +106,15 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
         var result = 0
         if let suffix = suffix, newFormattedText.hasSuffix(suffix), range.location == currentFormattedText.count {
           result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1 - suffix.count
+        } else if currentFormattedText.isEmpty {
+          return newFormattedText.count
         } else if range.location == currentFormattedText.count {
           result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1
         } else {
           result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText)
         }
         if range.location < prefixLength {
-//          result += prefixLength - range.location
+          result += prefixLength - range.location
         }
         return result
       }

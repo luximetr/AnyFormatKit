@@ -20,7 +20,7 @@ class ViewController: UIViewController {
   
   let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
   let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XX XX XXXX XXXX", patternSymbol: "X")
-  let sumFormatter = SumTextInputFormatter(textPattern: "#.###,# $")
+  let sumFormatter = SumTextInputFormatter(textPattern: "#.###,#$")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {

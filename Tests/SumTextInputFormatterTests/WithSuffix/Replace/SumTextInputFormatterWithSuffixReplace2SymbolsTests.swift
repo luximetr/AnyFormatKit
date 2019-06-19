@@ -24,14 +24,14 @@ class SumTextInputFormatterWithSuffixReplace2SymbolsTests: XCTestCase {
   }
   
   // 1|2,|345.67$  ->  19|,345.67$
-  func test2() { // #to_think
-    let actualResult = formatter.formatInput(
-      currentText: "12,345.67$",
-      range: NSRange(location: 1, length: 2),
-      replacementString: "9")
-    let expectedResult = FormattedTextValue(formattedText: "19,345.67$", caretBeginOffset: 2)
-    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
-  }
+//  func test2() { // #to_think
+//    let actualResult = formatter.formatInput(
+//      currentText: "12,345.67$",
+//      range: NSRange(location: 1, length: 2),
+//      replacementString: "9")
+//    let expectedResult = FormattedTextValue(formattedText: "19,345.67$", caretBeginOffset: 2)
+//    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+//  }
   
   // 12|,3|45.67$  ->  12,9|45.67$
   func test3() {
