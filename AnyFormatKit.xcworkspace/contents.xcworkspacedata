@@ -5,6 +5,9 @@
       location = "group:AnyFormatKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Source/../Info.plist">
+   </FileRef>
+   <FileRef
       location = "group:Example/iOS Example.xcodeproj">
    </FileRef>
 </Workspace>
