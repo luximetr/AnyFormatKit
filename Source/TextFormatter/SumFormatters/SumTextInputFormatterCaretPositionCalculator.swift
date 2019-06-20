@@ -109,7 +109,9 @@ class SumTextInputFormatterCaretPositionCalculator {
   private func findIndexOfNumberSymbol(numberOfSymbolsBefore: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
     for (index, character) in newFormattedText.enumerated() {
-      if isDigit(character: character) || character == decimalSeparator.first! {
+      if isDigit(character: character) ||
+          character == decimalSeparator.first! ||
+          (!(suffix ?? "").isEmpty && (suffix ?? "").contains(character)) {
         numberSymbolsCount += 1
       }
       if numberSymbolsCount >= numberOfSymbolsBefore {

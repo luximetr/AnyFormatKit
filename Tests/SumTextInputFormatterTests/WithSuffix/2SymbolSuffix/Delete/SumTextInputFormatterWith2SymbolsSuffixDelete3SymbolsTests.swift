@@ -1,5 +1,5 @@
 //
-//  SumTextInputFormatterWith2SymbolsPrefixDelete3SymbolsTests.swift
+//  SumTextInputFormatterWith2SymbolsSuffixDelete3SymbolsTests.swift
 //  AnyFormatKitTests
 //
 //  Created by branderstudio on 20.06.2019.
@@ -9,97 +9,98 @@
 import XCTest
 @testable import AnyFormatKit
 
-class SumTextInputFormatterWith2SymbolsPrefixDelete3SymbolsTests: XCTestCase {
+class SumTextInputFormatterWith2SymbolsSuffixDelete3SymbolsTests: XCTestCase {
 
-  private let formatter = SumTextInputFormatter(textPattern: "$ #,###.##")
+  private let formatter = SumTextInputFormatter(textPattern: "#,###.## $")
   
-  // |$ 1|2,345.67  ->  |$ 2,345.67
+  // |12,|345.67 $  ->  |345.67 $
   func test1() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 0, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 2,345.67", caretBeginOffset: 0)
+    let expectedResult = FormattedTextValue(formattedText: "345.67 $", caretBeginOffset: 0)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $| 12|,345.67  ->  $| 345.67
+  // 1|2,3|45.67 $  ->  1|45.67 $
   func test2() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 1, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 345.67", caretBeginOffset: 1)
+    let expectedResult = FormattedTextValue(formattedText: "145.67 $", caretBeginOffset: 1)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ |12,|345.67  ->  $ |345.67
+  // 12|,34|5.67 $  ->  12|5.67 $
   func test3() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 2, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 345.67", caretBeginOffset: 2)
+    let expectedResult = FormattedTextValue(formattedText: "125.67 $", caretBeginOffset: 2)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 1|2,3|45.67  ->  $ 1|45.67
+  // 12,|345|.67 $  ->  12|.67 $
   func test4() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 3, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 145.67", caretBeginOffset: 3)
+    let expectedResult = FormattedTextValue(formattedText: "12.67 $", caretBeginOffset: 2)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 12|,34|5.67  ->  $ 12|5.67
+  // 12,3|45.|67 $  ->  12,3|67 $
   func test5() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 4, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 125.67", caretBeginOffset: 4)
+    let expectedResult = FormattedTextValue(formattedText: "12,367 $", caretBeginOffset: 4)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 12,|345|.67  ->  $ 12|.67
+  // 12,34|5.6|7 $  ->  12,34|7 $
   func test6() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 5, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 12.67", caretBeginOffset: 4)
+    let expectedResult = FormattedTextValue(formattedText: "12,347 $", caretBeginOffset: 5)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 12,3|45.|67  ->  $ 12,3|67
+  // 12,345|.67| $  ->  12,345| $
   func test7() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 6, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 12,367", caretBeginOffset: 6)
+    let expectedResult = FormattedTextValue(formattedText: "12,345 $", caretBeginOffset: 6)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 12,34|5.6|7  ->  $ 12,34|7
+  // 12,345.|67 |$  ->  12,345.| $
   func test8() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 7, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 12,347", caretBeginOffset: 7)
+    let expectedResult = FormattedTextValue(formattedText: "12,345. $", caretBeginOffset: 7)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // $ 12,345|.67|  ->  $ 12,345|
+  // 12,345.6|7 $|  ->  12,345.6| $
   func test9() {
     let actualResult = formatter.formatInput(
-      currentText: "$ 12,345.67",
+      currentText: "12,345.67 $",
       range: NSRange(location: 8, length: 3),
       replacementString: "")
-    let expectedResult = FormattedTextValue(formattedText: "$ 12,345", caretBeginOffset: 8)
+    let expectedResult = FormattedTextValue(formattedText: "12,345.6 $", caretBeginOffset: 8)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
+
 }

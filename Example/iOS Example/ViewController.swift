@@ -18,14 +18,21 @@ class ViewController: UIViewController {
   let cardNumberView = UITextView(frame: LayoutConstants.textInputViewFrame)
   let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
-  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "+38 (###) ###-##-##")
   let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XX XX XXXX XXXX", patternSymbol: "X")
-  let sumFormatter = SumTextInputFormatter(textPattern: "#.###,#$")
+  let sumFormatter = SumTextInputFormatter(textPattern: "#.###,## $")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     initConfigure()
+    
+    let numberFormatter = NumberFormatter()
+    numberFormatter.groupingSize = 4
+    let formatter = SumTextInputFormatter(numberFormatter: numberFormatter)
+    let result = formatter.formatInput(currentText: "222", range: NSRange(location: 0, length: 0), replacementString: "1")
+    print(result)
+    print("")
   }
 }
 

@@ -14,7 +14,7 @@ class SumTextInputFormatterWithSuffixInputTests: XCTestCase {
   private let formatter = SumTextInputFormatter(textPattern: "#,###.##$")
   
   // "|"  ->  1|$
-  func testIto1I$() { // #to_fix
+  func testIto1I$() {
     let actualResult = formatter.formatInput(
       currentText: "",
       range: NSRange(location: 0, length: 0),
