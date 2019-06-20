@@ -40,7 +40,7 @@ open class SumTextFormatter: TextFormatter {
     self.numberFormatter = numberFormatter
   }
   
-  public init(textPattern: String, patternSymbol: Character = "#") {
+  public convenience init(textPattern: String, patternSymbol: Character = "#") {
     let formatParser = SumFormatParser()
     let result = formatParser.parse(format: textPattern, patternSymbol: patternSymbol)
     let numberFormatter = NumberFormatter()
@@ -55,7 +55,7 @@ open class SumTextFormatter: TextFormatter {
     numberFormatter.usesGroupingSeparator = true
     numberFormatter.roundingMode = .down
     numberFormatter.negativePrefix = result.prefix + "-"
-    self.numberFormatter = numberFormatter
+    self.init(numberFormatter: numberFormatter)
   }
   
   
