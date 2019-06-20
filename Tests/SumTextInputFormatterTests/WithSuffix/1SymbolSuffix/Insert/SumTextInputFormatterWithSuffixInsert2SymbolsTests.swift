@@ -43,15 +43,15 @@ class SumTextInputFormatterWithSuffixInsert2SymbolsTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  // 12,|345.67$  ->  1,289|,345.67$
-//  func test4() { // #to_think
-//    let actualResult = formatter.formatInput(
-//      currentText: "12,345.67$",
-//      range: NSRange(location: 3, length: 0),
-//      replacementString: "89")
-//    let expectedResult = FormattedTextValue(formattedText: "1,289,345.67$", caretBeginOffset: 5)
-//    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
-//  }
+  // 12,|345.67$  ->  1,289,|345.67$
+  func test4() {
+    let actualResult = formatter.formatInput(
+      currentText: "12,345.67$",
+      range: NSRange(location: 3, length: 0),
+      replacementString: "89")
+    let expectedResult = FormattedTextValue(formattedText: "1,289,345.67$", caretBeginOffset: 6)
+    XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+  }
   
   // 12,3|45.67$  ->  1,238,9|45.67$
   func test5() {
