@@ -36,6 +36,13 @@ protocol TextInputFormatter: TextFormatter {
 - `var allowedSymbolsRegex: String` was removed. Filter moved to separate pod (look at [Filter](https://github.com/luximetr/TextInputFilter))
 - `shouldChangeTextIn(textInput:)` was removed (need to use `formatInput(currentText:)`)
 
+### SumTextInputFormatter
+
+- `var formattedPrefix: String?` was removed
+- `var allowedSymbolsRegex: String?` was removed. Filter moved to separate pod (look at [Filter](https://github.com/luximetr/TextInputFilter))
+- `func didBeginEditing()`  was removed
+- `func shouldChangeTextIn(textInput:)` was removed
+
 ### Removed classes
 
 - `MulticastDelegate`

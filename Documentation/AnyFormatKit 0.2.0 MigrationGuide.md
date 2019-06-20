@@ -38,7 +38,7 @@ FormattedTextValue is a tuple, that use for return formatted text and caret offs
 public typealias FormattedTextValue = (formattedText: String, caretBeginOffset: Int)
 ```
 
-#### NumberFormatter
+#### SumTextFormatter
 
 Now sum text formatter use NumberFormatter under the hood.
 
