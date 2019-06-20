@@ -129,6 +129,7 @@
 		30EB6CB522BB870E00447D5A /* SumFormatParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumFormatParser.swift; sourceTree = "<group>"; };
 		30EB6CB622BB870E00447D5A /* SumTextInputFormatterCaretPositionCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterCaretPositionCalculator.swift; sourceTree = "<group>"; };
 		30EB6CB722BB870E00447D5A /* SumTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatter.swift; sourceTree = "<group>"; };
+		30EB6CBB22BBA0A000447D5A /* AnyFormatKit 1.0.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 1.0.0 MigrationGuide.md"; sourceTree = "<group>"; };
 		30FE6FD81FAA13D30024D1B1 /* AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE11FAA13D30024D1B1 /* AnyFormatKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFormatKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FE6FE61FAA13D30024D1B1 /* AnyFormatKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTests.swift; sourceTree = "<group>"; };
@@ -511,6 +512,7 @@
 			children = (
 				30D7EAAC229D56D20014E31B /* README.md */,
 				30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
+				30EB6CBB22BBA0A000447D5A /* AnyFormatKit 1.0.0 MigrationGuide.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
