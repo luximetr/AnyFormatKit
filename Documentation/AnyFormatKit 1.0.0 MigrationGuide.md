@@ -4,9 +4,9 @@
 
 ### TextFormatterProtocol
 
-- TextFormatterProtocol was renamed to TextFormatter 
-- 'formattedText(from:)' method renamed to 'format()'
-- 'unformattedText(from:)' method renamed to 'unformat()'
+- `TextFormatterProtocol` was renamed to `TextFormatter` 
+- ` formattedText(from:) ` method renamed to ` format() `
+- ` unformattedText(from:) ` method renamed to ` unformat() `
 
 ```swift
 public protocol TextFormatter {
@@ -17,8 +17,8 @@ public protocol TextFormatter {
 
 ### TextInputFormatterProtocol
 
-- TextInputFormatterProtocol was renamed to TextInputFormatter
-- now have only one method `swift formatInput(currentText:) `
+- `TextInputFormatterProtocol` was renamed to `TextInputFormatter`
+- now have only one method ` formatInput(currentText:) `
 
 ```swift 
 // protocol TextInputFormatterProtocol {
