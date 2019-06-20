@@ -94,5 +94,4 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     
     return convertedRange
   }
-  
 }

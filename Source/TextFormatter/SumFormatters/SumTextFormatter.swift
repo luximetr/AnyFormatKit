@@ -106,10 +106,12 @@ open class SumTextFormatter: TextFormatter {
   
   func removeAllFormatSymbols(text: String) -> String {
     var resultText = text
-    if let prefix = prefix {
-      resultText = resultText.replacingOccurrences(of: prefix, with: "")
+    if let prefix = prefix, !prefix.isEmpty {
+      for prefixSymbol in prefix {
+        resultText = resultText.removePrefix(String(prefixSymbol))
+      }
     }
-    if let suffix = suffix {
+    if let suffix = suffix, !suffix.isEmpty {
       resultText = resultText.replacingOccurrences(of: suffix, with: "")
     }
     resultText = resultText.replacingOccurrences(of: groupingSeparator, with: "")

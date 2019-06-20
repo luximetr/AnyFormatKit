@@ -33,63 +33,60 @@ class SumTextInputFormatterCaretPositionCalculator {
     
     
     if isInsert {
-      let differenceCount = newFormattedText.count - currentFormattedText.count
-      if differenceCount == 0 {
-        if currentFormattedText == newFormattedText {
-          return range.location
-        } else {
-          if range.location + replacementText.count > (newFormattedText.count - (suffix ?? "").count) {
-            return newFormattedText.count - (suffix ?? "").count
-          } else {
-            if currentUnformattedText.hasPrefix("0") {
-              return range.location
-            } else {
-              return range.location + replacementText.count
-            }
-          }
-        }
-      } else {
-        let prefixLength = prefix?.count ?? 0
-        var result = 0
-        if let suffix = suffix, !suffix.isEmpty, newFormattedText.hasSuffix(suffix), range.location == currentFormattedText.count {
-          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1 - suffix.count
-        } else if currentFormattedText.isEmpty {
-          return newFormattedText.count
-        } else if range.location == currentFormattedText.count {
-          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1
-        } else {
-          result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText)
-        }
-        if range.location < prefixLength {
-          result += prefixLength - range.location
-        }
-        return result
-      }
+      return calculateCaretPositionForInsert(range: range, replacementText: replacementText, unformattedRange: unformattedRange, currentFormattedText: currentFormattedText, newFormattedText: newFormattedText, currentUnformattedText: currentUnformattedText, newUnformattedText: newUnformattedText)
     } else if isDelete {
-      if let prefix = prefix, !prefix.isEmpty, newFormattedText.hasPrefix(prefix), range.location <= prefix.count {
-        return range.location
-      } else if unformattedRange.location == 0 {
-        return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText)
-      } else {
-        return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText) + 1
-      }
+      return calculateCaretPositionForDelete(range: range, newFormattedText: newFormattedText, unformattedRange: unformattedRange)
     } else { // isReplace
-      var result = 0
-      let rangeLocation = range.location + range.length
-      if rangeLocation == currentFormattedText.count {
-        result = findReplaceIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - rangeLocation, newFormattedText: newFormattedText) + 1
-      } else {
-        result = findReplaceIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - rangeLocation, newFormattedText: newFormattedText)
-      }
-      
-      return result
+      return calculateCaretPositionForReplace(range: range, currentFormattedText: currentFormattedText, newFormattedText: newFormattedText)
     }
   }
   
   // for insert
+  private func calculateCaretPositionForInsert(
+      range: NSRange,
+      replacementText: String,
+      unformattedRange: NSRange,
+      currentFormattedText: String,
+      newFormattedText: String,
+      currentUnformattedText: String,
+      newUnformattedText: String) -> Int {
+    let differenceCount = newFormattedText.count - currentFormattedText.count
+    if differenceCount == 0 {
+      if currentFormattedText == newFormattedText {
+        return range.location
+      } else {
+        if range.location + replacementText.count > (newFormattedText.count - (suffix ?? "").count) {
+          return newFormattedText.count - (suffix ?? "").count
+        } else {
+          if currentUnformattedText.hasPrefix("0") {
+            return range.location
+          } else {
+            return range.location + replacementText.count
+          }
+        }
+      }
+    } else {
+      let prefixLength = prefix?.count ?? 0
+      var result = 0
+      if let suffix = suffix, !suffix.isEmpty, newFormattedText.hasSuffix(suffix), range.location == currentFormattedText.count {
+        result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1 - suffix.count
+      } else if currentFormattedText.isEmpty {
+        return newFormattedText.count
+      } else if range.location == currentFormattedText.count {
+        result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText) + 1
+      } else {
+        result = findIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - range.location, newFormattedText: newFormattedText)
+      }
+      if range.location < prefixLength {
+        result += prefixLength - range.location
+      }
+      return result
+    }
+  }
+  
   private func findIndexOfNumberSymbol(numberOfSymolsFromEnd: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
-    for (index, character) in newFormattedText.enumerated().reversed() {
+    for (index, _) in newFormattedText.enumerated().reversed() {
       numberSymbolsCount += 1
       if numberSymbolsCount >= numberOfSymolsFromEnd {
         return index
@@ -99,6 +96,16 @@ class SumTextInputFormatterCaretPositionCalculator {
   }
   
   // for delete
+  private func calculateCaretPositionForDelete(range: NSRange, newFormattedText: String, unformattedRange: NSRange) -> Int {
+    if let prefix = prefix, !prefix.isEmpty, newFormattedText.hasPrefix(prefix), range.location <= prefix.count {
+      return range.location
+    } else if unformattedRange.location == 0 {
+      return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText)
+    } else {
+      return findIndexOfNumberSymbol(numberOfSymbolsBefore: unformattedRange.location, newFormattedText: newFormattedText) + 1
+    }
+  }
+  
   private func findIndexOfNumberSymbol(numberOfSymbolsBefore: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
     for (index, character) in newFormattedText.enumerated() {
@@ -113,6 +120,17 @@ class SumTextInputFormatterCaretPositionCalculator {
   }
   
   // for replace
+  private func calculateCaretPositionForReplace(range: NSRange, currentFormattedText: String, newFormattedText: String) -> Int {
+    var result = 0
+    let rangeLocation = range.location + range.length
+    if rangeLocation == currentFormattedText.count {
+      result = findReplaceIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - rangeLocation, newFormattedText: newFormattedText) + 1
+    } else {
+      result = findReplaceIndexOfNumberSymbol(numberOfSymolsFromEnd: currentFormattedText.count - rangeLocation, newFormattedText: newFormattedText)
+    }
+    return result
+  }
+  
   private func findReplaceIndexOfNumberSymbol(numberOfSymolsFromEnd: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
     for (index, _) in newFormattedText.enumerated().reversed() {
