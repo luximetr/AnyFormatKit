@@ -110,7 +110,7 @@ class SumTextInputFormatterCaretPositionCalculator {
     var numberSymbolsCount = 0
     for (index, character) in newFormattedText.enumerated() {
       if isDigit(character: character) ||
-          character == decimalSeparator.first! ||
+          character == decimalSeparator.first ||
           (!(suffix ?? "").isEmpty && (suffix ?? "").contains(character)) {
         numberSymbolsCount += 1
       }
