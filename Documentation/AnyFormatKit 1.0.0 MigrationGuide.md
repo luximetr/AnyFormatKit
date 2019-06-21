@@ -33,13 +33,13 @@ protocol TextInputFormatter: TextFormatter {
 ### TextInputFormatter 
 
 - `TextInputFormatter` was renamed to `DefaultTextInputFormatter`
-- `var allowedSymbolsRegex: String` was removed. Filter moved to separate pod (look at [Filter](https://github.com/luximetr/TextInputFilter))
+- `var allowedSymbolsRegex: String` was removed. Filter moved to separate pod (look at [Filter](https://github.com/Brander-ua/BTextInputFilter))
 - `shouldChangeTextIn(textInput:)` was removed (need to use `formatInput(currentText:)`)
 
 ### SumTextInputFormatter
 
 - `var formattedPrefix: String?` was removed
-- `var allowedSymbolsRegex: String?` was removed. Filter moved to separate pod (look at [Filter](https://github.com/luximetr/TextInputFilter))
+- `var allowedSymbolsRegex: String?` was removed. Filter moved to separate pod (look at [Filter](https://github.com/Brander-ua/BTextInputFilter))
 - `func didBeginEditing()`  was removed
 - `func shouldChangeTextIn(textInput:)` was removed
 
