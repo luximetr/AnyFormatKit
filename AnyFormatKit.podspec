@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'AnyFormatKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Simple text formatting in Swift.'
 
   s.description      = <<-DESC
@@ -13,7 +13,7 @@ This framework provide to format text with format like "## ##-###", where # - re
   s.source           = { :git => 'https://github.com/luximetr/AnyFormatKit.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
-  s.swift_versions = '4.0'
+  s.swift_version = '4.0'
 
   s.source_files = 'Source/**/*'
 end
