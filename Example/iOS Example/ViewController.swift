@@ -72,9 +72,9 @@ private extension ViewController {
     phoneNumberField.backgroundColor = UIColor.black
     phoneNumberField.tintColor = ColorConstants.gray
     
-    phoneNumberField.defaultTextAttributes = [
+    phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
     phoneNumberInputController.formatter = phoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
   }
@@ -95,9 +95,9 @@ private extension ViewController {
     sumInputField.tintColor = ColorConstants.gray
     
     sumInputField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-    sumInputField.defaultTextAttributes = [
-      NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-      NSAttributedStringKey.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)]
+    sumInputField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
+      NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
     sumInputController.formatter = sumFormatter
     sumInputField.delegate = sumInputController
   }
@@ -182,4 +182,9 @@ private extension UITextView {
       }
     }
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
