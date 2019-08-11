@@ -17,11 +17,7 @@ Text formatting framework written on Swift 4.0.
 :performing_arts:| Convert string into formatted string and vice versa
 :bicyclist:| Formatting text during typing
 :hash:| Set format using '#' characters like '### ##-###'
-:paperclip:| Set prefix for editing string
-:see_no_evil:| Symbols input control with RegEx
-:globe_with_meridians:| Works with textField/textView/etc with common interface
-:gift:| Ready to use subclasses of UITextField and UITextView
-:mag:| Allows easy to set attributes for string in range
+
 
 ## Example
 
@@ -44,6 +40,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 ## Migration Guides
 
 - [AnyFormatKit 0.2.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%200.2.0%20MigrationGuide.md)
+- [AnyFormatKit 1.0.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%201.0.0%20MigrationGuide.md)
 
 ## Installation
 
@@ -83,61 +80,45 @@ import AnyFormatKit
 ### Formatting with TextFormatter
 
 ```swift
-let phoneFormatter = TextFormatter(textPattern: "### (###) ###-##-##")
-phoneFormatter.formattedText(from: "+123456789012") // +12 (345) 678-90-12
+let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
+phoneFormatter.format("+123456789012") // +12 (345) 678-90-12
 
-let customFormatter = TextFormatter(textPattern: "###-###custom###-###")
-customFormatter.formattedText(from: "111222333444") // 111-222custom333-444
+let customFormatter = DefaultTextFormatter(textPattern: "###-###custom###-###")
+customFormatter.format("111222333444") // 111-222custom333-444
 ```
 
 You can also set your own symbol in the pattern
 
 ```swift
-let cardFormatter = TextFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-cardFormatter.formattedText(from: "4444555566667777") // 4444 5555 6666 7777
+let cardFormatter = DefaultTextFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+cardFormatter.format("4444555566667777") // 4444 5555 6666 7777
 ```
 
 For string with different length
 
 ```swift
-let formatter = TextFormatter(textPattern: "## ###-##")
-formatter.formattedText(from: "1234") // 12 34
-formatter.formattedText(from: "123456789") // 12 345-67
+let formatter = DefaultTextFormatter(textPattern: "## ###-##")
+formatter.format("1234") // 12 34
+formatter.format("123456789") // 12 345-67
 ```
 
 Unformatting
 
 ```swift
-let formatter = TextFormatter(textPattern: "## ###-##")
-formatter.unformattedText(from: "99 888-77") // 9988877
+let formatter = DefaultTextFormatter(textPattern: "## ###-##")
+formatter.unformat("99 888-77") // 9988877
 ```
 ### Formatting during typing
 
-It is necessary to create TextInputController instance with formatter for formatting during typing. You need to implement `TextInput` protocol in your own `UITextField`/`UITextView`/something else or use ready solutions (`TextInputField`/`TextInputView`) by subclassing. It is necessary to set controllers's `textInput` property.
+Code from example app
 
 ```swift
-let textInputController = TextInputController()
+let formatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
 
-let textInput = TextInputField() // or TextInputView or any TextInput
-textInputController.textInput = textInput // setting textInput
-
-let formatter = TextInputFormatter(textPattern: "### (###) ###-##-##", prefix: "+12")
-textInputController.formatter = formatter // setting formatter
-```
-The controller listens `textInput(_:shouldChangeCharactersIn:replacementString:)` delegate method. But you can also add more than one delegate if needed. Methods of the delegates, that should return `Bool` value gather using `&&` operator. Therefore, if one of the delegates returns `false`, that means that `textInput` will receive `false`. If you want to send `true` to `textInput`, all delegates must return `true`.
-
-You can set `allowedSymbolsRegex` to the formatter to filter input symbols with the RegEx. All symbols, that satisfy the RegEx will be available for typing in the `textInput`.
-This property only applies to inputed symbols from the keyboard, but not to the prefix.
-
-```swift
-inputFieldFormatter.allowedSymbolsRegex = "[0-9]" // allowed only numbers
-```
-
-### Attributes for range
-
-To set attributes for string at range use `addAttributes(_:range:)` method for `textInput`.
-```swift
-textInput.addAttributes([.foregroundColor : UIColor.lightGray], range: NSRange(location: 0, length: 3))
+// inside of UITextFieldDelegate shouldChangeTextIn method
+let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+textView.text = result.formattedText
+textView.setCursorLocation(result.caretBeginOffset)
 ```
 
 ## Author
