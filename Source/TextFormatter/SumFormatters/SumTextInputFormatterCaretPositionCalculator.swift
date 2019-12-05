@@ -13,11 +13,13 @@ class SumTextInputFormatterCaretPositionCalculator {
   let prefix: String?
   let suffix: String?
   let decimalSeparator: String
+  let groupingSeparator: String
   
-  init(decimalSeparator: String, suffix: String?, prefix: String?) {
+  init(decimalSeparator: String, suffix: String?, prefix: String?, groupingSeparator: String) {
     self.prefix = prefix
     self.suffix = suffix
     self.decimalSeparator = decimalSeparator
+    self.groupingSeparator = groupingSeparator
   }
   
   func calculateCaretOffset(
@@ -109,16 +111,40 @@ class SumTextInputFormatterCaretPositionCalculator {
   private func findIndexOfNumberSymbol(numberOfSymbolsBefore: Int, newFormattedText: String) -> Int {
     var numberSymbolsCount = 0
     for (index, character) in newFormattedText.enumerated() {
-      if isDigit(character: character) ||
-          character == decimalSeparator.first ||
-          (!(suffix ?? "").isEmpty && (suffix ?? "").contains(character)) {
+      let suffix = self.suffix ?? ""
+      let isGroupingSeparator = self.isGroupingSeparator(character, in: newFormattedText, at: index)
+      let isSuffix = (!suffix.isEmpty && suffix.contains(character) && !isGroupingSeparator)
+
+      if isDigit(character: character) || character == decimalSeparator.first || isSuffix {
         numberSymbolsCount += 1
       }
+
       if numberSymbolsCount >= numberOfSymbolsBefore {
         return index
       }
     }
+
     return 0
+  }
+
+  private func isGroupingSeparator(_ separator: String.Element, in newFormattedText: String, at index: Int) -> Bool {
+    guard self.groupingSeparator.first == separator else {
+      return false
+    }
+
+    guard index > 0 && index < newFormattedText.count - 1 else {
+      return false
+    }
+
+    guard let previousSymbol = newFormattedText.characterAt(index - 1) else {
+      return false
+    }
+
+    guard let nextSymbol = newFormattedText.characterAt(index + 1) else {
+      return false
+    }
+
+    return (self.isDigit(character: previousSymbol) && self.isDigit(character: nextSymbol))
   }
   
   // for replace

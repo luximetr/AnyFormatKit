@@ -24,7 +24,8 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     caretPositionCalculator = SumTextInputFormatterCaretPositionCalculator(
       decimalSeparator: numberFormatter.decimalSeparator,
       suffix: numberFormatter.positiveSuffix,
-      prefix: numberFormatter.positivePrefix)
+      prefix: numberFormatter.positivePrefix,
+      groupingSeparator: numberFormatter.groupingSeparator)
     super.init(numberFormatter: numberFormatter)
   }
   
