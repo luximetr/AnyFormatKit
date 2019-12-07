@@ -116,6 +116,14 @@ class SumFormatParserTests: XCTestCase {
     let actualResult = result.decimalSeparator
     XCTAssert(expectedResult == actualResult, "Wrong decimal separator \(String(describing: actualResult))")
   }
+
+  func testNoneDecimalSeparator() {
+    let format = "# ###"
+    let result = parser.parse(format: format, patternSymbol: "#")
+    let expectedResult = ""
+    let actualResult = result.decimalSeparator
+    XCTAssert(expectedResult == actualResult, "Wrong decimal separator \(String(describing: actualResult))")
+  }
   
   func testWrongDecimalSeparator() {
     let format = "$ #-####_## S"
@@ -139,6 +147,30 @@ class SumFormatParserTests: XCTestCase {
     let expectedResult = 3
     let actualResult = result.groupingSize
     XCTAssert(expectedResult == actualResult, "Wrong grouping size \(actualResult)")
+  }
+
+  func test5GroupingSizeParse() {
+    let format = "# ### $"
+    let result = parser.parse(format: format, patternSymbol: "#")
+    let expectedResult = 3
+    let actualResult = result.groupingSize
+    XCTAssert(expectedResult == actualResult, "Wrong grouping size \(actualResult)")
+  }
+
+  func test1MaximumFractionDigitsParse() {
+    let format = "# ###.##"
+    let result = parser.parse(format: format, patternSymbol: "#")
+    let expectedResult = 2
+    let actualResult = result.maximumFractionDigits
+    XCTAssert(expectedResult == actualResult, "Wrong maximum fraction digits \(actualResult)")
+  }
+
+  func test2MaximumFractionDigitsParse() {
+    let format = "# ###"
+    let result = parser.parse(format: format, patternSymbol: "#")
+    let expectedResult = 0
+    let actualResult = result.maximumFractionDigits
+    XCTAssert(expectedResult == actualResult, "Wrong maximum fraction digits \(actualResult)")
   }
   
   func testPerformanceExample() {
