@@ -1,5 +1,5 @@
 //
-//  SumTextInputFormatterWithSuffixSpaceGroupSeparatorDelete1SymbolTests.swift
+//  SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift
 //  AnyFormatKitTests
 //
 //  Created by Oleksandr Orlov on 10/1/20.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import AnyFormatKit
 
-class SumTextInputFormatterWithSuffixSpaceGroupSeparatorDelete1SymbolTests: XCTestCase {
+class SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests: XCTestCase {
     
     private let formatter = SumTextInputFormatter(textPattern: "# ###,## $")
 
@@ -119,7 +119,7 @@ class SumTextInputFormatterWithSuffixSpaceGroupSeparatorDelete1SymbolTests: XCTe
         currentText: "12 345,67 $",
         range: NSRange(location: 10, length: 1),
         replacementString: "")
-      let expectedResult = FormattedTextValue(formattedText: "12 345,67 $", caretBeginOffset: 10)
+      let expectedResult = FormattedTextValue(formattedText: "12 345,67 $", caretBeginOffset: 9)
       XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
 
