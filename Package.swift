@@ -9,7 +9,7 @@ let package = Package(
         .library(
             name: "AnyFormatKit",
             targets: ["AnyFormatKit"]
-        ),
+        )
     ],
     targets: [
         .target(
