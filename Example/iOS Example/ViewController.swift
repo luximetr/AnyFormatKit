@@ -49,17 +49,17 @@ private extension ViewController {
   func configureTitleLabels() {
     let phoneNumberTitleLabel = UILabel(frame: LayoutConstants.phoneNumberLabelFrame)
     phoneNumberTitleLabel.textColor = UIColor.white
-    phoneNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular )
+    phoneNumberTitleLabel.font = UIFont.systemFont(ofSize: 15)
     phoneNumberTitleLabel.text = "Phone number: "
     
     let cardNumberTitleLabel = UILabel(frame: LayoutConstants.cardNumberLabelFrame)
     cardNumberTitleLabel.textColor = UIColor.white
-    cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15)
     cardNumberTitleLabel.text = "Card number: "
     
     let sumTitleLabel = UILabel(frame: LayoutConstants.sumLabelFrame)
     sumTitleLabel.textColor = UIColor.white
-    sumTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    sumTitleLabel.font = UIFont.systemFont(ofSize: 15)
     sumTitleLabel.text = "Enter sum: "
     
     view.addSubview(phoneNumberTitleLabel)
@@ -74,7 +74,7 @@ private extension ViewController {
     
     phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
     phoneNumberInputController.formatter = phoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
   }
@@ -83,7 +83,7 @@ private extension ViewController {
     view.addSubview(cardNumberView)
     cardNumberView.backgroundColor = UIColor.black
     cardNumberView.tintColor = ColorConstants.gray
-    cardNumberView.font = UIFont.systemFont(ofSize: 22, weight: .regular)
+    cardNumberView.font = UIFont.systemFont(ofSize: 22)
     cardNumberView.textColor = .white
     cardNumberInputController.formatter = cardNumberFormatter
     cardNumberView.delegate = cardNumberInputController
@@ -97,7 +97,7 @@ private extension ViewController {
     sumInputField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     sumInputField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
     sumInputController.formatter = sumFormatter
     sumInputField.delegate = sumInputController
   }
