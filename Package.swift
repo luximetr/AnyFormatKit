@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "AnyFormatKit",
-    platforms: [.iOS(.v10)],
+    platforms: [.iOS(.v8)],
     products: [
         .library(
             name: "AnyFormatKit",
