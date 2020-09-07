@@ -10,6 +10,11 @@ import Foundation
 public struct FormattedTextValue: Equatable {
   public let formattedText: String
   public let caretBeginOffset: Int
+  
+  public init(formattedText: String, caretBeginOffset: Int) {
+    self.formattedText = formattedText
+    self.caretBeginOffset = caretBeginOffset
+  }
 }
 
 /// Interface for formatter of TextInput, that allow change format of text during input

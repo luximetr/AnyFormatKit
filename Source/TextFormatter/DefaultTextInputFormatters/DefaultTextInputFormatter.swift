@@ -26,7 +26,7 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
     super.init(textPattern: textPattern, patternSymbol: patternSymbol)
   }
   
-  // MARK: - open
+  // MARK: - Format input
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedRange = self.unformattedRange(from: range)
