@@ -1,8 +1,8 @@
 //
 //  TextInputFormatter.swift
 //
-//  Created by BRANDERSTUDIO on 18.10.2017.
-//  Copyright © 2017 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 18.10.2017.
+//  Copyright © 2017 Oleksandr Orlov. All rights reserved.
 //
 
 import Foundation
@@ -10,6 +10,11 @@ import Foundation
 public struct FormattedTextValue: Equatable {
   public let formattedText: String
   public let caretBeginOffset: Int
+  
+  public init(formattedText: String, caretBeginOffset: Int) {
+    self.formattedText = formattedText
+    self.caretBeginOffset = caretBeginOffset
+  }
 }
 
 /// Interface for formatter of TextInput, that allow change format of text during input

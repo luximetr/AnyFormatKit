@@ -2,8 +2,8 @@
 //  SumTextInputFormatterWithSuffixReplace2SymbolsTests.swift
 //  AnyFormatKitTests
 //
-//  Created by branderstudio on 11.06.2019.
-//  Copyright © 2019 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 11.06.2019.
+//  Copyright © 2019 Oleksandr Orlov. All rights reserved.
 //
 
 import XCTest

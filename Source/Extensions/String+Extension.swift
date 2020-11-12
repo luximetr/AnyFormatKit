@@ -2,8 +2,8 @@
 //  String+Extension.swift
 //  TextInput
 //
-//  Created by BRANDERSTUDIO on 23.10.2017.
-//  Copyright © 2017 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 23.10.2017.
+//  Copyright © 2017 Oleksandr Orlov. All rights reserved.
 //
 
 import Foundation

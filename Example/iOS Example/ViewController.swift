@@ -12,9 +12,9 @@ import AnyFormatKit
 class ViewController: UIViewController {
   // MARK: - Fields
   
-  let phoneNumberInputController = TextInputController()
+  let phoneNumberInputController = TextFieldInputController()
   let cardNumberInputController = TextViewInputController()
-  let sumInputController = TextInputController()
+  let sumInputController = TextFieldInputController()
   
   let phoneNumberField = UITextField(frame: LayoutConstants.phoneNumberFieldFrame)
   let cardNumberView = UITextView(frame: LayoutConstants.cardNumberFieldFrame)
@@ -49,17 +49,17 @@ private extension ViewController {
   func configureTitleLabels() {
     let phoneNumberTitleLabel = UILabel(frame: LayoutConstants.phoneNumberLabelFrame)
     phoneNumberTitleLabel.textColor = UIColor.white
-    phoneNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular )
+    phoneNumberTitleLabel.font = UIFont.systemFont(ofSize: 15)
     phoneNumberTitleLabel.text = "Phone number: "
     
     let cardNumberTitleLabel = UILabel(frame: LayoutConstants.cardNumberLabelFrame)
     cardNumberTitleLabel.textColor = UIColor.white
-    cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    cardNumberTitleLabel.font = UIFont.systemFont(ofSize: 15)
     cardNumberTitleLabel.text = "Card number: "
     
     let sumTitleLabel = UILabel(frame: LayoutConstants.sumLabelFrame)
     sumTitleLabel.textColor = UIColor.white
-    sumTitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    sumTitleLabel.font = UIFont.systemFont(ofSize: 15)
     sumTitleLabel.text = "Enter sum: "
     
     view.addSubview(phoneNumberTitleLabel)
@@ -74,7 +74,7 @@ private extension ViewController {
     
     phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
     phoneNumberInputController.formatter = phoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
   }
@@ -83,7 +83,7 @@ private extension ViewController {
     view.addSubview(cardNumberView)
     cardNumberView.backgroundColor = UIColor.black
     cardNumberView.tintColor = ColorConstants.gray
-    cardNumberView.font = UIFont.systemFont(ofSize: 22, weight: .regular)
+    cardNumberView.font = UIFont.systemFont(ofSize: 22)
     cardNumberView.textColor = .white
     cardNumberInputController.formatter = cardNumberFormatter
     cardNumberView.delegate = cardNumberInputController
@@ -97,7 +97,7 @@ private extension ViewController {
     sumInputField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     sumInputField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22, weight: .regular)])
+      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
     sumInputController.formatter = sumFormatter
     sumInputField.delegate = sumInputController
   }
@@ -127,64 +127,64 @@ private struct ColorConstants {
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
 }
 
-class TextInputController: NSObject, UITextFieldDelegate {
-  
-  var formatter: TextInputFormatter?
-  
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    
-    print(textField.text ?? "")
-    print(range)
-    print(string)
-    guard let formatter = formatter else { return true }
-    let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
-    textField.text = result.formattedText
-    textField.setCursorLocation(result.caretBeginOffset)
-    
-    return false
-  }
-}
+//class TextInputController: NSObject, UITextFieldDelegate {
+//
+//  var formatter: TextInputFormatter?
+//
+//  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//    print(textField.text ?? "")
+//    print(range)
+//    print(string)
+//    guard let formatter = formatter else { return true }
+//    let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
+//    textField.text = result.formattedText
+//    textField.setCursorLocation(result.caretBeginOffset)
+//
+//    return false
+//  }
+//}
 
 
-class TextViewInputController: NSObject, UITextViewDelegate {
-  
-  var formatter: TextInputFormatter?
-  
-  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    guard let formatter = formatter else { return true }
-    let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-    textView.text = result.formattedText
-    textView.setCursorLocation(result.caretBeginOffset)
-    
-    return false
-  }
-}
+//class TextViewInputController: NSObject, UITextViewDelegate {
+//
+//  var formatter: TextInputFormatter?
+//
+//  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//    guard let formatter = formatter else { return true }
+//    let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+//    textView.text = result.formattedText
+//    textView.setCursorLocation(result.caretBeginOffset)
+//
+//    return false
+//  }
+//}
 
-private extension UITextField {
-  
-  func setCursorLocation(_ location: Int) {
-    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-      DispatchQueue.main.async { [weak self] in
-        guard let strongSelf = self else { return }
-        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-      }
-    }
-  }
-}
+//private extension UITextField {
+//
+//  func setCursorLocation(_ location: Int) {
+//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
+//      DispatchQueue.main.async { [weak self] in
+//        guard let strongSelf = self else { return }
+//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
+//      }
+//    }
+//  }
+//}
 
-private extension UITextView {
-  
-  func setCursorLocation(_ location: Int) {
-    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-      DispatchQueue.main.async { [weak self] in
-        guard let strongSelf = self else { return }
-        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-      }
-    }
-  }
-}
+//private extension UITextView {
+//
+//  func setCursorLocation(_ location: Int) {
+//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
+//      DispatchQueue.main.async { [weak self] in
+//        guard let strongSelf = self else { return }
+//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
+//      }
+//    }
+//  }
+//}
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+private func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

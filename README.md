@@ -59,16 +59,6 @@ Then, run the following command:
 $ pod install
 ```
 
-### Carthage
-
-To integrate AnyFormatKit into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "luximetr/AnyFormatKit" ~> 0.2.0
-```
-
-Run `carthage update` to build the framework and drag the built `AnyFormatKit.framework` into your Xcode project.
-
 ## Usage
 
 ### Import

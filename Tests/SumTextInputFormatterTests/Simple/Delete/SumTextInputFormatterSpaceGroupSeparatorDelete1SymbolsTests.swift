@@ -3,7 +3,7 @@
 //  AnyFormatKitTests
 //
 //  Created by Aleksandr Orlov on 18.12.2019.
-//  Copyright © 2019 BRANDERSTUDIO. All rights reserved.
+//  Copyright © 2019 Oleksandr Orlov. All rights reserved.
 //
 
 import XCTest

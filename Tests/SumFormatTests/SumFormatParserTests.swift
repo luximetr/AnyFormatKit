@@ -2,8 +2,8 @@
 //  SumFormatParserTests.swift
 //  AnyFormatKitTests
 //
-//  Created by branderstudio on 5/27/19.
-//  Copyright © 2019 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 5/27/19.
+//  Copyright © 2019 Oleksandr Orlov. All rights reserved.
 //
 
 import XCTest

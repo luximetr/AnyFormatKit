@@ -2,8 +2,8 @@
 //  CaretPositionCorrector.swift
 //  AnyFormatKit
 //
-//  Created by branderstudio on 02.04.2018.
-//  Copyright © 2018 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 02.04.2018.
+//  Copyright © 2018 Oleksandr Orlov. All rights reserved.
 //
 
 import Foundation
