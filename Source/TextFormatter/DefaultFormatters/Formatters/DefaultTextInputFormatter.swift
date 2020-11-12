@@ -16,10 +16,10 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
    Initializes formatter with patternString
    
    - Parameters:
-     - textPattern: String with special characters, that will be used for formatting
-     - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
-     - prefix: String, that always will be at beggining of text during editing
-  */
+   - textPattern: String with special characters, that will be used for formatting
+   - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
+   - prefix: String, that always will be at beggining of text during editing
+   */
   public override init(textPattern: String,
                        patternSymbol: Character = "#") {
     self.caretPositionCorrector = CaretPositionCorrector(textPattern: textPattern, patternSymbol: patternSymbol)
@@ -46,10 +46,10 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
    Convert range in formatted string to range in unformatted string
    
    - Parameters:
-     - range: Range in formatted (with current textPattern) string
+   - range: Range in formatted (with current textPattern) string
    
    - Returns: Range in unformatted (with current textPattern) string
-  */
+   */
   func unformattedRange(from range: NSRange) -> NSRange {
     let newRange = NSRange(
       location: range.location - textPattern[..<textPattern.index(textPattern.startIndex, offsetBy: range.location)]
