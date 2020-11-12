@@ -40,10 +40,8 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
     return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
   }
   
-}
-
-// MARK: - Private
-private extension DefaultTextInputFormatter {
+  // MARK: - Private
+  
   /**
    Correcting content with current content, range and replacement string
    
@@ -87,4 +85,5 @@ private extension DefaultTextInputFormatter {
     let offset = caretPositionCorrector.calculateCaretPositionOffset(originalRange: range, replacementFiltered: replacementString)
     return offset
   }
+  
 }

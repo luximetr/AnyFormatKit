@@ -127,63 +127,6 @@ private struct ColorConstants {
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
 }
 
-//class TextInputController: NSObject, UITextFieldDelegate {
-//
-//  var formatter: TextInputFormatter?
-//
-//  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
-//    print(textField.text ?? "")
-//    print(range)
-//    print(string)
-//    guard let formatter = formatter else { return true }
-//    let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
-//    textField.text = result.formattedText
-//    textField.setCursorLocation(result.caretBeginOffset)
-//
-//    return false
-//  }
-//}
-
-
-//class TextViewInputController: NSObject, UITextViewDelegate {
-//
-//  var formatter: TextInputFormatter?
-//
-//  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//    guard let formatter = formatter else { return true }
-//    let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-//    textView.text = result.formattedText
-//    textView.setCursorLocation(result.caretBeginOffset)
-//
-//    return false
-//  }
-//}
-
-//private extension UITextField {
-//
-//  func setCursorLocation(_ location: Int) {
-//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-//      DispatchQueue.main.async { [weak self] in
-//        guard let strongSelf = self else { return }
-//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-//      }
-//    }
-//  }
-//}
-
-//private extension UITextView {
-//
-//  func setCursorLocation(_ location: Int) {
-//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-//      DispatchQueue.main.async { [weak self] in
-//        guard let strongSelf = self else { return }
-//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-//      }
-//    }
-//  }
-//}
-
 // Helper function inserted by Swift 4.2 migrator.
 private func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
