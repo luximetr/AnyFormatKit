@@ -43,26 +43,6 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
   // MARK: - Private
   
   /**
-   Correcting content with current content, range and replacement string
-   
-   - Parameters:
-     - currentContent: String, that will replace with characters in range
-     - range: Range of characters, that will replace
-     - replacementFiltered: String, filtered with RegEx, that will replace characters in range
-   
-   - Returns: New String with replaced characters in range from old string
-  */
-  func correctedContent(currentContent: String?, range: NSRange, replacementFiltered: String) -> String? {
-    let oldText = currentContent ?? String()
-    
-    let correctedRange = unformattedRange(from: range)
-    let oldUnformatted = unformat(oldText) as NSString?
-    
-    let newText = oldUnformatted?.replacingCharacters(in: correctedRange, with: replacementFiltered)
-    return format(newText)
-  }
-  
-  /**
    Convert range in formatted string to range in unformatted string
    
    - Parameters:
