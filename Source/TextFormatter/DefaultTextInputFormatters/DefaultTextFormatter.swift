@@ -1,8 +1,8 @@
 //
 //  DefaultTextFormatter.swift
 //
-//  Created by branderstudio on 11/14/18.
-//  Copyright © 2018 branderstudio. All rights reserved.
+//  Created by Oleksandr Orlov on 11/14/18.
+//  Copyright © 2018 Oleksandr Orlov. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,8 @@
 //  SumTextInputFormatterWithPrefix3SymbolInsertTests.swift
 //  AnyFormatKitTests
 //
-//  Created by branderstudio on 13.06.2019.
-//  Copyright © 2019 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 13.06.2019.
+//  Copyright © 2019 Oleksandr Orlov. All rights reserved.
 //
 
 import XCTest

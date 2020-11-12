@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  iOS Example
 //
-//  Created by BRANDERSTUDIO on 01.11.2017.
-//  Copyright © 2017 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 01.11.2017.
+//  Copyright © 2017 Oleksandr Orlov. All rights reserved.
 //
 
 import UIKit

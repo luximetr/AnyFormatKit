@@ -2,8 +2,8 @@
 //  FormatParsingTests.swift
 //  AnyFormatKitTests
 //
-//  Created by BRANDERSTUDIO on 11/21/17.
-//  Copyright © 2017 BRANDERSTUDIO. All rights reserved.
+//  Created by Oleksandr Orlov on 11/21/17.
+//  Copyright © 2017 Oleksandr Orlov. All rights reserved.
 //
 
 import XCTest
