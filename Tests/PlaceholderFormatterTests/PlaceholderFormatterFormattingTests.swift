@@ -46,4 +46,18 @@ class PlaceholderFormatterFormattingTests: XCTestCase {
     XCTAssertEqual(result, expectedResult)
   }
   
+  func test6() {
+    let formatter = PlaceholderTextFormatter(textPattern: "#### ####")
+    let result = formatter.format("123456789")
+    let expectedResult = "1234 5678"
+    XCTAssertEqual(result, expectedResult)
+  }
+  
+  func test7() {
+    let formatter = PlaceholderTextFormatter(textPattern: "#### ####")
+    let result = formatter.format("1234567")
+    let expectedResult = "1234 567#"
+    XCTAssertEqual(result, expectedResult)
+  }
+  
 }

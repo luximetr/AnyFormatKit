@@ -17,7 +17,7 @@ open class DefaultTextFormatter: TextFormatter {
   /// Symbol that will be replace by input symbols
   public let patternSymbol: Character
   
-  // MARK: - Init
+  // MARK: - Life cycle
   /**
    Initializes formatter with pattern
    
@@ -42,7 +42,7 @@ open class DefaultTextFormatter: TextFormatter {
    */
   open func format(_ unformattedText: String?) -> String? {
     guard let unformattedText = unformattedText else { return nil }
-    var formatted = String.init()
+    var formatted = ""
     var unformattedIndex = 0
     var patternIndex = 0
     
