@@ -7,11 +7,19 @@
 
 import Foundation
 
-open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
+open class DefaultTextInputFormatter: TextInputFormatter {
+  
+  // MARK: - Dependencies
   
   private let caretPositionCorrector: CaretPositionCorrector
+  private let textFormatter: DefaultTextFormatter
   
-  // MARK: - Init
+  // MARK: - Properties
+  
+  private var textPattern: String { textFormatter.textPattern }
+  private var patternSymbol: Character { textFormatter.patternSymbol }
+  
+  // MARK: - Life cycle
   /**
    Initializes formatter with patternString
    
@@ -20,20 +28,28 @@ open class DefaultTextInputFormatter: DefaultTextFormatter, TextInputFormatter {
    - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
    - prefix: String, that always will be at beggining of text during editing
    */
-  public override init(textPattern: String,
-                       patternSymbol: Character = "#") {
-    self.caretPositionCorrector = CaretPositionCorrector(textPattern: textPattern, patternSymbol: patternSymbol)
-    super.init(textPattern: textPattern, patternSymbol: patternSymbol)
+  public init(
+    textPattern: String,
+    patternSymbol: Character = "#"
+  ) {
+    self.caretPositionCorrector = CaretPositionCorrector(
+      textPattern: textPattern,
+      patternSymbol: patternSymbol
+    )
+    self.textFormatter = DefaultTextFormatter(
+      textPattern: textPattern,
+      patternSymbol: patternSymbol
+    )
   }
   
   // MARK: - Format input
   
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     let unformattedRange = self.unformattedRange(from: range)
-    let oldUnformattedText = (unformat(currentText) ?? "") as NSString
+    let oldUnformattedText = (textFormatter.unformat(currentText) ?? "") as NSString
     
     let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
-    let formattedText = self.format(newText) ?? ""
+    let formattedText = textFormatter.format(newText) ?? ""
     
     let caretOffset = getCorrectedCaretPosition(range: range, replacementString: text)
     

@@ -8,6 +8,7 @@
 import Foundation
 
 open class DefaultTextFormatter: TextFormatter {
+  
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"
