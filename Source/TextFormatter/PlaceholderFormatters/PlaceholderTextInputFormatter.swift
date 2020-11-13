@@ -22,7 +22,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter {
   
   // MARK: - Life cycle
   
-  init(
+  public init(
     textPattern: String,
     patternSymbol: Character = "#"
   ) {

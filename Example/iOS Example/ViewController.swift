@@ -23,6 +23,7 @@ class ViewController: UIViewController {
   let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
   let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "# ###,## $")
+  let placeholderPhoneNumberFormatter = PlaceholderTextInputFormatter(textPattern: "### (###) ###-##-##")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -74,9 +75,20 @@ private extension ViewController {
     
     phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
-    phoneNumberInputController.formatter = phoneNumberFormatter
+      NSAttributedString.Key.font.rawValue: getFont()])
+//    phoneNumberInputController.formatter = phoneNumberFormatter
+    phoneNumberInputController.formatter = placeholderPhoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
+  }
+  
+  private func getFont() -> UIFont {
+    if #available(iOS 13.0, *) {
+      return UIFont.monospacedSystemFont(ofSize: 22, weight: .regular)
+    } else if #available(iOS 9.0, *) {
+      return UIFont.monospacedDigitSystemFont(ofSize: 22, weight: .regular)
+    } else {
+      return UIFont.systemFont(ofSize: 22)
+    }
   }
   
   private func configureCardNumberField() {
