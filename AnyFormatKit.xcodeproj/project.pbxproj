@@ -70,6 +70,7 @@
 		DB4EEEC1255DAEBE00F02145 /* PlaceholderFormatterFormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEC0255DAEBE00F02145 /* PlaceholderFormatterFormattingTests.swift */; };
 		DB4EEECA255DB1C700F02145 /* PlaceholderTextInputFormatterInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEC9255DB1C700F02145 /* PlaceholderTextInputFormatterInputTests.swift */; };
 		DB4EEED9255DB82C00F02145 /* FormattedTextValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEED5255DB80700F02145 /* FormattedTextValue.swift */; };
+		DB4EEEDF255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEDE255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift */; };
 		DB9D077B255D98BA00D9FD64 /* TextFieldInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */; };
 		DBD9F4CE23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */; };
 		DBF66EFA251CD0B800F2BB89 /* currencyDemo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */; };
@@ -164,6 +165,7 @@
 		DB4EEEC0255DAEBE00F02145 /* PlaceholderFormatterFormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderFormatterFormattingTests.swift; sourceTree = "<group>"; };
 		DB4EEEC9255DB1C700F02145 /* PlaceholderTextInputFormatterInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterInputTests.swift; sourceTree = "<group>"; };
 		DB4EEED5255DB80700F02145 /* FormattedTextValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTextValue.swift; sourceTree = "<group>"; };
+		DB4EEEDE255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterInsert3SymbolsTests.swift; sourceTree = "<group>"; };
 		DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputController.swift; sourceTree = "<group>"; };
 		DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift; sourceTree = "<group>"; };
 		DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = currencyDemo.gif; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4EEEC9255DB1C700F02145 /* PlaceholderTextInputFormatterInputTests.swift */,
+				DB4EEEDE255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift */,
 			);
 			path = PlaceholderTextInputFormatterTests;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				30FF731322ADA53D005FBC38 /* DefaultTextInputFormatter1SymbolReplaceTests.swift in Sources */,
 				30A0495D22B5240E001F6282 /* SumTextInputFormatterWithPrefixBy1SymbolErasingTests.swift in Sources */,
 				306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */,
+				DB4EEEDF255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift in Sources */,
 				30D7EAA6229C659B0014E31B /* SumFormatParserTests.swift in Sources */,
 				30EB6C9722BAB72500447D5A /* SumTextInputFormatterWithSuffixInput0Tests.swift in Sources */,
 				30FF731122AD9BAB005FBC38 /* DefaultTextInputFormatterDeleteTests.swift in Sources */,
