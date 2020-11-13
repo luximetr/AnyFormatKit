@@ -10,7 +10,11 @@ import Foundation
 
 open class SumTextFormatter: TextFormatter {
   
+  // MARK: - Dependencies
+  
   let numberFormatter: NumberFormatter
+  
+  // MARK: - Properties
   
   open var maximumIntegerCharacters: Int = 14 {
     didSet { numberFormatter.maximumIntegerDigits = maximumIntegerCharacters }
@@ -35,6 +39,10 @@ open class SumTextFormatter: TextFormatter {
   open var groupingSize: Int {
     return numberFormatter.groupingSize
   }
+  private let unformattedDecimalSeparator = "."
+  private let negativePrefix = "-"
+  
+  // MARK: - Life cycle
   
   public init(numberFormatter: NumberFormatter) {
     self.numberFormatter = numberFormatter
@@ -58,9 +66,7 @@ open class SumTextFormatter: TextFormatter {
     self.init(numberFormatter: numberFormatter)
   }
   
-  
-  private let unformattedDecimalSeparator = "."
-  private let negativePrefix = "-"
+  // MARK: - Format
   
   open func format(_ unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
@@ -74,6 +80,16 @@ open class SumTextFormatter: TextFormatter {
     
     return numberFormatter.string(from: number)
   }
+  
+  // MARK: - Unformat
+  
+  open func unformat(_ formatted: String?) -> String? {
+    guard let formattedString = formatted else { return nil }
+    let unformattedString = removeAllFormatSymbols(text: formattedString)
+    return unformattedString
+  }
+  
+  // MARK: - Correct unformatted
   
   private func correctUnformatted(_ unformatted: String, decimalSeparator: String) -> String {
     return unformatted.replacingOccurrences(of: ",", with: decimalSeparator)
@@ -98,11 +114,7 @@ open class SumTextFormatter: TextFormatter {
     }
   }
   
-  open func unformat(_ formatted: String?) -> String? {
-    guard let formattedString = formatted else { return nil }
-    let unformattedString = removeAllFormatSymbols(text: formattedString)
-    return unformattedString
-  }
+  // MARK: - Remove all format symbols
   
   func removeAllFormatSymbols(text: String) -> String {
     var resultText = text
