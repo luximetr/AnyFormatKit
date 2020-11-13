@@ -72,6 +72,7 @@
 		DB4EEED9255DB82C00F02145 /* FormattedTextValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEED5255DB80700F02145 /* FormattedTextValue.swift */; };
 		DB4EEEDF255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEDE255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift */; };
 		DB4EEEE5255E9C8E00F02145 /* PlaceholderTextInputFormatterErasingBy1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEE4255E9C8E00F02145 /* PlaceholderTextInputFormatterErasingBy1SymbolTests.swift */; };
+		DB4EEEEB255EA08E00F02145 /* PlaceholderTextInputFormatterDelete3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEEA255EA08E00F02145 /* PlaceholderTextInputFormatterDelete3SymbolsTests.swift */; };
 		DB9D077B255D98BA00D9FD64 /* TextFieldInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */; };
 		DBD9F4CE23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */; };
 		DBF66EFA251CD0B800F2BB89 /* currencyDemo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */; };
@@ -168,6 +169,7 @@
 		DB4EEED5255DB80700F02145 /* FormattedTextValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTextValue.swift; sourceTree = "<group>"; };
 		DB4EEEDE255E974700F02145 /* PlaceholderTextInputFormatterInsert3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterInsert3SymbolsTests.swift; sourceTree = "<group>"; };
 		DB4EEEE4255E9C8E00F02145 /* PlaceholderTextInputFormatterErasingBy1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterErasingBy1SymbolTests.swift; sourceTree = "<group>"; };
+		DB4EEEEA255EA08E00F02145 /* PlaceholderTextInputFormatterDelete3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterDelete3SymbolsTests.swift; sourceTree = "<group>"; };
 		DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputController.swift; sourceTree = "<group>"; };
 		DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift; sourceTree = "<group>"; };
 		DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = currencyDemo.gif; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4EEEE4255E9C8E00F02145 /* PlaceholderTextInputFormatterErasingBy1SymbolTests.swift */,
+				DB4EEEEA255EA08E00F02145 /* PlaceholderTextInputFormatterDelete3SymbolsTests.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				30EB6C9522BAB63D00447D5A /* SumTextInputFormatterInput0Tests.swift in Sources */,
 				DB4EEECA255DB1C700F02145 /* PlaceholderTextInputFormatterInputTests.swift in Sources */,
 				307F0F4422B03A5B00C52AD2 /* SumTextInputFormatterWithSuffixDelete3SymbolsTests.swift in Sources */,
+				DB4EEEEB255EA08E00F02145 /* PlaceholderTextInputFormatterDelete3SymbolsTests.swift in Sources */,
 				30A0495F22B52752001F6282 /* SumTextInputFormatterWithPrefixDelete3SymbolsTests.swift in Sources */,
 				30D1A4CA22AEF9770075764E /* SumTextInputFormatterWithSuffixInputTests.swift in Sources */,
 				309BD5B322B2BBF400BA69EF /* SumTextInputFormatterWithSuffixInsert2SymbolsTests.swift in Sources */,
