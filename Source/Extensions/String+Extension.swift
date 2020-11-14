@@ -61,6 +61,14 @@ extension String {
     return String(self[rangeBegin..<rangeEnd])
   }
   
+  func leftSlice(end: String.Index) -> String {
+    return String(self[self.startIndex..<end])
+  }
+  
+  func slice(in range: Range<String.Index>) -> String {
+    return String(self[range])
+  }
+  
   func slice(from: Int, length: Int) -> String? {
     guard from < count, from + length < count else { return nil }
     let fromIndex = index(startIndex, offsetBy: from)

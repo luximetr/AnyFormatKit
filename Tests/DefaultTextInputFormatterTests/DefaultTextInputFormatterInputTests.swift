@@ -90,4 +90,24 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
     let expectedResult = FormattedTextValue(formattedText: "12 03", caretBeginOffset: 4)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
+  
+//  func test7() {
+//    let result = formatter.formatInput(
+//      currentText: "😀",
+//      range: NSRange(location: 0, length: 0),
+//      replacementString: "😀"
+//    )
+//    let expectedResult = FormattedTextValue(formattedText: "😀", caretBeginOffset: 2)
+//    XCTAssertEqual(result, expectedResult)
+//  }
+//
+//  func test8() {
+//    let result = formatter.formatInput(
+//      currentText: "😀",
+//      range: NSRange(location: 2, length: 0),
+//      replacementString: "😎"
+//    )
+//    let expectedResult = FormattedTextValue(formattedText: "😀😎", caretBeginOffset: 2)
+//    XCTAssertEqual(result, expectedResult)
+//  }
 }

@@ -36,6 +36,17 @@ class CaretPositionCorrector {
     return offset
   }
   
+  func calculateCaretPositionOffset(originalRange range: Range<String.Index>, replacementText: String) -> Int {
+    var offset = 0
+    
+    if replacementText.isEmpty {
+      offset = offsetForRemove(lowerBound: range.lowerBound)
+    } else {
+      offset = offsetForInsert(lowerBound: range.lowerBound, replacementLength: replacementText.count)
+    }
+    return offset
+  }
+  
   /**
    Find indexes of patterns symbols in range
    
@@ -48,7 +59,10 @@ class CaretPositionCorrector {
     var indexes: [String.Index] = []
     var tempRange = searchRange
     while let range = textPattern.range(
-      of: String(patternSymbol), options: .caseInsensitive, range: tempRange, locale: nil) {
+            of: String(patternSymbol),
+            options: .caseInsensitive,
+            range: tempRange
+    ) {
         tempRange = range.upperBound..<tempRange.upperBound
         indexes.append(range.lowerBound)
     }
@@ -69,10 +83,17 @@ class CaretPositionCorrector {
     let indexes = indexesOfPatternSymbols(in: searchRange)
     
     if let lastIndex = indexes.last {
-        //return lastIndex.encodedOffset + 1
         return lastIndex.utf16Offset(in: textPattern) + 1
     }
     return 0
+  }
+  
+  func offsetForRemove(lowerBound: String.Index) -> Int {
+    let startIndex = textPattern.startIndex
+    let searchRange = startIndex..<lowerBound
+    let indexes = indexesOfPatternSymbols(in: searchRange)
+    guard let lastIndex = indexes.last else { return 0 }
+    return lastIndex.utf16Offset(in: textPattern) + 1
   }
   
   /**
@@ -86,6 +107,18 @@ class CaretPositionCorrector {
    */
   func offsetForInsert(from location: Int, replacementLength: Int) -> Int {
     let startIndex = textPattern.index(textPattern.startIndex, offsetBy: location)
+    let searchRange = startIndex..<textPattern.endIndex
+    let indexes = indexesOfPatternSymbols(in: searchRange)
+    
+    if replacementLength <= indexes.count {
+      return textPattern.distance(from: textPattern.startIndex, to: indexes[replacementLength - 1]) + 1
+    } else {
+      return textPattern.distance(from: textPattern.startIndex, to: textPattern.endIndex)
+    }
+  }
+  
+  func offsetForInsert(lowerBound: String.Index, replacementLength: Int) -> Int {
+    let startIndex = lowerBound
     let searchRange = startIndex..<textPattern.endIndex
     let indexes = indexesOfPatternSymbols(in: searchRange)
     
