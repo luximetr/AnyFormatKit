@@ -7,19 +7,14 @@
 //
 
 import XCTest
-@testable import AnyFormatKit
+import AnyFormatKit
 
 class DefaultTextInputFormatterInputTests: XCTestCase {
     
     let formatter = DefaultTextInputFormatter(textPattern: "## ## ##")
     
-    override func setUp() {
-    }
-    
-    override func tearDown() {
-    }
-    
-    func test_to1() {
+    // "|"  ->  1|
+    func test1() {
         let actualResult = formatter.formatInput(
             currentText: "",
             range: NSRange(location: 0, length: 0),
@@ -28,7 +23,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test1to12() {
+    // 1|  ->  12|
+    func test2() {
         let actualResult = formatter.formatInput(
             currentText: "1",
             range: NSRange(location: 1, length: 0),
@@ -37,7 +33,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12to12_3() {
+    // 12|  ->  12 3|
+    func test3() {
         let actualResult = formatter.formatInput(
             currentText: "12",
             range: NSRange(location: 2, length: 0),
@@ -46,7 +43,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12_3to12_34() {
+    // 12 3|  ->  12 34|
+    func test4() {
         let actualResult = formatter.formatInput(
             currentText: "12 3",
             range: NSRange(location: 4, length: 0),
@@ -55,7 +53,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12_3to01_23() {
+    // |12 3  ->  0|1 23
+    func test5() {
         let actualResult = formatter.formatInput(
             currentText: "12 3",
             range: NSRange(location: 0, length: 0),
@@ -64,7 +63,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12_3to10_23() {
+    // 1|2 3  ->  10| 23
+    func test6() {
         let actualResult = formatter.formatInput(
             currentText: "12 3",
             range: NSRange(location: 1, length: 0),
@@ -73,7 +73,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12I_3to12_03() {
+    // 12| 3  ->  12 0|3
+    func test7() {
         let actualResult = formatter.formatInput(
             currentText: "12 3",
             range: NSRange(location: 2, length: 0),
@@ -82,7 +83,8 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test12_I3to12_03() {
+    // 12 |3  ->  12 03|
+    func test8() {
         let actualResult = formatter.formatInput(
             currentText: "12 3",
             range: NSRange(location: 3, length: 0),
@@ -91,7 +93,19 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
     
-    func test8() {
+    // 1|2 3|4  =>  10| 4
+    func test9() {
+        let result = formatter.formatInput(
+            currentText: "12 34",
+            range: NSRange(location: 1, length: 3),
+            replacementString: "0"
+        )
+        let expectedResult = FormattedTextValue(formattedText: "10 4", caretBeginOffset: 2)
+        XCTAssertEqual(result, expectedResult)
+    }
+    
+    // 😀|  ->  😀😎|
+    func test10() {
         let result = formatter.formatInput(
             currentText: "😀",
             range: NSRange(location: 2, length: 0),
@@ -101,24 +115,14 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         XCTAssertEqual(result, expectedResult)
     }
     
-    func test9() {
+    // 😀😎|  ->  😀😎 😅|
+    func test11() {
         let result = formatter.formatInput(
-            currentText: "😀😎 😂👍",
-            range: NSRange(location: 2, length: 5),
-            replacementString: "🤔"
+            currentText: "😀😎",
+            range: NSRange(location: 4, length: 0),
+            replacementString: "😅"
         )
-        let expectedResult = FormattedTextValue(formattedText: "😀🤔 👍", caretBeginOffset: 4)
-        XCTAssertEqual(result, expectedResult)
-    }
-    
-    // 1|2 3|4  =>  10| 4
-    func test10() {
-        let result = formatter.formatInput(
-            currentText: "12 34",
-            range: NSRange(location: 1, length: 3),
-            replacementString: "0"
-        )
-        let expectedResult = FormattedTextValue(formattedText: "10 4", caretBeginOffset: 2)
+        let expectedResult = FormattedTextValue(formattedText: "😀😎 😅", caretBeginOffset: 7)
         XCTAssertEqual(result, expectedResult)
     }
 }
