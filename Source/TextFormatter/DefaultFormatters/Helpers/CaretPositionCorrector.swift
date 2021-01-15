@@ -36,13 +36,13 @@ class CaretPositionCorrector {
     return offset
   }
   
-  func calculateCaretPositionOffset(originalRange range: Range<String.Index>, replacementText: String) -> Int {
+    func calculateCaretPositionOffset(currentText: String, originalRange range: Range<String.Index>, replacementText: String) -> Int {
     var offset = 0
     
     if replacementText.isEmpty {
       offset = offsetForRemove(lowerBound: range.lowerBound)
     } else {
-      offset = offsetForInsert(lowerBound: range.lowerBound, replacementLength: replacementText.count)
+      offset = offsetForInsert(currentText: currentText, lowerBound: range.lowerBound, replacementLength: replacementText.count)
     }
     return offset
   }
@@ -117,13 +117,16 @@ class CaretPositionCorrector {
     }
   }
   
-  func offsetForInsert(lowerBound: String.Index, replacementLength: Int) -> Int {
-    let startIndex = lowerBound
-    let searchRange = startIndex..<textPattern.endIndex
+  func offsetForInsert(currentText: String, lowerBound: String.Index, replacementLength: Int) -> Int {
+    let textPatternLowerBound = textPattern.index(textPattern.startIndex, offsetBy: currentText.distance(from: currentText.startIndex, to: lowerBound))
+    let searchRange = textPatternLowerBound..<textPattern.endIndex
     let indexes = indexesOfPatternSymbols(in: searchRange)
     
     if replacementLength <= indexes.count {
-      return textPattern.distance(from: textPattern.startIndex, to: indexes[replacementLength - 1]) + 1
+        let distance = textPattern.distance(from: textPattern.startIndex, to: indexes[replacementLength - 1]) + 1
+        let leftSlice = currentText.leftSlice(end: currentText.index(currentText.startIndex, offsetBy: distance))
+        return leftSlice.utf16.count
+//      return distance
     } else {
       return textPattern.distance(from: textPattern.startIndex, to: textPattern.endIndex)
     }

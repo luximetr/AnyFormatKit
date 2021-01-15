@@ -47,20 +47,28 @@ open class DefaultTextInputFormatter: TextInputFormatter {
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     guard let swiftRange = Range(range, in: currentText) else { return .zero }
     
-    let unformattedRange = self.unformattedRange(from: range)
-    let unformattedRange1 = self.unformattedRange1(currentText: currentText, from: swiftRange)
-    
     let oldUnformattedText = (textFormatter.unformat(currentText) ?? "") as NSString
+    let oldUnformattedText1 = textFormatter.unformat(currentText) ?? ""
+    
+    let unformattedRange = self.unformattedRange(from: range)
+    let unformattedRange01 = self.unformattedRange1(currentText: currentText, from: swiftRange)
+    let unformattedRange1 = oldUnformattedText1.getSameRange(asIn: currentText, sourceRange: unformattedRange01)
     
     let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
+    let newText1 = oldUnformattedText1.replacingCharacters(in: unformattedRange1, with: text)
+    
     let formattedText = textFormatter.format(newText) ?? ""
+    let formattedText1 = textFormatter.format(newText1) ?? ""
+    
     
     let caretOffset = getCorrectedCaretPosition(
-      range: swiftRange,
-      replacementString: text
+        currentText: formattedText1,
+        range: swiftRange,
+        replacementString: text
     )
     
-    return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+//    return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+    return FormattedTextValue(formattedText: formattedText1, caretBeginOffset: caretOffset)
   }
   
   // MARK: - Private
@@ -87,7 +95,7 @@ open class DefaultTextInputFormatter: TextInputFormatter {
     
     let number2 = getNumberOfFormatChars(text: currentText, in: range)
     
-    return range
+    return currentText.getRangeWithOffsets(sourceRange: range, lowerBoundOffset: -number1, upperBoundOffset: -number2)
   }
   
   private func getNumberOfFormatChars(text: String, before: String.Index) -> Int {
@@ -102,9 +110,17 @@ open class DefaultTextInputFormatter: TextInputFormatter {
   
   private func getNumberOfFormatChars(text: String, in range: Range<String.Index>) -> Int {
     let textSlice = text.slice(in: range)
-    let patternSlice = textPattern.slice(in: range)
+    let textPatternRange = textPattern.getSameRange(asIn: text, sourceRange: range)
+    let patternSlice = textPattern.slice(in: textPatternRange)
     
-    return 0
+    var result = 0
+    for (textSliceCharIndex, textSliceChar) in textSlice.enumerated() {
+        let isSameCharacter = patternSlice.isSameCharacter(at: textSliceCharIndex, character: textSliceChar)
+        if isSameCharacter {
+            result += 1
+        }
+    }
+    return result
   }
   
   // MARK: - Caret position calculation
@@ -116,11 +132,12 @@ open class DefaultTextInputFormatter: TextInputFormatter {
 //    )
 //  }
   
-  private func getCorrectedCaretPosition(range: Range<String.Index>, replacementString: String) -> Int {
-    return caretPositionCorrector.calculateCaretPositionOffset(
-      originalRange: range,
-      replacementText: replacementString
-    )
-  }
+    private func getCorrectedCaretPosition(currentText: String, range: Range<String.Index>, replacementString: String) -> Int {
+        return caretPositionCorrector.calculateCaretPositionOffset(
+            currentText: currentText,
+            originalRange: range,
+            replacementText: replacementString
+        )
+    }
   
 }
