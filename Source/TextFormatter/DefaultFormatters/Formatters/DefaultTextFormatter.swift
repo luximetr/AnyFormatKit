@@ -8,15 +8,16 @@
 import Foundation
 
 open class DefaultTextFormatter: TextFormatter {
+  
   // MARK: - Fields
   
   /// String, that will use for formatting of string replacing patter symbol, example: patternSymbol - "#", format - "### (###) ###-##-##"
-    public let textPattern: String
+  public let textPattern: String
   
   /// Symbol that will be replace by input symbols
-    public let patternSymbol: Character
+  public let patternSymbol: Character
   
-  // MARK: - Init
+  // MARK: - Life cycle
   /**
    Initializes formatter with pattern
    
@@ -35,13 +36,13 @@ open class DefaultTextFormatter: TextFormatter {
    Formatting text with current textPattern
    
    - Parameters:
-     - unformatted: String, that need to be convert with current textPattern
+   - unformatted: String, that need to be convert with current textPattern
    
    - Returns: Formatted text with current textPattern
-  */
+   */
   open func format(_ unformattedText: String?) -> String? {
     guard let unformattedText = unformattedText else { return nil }
-    var formatted = String.init()
+    var formatted = ""
     var unformattedIndex = 0
     var patternIndex = 0
     
@@ -64,10 +65,10 @@ open class DefaultTextFormatter: TextFormatter {
    Method for convert string, that sutisfy current textPattern, into unformatted string
    
    - Parameters:
-     - formatted: String, that will convert
+   - formatted: String, that will convert
    
    - Returns: string converted into unformatted with current textPattern
-  */
+   */
   open func unformat(_ formatted: String?) -> String? {
     guard let formatted = formatted else { return nil }
     var unformatted = String()

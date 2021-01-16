@@ -3,7 +3,6 @@
 
 [![CI Status](http://img.shields.io/travis/luximetr/AnyFormatKit.svg?style=flat)](https://travis-ci.org/luximetr/AnyFormatKit)
 [![Version](https://img.shields.io/cocoapods/v/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 [![Platform](https://img.shields.io/cocoapods/p/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 ![Swift](https://img.shields.io/badge/%20in-swift%205.0-brightgreen.svg)
@@ -17,19 +16,24 @@ Text formatting framework written on Swift 5.0.
 :performing_arts:| Convert string into formatted string and vice versa
 :bicyclist:| Formatting text during typing
 :hash:| Set format using '#' characters like '### ##-###'
+:stuck_out_tongue:| Supporting emojis
+:heavy_dollar_sign:| Formatting money amount
+:parking:| Formatting with placeholders
 
 
 ## Example
 
 To run the example project, clone the repo and run `pod install` from the Example directory first.
 
-### Phone number example
+## Demo
 
-![AnyFormatKitDemo: Simple text formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/demo.gif)
+![Phone number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
 
-### Currency example
+![Currency example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_sum.gif)
 
-![AnyFormatKitCurrencyDemo: Currency formatting in Swift](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/currencyDemo.gif)
+![Card number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_card_number.gif)
+
+![Placeholder number number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
 
 ## Requirements
 
@@ -57,6 +61,16 @@ Then, run the following command:
 
 ```bash
 $ pod install
+```
+
+### Swift Package Manager
+AnyFormatKit is available with [Swift Package Manager](https://swift.org/package-manager/). 
+Once you have your Swift package set up, than simply add AnyFormatKit to the `dependencies` value of your `Package.swift`
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/luximetr/AnyFormatKit.git", .upToNextMajor(from: "2.1.0"))
+]
 ```
 
 ## Usage
@@ -98,12 +112,48 @@ Unformatting
 let formatter = DefaultTextFormatter(textPattern: "## ###-##")
 formatter.unformat("99 888-77") // 9988877
 ```
+### Formatting with PlaceholderTextFormatter
+
+```swift
+let phoneFormatter = PlaceholderTextFormatter(textPattern: "### (###) ###-##-##")
+phoneFormatter.format("+123") // +12 (3##) ###-##-##
+```
+
+### Formatting with SumTextFormatter
+
+```swift
+let formatter = SumTextFormatter(textPattern: "#,###.##")
+formatter.format("1234.13") // 1,234.13
+```
+
 ### Formatting during typing
 
-Code from example app
+Using `DefaultTextInputFormatter` formatter
 
 ```swift
 let formatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+
+// inside of UITextFieldDelegate shouldChangeTextIn method
+let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+textView.text = result.formattedText
+textView.setCursorLocation(result.caretBeginOffset)
+```
+
+Using `SumTextInputFormatter` formatter
+
+```swift
+let formatter = SumTextInputFormatter(textPattern: "#,###.##$")
+
+// inside of UITextFieldDelegate shouldChangeTextIn method
+let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+textView.text = result.formattedText
+textView.setCursorLocation(result.caretBeginOffset)
+```
+
+Using `PlaceholderTextInputFormatter` formatter
+
+```swift
+let formatter = PlaceholderTextInputFormatter(textPattern: "#### #### #### ####")
 
 // inside of UITextFieldDelegate shouldChangeTextIn method
 let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)

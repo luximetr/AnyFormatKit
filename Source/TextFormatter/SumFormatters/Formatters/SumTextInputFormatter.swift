@@ -8,9 +8,21 @@
 
 import Foundation
 
-open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
+open class SumTextInputFormatter: TextInputFormatter {
   
-  // MARK: - Init
+  // MARK: - Dependencies
+  
+  private let textFormatter: SumTextFormatter
+  private let caretPositionCalculator: SumTextInputFormatterCaretPositionCalculator
+  
+  // MARK: - Properties
+  
+  open var prefix: String? { textFormatter.prefix }
+  open var suffix: String? { textFormatter.suffix }
+  open var decimalSeparator: String { textFormatter.decimalSeparator }
+  var numberFormatter: NumberFormatter { textFormatter.numberFormatter }
+  
+  // MARK: - Life cycle
   /**
    Initializes formatter with patternString
 
@@ -18,17 +30,28 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
    - textPattern: String with special characters, that will be used for formatting
    - patternSymbol: Optional parameter, that represent character, that will be replaced in formatted string
    */
-  private let caretPositionCalculator: SumTextInputFormatterCaretPositionCalculator
   
-  public override init(numberFormatter: NumberFormatter) {
+  public init(numberFormatter: NumberFormatter) {
     caretPositionCalculator = SumTextInputFormatterCaretPositionCalculator(
       decimalSeparator: numberFormatter.decimalSeparator,
       suffix: numberFormatter.positiveSuffix,
-      prefix: numberFormatter.positivePrefix)
-    super.init(numberFormatter: numberFormatter)
+      prefix: numberFormatter.positivePrefix
+    )
+    textFormatter = SumTextFormatter(numberFormatter: numberFormatter)
   }
   
-  override open func format(_ unformatted: String?) -> String? {
+  public init(textPattern: String, patternSymbol: Character = "#") {
+    let formatter = SumTextFormatter(textPattern: textPattern, patternSymbol: patternSymbol)
+    self.caretPositionCalculator = SumTextInputFormatterCaretPositionCalculator(
+      decimalSeparator: formatter.decimalSeparator,
+      suffix: formatter.suffix,
+      prefix: formatter.prefix
+    )
+    self.textFormatter = formatter
+  }
+  
+  // MARK: - Format
+  open func format(_ unformatted: String?) -> String? {
     guard let unformatted = unformatted else { return nil }
     let minimumFractionDigits = calculateMinimumFractionDigits(unformatted: unformatted, divider: decimalSeparator, maximumFractionDigits: numberFormatter.maximumFractionDigits)
     numberFormatter.minimumFractionDigits = minimumFractionDigits
@@ -40,7 +63,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     if unformatted == decimalSeparator {
       return (prefix ?? "") + decimalSeparator + (suffix ?? "")
     } else {
-      return super.format(unformatted)
+      return textFormatter.format(unformatted)
     }
 
   }
@@ -68,7 +91,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   }
 
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
-    let unformattedCurrentText = unformat(currentText) ?? ""
+    let unformattedCurrentText = textFormatter.unformat(currentText) ?? ""
     let unformattedRange = convertToUnformattedRange(currentText: currentText, unformattedCurrentText: unformattedCurrentText, range: range)
     let newUnformattedText = unformattedCurrentText.replacingCharacters(in: unformattedRange, with: text)
     let newFormattedText = format(newUnformattedText) ?? ""
@@ -79,7 +102,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
   
   private func convertToUnformattedRange(currentText: String, unformattedCurrentText: String, range: NSRange) -> NSRange {
     let currentTextBeforeRangeLocation = currentText.leftSlice(limit: range.location)
-    let unformattedTextBeforeRangeLocation = removeAllFormatSymbols(text: currentTextBeforeRangeLocation)
+    let unformattedTextBeforeRangeLocation = textFormatter.removeAllFormatSymbols(text: currentTextBeforeRangeLocation)
     
     
     let textLengthDifference = currentTextBeforeRangeLocation.count - unformattedTextBeforeRangeLocation.count
@@ -88,7 +111,7 @@ open class SumTextInputFormatter: SumTextFormatter, TextInputFormatter {
     convertedRange.location -= textLengthDifference
     if range.length > 0 {
       let rangeSlice = currentText.slice(from: range.location, length: range.length) ?? ""
-      let uls = removeAllFormatSymbols(text: rangeSlice)
+      let uls = textFormatter.removeAllFormatSymbols(text: rangeSlice)
       convertedRange.length -= rangeSlice.count - uls.count
     }
     

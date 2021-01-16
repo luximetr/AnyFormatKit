@@ -13,7 +13,8 @@ class DefaultTextInputFormatter1SymbolReplaceTests: XCTestCase {
   
   private let formatter = DefaultTextInputFormatter(textPattern: "## ## ##")
   
-  func test12_34to12_30() {
+  // 12 3|4|  ->  12 30|
+  func test1() {
     let actualResult = formatter.formatInput(
       currentText: "12 34",
       range: NSRange(location: 4, length: 1),
@@ -22,7 +23,7 @@ class DefaultTextInputFormatter1SymbolReplaceTests: XCTestCase {
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
   
-  func test12_34to12_04() {
+  func test2() {
     let actualResult = formatter.formatInput(
       currentText: "12 34",
       range: NSRange(location: 3, length: 1),

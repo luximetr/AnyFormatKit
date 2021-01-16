@@ -12,7 +12,7 @@ open class TextFieldInputController: NSObject, UITextFieldDelegate {
   
   open var formatter: TextInputFormatter?
   
-  public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard let formatter = formatter else { return true }
     let result = formatter.formatInput(
       currentText: textField.text ?? "",

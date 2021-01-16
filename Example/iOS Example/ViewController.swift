@@ -20,9 +20,10 @@ class ViewController: UIViewController {
   let cardNumberView = UITextView(frame: LayoutConstants.cardNumberFieldFrame)
   let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
-  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "+5# (###) ###-##-##")
   let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "# ###,## $")
+  let placeholderPhoneNumberFormatter = PlaceholderTextInputFormatter(textPattern: "+## (###) ###-##-##")
   
   // MARK: - Life Cycle
   override func viewDidLoad() {
@@ -74,9 +75,20 @@ private extension ViewController {
     
     phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-      NSAttributedString.Key.font.rawValue: UIFont.systemFont(ofSize: 22)])
-    phoneNumberInputController.formatter = phoneNumberFormatter
+      NSAttributedString.Key.font.rawValue: getFont()])
+//    phoneNumberInputController.formatter = phoneNumberFormatter
+    phoneNumberInputController.formatter = placeholderPhoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
+  }
+  
+  private func getFont() -> UIFont {
+    if #available(iOS 13.0, *) {
+      return UIFont.monospacedSystemFont(ofSize: 22, weight: .regular)
+    } else if #available(iOS 9.0, *) {
+      return UIFont.monospacedDigitSystemFont(ofSize: 22, weight: .regular)
+    } else {
+      return UIFont.systemFont(ofSize: 22)
+    }
   }
   
   private func configureCardNumberField() {
@@ -117,7 +129,7 @@ private struct LayoutConstants {
   static let phoneNumberLabelFrame = CGRect(x: 20, y: 60, width: UIScreen.main.bounds.width - 40, height: 20)
   static let phoneNumberFieldFrame = CGRect(x: 20, y: 85, width: UIScreen.main.bounds.width - 40, height: 40)
   static let cardNumberLabelFrame = CGRect(x: 20, y: 160, width: UIScreen.main.bounds.width - 40, height: 20)
-  static let cardNumberFieldFrame = CGRect(x: 20, y: 185, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let cardNumberFieldFrame = CGRect(x: 16, y: 185, width: UIScreen.main.bounds.width - 40, height: 40)
   static let sumLabelFrame = CGRect(x: 20, y: 260, width: UIScreen.main.bounds.width - 40, height: 20)
   static let sumTextInputFieldFrame = CGRect(x: 20, y: 285, width: UIScreen.main.bounds.width - 40, height: 40)
 }
@@ -126,63 +138,6 @@ private struct ColorConstants {
   static let yellow = UIColor(red: 255 / 255, green: 236 / 255, blue: 0 / 255, alpha: 1.0)
   static let gray = UIColor(red: 63 / 255, green: 63 / 255, blue: 63 / 255, alpha: 1.0)
 }
-
-//class TextInputController: NSObject, UITextFieldDelegate {
-//
-//  var formatter: TextInputFormatter?
-//
-//  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
-//    print(textField.text ?? "")
-//    print(range)
-//    print(string)
-//    guard let formatter = formatter else { return true }
-//    let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
-//    textField.text = result.formattedText
-//    textField.setCursorLocation(result.caretBeginOffset)
-//
-//    return false
-//  }
-//}
-
-
-//class TextViewInputController: NSObject, UITextViewDelegate {
-//
-//  var formatter: TextInputFormatter?
-//
-//  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//    guard let formatter = formatter else { return true }
-//    let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-//    textView.text = result.formattedText
-//    textView.setCursorLocation(result.caretBeginOffset)
-//
-//    return false
-//  }
-//}
-
-//private extension UITextField {
-//
-//  func setCursorLocation(_ location: Int) {
-//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-//      DispatchQueue.main.async { [weak self] in
-//        guard let strongSelf = self else { return }
-//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-//      }
-//    }
-//  }
-//}
-
-//private extension UITextView {
-//
-//  func setCursorLocation(_ location: Int) {
-//    if let cursorLocation = position(from: beginningOfDocument, offset: location) {
-//      DispatchQueue.main.async { [weak self] in
-//        guard let strongSelf = self else { return }
-//        strongSelf.selectedTextRange = strongSelf.textRange(from: cursorLocation, to: cursorLocation)
-//      }
-//    }
-//  }
-//}
 
 // Helper function inserted by Swift 4.2 migrator.
 private func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
