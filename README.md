@@ -31,7 +31,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ![Currency example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_sum.gif)
 
-![Card number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
+![Card number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_card_number.gif)
 
 ![Placeholder number number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
 
