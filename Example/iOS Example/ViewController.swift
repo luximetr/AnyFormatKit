@@ -20,7 +20,7 @@ class ViewController: UIViewController {
   let cardNumberView = UITextView(frame: LayoutConstants.cardNumberFieldFrame)
   let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
-  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+  let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "+5# (###) ###-##-##")
   let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "# ###,## $")
   let placeholderPhoneNumberFormatter = PlaceholderTextInputFormatter(textPattern: "+## (###) ###-##-##")
