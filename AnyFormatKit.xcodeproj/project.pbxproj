@@ -11,6 +11,10 @@
 		02D78BB225B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC025B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC425B333A8008837B7 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BC325B333A8008837B7 /* StringCalculator.swift */; };
+		02D78BD125B356B5008837B7 /* example_card_number.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02D78BCD25B356B5008837B7 /* example_card_number.gif */; };
+		02D78BD225B356B5008837B7 /* example_placeholder_phone_number.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02D78BCE25B356B5008837B7 /* example_placeholder_phone_number.gif */; };
+		02D78BD325B356B5008837B7 /* example_phone_number.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02D78BCF25B356B5008837B7 /* example_phone_number.gif */; };
+		02D78BD425B356B5008837B7 /* example_sum.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02D78BD025B356B5008837B7 /* example_sum.gif */; };
 		3032CFBF21D412E1008137EE /* DefaultTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CFBD21D412E1008137EE /* DefaultTextInputFormatter.swift */; };
 		3032CFC021D412E1008137EE /* DefaultTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CFBE21D412E1008137EE /* DefaultTextFormatter.swift */; };
 		306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */; };
@@ -35,7 +39,6 @@
 		30A0497A22B53D7A001F6282 /* SumTextInputFormatterInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0496E22B52F86001F6282 /* SumTextInputFormatterInputTests.swift */; };
 		30A308962072BA7300CFC062 /* CaretPositionCorrector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A308952072BA7300CFC062 /* CaretPositionCorrector.swift */; };
 		30ADF14923AA688600C67530 /* SumTextInputFormatterSpaceGroupSeparatorDelete1SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADF14823AA688600C67530 /* SumTextInputFormatterSpaceGroupSeparatorDelete1SymbolsTests.swift */; };
-		30BD66911FAC789A002BFA4A /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 30BD66901FAC789A002BFA4A /* demo.gif */; };
 		30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C5F53B1FAB6593003711D1 /* anyformatkit.png */; };
 		30C6787D2286B45000F43F9E /* SumTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C6787C2286B45000F43F9E /* SumTextFormatter.swift */; };
 		30D1A4C822AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1A4C722AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift */; };
@@ -80,7 +83,6 @@
 		DB4EEEF0255EA32D00F02145 /* PlaceholderTextInputFormatterReplace3SymbolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EEEEF255EA32D00F02145 /* PlaceholderTextInputFormatterReplace3SymbolsTests.swift */; };
 		DB9D077B255D98BA00D9FD64 /* TextFieldInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */; };
 		DBD9F4CE23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */; };
-		DBF66EFA251CD0B800F2BB89 /* currencyDemo.gif in Resources */ = {isa = PBXBuildFile; fileRef = DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BC325B333A8008837B7 /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
+		02D78BCD25B356B5008837B7 /* example_card_number.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example_card_number.gif; sourceTree = "<group>"; };
+		02D78BCE25B356B5008837B7 /* example_placeholder_phone_number.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example_placeholder_phone_number.gif; sourceTree = "<group>"; };
+		02D78BCF25B356B5008837B7 /* example_phone_number.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example_phone_number.gif; sourceTree = "<group>"; };
+		02D78BD025B356B5008837B7 /* example_sum.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example_sum.gif; sourceTree = "<group>"; };
 		3032CFBD21D412E1008137EE /* DefaultTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter.swift; sourceTree = "<group>"; };
 		3032CFBE21D412E1008137EE /* DefaultTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextFormatter.swift; sourceTree = "<group>"; };
 		306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatParsingTests.swift; sourceTree = "<group>"; };
@@ -135,7 +141,6 @@
 		30A0497822B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterDelete3SymbolsTests.swift; sourceTree = "<group>"; };
 		30A308952072BA7300CFC062 /* CaretPositionCorrector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositionCorrector.swift; sourceTree = "<group>"; };
 		30ADF14823AA688600C67530 /* SumTextInputFormatterSpaceGroupSeparatorDelete1SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterSpaceGroupSeparatorDelete1SymbolsTests.swift; sourceTree = "<group>"; };
-		30BD66901FAC789A002BFA4A /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		30C5F53B1FAB6593003711D1 /* anyformatkit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anyformatkit.png; sourceTree = "<group>"; };
 		30C6787C2286B45000F43F9E /* SumTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatter.swift; sourceTree = "<group>"; };
 		30D1A4C722AEF9280075764E /* SumTextInputFormatterWithSuffixDelete1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSuffixDelete1SymbolTests.swift; sourceTree = "<group>"; };
@@ -182,7 +187,6 @@
 		DB4EEEEF255EA32D00F02145 /* PlaceholderTextInputFormatterReplace3SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterReplace3SymbolsTests.swift; sourceTree = "<group>"; };
 		DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputController.swift; sourceTree = "<group>"; };
 		DBD9F4CD23C7967000829051 /* SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSimilarCharactersInSuffixAndGroupSeparatorDelete1SymbolTests.swift; sourceTree = "<group>"; };
-		DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = currencyDemo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,9 +402,11 @@
 		30C5F5381FAB6561003711D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				DBF66EF9251CD0B800F2BB89 /* currencyDemo.gif */,
+				02D78BCD25B356B5008837B7 /* example_card_number.gif */,
+				02D78BCF25B356B5008837B7 /* example_phone_number.gif */,
+				02D78BCE25B356B5008837B7 /* example_placeholder_phone_number.gif */,
+				02D78BD025B356B5008837B7 /* example_sum.gif */,
 				30C5F53B1FAB6593003711D1 /* anyformatkit.png */,
-				30BD66901FAC789A002BFA4A /* demo.gif */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -795,13 +801,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D78BD425B356B5008837B7 /* example_sum.gif in Resources */,
 				30D7EAAD229D56D20014E31B /* README.md in Resources */,
+				02D78BD325B356B5008837B7 /* example_phone_number.gif in Resources */,
 				30C5F53C1FAB6593003711D1 /* anyformatkit.png in Resources */,
 				30D7EAAB229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md in Resources */,
-				30BD66911FAC789A002BFA4A /* demo.gif in Resources */,
 				30FE70561FAA16910024D1B1 /* LICENSE in Resources */,
+				02D78BD125B356B5008837B7 /* example_card_number.gif in Resources */,
 				30FE70541FAA16890024D1B1 /* AnyFormatKit.podspec in Resources */,
-				DBF66EFA251CD0B800F2BB89 /* currencyDemo.gif in Resources */,
+				02D78BD225B356B5008837B7 /* example_placeholder_phone_number.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

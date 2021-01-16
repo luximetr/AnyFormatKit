@@ -25,15 +25,11 @@ Text formatting framework written on Swift 5.0.
 
 To run the example project, clone the repo and run `pod install` from the Example directory first.
 
-### Phone number example
+## Demo
 
 ![Phone number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
 
-### Currency example
-
 ![Currency example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_sum.gif)
-
-### Card number example
 
 ![Card number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
 
