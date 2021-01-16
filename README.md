@@ -165,6 +165,10 @@ textView.setCursorLocation(result.caretBeginOffset)
 
 luximetr, luximetr.notification@gmail.com
 
+### Say thank you
+
+<a href="https://paypal.me/luximetr/"><img src="https://github.com/andreostrovsky/donate-with-paypal/blob/master/PNG/blue.png" height="40"></a>
+
 ## License
 
 AnyFormatKit is available under the MIT license. See the LICENSE file for more info.
