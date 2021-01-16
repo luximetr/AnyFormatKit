@@ -21,7 +21,7 @@ class ViewController: UIViewController {
   let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
   let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
-  let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX", patternSymbol: "X")
+  let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "# ###,## $")
   let placeholderPhoneNumberFormatter = PlaceholderTextInputFormatter(textPattern: "+## (###) ###-##-##")
   
@@ -129,7 +129,7 @@ private struct LayoutConstants {
   static let phoneNumberLabelFrame = CGRect(x: 20, y: 60, width: UIScreen.main.bounds.width - 40, height: 20)
   static let phoneNumberFieldFrame = CGRect(x: 20, y: 85, width: UIScreen.main.bounds.width - 40, height: 40)
   static let cardNumberLabelFrame = CGRect(x: 20, y: 160, width: UIScreen.main.bounds.width - 40, height: 20)
-  static let cardNumberFieldFrame = CGRect(x: 20, y: 185, width: UIScreen.main.bounds.width - 40, height: 40)
+  static let cardNumberFieldFrame = CGRect(x: 16, y: 185, width: UIScreen.main.bounds.width - 40, height: 40)
   static let sumLabelFrame = CGRect(x: 20, y: 260, width: UIScreen.main.bounds.width - 40, height: 20)
   static let sumTextInputFieldFrame = CGRect(x: 20, y: 285, width: UIScreen.main.bounds.width - 40, height: 40)
 }
