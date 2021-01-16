@@ -1,5 +1,5 @@
 //
-//  DefaultTextInputFormatterPhoneInputTests.swift
+//  DefaultTextInputFormatterPhoneEmojisInputTests.swift
 //  AnyFormatKitTests
 //
 //  Created by Oleksandr Orlov on 16.01.2021.
@@ -9,7 +9,7 @@
 import XCTest
 import AnyFormatKit
 
-class DefaultTextInputFormatterPhoneInputTests: XCTestCase {
+class DefaultTextInputFormatterPhoneEmojisInputTests: XCTestCase {
     
     private let formatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
 

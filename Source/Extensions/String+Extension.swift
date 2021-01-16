@@ -65,6 +65,12 @@ extension String {
         return String(self[self.startIndex..<end])
     }
     
+    func leftSliceIncluding(end: String.Index) -> String {
+        guard !self.isEmpty else { return self }
+        guard self.startIndex != end else { return String(self[self.startIndex..<end]) }
+        return String(self[self.startIndex...end])
+    }
+    
     func slice(in range: Range<String.Index>) -> String {
         return String(self[range])
     }
@@ -94,9 +100,9 @@ extension String {
     
     func getSameRange(asIn source: String, sourceRange: Range<String.Index>) -> Range<String.Index> {
         let startIndexDistance = source.distance(from: source.startIndex, to: sourceRange.lowerBound)
-        let startIndex = self.index(self.startIndex, offsetBy: startIndexDistance)
+        let startIndex = self.index(self.startIndex, offsetBy: startIndexDistance, limitedBy: self.endIndex) ?? self.endIndex
         let endIndexDistance = source.distance(from: source.startIndex, to: sourceRange.upperBound)
-        let endIndex = self.index(self.startIndex, offsetBy: endIndexDistance)
+        let endIndex = self.index(self.startIndex, offsetBy: endIndexDistance, limitedBy: self.endIndex) ?? self.endIndex
         return startIndex..<endIndex
     }
     
@@ -124,6 +130,19 @@ extension String {
                 _skipFirst -= 1
             }
             elementIndex = self.index(after: elementIndex)
+        }
+        return elementIndex
+    }
+    
+    func findIndexBefore(of element: Character, startFrom: String.Index) -> String.Index {
+        var elementIndex = startFrom
+        while elementIndex > self.startIndex {
+            let elementIndexBefore = self.index(before: elementIndex)
+            let elementToCompare = self[elementIndexBefore]
+            if element == elementToCompare {
+                return elementIndex
+            }
+            elementIndex = elementIndexBefore
         }
         return elementIndex
     }

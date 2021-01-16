@@ -47,23 +47,25 @@ open class DefaultTextInputFormatter: TextInputFormatter {
   open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
     guard let swiftRange = Range(range, in: currentText) else { return .zero }
     
-    let oldUnformattedText = (textFormatter.unformat(currentText) ?? "") as NSString
+//    let oldUnformattedText = (textFormatter.unformat(currentText) ?? "") as NSString
     let oldUnformattedText1 = textFormatter.unformat(currentText) ?? ""
     
-    let unformattedRange = self.unformattedRange(from: range)
+//    let unformattedRange = self.unformattedRange(from: range)
     let unformattedRange01 = self.unformattedRange1(currentText: currentText, from: swiftRange)
     let unformattedRange1 = oldUnformattedText1.getSameRange(asIn: currentText, sourceRange: unformattedRange01)
     
-    let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
+//    let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
     let newText1 = oldUnformattedText1.replacingCharacters(in: unformattedRange1, with: text)
     
-    let formattedText = textFormatter.format(newText) ?? ""
+//    let formattedText = textFormatter.format(newText) ?? ""
     let formattedText1 = textFormatter.format(newText1) ?? ""
+    
+    let formattedTextRange1 = formattedText1.getSameRange(asIn: currentText, sourceRange: swiftRange)
     
     
     let caretOffset = getCorrectedCaretPosition(
         newText: formattedText1,
-        range: swiftRange,
+        range: formattedTextRange1,
         replacementString: text
     )
     
@@ -91,11 +93,14 @@ open class DefaultTextInputFormatter: TextInputFormatter {
   }
   
   func unformattedRange1(currentText: String, from range: Range<String.Index>) -> Range<String.Index> {
-    let number1 = getNumberOfFormatChars(text: currentText, before: range.lowerBound)
+    let numberOfFormatCharsBeforeRange = getNumberOfFormatChars(text: currentText, before: range.lowerBound)
+    let numberOfFormatCharsInRange = getNumberOfFormatChars(text: currentText, in: range)
     
-    let number2 = getNumberOfFormatChars(text: currentText, in: range)
-    
-    return currentText.getRangeWithOffsets(sourceRange: range, lowerBoundOffset: -number1, upperBoundOffset: -number2)
+    return currentText.getRangeWithOffsets(
+        sourceRange: range,
+        lowerBoundOffset: -numberOfFormatCharsBeforeRange,
+        upperBoundOffset: -numberOfFormatCharsInRange
+    )
   }
   
   private func getNumberOfFormatChars(text: String, before: String.Index) -> Int {
