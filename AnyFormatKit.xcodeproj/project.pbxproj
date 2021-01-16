@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02330C7125B2493500DE9EB8 /* DefaultTextInputFormatterPhoneInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneInputTests.swift */; };
 		3032CFBF21D412E1008137EE /* DefaultTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CFBD21D412E1008137EE /* DefaultTextInputFormatter.swift */; };
 		3032CFC021D412E1008137EE /* DefaultTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032CFBE21D412E1008137EE /* DefaultTextFormatter.swift */; };
 		306EBE9F1FC4669100E49BB8 /* FormatParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterPhoneInputTests.swift; sourceTree = "<group>"; };
 		3032CFBD21D412E1008137EE /* DefaultTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter.swift; sourceTree = "<group>"; };
 		3032CFBE21D412E1008137EE /* DefaultTextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTextFormatter.swift; sourceTree = "<group>"; };
 		306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatParsingTests.swift; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				30FF730E22AD939D005FBC38 /* DefaultTextInputFormatterInputTests.swift */,
+				02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneInputTests.swift */,
 				30FF731022AD9BAB005FBC38 /* DefaultTextInputFormatterDeleteTests.swift */,
 				30FF731222ADA53D005FBC38 /* DefaultTextInputFormatter1SymbolReplaceTests.swift */,
 				30FF731422ADA7A4005FBC38 /* DefaultTextInputFormatter2SymbolsReplaceTests.swift */,
@@ -875,6 +878,7 @@
 				30824C0F22B17329008E1E4E /* SumTextInputFormatterWithSuffixReplace3SymbolsTests.swift in Sources */,
 				30ADF14923AA688600C67530 /* SumTextInputFormatterSpaceGroupSeparatorDelete1SymbolsTests.swift in Sources */,
 				30A0497922B53B03001F6282 /* SumTextInputFormatterDelete3SymbolsTests.swift in Sources */,
+				02330C7125B2493500DE9EB8 /* DefaultTextInputFormatterPhoneInputTests.swift in Sources */,
 				30A0497722B537F4001F6282 /* SumTextInputFormatterErasingBy1SymbolTests.swift in Sources */,
 				30FF731722ADB380005FBC38 /* DefaultTextInputFormatter3SymbolsReplace.swift in Sources */,
 				30EB6C9B22BB39BA00447D5A /* SumTextInputFormatterWith2SymbolsPrefixInputTests.swift in Sources */,

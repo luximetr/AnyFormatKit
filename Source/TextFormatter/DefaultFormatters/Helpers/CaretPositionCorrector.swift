@@ -36,13 +36,13 @@ class CaretPositionCorrector {
     return offset
   }
   
-    func calculateCaretPositionOffset(currentText: String, originalRange range: Range<String.Index>, replacementText: String) -> Int {
+    func calculateCaretPositionOffset(newText: String, originalRange range: Range<String.Index>, replacementText: String) -> Int {
     var offset = 0
     
     if replacementText.isEmpty {
       offset = offsetForRemove(lowerBound: range.lowerBound)
     } else {
-      offset = offsetForInsert(currentText: currentText, lowerBound: range.lowerBound, replacementLength: replacementText.count)
+      offset = offsetForInsert(newText: newText, lowerBound: range.lowerBound, replacementLength: replacementText.count)
     }
     return offset
   }
@@ -117,18 +117,11 @@ class CaretPositionCorrector {
     }
   }
   
-  func offsetForInsert(currentText: String, lowerBound: String.Index, replacementLength: Int) -> Int {
-    let textPatternLowerBound = textPattern.index(textPattern.startIndex, offsetBy: currentText.distance(from: currentText.startIndex, to: lowerBound))
-    let searchRange = textPatternLowerBound..<textPattern.endIndex
-    let indexes = indexesOfPatternSymbols(in: searchRange)
-    
-    if replacementLength <= indexes.count {
-        let distance = textPattern.distance(from: textPattern.startIndex, to: indexes[replacementLength - 1]) + 1
-        let leftSlice = currentText.leftSlice(end: currentText.index(currentText.startIndex, offsetBy: distance))
-        return leftSlice.utf16.count
-//      return distance
-    } else {
-      return textPattern.distance(from: textPattern.startIndex, to: textPattern.endIndex)
-    }
+  func offsetForInsert(newText: String, lowerBound: String.Index, replacementLength: Int) -> Int {
+    let textPatternLowerBound = textPattern.getSameIndex(asIn: newText, sourceIndex: lowerBound)
+    let textPatternIndex = textPattern.findIndex(of: patternSymbol, skipFirst: replacementLength, startFrom: textPatternLowerBound)
+    let index = newText.getSameIndex(asIn: textPattern, sourceIndex: textPatternIndex)
+    let leftSlice = newText.leftSlice(end: index)
+    return leftSlice.utf16.count
   }
 }

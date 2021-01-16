@@ -100,6 +100,11 @@ extension String {
         return startIndex..<endIndex
     }
     
+    func getSameIndex(asIn source: String, sourceIndex: String.Index) -> String.Index {
+        let distance = source.distance(from: source.startIndex, to: sourceIndex)
+        return self.index(self.startIndex, offsetBy: distance)
+    }
+    
     func getRangeWithOffsets(sourceRange: Range<String.Index>, lowerBoundOffset: Int, upperBoundOffset: Int) -> Range<String.Index> {
         let sourceRangeLowerBoundDistance = self.distance(from: self.startIndex, to: sourceRange.lowerBound)
         let startIndex = self.index(self.startIndex, offsetBy: sourceRangeLowerBoundDistance + lowerBoundOffset)
@@ -108,5 +113,18 @@ extension String {
         let endIndex = self.index(self.startIndex, offsetBy: sourceRangeUpperBoundDistance + lowerBoundOffset + upperBoundOffset)
         
         return startIndex..<endIndex
+    }
+    
+    func findIndex(of element: Character, skipFirst: Int, startFrom: String.Index) -> String.Index {
+        var _skipFirst = skipFirst
+        var elementIndex = startFrom
+        while _skipFirst > 0 && elementIndex < self.endIndex {
+            let elementToCompare = self[elementIndex]
+            if element == elementToCompare {
+                _skipFirst -= 1
+            }
+            elementIndex = self.index(after: elementIndex)
+        }
+        return elementIndex
     }
 }

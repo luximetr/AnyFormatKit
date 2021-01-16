@@ -125,4 +125,15 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         let expectedResult = FormattedTextValue(formattedText: "😀😎 😅", caretBeginOffset: 7)
         XCTAssertEqual(result, expectedResult)
     }
+    
+    // 12 34 56|  ->  12 34 56|
+    func test12() {
+        let result = formatter.formatInput(
+            currentText: "12 34 56",
+            range: NSRange(location: 8, length: 0),
+            replacementString: "0"
+        )
+        let expectedResult = FormattedTextValue(formattedText: "12 34 56", caretBeginOffset: 8)
+        XCTAssertEqual(result, expectedResult)
+    }
 }

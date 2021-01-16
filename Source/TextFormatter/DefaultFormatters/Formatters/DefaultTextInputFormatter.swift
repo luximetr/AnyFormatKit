@@ -62,7 +62,7 @@ open class DefaultTextInputFormatter: TextInputFormatter {
     
     
     let caretOffset = getCorrectedCaretPosition(
-        currentText: formattedText1,
+        newText: formattedText1,
         range: swiftRange,
         replacementString: text
     )
@@ -132,9 +132,9 @@ open class DefaultTextInputFormatter: TextInputFormatter {
 //    )
 //  }
   
-    private func getCorrectedCaretPosition(currentText: String, range: Range<String.Index>, replacementString: String) -> Int {
+    private func getCorrectedCaretPosition(newText: String, range: Range<String.Index>, replacementString: String) -> Int {
         return caretPositionCorrector.calculateCaretPositionOffset(
-            currentText: currentText,
+            newText: newText,
             originalRange: range,
             replacementText: replacementString
         )
