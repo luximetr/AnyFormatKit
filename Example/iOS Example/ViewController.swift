@@ -21,7 +21,7 @@ class ViewController: UIViewController {
   let sumInputField = UITextField(frame: LayoutConstants.sumTextInputFieldFrame)
   
   let phoneNumberFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
-  let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XX XX XX", patternSymbol: "X")
+  let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX", patternSymbol: "X")
   let sumFormatter = SumTextInputFormatter(textPattern: "# ###,## $")
   let placeholderPhoneNumberFormatter = PlaceholderTextInputFormatter(textPattern: "+## (###) ###-##-##")
   
@@ -76,8 +76,8 @@ private extension ViewController {
     phoneNumberField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([
       NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
       NSAttributedString.Key.font.rawValue: getFont()])
-    phoneNumberInputController.formatter = phoneNumberFormatter
-//    phoneNumberInputController.formatter = placeholderPhoneNumberFormatter
+//    phoneNumberInputController.formatter = phoneNumberFormatter
+    phoneNumberInputController.formatter = placeholderPhoneNumberFormatter
     phoneNumberField.delegate = phoneNumberInputController
   }
   

@@ -38,7 +38,6 @@ class CaretPositionCorrector {
   
   func calculateCaretPositionOffset(newText: String, originalRange range: Range<String.Index>, replacementText: String) -> Int {
     var offset = 0
-    
     if replacementText.isEmpty {
       offset = offsetForRemove(newText: newText, lowerBound: range.lowerBound)
     } else {
@@ -94,12 +93,6 @@ class CaretPositionCorrector {
     let index = newText.getSameIndex(asIn: textPattern, sourceIndex: textPatternIndex)
     let leftSlice = newText.leftSlice(end: index)
     return leftSlice.utf16.count
-    
-//    let startIndex = textPattern.startIndex
-//    let searchRange = startIndex..<lowerBound
-//    let indexes = indexesOfPatternSymbols(in: searchRange)
-//    guard let lastIndex = indexes.last else { return 0 }
-//    return lastIndex.utf16Offset(in: textPattern) + 1
   }
   
   /**
