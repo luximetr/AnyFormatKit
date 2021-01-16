@@ -15,14 +15,6 @@ extension String {
         return self[self.index(self.startIndex, offsetBy: index)]
     }
     
-    func slice(from: String, toString: String) -> String? {
-        return (range(of: from)?.upperBound).flatMap { substringFrom in
-            (range(of: toString, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
-                String(self[substringFrom..<substringTo])
-            }
-        }
-    }
-    
     func sliceAfter(substring: String) -> String {
         guard self.contains(substring) else { return self }
         guard count > substring.count else { return "" }
@@ -63,12 +55,6 @@ extension String {
     
     func leftSlice(end: String.Index) -> String {
         return String(self[self.startIndex..<end])
-    }
-    
-    func leftSliceIncluding(end: String.Index) -> String {
-        guard !self.isEmpty else { return self }
-        guard self.startIndex != end else { return String(self[self.startIndex..<end]) }
-        return String(self[self.startIndex...end])
     }
     
     func slice(in range: Range<String.Index>) -> String {
