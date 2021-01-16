@@ -167,7 +167,7 @@ luximetr, luximetr.notification@gmail.com
 
 ## Say thank you
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/luximetr?locale.x=en_GB)
+<a href="https://paypal.me/luximetr/"><img src="https://github.com/andreostrovsky/donate-with-paypal/blob/master/PNG/blue.png" height="40"></a>
 
 ## License
 
