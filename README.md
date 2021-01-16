@@ -33,8 +33,6 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 ![Card number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
 
-### Placeholder phone number
-
 ![Placeholder number number example](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
 
 ## Requirements
