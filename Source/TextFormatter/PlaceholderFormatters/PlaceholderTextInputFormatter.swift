@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class PlaceholderTextInputFormatter: TextInputFormatter, TextUnformatter {
+open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter {
     
     // MARK: - Dependencies
     
@@ -40,7 +40,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextUnformatter {
     
     // MARK: - TextInputFormatter
     
-    public func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
+    open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
         guard let swiftRange = Range(range, in: currentText) else { return .zero }
         let oldUnformattedText = textFormatter.unformat(currentText) ?? ""
         
@@ -55,6 +55,12 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextUnformatter {
         let caretOffset = getCorrectedCaretPosition(newText: formattedText, range: formattedTextRange, replacementString: text)
         
         return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+    }
+    
+    // MARK: - TextFormatter
+    
+    open func format(_ unformattedText: String?) -> String? {
+        return textFormatter.format(unformattedText)
     }
     
     // MARK: - TextUnformatter

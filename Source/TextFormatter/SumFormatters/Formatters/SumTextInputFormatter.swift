@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextInputFormatter: TextInputFormatter, TextUnformatter, TextNumberUnformatter {
+open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, TextNumberUnformatter {
     
     // MARK: - Dependencies
     
@@ -62,21 +62,9 @@ open class SumTextInputFormatter: TextInputFormatter, TextUnformatter, TextNumbe
         return FormattedTextValue(formattedText: newFormattedText, caretBeginOffset: caretOffset)
     }
     
-    // MARK: - TextUnformatter
+    // MARK: - TextFormatter
     
-    open func unformat(_ formattedText: String?) -> String? {
-        return textFormatter.unformat(formattedText)
-    }
-    
-    // MARK: - TextNumberUnformatter
-    
-    open func unformatNumber(_ formattedText: String?) -> NSNumber? {
-        return textFormatter.unformatNumber(formattedText)
-    }
-    
-    // MARK: - Format
-    
-    private func format(_ unformatted: String?) -> String? {
+    open func format(_ unformatted: String?) -> String? {
         guard let unformatted = unformatted else { return nil }
         let minimumFractionDigits = calculateMinimumFractionDigits(unformatted: unformatted, divider: decimalSeparator, maximumFractionDigits: numberFormatter.maximumFractionDigits)
         numberFormatter.minimumFractionDigits = minimumFractionDigits
@@ -90,8 +78,21 @@ open class SumTextInputFormatter: TextInputFormatter, TextUnformatter, TextNumbe
         } else {
             return textFormatter.format(unformatted)
         }
-        
     }
+    
+    // MARK: - TextUnformatter
+    
+    open func unformat(_ formattedText: String?) -> String? {
+        return textFormatter.unformat(formattedText)
+    }
+    
+    // MARK: - TextNumberUnformatter
+    
+    open func unformatNumber(_ formattedText: String?) -> NSNumber? {
+        return textFormatter.unformatNumber(formattedText)
+    }
+    
+    // MARK: - Caclulation
     
     private func calculateMinimumFractionDigits(unformatted: String, divider: String, maximumFractionDigits: Int) -> Int {
         let currentFractionDigitsCount = getFractionDigitsCount(unformatted: unformatted, divider: divider)
