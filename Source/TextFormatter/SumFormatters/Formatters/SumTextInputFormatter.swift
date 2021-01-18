@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextInputFormatter: TextInputFormatter {
+open class SumTextInputFormatter: TextInputFormatter, TextUnformatter {
   
   // MARK: - Dependencies
   
@@ -117,4 +117,9 @@ open class SumTextInputFormatter: TextInputFormatter {
     
     return convertedRange
   }
+    
+    // MARK: - TextUnformatter
+    open func unformat(_ formattedText: String?) -> String? {
+        return textFormatter.unformat(formattedText)
+    }
 }

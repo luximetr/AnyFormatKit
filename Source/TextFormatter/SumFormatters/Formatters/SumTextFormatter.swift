@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextFormatter: TextFormatter {
+open class SumTextFormatter: TextFormatter, TextUnformatter {
   
   // MARK: - Dependencies
   
@@ -81,7 +81,7 @@ open class SumTextFormatter: TextFormatter {
     return numberFormatter.string(from: number)
   }
   
-  // MARK: - Unformat
+  // MARK: - TextUnformatter
   
   open func unformat(_ formatted: String?) -> String? {
     guard let formattedString = formatted else { return nil }

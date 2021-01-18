@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class DefaultTextInputFormatter: TextInputFormatter {
+open class DefaultTextInputFormatter: TextInputFormatter, TextUnformatter {
     
     // MARK: - Dependencies
     
@@ -66,6 +66,10 @@ open class DefaultTextInputFormatter: TextInputFormatter {
         )
         
         return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+    }
+    
+    open func unformat(_ formatted: String?) -> String? {
+        return textFormatter.unformat(formatted)
     }
     
     // MARK: - Private

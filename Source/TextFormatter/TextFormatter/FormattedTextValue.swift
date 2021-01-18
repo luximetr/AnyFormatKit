@@ -17,7 +17,7 @@ public struct FormattedTextValue: Equatable {
     self.caretBeginOffset = caretBeginOffset
   }
   
-  static var zero: FormattedTextValue {
+  public static var zero: FormattedTextValue {
     return FormattedTextValue(formattedText: "", caretBeginOffset: 0)
   }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class DefaultTextFormatter: TextFormatter {
+open class DefaultTextFormatter: TextFormatter, TextUnformatter {
   
   // MARK: - Fields
   
