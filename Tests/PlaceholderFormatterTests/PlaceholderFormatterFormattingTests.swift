@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import AnyFormatKit
+import AnyFormatKit
 
 class PlaceholderFormatterFormattingTests: XCTestCase {
 
