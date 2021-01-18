@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class DefaultTextInputFormatter: TextInputFormatter {
+open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter {
     
     // MARK: - Dependencies
     
@@ -44,7 +44,7 @@ open class DefaultTextInputFormatter: TextInputFormatter {
         self.stringCalculator = StringCalculator()
     }
     
-    // MARK: - Format input
+    // MARK: - TextInputFormatter
     
     open func formatInput(currentText: String, range: NSRange, replacementString text: String) -> FormattedTextValue {
         guard let swiftRange = Range(range, in: currentText) else { return .zero }
@@ -66,6 +66,18 @@ open class DefaultTextInputFormatter: TextInputFormatter {
         )
         
         return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+    }
+    
+    // MARK: - TextFormatter
+    
+    open func format(_ unformattedText: String?) -> String? {
+        return textFormatter.format(unformattedText)
+    }
+    
+    // MARK: - TextUnformatter
+    
+    open func unformat(_ formatted: String?) -> String? {
+        return textFormatter.unformat(formatted)
     }
     
     // MARK: - Private

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class PlaceholderTextFormatter: TextFormatter {
+open class PlaceholderTextFormatter: TextFormatter, TextUnformatter {
   
   // MARK: - Properties
   
@@ -35,9 +35,9 @@ open class PlaceholderTextFormatter: TextFormatter {
     self.patternSymbol = patternSymbol
   }
   
-  // MARK: - Format
+  // MARK: - TextFormatter
   
-  public func format(_ unformattedText: String?) -> String? {
+  open func format(_ unformattedText: String?) -> String? {
     guard let unformattedText = unformattedText, !unformattedText.isEmpty else { return textPattern }
     var formatted = ""
     var unformattedIndex = 0
@@ -63,9 +63,9 @@ open class PlaceholderTextFormatter: TextFormatter {
     return formatted
   }
   
-  // MARK: - Unformat
+  // MARK: - TextUnformatter
   
-  public func unformat(_ formattedText: String?) -> String? {
+  open func unformat(_ formattedText: String?) -> String? {
     guard let formatted = formattedText else { return nil }
     var unformatted = String()
     var formattedIndex = 0
