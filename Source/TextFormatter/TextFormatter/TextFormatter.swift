@@ -14,19 +14,11 @@ public protocol TextFormatter {
    Formatting text with current textPattern
    
    - Parameters:
-     - unformatted: String, that need to be convert with current textPattern
+     - unformatted: String to convert
    
-   - Returns: Formatted text with current textPattern
+   - Returns: Formatted text
    */
   func format(_ unformattedText: String?) -> String?
-  
-  /**
-   Method for convert string, that sutisfy current textPattern, into unformatted string
-   
-   - Parameters:
-     - formatted: String, that will convert
-   
-   - Returns: string converted into unformatted with current textPattern
-   */
-  func unformat(_ formattedText: String?) -> String?
 }
+
+

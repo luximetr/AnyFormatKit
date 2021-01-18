@@ -3,7 +3,7 @@
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 16.01.2021.
-//  Copyright © 2021 BRANDERSTUDIO. All rights reserved.
+//  Copyright © 2021 Oleksandr Orlov. All rights reserved.
 //
 
 import Foundation
