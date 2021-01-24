@@ -133,17 +133,6 @@
 		306EBE9E1FC4669100E49BB8 /* FormatParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatParsingTests.swift; sourceTree = "<group>"; };
 		307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatter.swift; sourceTree = "<group>"; };
 		307EA21A1FAA1B5B00DE439D /* TextFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormatter.swift; sourceTree = "<group>"; };
-		307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputField.swift; sourceTree = "<group>"; };
-		307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextInputView.swift; sourceTree = "<group>"; };
-		307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringConstructor.swift; sourceTree = "<group>"; };
-		307EA2201FAA1B5B00DE439D /* TextInputDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputDelegate.swift; sourceTree = "<group>"; };
-		307EA2221FAA1B5B00DE439D /* TextInputFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegate.swift; sourceTree = "<group>"; };
-		307EA2231FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFieldDelegateCall.swift; sourceTree = "<group>"; };
-		307EA2241FAA1B5B00DE439D /* TextInputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputField.swift; sourceTree = "<group>"; };
-		307EA2251FAA1B5B00DE439D /* TextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
-		307EA2271FAA1B5B00DE439D /* TextInputViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegate.swift; sourceTree = "<group>"; };
-		307EA2281FAA1B5B00DE439D /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
-		307EA2291FAA1B5B00DE439D /* TextInputViewDelegateCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputViewDelegateCall.swift; sourceTree = "<group>"; };
 		307EA22D1FAA1B5B00DE439D /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		307EA2301FAA1B5B00DE439D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		307F0F4122B0373E00C52AD2 /* SumTextInputFormatterWithSuffixDelete2SymbolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterWithSuffixDelete2SymbolsTests.swift; sourceTree = "<group>"; };
@@ -196,6 +185,8 @@
 		30FF731222ADA53D005FBC38 /* DefaultTextInputFormatter1SymbolReplaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter1SymbolReplaceTests.swift; sourceTree = "<group>"; };
 		30FF731422ADA7A4005FBC38 /* DefaultTextInputFormatter2SymbolsReplaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter2SymbolsReplaceTests.swift; sourceTree = "<group>"; };
 		30FF731622ADB380005FBC38 /* DefaultTextInputFormatter3SymbolsReplace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter3SymbolsReplace.swift; sourceTree = "<group>"; };
+		65A83891A67E941A00B08DC1 /* Pods_AnyFormatKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFormatKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5C45219E0989FD4AAF70ECE /* Pods_AnyFormatKit_AnyFormatKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFormatKit_AnyFormatKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4EEE93255D9A6700F02145 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DB4EEE97255D9A8B00F02145 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		DB4EEE9D255D9B9400F02145 /* TextViewInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputController.swift; sourceTree = "<group>"; };
@@ -624,24 +615,6 @@
 			path = Delete;
 			sourceTree = "<group>";
 		};
-		30EB6CB222BB858900447D5A /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				307EA2231FAA1B5B00DE439D /* TextInputFieldDelegateCall.swift */,
-				307EA2281FAA1B5B00DE439D /* TextInputView.swift */,
-				307EA2221FAA1B5B00DE439D /* TextInputFieldDelegate.swift */,
-				307EA2201FAA1B5B00DE439D /* TextInputDelegate.swift */,
-				307EA2291FAA1B5B00DE439D /* TextInputViewDelegateCall.swift */,
-				307EA2241FAA1B5B00DE439D /* TextInputField.swift */,
-				307EA21E1FAA1B5B00DE439D /* AttributedTextInputView.swift */,
-				307EA21D1FAA1B5B00DE439D /* AttributedTextInputField.swift */,
-				307EA2271FAA1B5B00DE439D /* TextInputViewDelegate.swift */,
-				307EA21F1FAA1B5B00DE439D /* AttributedStringConstructor.swift */,
-				307EA2251FAA1B5B00DE439D /* TextInput.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		30EB6CB422BB86D300447D5A /* SumFormatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,7 +634,7 @@
 				307EA2131FAA1B5B00DE439D /* Source */,
 				30FE6FE51FAA13D30024D1B1 /* Tests */,
 				30FE6FD91FAA13D30024D1B1 /* Products */,
-				30EB6CB222BB858900447D5A /* Recovered References */,
+				C85A0D46048A0BC2515944FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -726,6 +699,15 @@
 				0210846525B57F6B00DE16E4 /* Unformat */,
 			);
 			path = DefaultTextInputFormatterTests;
+			sourceTree = "<group>";
+		};
+		C85A0D46048A0BC2515944FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65A83891A67E941A00B08DC1 /* Pods_AnyFormatKit.framework */,
+				D5C45219E0989FD4AAF70ECE /* Pods_AnyFormatKit_AnyFormatKitTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DB4EEEA5255D9EDC00F02145 /* Formatters */ = {
