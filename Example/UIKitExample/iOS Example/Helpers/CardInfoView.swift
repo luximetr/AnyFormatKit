@@ -58,7 +58,7 @@ class CardInfoView: InitView {
     private func setupCardNumberTextField() {
         cardNumberTextField.backgroundColor = .darkGray
         cardNumberTextField.textColor = .white
-        cardNumberTextField.font = UIFont.monospaced(ofSize: 20)
+        cardNumberTextField.font = UIFont.monospaced(ofSize: 18)
     }
     
     private func prepareLayoutCardNumberTextField() {

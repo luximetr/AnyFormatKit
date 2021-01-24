@@ -50,6 +50,7 @@ class TitleTextFieldView: InitView {
     private func setupTextField() {
         textField.textColor = .white
         textField.backgroundColor = .darkGray
+        textField.font = .monospaced(ofSize: 18)
     }
     
     private func prepareLayoutTextField() {
