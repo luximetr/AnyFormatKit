@@ -106,4 +106,16 @@ class PlaceholderTextInputFormatterErasingBy1SymbolTests: XCTestCase {
     let expectedResult = FormattedTextValue(formattedText: "### ###", caretBeginOffset: 1)
     XCTAssertEqual(result, expectedResult)
   }
+    
+    // 1111 ##|#|#  ->  1111 ##|##
+    func test9() {
+        let formatter = PlaceholderTextInputFormatter(textPattern: "#### ####")
+        let result = formatter.formatInput(
+          currentText: "1111 ####",
+          range: NSRange(location: 7, length: 1),
+          replacementString: ""
+        )
+        let expectedResult = FormattedTextValue(formattedText: "1111 ####", caretBeginOffset: 7)
+        XCTAssertEqual(result, expectedResult)
+    }
 }

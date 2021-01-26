@@ -12,7 +12,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
     
     // MARK: - Dependencies
     
-    private let caretPositionCorrector: CaretPositionCorrector
+    private let caretPositionCorrector: PlaceholderCaretPositionCalculator
     private let textFormatter: PlaceholderTextFormatter
     private let stringCalculator: StringCalculator
     
@@ -27,7 +27,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
         textPattern: String,
         patternSymbol: Character = "#"
     ) {
-        self.caretPositionCorrector = CaretPositionCorrector(
+        self.caretPositionCorrector = PlaceholderCaretPositionCalculator(
             textPattern: textPattern,
             patternSymbol: patternSymbol
         )
