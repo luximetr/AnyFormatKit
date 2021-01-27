@@ -19,6 +19,7 @@ Text formatting framework written on Swift 5.0.
 :stuck_out_tongue:| Supporting emojis
 :heavy_dollar_sign:| Formatting money amount
 :parking:| Formatting with placeholders
+:seedling:| UITextField and UITextView support
 
 
 ## Example
