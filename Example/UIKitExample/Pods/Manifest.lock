@@ -1,0 +1,23 @@
+PODS:
+  - AnyFormatKit (2.2.0)
+  - SnapKit (4.0.1)
+
+DEPENDENCIES:
+  - AnyFormatKit (from `../../`)
+  - SnapKit (~> 4.0.0)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  AnyFormatKit:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  AnyFormatKit: 89823b15a569319c3ae4cb1211e550f877504645
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+
+PODFILE CHECKSUM: 8f358085a0bd2919361750024b315434e92f43e1
+
+COCOAPODS: 1.10.0
