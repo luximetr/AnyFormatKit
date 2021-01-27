@@ -132,4 +132,24 @@ extension String {
         }
         return elementIndex
     }
+    
+    func getRemovingMatches(toMatch: String) -> String {
+        guard self != toMatch else { return "" }
+        var stringIndex = self.index(before: self.endIndex)
+        var toMatchIndex = toMatch.index(before: toMatch.endIndex)
+        while stringIndex > self.startIndex && toMatchIndex > toMatch.startIndex {
+            let stringChar = self[stringIndex]
+            let toMatchChar = toMatch[toMatchIndex]
+            if stringChar != toMatchChar {
+                break
+            }
+            stringIndex = self.index(before: stringIndex)
+            toMatchIndex = toMatch.index(before: toMatchIndex)
+        }
+        return self.leftSlice(end: self.index(after: stringIndex))
+    }
+    
+    var utf16Length: Int {
+        return self.utf16.count
+    }
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter {
+open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, CaretPositioner {
     
     // MARK: - Dependencies
     
-    private let caretPositionCorrector: CaretPositionCorrector
+    private let caretPositionCorrector: PlaceholderCaretPositionCalculator
     private let textFormatter: PlaceholderTextFormatter
     private let stringCalculator: StringCalculator
     
@@ -27,7 +27,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
         textPattern: String,
         patternSymbol: Character = "#"
     ) {
-        self.caretPositionCorrector = CaretPositionCorrector(
+        self.caretPositionCorrector = PlaceholderCaretPositionCalculator(
             textPattern: textPattern,
             patternSymbol: patternSymbol
         )
@@ -55,6 +55,10 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
         let caretOffset = getCorrectedCaretPosition(newText: formattedText, range: formattedTextRange, replacementString: text)
         
         return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+    }
+    
+    open func getCaretOffset(for text: String) -> Int {
+        return caretPositionCorrector.calculateCaretPositionOffset(currentText: text)
     }
     
     // MARK: - TextFormatter
