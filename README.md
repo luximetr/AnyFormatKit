@@ -112,7 +112,7 @@ textField.setCursorLocation(result.caretBeginOffset)
 ### Formatter kinds
 
 - `DefaultTextInputFormatter` - formatting [symbol by symbol](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
-- `SumTextInputFormatter` - formatting like a [money format]()
+- `SumTextInputFormatter` - formatting like a [money format](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_sum.gif)
 - `PlaceholderTextInputFormatter` - formatting with all textPattern as [placeholder](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
 
 ## Author
