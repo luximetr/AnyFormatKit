@@ -84,82 +84,34 @@ import AnyFormatKit
 ### Formatting with TextFormatter
 
 ```swift
-let phoneFormatter = DefaultTextFormatter(textPattern: "### (###) ###-##-##")
-phoneFormatter.format("+123456789012") // +12 (345) 678-90-12
+let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+let phoneInputController = TextFieldInputController()
 
-let customFormatter = DefaultTextFormatter(textPattern: "###-###custom###-###")
-customFormatter.format("111222333444") // 111-222custom333-444
+textField.delegate = phoneFormatter
+phoneInputController.formatter = phoneFormatter
 ```
 
-You can also set your own symbol in the pattern
-
+Get only your input
 ```swift
-let cardFormatter = DefaultTextFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
-cardFormatter.format("4444555566667777") // 4444 5555 6666 7777
+phoneNumberFormatter.unformat("+51 (013) 442-55-11") // +51013442551 
 ```
 
-For string with different length
+In case you want to use `textField.delegate` by yourself 
 
 ```swift
-let formatter = DefaultTextFormatter(textPattern: "## ###-##")
-formatter.format("1234") // 12 34
-formatter.format("123456789") // 12 345-67
-```
-
-Unformatting
-
-```swift
-let formatter = DefaultTextFormatter(textPattern: "## ###-##")
-formatter.unformat("99 888-77") // 9988877
-```
-### Formatting with PlaceholderTextFormatter
-
-```swift
-let phoneFormatter = PlaceholderTextFormatter(textPattern: "### (###) ###-##-##")
-phoneFormatter.format("+123") // +12 (3##) ###-##-##
-```
-
-### Formatting with SumTextFormatter
-
-```swift
-let formatter = SumTextFormatter(textPattern: "#,###.##")
-formatter.format("1234.13") // 1,234.13
-```
-
-### Formatting during typing
-
-Using `DefaultTextInputFormatter` formatter
-
-```swift
-let formatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
+let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
 
 // inside of UITextFieldDelegate shouldChangeTextIn method
 let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-textView.text = result.formattedText
-textView.setCursorLocation(result.caretBeginOffset)
+textField.text = result.formattedText
+textField.setCursorLocation(result.caretBeginOffset)
 ```
 
-Using `SumTextInputFormatter` formatter
+### Formatter kinds
 
-```swift
-let formatter = SumTextInputFormatter(textPattern: "#,###.##$")
-
-// inside of UITextFieldDelegate shouldChangeTextIn method
-let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-textView.text = result.formattedText
-textView.setCursorLocation(result.caretBeginOffset)
-```
-
-Using `PlaceholderTextInputFormatter` formatter
-
-```swift
-let formatter = PlaceholderTextInputFormatter(textPattern: "#### #### #### ####")
-
-// inside of UITextFieldDelegate shouldChangeTextIn method
-let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
-textView.text = result.formattedText
-textView.setCursorLocation(result.caretBeginOffset)
-```
+- `DefaultTextInputFormatter` - formatting [symbol by symbol](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
+- `SumTextInputFormatter` - formatting like a [money format]()
+- `PlaceholderTextInputFormatter` - formatting with all textPattern as [placeholder](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
 
 ## Author
 
