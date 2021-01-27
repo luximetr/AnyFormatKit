@@ -81,7 +81,7 @@ dependencies: [
 import AnyFormatKit
 ```
 
-### Formatting with TextFormatter
+#### Formatting with TextFormatter
 
 ```swift
 let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
@@ -91,21 +91,23 @@ textField.delegate = phoneFormatter
 phoneInputController.formatter = phoneFormatter
 ```
 
-Get only your input
+#### Get only your input
 ```swift
 phoneNumberFormatter.unformat("+51 (013) 442-55-11") // +51013442551 
 ```
 
-In case you want to use `textField.delegate` by yourself 
+#### In case you want to use `textField.delegate` by yourself 
 
 ```swift
 let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
 
 // inside of UITextFieldDelegate shouldChangeTextIn method
-let result = formatter.formatInput(currentText: textView.text, range: range, replacementString: text)
+let result = formatter.formatInput(currentText: textField.text ?? "", range: range, replacementString: string)
 textField.text = result.formattedText
 textField.setCursorLocation(result.caretBeginOffset)
 ```
+
+> You can find example of `setCursorLocation` [here](https://github.com/luximetr/AnyFormatKit/blob/develop/Source/Extensions/UITextField%2BExtension.swift) 
 
 ### Formatter kinds
 
