@@ -1,0 +1,16 @@
+PODS:
+  - AnyFormatKit (2.2.1)
+
+DEPENDENCIES:
+  - AnyFormatKit (from `../../`)
+
+EXTERNAL SOURCES:
+  AnyFormatKit:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  AnyFormatKit: a433c9051897ec3af3aa77172c443d08660419ca
+
+PODFILE CHECKSUM: 5ef60521affd88be8a04c3ba6ca9c967731bdaba
+
+COCOAPODS: 1.10.0

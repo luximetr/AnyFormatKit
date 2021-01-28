@@ -24,6 +24,8 @@
 		02902B9625B5F2E500E3BF25 /* PlaceholderTextInputFormatterFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B9525B5F2E500E3BF25 /* PlaceholderTextInputFormatterFormatTests.swift */; };
 		02902B9E25B5F36C00E3BF25 /* SumTextInputFormatterFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B9D25B5F36C00E3BF25 /* SumTextInputFormatterFormatTests.swift */; };
 		02902BA425B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902BA325B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift */; };
+		02B6001F25C330BC004281A4 /* AnyFormatKitUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6001E25C330BC004281A4 /* AnyFormatKitUITextField.swift */; };
+		02B6002325C330E5004281A4 /* AnyFormatKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6002225C330E5004281A4 /* AnyFormatKitTextField.swift */; };
 		02D78BB225B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC025B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC425B333A8008837B7 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BC325B333A8008837B7 /* StringCalculator.swift */; };
@@ -129,6 +131,8 @@
 		02902B9525B5F2E500E3BF25 /* PlaceholderTextInputFormatterFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterFormatTests.swift; sourceTree = "<group>"; };
 		02902B9D25B5F36C00E3BF25 /* SumTextInputFormatterFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterFormatTests.swift; sourceTree = "<group>"; };
 		02902BA325B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatterFormatTests.swift; sourceTree = "<group>"; };
+		02B6001E25C330BC004281A4 /* AnyFormatKitUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitUITextField.swift; sourceTree = "<group>"; };
+		02B6002225C330E5004281A4 /* AnyFormatKitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormatKitTextField.swift; sourceTree = "<group>"; };
 		02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BC325B333A8008837B7 /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
@@ -380,6 +384,15 @@
 			path = FormatInput;
 			sourceTree = "<group>";
 		};
+		02B6001D25C3309F004281A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02B6001E25C330BC004281A4 /* AnyFormatKitUITextField.swift */,
+				02B6002225C330E5004281A4 /* AnyFormatKitTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		02D78BAE25B321F5008837B7 /* Insert */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +415,7 @@
 		307EA2131FAA1B5B00DE439D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				02B6001D25C3309F004281A4 /* Views */,
 				307EA22C1FAA1B5B00DE439D /* Extensions */,
 				307EA2141FAA1B5B00DE439D /* TextFormatter */,
 				DB9D0779255D98A100D9FD64 /* Controllers */,
@@ -997,6 +1011,7 @@
 				30C6787D2286B45000F43F9E /* SumTextFormatter.swift in Sources */,
 				3032CFBF21D412E1008137EE /* DefaultTextInputFormatter.swift in Sources */,
 				D8C1ABCF22E21DAE007ABE08 /* String+Extension.swift in Sources */,
+				02B6001F25C330BC004281A4 /* AnyFormatKitUITextField.swift in Sources */,
 				DB4EEEAA255D9F2A00F02145 /* PlaceholderTextInputFormatter.swift in Sources */,
 				DB4EEEAE255D9FBA00F02145 /* PlaceholderTextFormatter.swift in Sources */,
 				022766DC25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift in Sources */,
@@ -1004,6 +1019,7 @@
 				3032CFC021D412E1008137EE /* DefaultTextFormatter.swift in Sources */,
 				30EB6CB822BB870E00447D5A /* SumFormatParser.swift in Sources */,
 				026A488C25C1E626000A38C7 /* TextViewPlaceholderInputController.swift in Sources */,
+				02B6002325C330E5004281A4 /* AnyFormatKitTextField.swift in Sources */,
 				307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
 				0210845725B57BD300DE16E4 /* TextUnformatter.swift in Sources */,
 				02902B7F25B5E87F00E3BF25 /* TextNumberUnformatter.swift in Sources */,
