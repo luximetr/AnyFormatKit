@@ -88,7 +88,7 @@ import AnyFormatKit
 let phoneFormatter = DefaultTextInputFormatter(textPattern: "### (###) ###-##-##")
 let phoneInputController = TextFieldInputController()
 
-textField.delegate = phoneFormatter
+textField.delegate = phoneInputController
 phoneInputController.formatter = phoneFormatter
 ```
 
