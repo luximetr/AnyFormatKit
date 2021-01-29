@@ -11,11 +11,16 @@ import iPhoneNumberField
 
 struct ContentView: View {
     @State var text = ""
+    @State var text1 = ""
     @State var text2 = ""
-    @State var text3 = "aa"
+    @State var text3 = ""
     
     var body: some View {
         VStack {
+            Button("Button", action: {
+                
+            })
+            TextField("TextField", text: $text1)
             iPhoneNumberField("iPhoneNumberField", text: $text)
                 .font(UIFont.systemFont(ofSize: 30))
                 .padding()
@@ -29,14 +34,31 @@ struct ContentView: View {
             AnyFormatTextField(
                 text: $text3,
                 placeholder: "with formatter",
-                formatter: PlaceholderTextInputFormatter(
+                formatter: DefaultTextInputFormatter(
                     textPattern: "XXXX XXXX XXXX XXXX",
                     patternSymbol: "X"
                 )
-            ).font(UIFont.monospacedSystemFont(ofSize: 20, weight: .bold))
-             .accentColor(UIColor.purple)
-             .borderStyle(.roundedRect)
-             .textAlignment(.center)
+            )
+            .font(UIFont.monospacedSystemFont(ofSize: 20, weight: .bold))
+            .foregroundColor(UIColor.brown)
+            .accentColor(UIColor.purple)
+            .borderStyle(.roundedRect)
+            .onEditingBegan(perform: { (text) in
+                print("onEditingBegan: " + (text ?? ""))
+            })
+            .onEditingEnd(perform: { (text) in
+                print("onEditingEnd: " + (text ?? ""))
+            })
+            .onTextChange(perform: { text in
+                print("onTextChange: " + (text ?? ""))
+            })
+            .onReturn(perform: {
+                print("onReturn")
+            })
+            .onClear(perform: {
+                print("onClear")
+            })
+            
              .padding()
              .environment(\.layoutDirection, .rightToLeft)
         }

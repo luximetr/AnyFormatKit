@@ -10,7 +10,11 @@ import UIKit
 
 open class TextFieldPlaceholderInputController: NSObject, UITextFieldDelegate {
     
+    // MARK: - Dependencies
+    
     open var formatter: (TextInputFormatter & CaretPositioner)?
+    
+    // MARK: - UITextFieldDelegate
     
     open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let formatter = formatter else { return true }

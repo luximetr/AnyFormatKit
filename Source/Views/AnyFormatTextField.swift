@@ -1,5 +1,5 @@
 //
-//  AnyFormatKitTextField.swift
+//  AnyFormatTextField.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 28.01.2021.
@@ -11,7 +11,9 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct AnyFormatTextField: UIViewRepresentable {
     
-    public typealias UIViewType = AnyFormatUITextField
+    // MARK: - Typealiases
+    
+    public typealias UIViewType = UITextField
     
     // MARK: - Data
     
@@ -28,7 +30,15 @@ public struct AnyFormatTextField: UIViewRepresentable {
     private var borderStyle: UITextField.BorderStyle = .none
     private var textAlignment: NSTextAlignment?
     
-    // MARK: - Formatter
+    // MARK: - Private actions
+    
+    private var onEditingBeganHandler: AnyFormatTextAction?
+    private var onEditingEndHandler: AnyFormatTextAction?
+    private var onTextChangeHandler: AnyFormatTextAction?
+    private var onClearHandler: AnyFormatVoidAction?
+    private var onReturnHandler: AnyFormatVoidAction?
+    
+    // MARK: - Dependencies
     
     private let formatter: TextInputFormatter
     
@@ -61,9 +71,10 @@ public struct AnyFormatTextField: UIViewRepresentable {
     // MARK: - UIViewRepresentable
     
     public func makeUIView(context: Context) -> UIViewType {
-        let uiView = AnyFormatUITextField()
+        let uiView = UITextField()
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        uiView.formatter = formatter
+        uiView.delegate = context.coordinator
+        context.coordinator.formatter = formatter
         return uiView
     }
     
@@ -93,6 +104,16 @@ public struct AnyFormatTextField: UIViewRepresentable {
     private func updateUIViewTextAlignment(_ uiView: UIViewType) {
         guard let textAlignment = textAlignment else { return }
         uiView.textAlignment = textAlignment
+    }
+    
+    public func makeCoordinator() -> TextFieldInputController {
+        let coordinator = TextFieldInputController()
+        coordinator.onEditingBegan = onEditingBeganHandler
+        coordinator.onEditingEnd = onEditingEndHandler
+        coordinator.onTextChange = onTextChangeHandler
+        coordinator.onClear = onClearHandler
+        coordinator.onReturn = onReturnHandler
+        return coordinator
     }
     
     // MARK: - View modifiers
@@ -194,6 +215,38 @@ public struct AnyFormatTextField: UIViewRepresentable {
         case .center:
             view.textAlignment = .center
         }
+        return view
+    }
+    
+    // MARK: - Actions
+    
+    public func onEditingBegan(perform action: AnyFormatTextAction?) -> Self {
+        var view = self
+        view.onEditingBeganHandler = action
+        return view
+    }
+    
+    public func onEditingEnd(perform action: AnyFormatTextAction?) -> Self {
+        var view = self
+        view.onEditingEndHandler = action
+        return view
+    }
+    
+    public func onTextChange(perform action: AnyFormatTextAction?) -> Self {
+        var view = self
+        view.onTextChangeHandler = action
+        return view
+    }
+    
+    public func onClear(perform action: AnyFormatVoidAction?) -> Self {
+        var view = self
+        view.onClearHandler = action
+        return view
+    }
+    
+    public func onReturn(perform action: AnyFormatVoidAction?) -> Self {
+        var view = self
+        view.onReturnHandler = action
         return view
     }
 }

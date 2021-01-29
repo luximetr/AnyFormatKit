@@ -10,7 +10,11 @@ import UIKit
 
 class TextViewPlaceholderInputController: NSObject, UITextViewDelegate {
     
+    // MARK: - Dependencies
+    
     open var formatter: (TextInputFormatter & CaretPositioner)?
+    
+    // MARK: - UITextViewDelegate
     
     open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let formatter = formatter else { return true }
