@@ -1,5 +1,5 @@
 //
-//  PlaceholderFormatTextField.swift
+//  FormatStartTextField.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 31.01.2021.
@@ -8,8 +8,10 @@
 
 import SwiftUI
 
+/// SwiftUI TextField with formatting and setting caret at begin editing
+/// Can be usefull for PlaceholderTextInputFormatter, SumTextInputFormatter
 @available(iOS 13.0, *)
-public struct PlaceholderFormatTextField: UIViewRepresentable {
+public struct FormatStartTextField: UIViewRepresentable {
     
     // MARK: - Typealiases
     
@@ -48,19 +50,6 @@ public struct PlaceholderFormatTextField: UIViewRepresentable {
                 placeholder: String? = nil,
                 formatter: (TextInputFormatter & TextFormatter & TextUnformatter & CaretPositioner)
     ) {
-        self._unformattedText = unformattedText
-        self.placeholder = placeholder
-        self.formatter = formatter
-    }
-    
-    public init(unformattedText: Binding<String>,
-                placeholder: String? = nil,
-                textPattern: String,
-                patternSymbol: Character = "#") {
-        let formatter = PlaceholderTextInputFormatter(
-            textPattern: textPattern,
-            patternSymbol: patternSymbol
-        )
         self._unformattedText = unformattedText
         self.placeholder = placeholder
         self.formatter = formatter

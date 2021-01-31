@@ -1,5 +1,5 @@
 //
-//  TextFieldStartCaretInputController.swift
+//  TextFieldStartInputController.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 27.01.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class TextFieldStartCaretInputController: NSObject, UITextFieldDelegate {
+open class TextFieldStartInputController: NSObject, UITextFieldDelegate {
     
     // MARK: - Dependencies
     

@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// SwiftUI TextField with formatting
 @available(iOS 13.0, *)
 public struct FormatTextField: UIViewRepresentable {
     
@@ -53,6 +54,7 @@ public struct FormatTextField: UIViewRepresentable {
         self.formatter = formatter
     }
     
+    /// Will init with DefaultTextInputFormatter
     public init(unformattedText: Binding<String>,
                 placeholder: String? = nil,
                 textPattern: String,

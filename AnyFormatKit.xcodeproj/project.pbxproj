@@ -16,10 +16,10 @@
 		022766DC25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022766DB25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift */; };
 		02330C7125B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift */; };
 		024A794025C71CDB00478A15 /* FormatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A793F25C71CDB00478A15 /* FormatTextField.swift */; };
-		024A795225C722DB00478A15 /* PlaceholderFormatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A795125C722DB00478A15 /* PlaceholderFormatTextField.swift */; };
+		024A795225C722DB00478A15 /* FormatStartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A795125C722DB00478A15 /* FormatStartTextField.swift */; };
 		026A487525C1E0CB000A38C7 /* CaretPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487425C1E0CB000A38C7 /* CaretPositioner.swift */; };
-		026A487B25C1E11F000A38C7 /* TextFieldStartCaretInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487A25C1E11F000A38C7 /* TextFieldStartCaretInputController.swift */; };
-		026A488C25C1E626000A38C7 /* TextViewStartCaretInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A488B25C1E626000A38C7 /* TextViewStartCaretInputController.swift */; };
+		026A487B25C1E11F000A38C7 /* TextFieldStartInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */; };
+		026A488C25C1E626000A38C7 /* TextViewStartInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */; };
 		026C823F25C49CA800F39715 /* VoidAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C823E25C49CA700F39715 /* VoidAction.swift */; };
 		026C824325C49CF900F39715 /* TextAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026C824225C49CF900F39715 /* TextAction.swift */; };
 		02902B7F25B5E87F00E3BF25 /* TextNumberUnformatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */; };
@@ -125,11 +125,11 @@
 		022766DB25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCaretPositionCalculator.swift; sourceTree = "<group>"; };
 		02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterPhoneEmojisInputTests.swift; sourceTree = "<group>"; };
 		024A793F25C71CDB00478A15 /* FormatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTextField.swift; sourceTree = "<group>"; };
-		024A795125C722DB00478A15 /* PlaceholderFormatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderFormatTextField.swift; sourceTree = "<group>"; };
+		024A795125C722DB00478A15 /* FormatStartTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatStartTextField.swift; sourceTree = "<group>"; };
 		024A797625C73D3400478A15 /* AnyFormatKit 2.3.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 2.3.0 MigrationGuide.md"; sourceTree = "<group>"; };
 		026A487425C1E0CB000A38C7 /* CaretPositioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositioner.swift; sourceTree = "<group>"; };
-		026A487A25C1E11F000A38C7 /* TextFieldStartCaretInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStartCaretInputController.swift; sourceTree = "<group>"; };
-		026A488B25C1E626000A38C7 /* TextViewStartCaretInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewStartCaretInputController.swift; sourceTree = "<group>"; };
+		026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStartInputController.swift; sourceTree = "<group>"; };
+		026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewStartInputController.swift; sourceTree = "<group>"; };
 		026C823E25C49CA700F39715 /* VoidAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidAction.swift; sourceTree = "<group>"; };
 		026C824225C49CF900F39715 /* TextAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAction.swift; sourceTree = "<group>"; };
 		02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNumberUnformatter.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */,
-				026A487A25C1E11F000A38C7 /* TextFieldStartCaretInputController.swift */,
+				026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */,
 			);
 			path = TextFieldControllers;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4EEE9D255D9B9400F02145 /* TextViewInputController.swift */,
-				026A488B25C1E626000A38C7 /* TextViewStartCaretInputController.swift */,
+				026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */,
 			);
 			path = TextViewControllers;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				024A793F25C71CDB00478A15 /* FormatTextField.swift */,
-				024A795125C722DB00478A15 /* PlaceholderFormatTextField.swift */,
+				024A795125C722DB00478A15 /* FormatStartTextField.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1023,7 +1023,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				024A795225C722DB00478A15 /* PlaceholderFormatTextField.swift in Sources */,
+				024A795225C722DB00478A15 /* FormatStartTextField.swift in Sources */,
 				DB9D077B255D98BA00D9FD64 /* TextFieldInputController.swift in Sources */,
 				30C6787D2286B45000F43F9E /* SumTextFormatter.swift in Sources */,
 				3032CFBF21D412E1008137EE /* DefaultTextInputFormatter.swift in Sources */,
@@ -1034,7 +1034,7 @@
 				30A308962072BA7300CFC062 /* CaretPositionCorrector.swift in Sources */,
 				3032CFC021D412E1008137EE /* DefaultTextFormatter.swift in Sources */,
 				30EB6CB822BB870E00447D5A /* SumFormatParser.swift in Sources */,
-				026A488C25C1E626000A38C7 /* TextViewStartCaretInputController.swift in Sources */,
+				026A488C25C1E626000A38C7 /* TextViewStartInputController.swift in Sources */,
 				026C824325C49CF900F39715 /* TextAction.swift in Sources */,
 				024A794025C71CDB00478A15 /* FormatTextField.swift in Sources */,
 				307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
@@ -1046,7 +1046,7 @@
 				02D78BC425B333A8008837B7 /* StringCalculator.swift in Sources */,
 				026C823F25C49CA800F39715 /* VoidAction.swift in Sources */,
 				DB4EEE9E255D9B9400F02145 /* TextViewInputController.swift in Sources */,
-				026A487B25C1E11F000A38C7 /* TextFieldStartCaretInputController.swift in Sources */,
+				026A487B25C1E11F000A38C7 /* TextFieldStartInputController.swift in Sources */,
 				DB4EEED9255DB82C00F02145 /* FormattedTextValue.swift in Sources */,
 				DB4EEE94255D9A6700F02145 /* UITextField+Extension.swift in Sources */,
 				30EB6CBA22BB870E00447D5A /* SumTextInputFormatter.swift in Sources */,

@@ -2,5 +2,5 @@
 
 ## Breaking Changes
 
-- `TextFieldPlaceholderInputController` was renamed to `TextFieldStartCaretInputController`
-- `TextViewPlaceholderInputController` was renamed to `TextViewStartCaretInputController`
+- `TextFieldPlaceholderInputController` was renamed to `TextFieldStartInputController`
+- `TextViewPlaceholderInputController` was renamed to `TextViewStartInputController`
