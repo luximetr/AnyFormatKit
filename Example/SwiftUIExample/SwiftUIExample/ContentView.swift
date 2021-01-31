@@ -11,38 +11,127 @@ import iPhoneNumberField
 
 struct ContentView: View {
     
-    @State public var isDarkMode: Bool = false
-    @State var iPhoneNumberText = ""
-    @State var unformattedCardNumberText = ""
-    private let hardcodedCardNumber = "333111222"
+    // MARK: - Data
     
-    private let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
+    @State var phoneNumberText = ""
+    @State var cardNumberText = ""
+    @State var cardExpirationText = ""
+    @State var cardCvvText = ""
+    @State var moneyText = ""
     
+    // MARK: - Dependencies
+    
+    private let cardNumberFormatter = PlaceholderTextInputFormatter(textPattern: "#### #### #### ####")
+    private let cardExpirationFormatter = PlaceholderTextInputFormatter(textPattern: "__/__", patternSymbol: "_")
+    private let cardCvvFormatter = PlaceholderTextInputFormatter(textPattern: "***", patternSymbol: "*")
+    private let moneyFormatter = SumTextInputFormatter(textPattern: "# ###.## $")
+    
+    // MARK: - Body
     var body: some View {
-        VStack {
-            Button("Set unformatted card number", action: {
-                unformattedCardNumberText = hardcodedCardNumber
-            })
-            .padding()
-            Button("Print current text", action: {
-//                print("iPhoneNumberText: " + iPhoneNumberText)
-                print("unformattedCardNumberText: " + unformattedCardNumberText)
-                isDarkMode.toggle()
-            })
-            .padding()
-            iPhoneNumberField("iPhoneNumberField", text: $iPhoneNumberText)
-                .font(UIFont.systemFont(ofSize: 30))
-                .padding()
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            VStack(spacing: 1) {
+                phoneNumberField
+                cardNumberField
+                HStack(spacing: 1) {
+                    cardExpirationField
+                    cardCvvField
+                    Spacer()
+                }
+                moneyField
+                printTextButton
+            }.background(Color.black)
+        }
+    }
+    
+    private var phoneNumberField: some View {
+        VStack(alignment: .leading, spacing: 1, content: {
+            Text("Phone number")
+                .foregroundColor(.white)
+                .padding(.leading)
             AnyFormatTextField(
-                unformattedText: $unformattedCardNumberText,
-                placeholder: "AnyFormatTextField",
+                unformattedText: $phoneNumberText,
+                placeholder: "+1",
+                textPattern: "+1 (###)-###-####"
+            )
+                .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
+                .placeholderColor(UIColor.white)
+                .foregroundColor(UIColor.white)
+                .frame(height: 44)
+                .background(Color(.darkGray))
+                .padding(.horizontal)
+        })
+    }
+    
+    private var cardNumberField: some View {
+        VStack(alignment: .leading, spacing: 1, content: {
+            Text("Card number")
+                .foregroundColor(.white)
+                .padding(.horizontal)
+            AnyFormatTextField(
+                unformattedText: $cardNumberText,
+                placeholder: "XXXX XXXX XXXX XXXX",
                 formatter: cardNumberFormatter
             )
-            .font(UIFont.monospacedSystemFont(ofSize: 20, weight: .bold))
-            .foregroundColor(isDarkMode ? UIColor.brown : UIColor.blue)
-            .padding()
+                .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
+                .foregroundColor(UIColor.white)
+                .frame(height: 44)
+                .background(Color(.darkGray))
+                .padding(.horizontal)
+        })
+        .padding(.top, 15)
+    }
+    
+    private var cardExpirationField: some View {
+        AnyFormatTextField(
+            unformattedText: $cardExpirationText,
+            formatter: cardExpirationFormatter
+        )
+            .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
+            .foregroundColor(UIColor.white)
+            .frame(width: 120, height: 44)
+            .background(Color(.darkGray))
+            .padding(.leading)
+    }
+    
+    private var cardCvvField: some View {
+        AnyFormatTextField(
+            unformattedText: $cardCvvText,
+            formatter: cardCvvFormatter
+        )
+            .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
+            .foregroundColor(UIColor.white)
+            .frame(width: 70, height: 44)
+            .background(Color(.darkGray))
+            .padding(.trailing)
+    }
+    
+    private var moneyField: some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text("Money")
+                .foregroundColor(.white)
+                .padding(.horizontal)
+            AnyFormatTextField(
+                unformattedText: $moneyText,
+                formatter: moneyFormatter
+            )
+                .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
+                .foregroundColor(UIColor.white)
+                .frame(height: 44)
+                .background(Color(.darkGray))
+                .padding(.horizontal)
         }
-        
+        .padding(.top, 15)
+    }
+    
+    private var printTextButton: some View {
+        Button("Print", action: {
+            print("phone number: " + phoneNumberText)
+            print("card number: " + cardNumberText)
+            print("card exp: " + cardExpirationText)
+            print("card cvv: " + cardCvvText)
+        })
+        .padding()
     }
 }
 
