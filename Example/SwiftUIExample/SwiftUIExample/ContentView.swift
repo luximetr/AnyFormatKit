@@ -10,57 +10,37 @@ import AnyFormatKit
 import iPhoneNumberField
 
 struct ContentView: View {
-    @State var text = ""
-    @State var text1 = ""
-    @State var text2 = ""
-    @State var text3 = ""
+    
+    @State public var isDarkMode: Bool = false
+    @State var iPhoneNumberText = ""
+    @State var unformattedCardNumberText = ""
+    private let hardcodedCardNumber = "333111222"
+    
+    private let cardNumberFormatter = DefaultTextInputFormatter(textPattern: "XXXX XXXX XXXX XXXX", patternSymbol: "X")
     
     var body: some View {
         VStack {
-            Button("Button", action: {
-                
+            Button("Set unformatted card number", action: {
+                unformattedCardNumberText = hardcodedCardNumber
             })
-            TextField("TextField", text: $text1)
-            iPhoneNumberField("iPhoneNumberField", text: $text)
+            .padding()
+            Button("Print current text", action: {
+//                print("iPhoneNumberText: " + iPhoneNumberText)
+                print("unformattedCardNumberText: " + unformattedCardNumberText)
+                isDarkMode.toggle()
+            })
+            .padding()
+            iPhoneNumberField("iPhoneNumberField", text: $iPhoneNumberText)
                 .font(UIFont.systemFont(ofSize: 30))
                 .padding()
             AnyFormatTextField(
-                text: $text2,
-                placeholder: "with textPattern",
-                textPattern: "### (###) ###-##-##"
-            ).font(UIFont.systemFont(ofSize: 16))
-             .placeholderColor(Color.green)
-             .padding()
-            AnyFormatTextField(
-                text: $text3,
-                placeholder: "with formatter",
-                formatter: DefaultTextInputFormatter(
-                    textPattern: "XXXX XXXX XXXX XXXX",
-                    patternSymbol: "X"
-                )
+                unformattedText: $unformattedCardNumberText,
+                placeholder: "AnyFormatTextField",
+                formatter: cardNumberFormatter
             )
             .font(UIFont.monospacedSystemFont(ofSize: 20, weight: .bold))
-            .foregroundColor(UIColor.brown)
-            .accentColor(UIColor.purple)
-            .borderStyle(.roundedRect)
-            .onEditingBegan(perform: { (text) in
-                print("onEditingBegan: " + (text ?? ""))
-            })
-            .onEditingEnd(perform: { (text) in
-                print("onEditingEnd: " + (text ?? ""))
-            })
-            .onTextChange(perform: { text in
-                print("onTextChange: " + (text ?? ""))
-            })
-            .onReturn(perform: {
-                print("onReturn")
-            })
-            .onClear(perform: {
-                print("onClear")
-            })
-            
-             .padding()
-             .environment(\.layoutDirection, .rightToLeft)
+            .foregroundColor(isDarkMode ? UIColor.brown : UIColor.blue)
+            .padding()
         }
         
     }

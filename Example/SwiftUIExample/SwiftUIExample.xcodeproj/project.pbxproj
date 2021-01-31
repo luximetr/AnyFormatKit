@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0288B15A25C580BE00E76E32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288B15925C580BE00E76E32 /* AppDelegate.swift */; };
+		0288B15D25C580FA00E76E32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288B15C25C580FA00E76E32 /* SceneDelegate.swift */; };
+		0288B16125C5826E00E76E32 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0288B16025C5826E00E76E32 /* Launch Screen.storyboard */; };
 		02B6001425C329A6004281A4 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 02B6001325C329A6004281A4 /* iPhoneNumberField */; };
-		02B6FFF625C326FE004281A4 /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6FFF525C326FE004281A4 /* SwiftUIExampleApp.swift */; };
 		02B6FFF825C326FE004281A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6FFF725C326FE004281A4 /* ContentView.swift */; };
 		02B6FFFA25C326FF004281A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B6FFF925C326FF004281A4 /* Assets.xcassets */; };
 		02B6FFFD25C326FF004281A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B6FFFC25C326FF004281A4 /* Preview Assets.xcassets */; };
@@ -16,8 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0288B15925C580BE00E76E32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0288B15C25C580FA00E76E32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0288B16025C5826E00E76E32 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		02B6FFF225C326FE004281A4 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		02B6FFF525C326FE004281A4 /* SwiftUIExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleApp.swift; sourceTree = "<group>"; };
 		02B6FFF725C326FE004281A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02B6FFF925C326FF004281A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02B6FFFC25C326FF004281A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -40,6 +44,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0288B15825C580AD00E76E32 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0288B15925C580BE00E76E32 /* AppDelegate.swift */,
+				0288B15C25C580FA00E76E32 /* SceneDelegate.swift */,
+				0288B16025C5826E00E76E32 /* Launch Screen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		02B6FFE925C326FE004281A4 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +75,7 @@
 		02B6FFF425C326FE004281A4 /* SwiftUIExample */ = {
 			isa = PBXGroup;
 			children = (
-				02B6FFF525C326FE004281A4 /* SwiftUIExampleApp.swift */,
+				0288B15825C580AD00E76E32 /* App */,
 				02B6FFF725C326FE004281A4 /* ContentView.swift */,
 				02B6FFF925C326FF004281A4 /* Assets.xcassets */,
 				02B6FFFE25C326FF004281A4 /* Info.plist */,
@@ -160,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0288B16125C5826E00E76E32 /* Launch Screen.storyboard in Resources */,
 				02B6FFFD25C326FF004281A4 /* Preview Assets.xcassets in Resources */,
 				02B6FFFA25C326FF004281A4 /* Assets.xcassets in Resources */,
 			);
@@ -214,8 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0288B15A25C580BE00E76E32 /* AppDelegate.swift in Sources */,
 				02B6FFF825C326FE004281A4 /* ContentView.swift in Sources */,
-				02B6FFF625C326FE004281A4 /* SwiftUIExampleApp.swift in Sources */,
+				0288B15D25C580FA00E76E32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +304,7 @@
 				DEVELOPMENT_TEAM = 9HC298K985;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +327,7 @@
 				DEVELOPMENT_TEAM = 9HC298K985;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
