@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		024A799F25C74A4400478A15 /* SwiftUIExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUIExample.entitlements; sourceTree = "<group>"; };
 		0288B15925C580BE00E76E32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0288B15C25C580FA00E76E32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0288B16025C5826E00E76E32 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		02B6FFF425C326FE004281A4 /* SwiftUIExample */ = {
 			isa = PBXGroup;
 			children = (
+				024A799F25C74A4400478A15 /* SwiftUIExample.entitlements */,
 				0288B15825C580AD00E76E32 /* App */,
 				02B6FFF725C326FE004281A4 /* ContentView.swift */,
 				02B6FFF925C326FF004281A4 /* Assets.xcassets */,
@@ -295,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIExample/SwiftUIExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIExample/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HC298K985;
@@ -307,6 +310,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OO.SwiftUIExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -318,6 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftUIExample/SwiftUIExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUIExample/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HC298K985;
@@ -330,6 +335,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = OO.SwiftUIExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
