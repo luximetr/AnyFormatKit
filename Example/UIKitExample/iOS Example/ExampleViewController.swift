@@ -18,10 +18,10 @@ class ExampleViewController: UIViewController {
     // MARK: - Controllers
     
     let phoneNumberInputController = TextFieldInputController()
-    let cardNumberInputController = TextFieldPlaceholderInputController()
-    let cardExpirationInputController = TextFieldPlaceholderInputController()
-    let cardCVVInputController = TextFieldPlaceholderInputController()
-    let moneyInputController = TextFieldPlaceholderInputController()
+    let cardNumberInputController = TextFieldStartInputController()
+    let cardExpirationInputController = TextFieldStartInputController()
+    let cardCVVInputController = TextFieldStartInputController()
+    let moneyInputController = TextFieldStartInputController()
     
     // MARK: - Formatters
     
