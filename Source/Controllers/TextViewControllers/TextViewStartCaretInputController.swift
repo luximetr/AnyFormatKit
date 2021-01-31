@@ -1,5 +1,5 @@
 //
-//  TextViewPlaceholderInputController.swift
+//  TextViewStartCaretInputController.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 27.01.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextViewPlaceholderInputController: NSObject, UITextViewDelegate {
+class TextViewStartCaretInputController: NSObject, UITextViewDelegate {
     
     // MARK: - Dependencies
     

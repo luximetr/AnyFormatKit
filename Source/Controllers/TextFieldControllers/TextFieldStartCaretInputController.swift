@@ -1,5 +1,5 @@
 //
-//  TextFieldPlaceholderInputController.swift
+//  TextFieldStartCaretInputController.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 27.01.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class TextFieldPlaceholderInputController: NSObject, UITextFieldDelegate {
+open class TextFieldStartCaretInputController: NSObject, UITextFieldDelegate {
     
     // MARK: - Dependencies
     

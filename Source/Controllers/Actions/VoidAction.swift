@@ -1,5 +1,5 @@
 //
-//  AnyFormatTextAction.swift
+//  VoidAction.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 29.01.2021.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias AnyFormatTextAction = (String?) -> Void
+public typealias VoidAction = () -> Void

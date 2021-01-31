@@ -32,11 +32,11 @@ public struct PlaceholderFormatTextField: UIViewRepresentable {
     
     // MARK: - Private actions
     
-    private var onEditingBeganHandler: AnyFormatTextAction?
-    private var onEditingEndHandler: AnyFormatTextAction?
-    private var onTextChangeHandler: AnyFormatTextAction?
-    private var onClearHandler: AnyFormatVoidAction?
-    private var onReturnHandler: AnyFormatVoidAction?
+    private var onEditingBeganHandler: TextAction?
+    private var onEditingEndHandler: TextAction?
+    private var onTextChangeHandler: TextAction?
+    private var onClearHandler: VoidAction?
+    private var onReturnHandler: VoidAction?
     
     // MARK: - Dependencies
     
@@ -224,31 +224,31 @@ public struct PlaceholderFormatTextField: UIViewRepresentable {
     
     // MARK: - Actions
     
-    public func onEditingBegan(perform action: AnyFormatTextAction?) -> Self {
+    public func onEditingBegan(perform action: TextAction?) -> Self {
         var view = self
         view.onEditingBeganHandler = action
         return view
     }
     
-    public func onEditingEnd(perform action: AnyFormatTextAction?) -> Self {
+    public func onEditingEnd(perform action: TextAction?) -> Self {
         var view = self
         view.onEditingEndHandler = action
         return view
     }
     
-    public func onTextChange(perform action: AnyFormatTextAction?) -> Self {
+    public func onTextChange(perform action: TextAction?) -> Self {
         var view = self
         view.onTextChangeHandler = action
         return view
     }
     
-    public func onClear(perform action: AnyFormatVoidAction?) -> Self {
+    public func onClear(perform action: VoidAction?) -> Self {
         var view = self
         view.onClearHandler = action
         return view
     }
     
-    public func onReturn(perform action: AnyFormatVoidAction?) -> Self {
+    public func onReturn(perform action: VoidAction?) -> Self {
         var view = self
         view.onReturnHandler = action
         return view
@@ -263,11 +263,11 @@ public struct PlaceholderFormatTextField: UIViewRepresentable {
         var formatter: (TextInputFormatter & TextUnformatter & CaretPositioner)?
         var formattedResult: FormattedTextValue?
         
-        var onEditingBegan: AnyFormatTextAction?
-        var onEditingEnd: AnyFormatTextAction?
-        var onTextChange: AnyFormatTextAction?
-        var onClear: AnyFormatVoidAction?
-        var onReturn: AnyFormatVoidAction?
+        var onEditingBegan: TextAction?
+        var onEditingEnd: TextAction?
+        var onTextChange: TextAction?
+        var onClear: VoidAction?
+        var onReturn: VoidAction?
         
         init(unformattedText: Binding<String>) {
             self.unformattedText = unformattedText

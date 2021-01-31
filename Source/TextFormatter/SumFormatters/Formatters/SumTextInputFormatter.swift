@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, TextNumberUnformatter {
+open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, TextNumberUnformatter, CaretPositioner {
     
     // MARK: - Dependencies
     
@@ -90,6 +90,12 @@ open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnforma
     
     open func unformatNumber(_ formattedText: String?) -> NSNumber? {
         return textFormatter.unformatNumber(formattedText)
+    }
+    
+    // MARK: - CaretPositioner
+    
+    open func getCaretOffset(for text: String) -> Int {
+        return caretPositionCalculator.calculateCaretPositionOffset(currentText: text)
     }
     
     // MARK: - Caclulation

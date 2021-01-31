@@ -21,7 +21,7 @@ class ExampleViewController: UIViewController {
     let cardNumberInputController = TextFieldPlaceholderInputController()
     let cardExpirationInputController = TextFieldPlaceholderInputController()
     let cardCVVInputController = TextFieldPlaceholderInputController()
-    let moneyInputController = TextFieldInputController()
+    let moneyInputController = TextFieldPlaceholderInputController()
     
     // MARK: - Formatters
     
