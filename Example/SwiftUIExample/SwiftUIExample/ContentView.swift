@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AnyFormatKit
-import iPhoneNumberField
 
 struct ContentView: View {
     
