@@ -40,6 +40,7 @@ struct ContentView: View {
                 }
                 moneyField
                 printTextButton
+                Spacer()
             }.background(Color.black)
         }
     }
@@ -49,7 +50,7 @@ struct ContentView: View {
             Text("Phone number")
                 .foregroundColor(.white)
                 .padding(.leading)
-            AnyFormatTextField(
+            FormatTextField(
                 unformattedText: $phoneNumberText,
                 placeholder: "+1",
                 textPattern: "+1 (###)-###-####"
@@ -68,7 +69,7 @@ struct ContentView: View {
             Text("Card number")
                 .foregroundColor(.white)
                 .padding(.horizontal)
-            AnyFormatTextField(
+            PlaceholderFormatTextField(
                 unformattedText: $cardNumberText,
                 placeholder: "XXXX XXXX XXXX XXXX",
                 formatter: cardNumberFormatter
@@ -83,7 +84,7 @@ struct ContentView: View {
     }
     
     private var cardExpirationField: some View {
-        AnyFormatTextField(
+        PlaceholderFormatTextField(
             unformattedText: $cardExpirationText,
             formatter: cardExpirationFormatter
         )
@@ -95,7 +96,7 @@ struct ContentView: View {
     }
     
     private var cardCvvField: some View {
-        AnyFormatTextField(
+        PlaceholderFormatTextField(
             unformattedText: $cardCvvText,
             formatter: cardCvvFormatter
         )
@@ -111,7 +112,7 @@ struct ContentView: View {
             Text("Money")
                 .foregroundColor(.white)
                 .padding(.horizontal)
-            AnyFormatTextField(
+            FormatTextField(
                 unformattedText: $moneyText,
                 formatter: moneyFormatter
             )

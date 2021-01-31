@@ -1,15 +1,15 @@
 //
-//  AnyFormatTextField.swift
+//  FormatTextField.swift
 //  AnyFormatKit
 //
-//  Created by Oleksandr Orlov on 28.01.2021.
+//  Created by Oleksandr Orlov on 31.01.2021.
 //  Copyright © 2021 Oleksandr Orlov. All rights reserved.
 //
 
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct AnyFormatTextField: UIViewRepresentable {
+public struct FormatTextField: UIViewRepresentable {
     
     // MARK: - Typealiases
     
@@ -57,14 +57,14 @@ public struct AnyFormatTextField: UIViewRepresentable {
                 placeholder: String? = nil,
                 textPattern: String,
                 patternSymbol: Character = "#") {
+        let formatter = DefaultTextInputFormatter(
+            textPattern: textPattern,
+            patternSymbol: patternSymbol
+        )
         self.init(
             unformattedText: unformattedText,
             placeholder: placeholder,
-            formatter:
-                DefaultTextInputFormatter(
-                    textPattern: textPattern,
-                    patternSymbol: patternSymbol
-                )
+            formatter: formatter
         )
     }
     
@@ -120,58 +120,6 @@ public struct AnyFormatTextField: UIViewRepresentable {
         coordinator.onClear = onClearHandler
         coordinator.onReturn = onReturnHandler
         return coordinator
-    }
-    
-    public class Coordinator: NSObject, UITextFieldDelegate {
-        
-        var formatter: (TextInputFormatter & TextUnformatter)?
-        
-        let unformattedText: Binding<String>?
-        var formattedResult: FormattedTextValue?
-        
-        var onEditingBegan: AnyFormatTextAction?
-        var onEditingEnd: AnyFormatTextAction?
-        var onTextChange: AnyFormatTextAction?
-        var onClear: AnyFormatVoidAction?
-        var onReturn: AnyFormatVoidAction?
-        
-        init(unformattedText: Binding<String>) {
-            self.unformattedText = unformattedText
-        }
-        
-        public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard let formatter = formatter else { return true }
-            let result = formatter.formatInput(
-                currentText: textField.text ?? "",
-                range: range,
-                replacementString: string
-            )
-            formattedResult = result
-            self.unformattedText?.wrappedValue = formatter.unformat(result.formattedText) ?? ""
-            return false
-        }
-        
-        public func textFieldDidBeginEditing(_ textField: UITextField) {
-            onEditingBegan?(textField.text)
-        }
-        
-        public func textFieldDidEndEditing(_ textField: UITextField) {
-            onEditingEnd?(textField.text)
-        }
-        
-        public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-            onEditingEnd?(textField.text)
-        }
-        
-        public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-            onClear?()
-            return true
-        }
-        
-        public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            self.onReturn?()
-            return true
-        }
     }
     
     // MARK: - View modifiers
@@ -306,5 +254,57 @@ public struct AnyFormatTextField: UIViewRepresentable {
         var view = self
         view.onReturnHandler = action
         return view
+    }
+    
+    public class Coordinator: NSObject, UITextFieldDelegate {
+        
+        let unformattedText: Binding<String>?
+        
+        var formatter: (TextInputFormatter & TextUnformatter)?
+        public var formattedResult: FormattedTextValue?
+        
+        public var onEditingBegan: AnyFormatTextAction?
+        public var onEditingEnd: AnyFormatTextAction?
+        public var onTextChange: AnyFormatTextAction?
+        public var onClear: AnyFormatVoidAction?
+        public var onReturn: AnyFormatVoidAction?
+        
+        init(unformattedText: Binding<String>) {
+            self.unformattedText = unformattedText
+        }
+        
+        public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let formatter = formatter else { return true }
+            let result = formatter.formatInput(
+                currentText: textField.text ?? "",
+                range: range,
+                replacementString: string
+            )
+            formattedResult = result
+            self.unformattedText?.wrappedValue = formatter.unformat(result.formattedText) ?? ""
+            return false
+        }
+        
+        public func textFieldDidBeginEditing(_ textField: UITextField) {
+            onEditingBegan?(textField.text)
+        }
+        
+        public func textFieldDidEndEditing(_ textField: UITextField) {
+            onEditingEnd?(textField.text)
+        }
+        
+        public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+            onEditingEnd?(textField.text)
+        }
+        
+        public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+            onClear?()
+            return true
+        }
+        
+        public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            self.onReturn?()
+            return true
+        }
     }
 }
