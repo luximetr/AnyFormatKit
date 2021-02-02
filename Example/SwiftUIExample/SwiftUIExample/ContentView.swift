@@ -19,13 +19,6 @@ struct ContentView: View {
     @State var moneyText = ""
     @State var money: NSNumber?
     
-    // MARK: - Dependencies
-    
-    private let cardNumberFormatter = PlaceholderTextInputFormatter(textPattern: "#### #### #### ####")
-    private let cardExpirationFormatter = PlaceholderTextInputFormatter(textPattern: "__/__", patternSymbol: "_")
-    private let cardCvvFormatter = PlaceholderTextInputFormatter(textPattern: "***", patternSymbol: "*")
-    private let moneyFormatter = SumTextInputFormatter(textPattern: "# ###.## $")
-    
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -71,8 +64,7 @@ struct ContentView: View {
                 .padding(.horizontal)
             FormatStartTextField(
                 unformattedText: $cardNumberText,
-                placeholder: "XXXX XXXX XXXX XXXX",
-                formatter: cardNumberFormatter
+                formatter: PlaceholderTextInputFormatter(textPattern: "#### #### #### ####")
             )
                 .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
                 .foregroundColor(UIColor.white)
@@ -86,7 +78,7 @@ struct ContentView: View {
     private var cardExpirationField: some View {
         FormatStartTextField(
             unformattedText: $cardExpirationText,
-            formatter: cardExpirationFormatter
+            formatter: PlaceholderTextInputFormatter(textPattern: "__/__", patternSymbol: "_")
         )
             .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
             .foregroundColor(UIColor.white)
@@ -98,7 +90,7 @@ struct ContentView: View {
     private var cardCvvField: some View {
         FormatStartTextField(
             unformattedText: $cardCvvText,
-            formatter: cardCvvFormatter
+            formatter: PlaceholderTextInputFormatter(textPattern: "***", patternSymbol: "*")
         )
             .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
             .foregroundColor(UIColor.white)
@@ -125,17 +117,12 @@ struct ContentView: View {
     }
     
     private var printTextButton: some View {
-        Button("Print", action: {
-//            print("phone number: " + phoneNumberText)
-//            print("card number: " + cardNumberText)
-//            print("card exp: " + cardExpirationText)
-//            print("card cvv: " + cardCvvText)
-//            print("money text: " + moneyText)
-//            print("money: \(money)")
-            money = nil
-//            phoneNumberText = "511231"
-//            print("money: \(moneyFormatter.unformatNumber(moneyText))")
-            
+        Button("Print values", action: {
+            print("phone number: " + phoneNumberText)
+            print("card number: " + cardNumberText)
+            print("card exp: " + cardExpirationText)
+            print("card cvv: " + cardCvvText)
+            print("money: \(String(describing: money))")
         })
         .padding()
     }
