@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var cardExpirationText = ""
     @State var cardCvvText = ""
     @State var moneyText = ""
+    @State var money: NSNumber?
     
     // MARK: - Dependencies
     
@@ -111,9 +112,8 @@ struct ContentView: View {
             Text("Money")
                 .foregroundColor(.white)
                 .padding(.horizontal)
-            FormatStartTextField(
-                unformattedText: $moneyText,
-                formatter: moneyFormatter
+            FormatSumTextField(
+                numberValue: $money, textPattern: "# ###.## $"
             )
                 .font(UIFont.monospacedSystemFont(ofSize: 18, weight: .regular))
                 .foregroundColor(UIColor.white)
@@ -126,11 +126,16 @@ struct ContentView: View {
     
     private var printTextButton: some View {
         Button("Print", action: {
-            print("phone number: " + phoneNumberText)
-            print("card number: " + cardNumberText)
-            print("card exp: " + cardExpirationText)
-            print("card cvv: " + cardCvvText)
-            print("money: " + moneyText)
+//            print("phone number: " + phoneNumberText)
+//            print("card number: " + cardNumberText)
+//            print("card exp: " + cardExpirationText)
+//            print("card cvv: " + cardCvvText)
+//            print("money text: " + moneyText)
+//            print("money: \(money)")
+            money = nil
+//            phoneNumberText = "511231"
+//            print("money: \(moneyFormatter.unformatNumber(moneyText))")
+            
         })
         .padding()
     }

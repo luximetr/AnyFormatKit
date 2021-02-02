@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, TextNumberUnformatter, CaretPositioner {
+open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnformatter, TextNumberFormatter, TextNumberUnformatter, CaretPositioner {
     
     // MARK: - Dependencies
     
@@ -78,6 +78,12 @@ open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnforma
         } else {
             return textFormatter.format(unformatted)
         }
+    }
+    
+    // MARK: - TextNumberFormatter
+    
+    open func format(_ number: NSNumber) -> String? {
+        return textFormatter.format(number)
     }
     
     // MARK: - TextUnformatter

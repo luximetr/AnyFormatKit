@@ -59,15 +59,9 @@ public struct FormatTextField: UIViewRepresentable {
                 placeholder: String? = nil,
                 textPattern: String,
                 patternSymbol: Character = "#") {
-        let formatter = DefaultTextInputFormatter(
-            textPattern: textPattern,
-            patternSymbol: patternSymbol
-        )
-        self.init(
-            unformattedText: unformattedText,
-            placeholder: placeholder,
-            formatter: formatter
-        )
+        self._unformattedText = unformattedText
+        self.placeholder = placeholder
+        self.formatter = DefaultTextInputFormatter(textPattern: textPattern, patternSymbol: patternSymbol)
     }
     
     // MARK: - UIViewRepresentable
@@ -81,12 +75,9 @@ public struct FormatTextField: UIViewRepresentable {
     }
     
     public func updateUIView(_ uiView: UIViewType, context: Context) {
-        if let formattedResult = context.coordinator.formattedResult {
-            uiView.text = formattedResult.formattedText
-            uiView.setCursorLocation(formattedResult.caretBeginOffset)
-            context.coordinator.formattedResult = nil
-        } else {
-            uiView.text = formatter.format(unformattedText)
+        let formattedText = formatter.format(unformattedText)
+        if uiView.text != formattedText {
+            uiView.text = formattedText
         }
         uiView.textColor = textColor
         uiView.font = font
@@ -263,7 +254,6 @@ public struct FormatTextField: UIViewRepresentable {
         let unformattedText: Binding<String>?
         
         var formatter: (TextInputFormatter & TextUnformatter)?
-        public var formattedResult: FormattedTextValue?
         
         public var onEditingBegan: TextAction?
         public var onEditingEnd: TextAction?
@@ -282,7 +272,8 @@ public struct FormatTextField: UIViewRepresentable {
                 range: range,
                 replacementString: string
             )
-            formattedResult = result
+            textField.text = result.formattedText
+            textField.setCursorLocation(result.caretBeginOffset)
             self.unformattedText?.wrappedValue = formatter.unformat(result.formattedText) ?? ""
             return false
         }

@@ -1,27 +1,26 @@
 //
-//  FormatStartTextField.swift
+//  FormatSumTextField.swift
 //  AnyFormatKit
 //
-//  Created by Oleksandr Orlov on 31.01.2021.
+//  Created by Oleksandr Orlov on 01.02.2021.
 //  Copyright © 2021 Oleksandr Orlov. All rights reserved.
 //
 
 import SwiftUI
 
-/// SwiftUI TextField with formatting and setting caret at begin editing
-/// Can be usefull for PlaceholderTextInputFormatter
 @available(iOS 13.0, *)
-public struct FormatStartTextField: UIViewRepresentable {
+public struct FormatSumTextField: UIViewRepresentable {
     
     // MARK: - Typealiases
     
     public typealias UIViewType = UITextField
-    public typealias FormatterType = (TextInputFormatter & TextFormatter & TextUnformatter & CaretPositioner)
+    public typealias FormatterType = (TextInputFormatter & TextFormatter & TextUnformatter & CaretPositioner & TextNumberFormatter & TextNumberUnformatter)
     
     // MARK: - Data
     
     private let placeholder: String?
-    @Binding public var unformattedText: String
+    @State public var unformattedText: String = ""
+    @Binding public var numberValue: NSNumber?
     
     // MARK: - Appearence
     
@@ -47,13 +46,32 @@ public struct FormatStartTextField: UIViewRepresentable {
     
     // MARK: - Life cycle
     
-    public init(unformattedText: Binding<String>,
+    public init(numberValue: Binding<NSNumber?>,
                 placeholder: String? = nil,
                 formatter: FormatterType
     ) {
-        self._unformattedText = unformattedText
+        self._numberValue = numberValue
         self.placeholder = placeholder
         self.formatter = formatter
+    }
+    
+    public init(numberValue: Binding<NSNumber?>,
+                placeholder: String? = nil,
+                textPattern: String,
+                patternSymbol: Character = "#"
+    ) {
+        self._numberValue = numberValue
+        self.placeholder = placeholder
+        self.formatter = SumTextInputFormatter(textPattern: textPattern, patternSymbol: patternSymbol)
+    }
+    
+    public init(numberValue: Binding<NSNumber?>,
+                placeholder: String? = nil,
+                numberFormatter: NumberFormatter
+    ) {
+        self._numberValue = numberValue
+        self.placeholder = placeholder
+        self.formatter = SumTextInputFormatter(numberFormatter: numberFormatter)
     }
     
     // MARK: - UIViewRepresentable
@@ -67,9 +85,18 @@ public struct FormatStartTextField: UIViewRepresentable {
     }
     
     public func updateUIView(_ uiView: UIViewType, context: Context) {
-        let formattedText = formatter.format(unformattedText)
-        if uiView.text != formattedText {
-            uiView.text = formattedText
+        if let numberValue = numberValue {
+            let formattedText = formatter.format(numberValue)
+            if uiView.text != formattedText {
+                uiView.text = formattedText
+                uiView.setCursorLocation(formatter.getCaretOffset(for: formattedText ?? ""))
+            }
+        } else {
+            let formattedText = formatter.format("")
+            if uiView.text != formattedText {
+                uiView.text = formattedText
+                uiView.setCursorLocation(formatter.getCaretOffset(for: formattedText ?? ""))
+            }
         }
         uiView.textColor = textColor
         uiView.font = font
@@ -98,7 +125,7 @@ public struct FormatStartTextField: UIViewRepresentable {
     }
     
     public func makeCoordinator() -> Coordinator {
-        let coordinator = Coordinator(unformattedText: $unformattedText)
+        let coordinator = Coordinator(number: $numberValue, unformattedText: $unformattedText)
         coordinator.onEditingBegan = onEditingBeganHandler
         coordinator.onEditingEnd = onEditingEndHandler
         coordinator.onTextChange = onTextChangeHandler
@@ -245,7 +272,8 @@ public struct FormatStartTextField: UIViewRepresentable {
     
     public class Coordinator: NSObject, UITextFieldDelegate {
         
-        let unformattedText: Binding<String>?
+        let number: Binding<NSNumber?>
+        let unformattedText: Binding<String>
         
         var formatter: FormatterType?
         
@@ -255,7 +283,8 @@ public struct FormatStartTextField: UIViewRepresentable {
         var onClear: VoidAction?
         var onReturn: VoidAction?
         
-        init(unformattedText: Binding<String>) {
+        init(number: Binding<NSNumber?>, unformattedText: Binding<String>) {
+            self.number = number
             self.unformattedText = unformattedText
         }
         
@@ -268,7 +297,8 @@ public struct FormatStartTextField: UIViewRepresentable {
             )
             textField.text = result.formattedText
             textField.setCursorLocation(result.caretBeginOffset)
-            self.unformattedText?.wrappedValue = formatter.unformat(result.formattedText) ?? ""
+            self.unformattedText.wrappedValue = formatter.unformat(result.formattedText) ?? ""
+            self.number.wrappedValue = formatter.unformatNumber(result.formattedText)
             return false
         }
         

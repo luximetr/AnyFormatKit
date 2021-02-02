@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatter {
+open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberFormatter, TextNumberUnformatter {
     
     // MARK: - Dependencies
     
@@ -78,6 +78,10 @@ open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatt
         
         let number = NSDecimalNumber(string: correctedUnformatted)
         
+        return numberFormatter.string(from: number)
+    }
+    
+    open func format(_ number: NSNumber) -> String? {
         return numberFormatter.string(from: number)
     }
     
