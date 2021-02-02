@@ -20,6 +20,7 @@ Text formatting framework written on Swift 5.0.
 :heavy_dollar_sign:| Formatting money amount
 :parking:| Formatting with placeholders
 :seedling:| UITextField and UITextView support
+:hammer:| SwiftUI compatible
 
 
 ## Example
@@ -46,6 +47,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 - [AnyFormatKit 0.2.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%200.2.0%20MigrationGuide.md)
 - [AnyFormatKit 1.0.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%201.0.0%20MigrationGuide.md)
+- [AnyFormatKit 2.3.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%202.3.0%20MigrationGuide.md)
 
 ## Installation
 
@@ -108,13 +110,36 @@ textField.text = result.formattedText
 textField.setCursorLocation(result.caretBeginOffset)
 ```
 
-> You can find example of `setCursorLocation` [here](https://github.com/luximetr/AnyFormatKit/blob/develop/Source/Extensions/UITextField%2BExtension.swift) 
+> You can find example of `setCursorLocation` [here](https://github.com/luximetr/AnyFormatKit/blob/develop/Source/Extensions/UITextField%2BExtension.swift)
 
-### Formatter kinds
+### Formatter types
 
 - `DefaultTextInputFormatter` - formatting [symbol by symbol](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_phone_number.gif)
 - `SumTextInputFormatter` - formatting like a [money format](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_sum.gif)
 - `PlaceholderTextInputFormatter` - formatting with all textPattern as [placeholder](https://github.com/luximetr/AnyFormatKit/blob/develop/Assets/example_placeholder_phone_number.gif)
+
+## SwiftUI Usage
+
+AnyFormatKit is compatible with SwiftUI.
+
+```swift
+import SwiftUI
+import AnyFormatKit
+
+struct ContentView: View {
+    @State var text = ""
+
+    var body: some View {
+        FormatTextField(unformattedText: $text, textPattern: "## (###)-###-####")
+    }
+}
+```
+
+### Components types
+
+- `FormatTextField` - formatting with `DefaultTextInputFormatter` under the hood, or you can pass your own implementation in init method
+- `FormatStartTextField` - formatting with correcting caret after begin editin, good to use with `PlaceholderTextInputFormatter`
+- `FormatSumTextField` - formatting with `SumTextInputFormatter` under the hood, or you can pass your own implementation in init method
 
 ## Author
 

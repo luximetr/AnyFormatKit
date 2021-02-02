@@ -1,5 +1,5 @@
 //
-//  TextFieldPlaceholderInputController.swift
+//  TextFieldStartInputController.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 27.01.2021.
@@ -8,9 +8,13 @@
 
 import UIKit
 
-open class TextFieldPlaceholderInputController: NSObject, UITextFieldDelegate {
+open class TextFieldStartInputController: NSObject, UITextFieldDelegate {
+    
+    // MARK: - Dependencies
     
     open var formatter: (TextInputFormatter & CaretPositioner)?
+    
+    // MARK: - UITextFieldDelegate
     
     open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let formatter = formatter else { return true }
