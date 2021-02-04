@@ -16,8 +16,8 @@
 		022766DC25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022766DB25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift */; };
 		02330C7125B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift */; };
 		026A487525C1E0CB000A38C7 /* CaretPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487425C1E0CB000A38C7 /* CaretPositioner.swift */; };
-		026A487B25C1E11F000A38C7 /* TextFieldPlaceholderInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487A25C1E11F000A38C7 /* TextFieldPlaceholderInputController.swift */; };
-		026A488C25C1E626000A38C7 /* TextViewPlaceholderInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A488B25C1E626000A38C7 /* TextViewPlaceholderInputController.swift */; };
+		026A487B25C1E11F000A38C7 /* TextFieldStartInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */; };
+		026A488C25C1E626000A38C7 /* TextViewStartInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */; };
 		02902B7F25B5E87F00E3BF25 /* TextNumberUnformatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */; };
 		02902B8525B5E90D00E3BF25 /* SumTextInputFormatterNumberUnformatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B8425B5E90D00E3BF25 /* SumTextInputFormatterNumberUnformatTests.swift */; };
 		02902B8E25B5F27100E3BF25 /* DefaultTextInputFormatterFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902B8D25B5F27100E3BF25 /* DefaultTextInputFormatterFormatTests.swift */; };
@@ -26,6 +26,7 @@
 		02902BA425B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02902BA325B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift */; };
 		02D25ED925CC4B8300C92E57 /* SumTextFormatterFormatParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D25ED825CC4B8300C92E57 /* SumTextFormatterFormatParseTests.swift */; };
 		02D25EE725CC64CD00C92E57 /* SumTextInputFormatterFormatParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D25EE625CC64CD00C92E57 /* SumTextInputFormatterFormatParseTests.swift */; };
+		02D25F4625CC853200C92E57 /* TextNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D25F4525CC853200C92E57 /* TextNumberFormatter.swift */; };
 		02D78BB225B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC025B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */; };
 		02D78BC425B333A8008837B7 /* StringCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D78BC325B333A8008837B7 /* StringCalculator.swift */; };
@@ -122,9 +123,10 @@
 		0210847825B5854900DE16E4 /* SumTextInputFormatterUnformatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterUnformatTests.swift; sourceTree = "<group>"; };
 		022766DB25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCaretPositionCalculator.swift; sourceTree = "<group>"; };
 		02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterPhoneEmojisInputTests.swift; sourceTree = "<group>"; };
+		024A797625C73D3400478A15 /* AnyFormatKit 2.4.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 2.4.0 MigrationGuide.md"; sourceTree = "<group>"; };
 		026A487425C1E0CB000A38C7 /* CaretPositioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositioner.swift; sourceTree = "<group>"; };
-		026A487A25C1E11F000A38C7 /* TextFieldPlaceholderInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPlaceholderInputController.swift; sourceTree = "<group>"; };
-		026A488B25C1E626000A38C7 /* TextViewPlaceholderInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholderInputController.swift; sourceTree = "<group>"; };
+		026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStartInputController.swift; sourceTree = "<group>"; };
+		026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewStartInputController.swift; sourceTree = "<group>"; };
 		02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNumberUnformatter.swift; sourceTree = "<group>"; };
 		02902B8425B5E90D00E3BF25 /* SumTextInputFormatterNumberUnformatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterNumberUnformatTests.swift; sourceTree = "<group>"; };
 		02902B8D25B5F27100E3BF25 /* DefaultTextInputFormatterFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterFormatTests.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		02902BA325B5F39E00E3BF25 /* SumTextFormatterFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatterFormatTests.swift; sourceTree = "<group>"; };
 		02D25ED825CC4B8300C92E57 /* SumTextFormatterFormatParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextFormatterFormatParseTests.swift; sourceTree = "<group>"; };
 		02D25EE625CC64CD00C92E57 /* SumTextInputFormatterFormatParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterFormatParseTests.swift; sourceTree = "<group>"; };
+		02D25F4525CC853200C92E57 /* TextNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNumberFormatter.swift; sourceTree = "<group>"; };
 		02D78BB125B3251A008837B7 /* DefaultTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BBF25B32BE7008837B7 /* PlaceholderTextInputFormatterEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextInputFormatterEmojisInputTests.swift; sourceTree = "<group>"; };
 		02D78BC325B333A8008837B7 /* StringCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCalculator.swift; sourceTree = "<group>"; };
@@ -308,7 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				DB9D077A255D98BA00D9FD64 /* TextFieldInputController.swift */,
-				026A487A25C1E11F000A38C7 /* TextFieldPlaceholderInputController.swift */,
+				026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */,
 			);
 			path = TextFieldControllers;
 			sourceTree = "<group>";
@@ -317,7 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4EEE9D255D9B9400F02145 /* TextViewInputController.swift */,
-				026A488B25C1E626000A38C7 /* TextViewPlaceholderInputController.swift */,
+				026A488B25C1E626000A38C7 /* TextViewStartInputController.swift */,
 			);
 			path = TextViewControllers;
 			sourceTree = "<group>";
@@ -459,6 +462,8 @@
 				307EA2191FAA1B5B00DE439D /* TextInputFormatter.swift */,
 				DB4EEED5255DB80700F02145 /* FormattedTextValue.swift */,
 				026A487425C1E0CB000A38C7 /* CaretPositioner.swift */,
+				02D25F4525CC853200C92E57 /* TextNumberFormatter.swift */,
+				02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */,
 			);
 			path = TextFormatter;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				30D7EAAC229D56D20014E31B /* README.md */,
 				30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
 				30EB6CBB22BBA0A000447D5A /* AnyFormatKit 1.0.0 MigrationGuide.md */,
+				024A797625C73D3400478A15 /* AnyFormatKit 2.4.0 MigrationGuide.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -806,7 +812,6 @@
 		DB4EEEA8255D9F0200F02145 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				02902B7E25B5E87F00E3BF25 /* TextNumberUnformatter.swift */,
 				30EB6CB522BB870E00447D5A /* SumFormatParser.swift */,
 				30EB6CB622BB870E00447D5A /* SumTextInputFormatterCaretPositionCalculator.swift */,
 			);
@@ -1025,7 +1030,8 @@
 				30A308962072BA7300CFC062 /* CaretPositionCorrector.swift in Sources */,
 				3032CFC021D412E1008137EE /* DefaultTextFormatter.swift in Sources */,
 				30EB6CB822BB870E00447D5A /* SumFormatParser.swift in Sources */,
-				026A488C25C1E626000A38C7 /* TextViewPlaceholderInputController.swift in Sources */,
+				026A488C25C1E626000A38C7 /* TextViewStartInputController.swift in Sources */,
+				02D25F4625CC853200C92E57 /* TextNumberFormatter.swift in Sources */,
 				307EA2341FAA1B5B00DE439D /* TextFormatter.swift in Sources */,
 				0210845725B57BD300DE16E4 /* TextUnformatter.swift in Sources */,
 				02902B7F25B5E87F00E3BF25 /* TextNumberUnformatter.swift in Sources */,
@@ -1034,7 +1040,7 @@
 				026A487525C1E0CB000A38C7 /* CaretPositioner.swift in Sources */,
 				02D78BC425B333A8008837B7 /* StringCalculator.swift in Sources */,
 				DB4EEE9E255D9B9400F02145 /* TextViewInputController.swift in Sources */,
-				026A487B25C1E11F000A38C7 /* TextFieldPlaceholderInputController.swift in Sources */,
+				026A487B25C1E11F000A38C7 /* TextFieldStartInputController.swift in Sources */,
 				DB4EEED9255DB82C00F02145 /* FormattedTextValue.swift in Sources */,
 				DB4EEE94255D9A6700F02145 /* UITextField+Extension.swift in Sources */,
 				30EB6CBA22BB870E00447D5A /* SumTextInputFormatter.swift in Sources */,
