@@ -56,7 +56,7 @@ AnyFormatKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'AnyFormatKit', '~> 2.3.0'
+pod 'AnyFormatKit', '~> 2.4.0'
 ```
 
 Then, run the following command:
@@ -71,7 +71,7 @@ Once you have your Swift package set up, than simply add AnyFormatKit to the `de
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/luximetr/AnyFormatKit.git", .upToNextMajor(from: "2.3.0"))
+    .package(url: "https://github.com/luximetr/AnyFormatKit.git", .upToNextMajor(from: "2.4.0"))
 ]
 ```
 
