@@ -22,13 +22,13 @@ open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatt
     open var maximumDecimalCharacters: Int {
         return numberFormatter.maximumFractionDigits
     }
-    open var suffix: String? {
-        guard !numberFormatter.positiveSuffix.isEmpty else { return nil }
-        return numberFormatter.positiveSuffix
-    }
     open var prefix: String? {
         guard !numberFormatter.positivePrefix.isEmpty else { return nil }
         return numberFormatter.positivePrefix
+    }
+    open var suffix: String? {
+        guard !numberFormatter.positiveSuffix.isEmpty else { return nil }
+        return numberFormatter.positiveSuffix
     }
     open var groupingSeparator: String {
         return numberFormatter.groupingSeparator
@@ -64,6 +64,7 @@ open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatt
         numberFormatter.roundingMode = .down
         numberFormatter.negativePrefix = result.prefix + "-"
         self.init(numberFormatter: numberFormatter)
+        numberFormatter.maximumIntegerDigits = maximumIntegerCharacters
     }
     
     // MARK: - TextFormatter
@@ -73,8 +74,7 @@ open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatt
         guard !unformatted.isEmpty else { return suffix ?? "" }
         guard unformatted != negativePrefix else { return negativePrefix }
         
-        var correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
-        correctedUnformatted = correctUnformatted(correctedUnformatted, maximumIntegerDigits: maximumIntegerCharacters, decimalSeparator: unformattedDecimalSeparator, negativePrefix: negativePrefix)
+        let correctedUnformatted = correctUnformatted(unformatted, decimalSeparator: unformattedDecimalSeparator)
         
         let number = NSDecimalNumber(string: correctedUnformatted)
         
@@ -100,25 +100,6 @@ open class SumTextFormatter: TextFormatter, TextUnformatter, TextNumberUnformatt
     
     private func correctUnformatted(_ unformatted: String, decimalSeparator: String) -> String {
         return unformatted.replacingOccurrences(of: ",", with: decimalSeparator)
-    }
-    
-    private func correctUnformatted(_ unformatted: String, maximumIntegerDigits: Int, decimalSeparator: String, negativePrefix: String) -> String {
-        let decimalPart = unformatted.sliceBefore(substring: decimalSeparator)
-        let floatingPart = unformatted.sliceAfter(substring: decimalSeparator)
-        let correctedDecimalPart = correctUnformattedDecimalPart(decimalPart, maximumIntegerDigits: maximumIntegerDigits, negativePrefix: negativePrefix)
-        if unformatted.contains(decimalSeparator) {
-            return correctedDecimalPart + decimalSeparator + floatingPart
-        } else {
-            return correctedDecimalPart
-        }
-    }
-    
-    private func correctUnformattedDecimalPart(_ decimalPart: String, maximumIntegerDigits: Int, negativePrefix: String) -> String {
-        if !negativePrefix.isEmpty && decimalPart.contains(negativePrefix) {
-            return decimalPart.leftSlice(limit: maximumIntegerDigits + negativePrefix.count)
-        } else {
-            return decimalPart.leftSlice(limit: maximumIntegerDigits)
-        }
     }
     
     // MARK: - Remove all format symbols
