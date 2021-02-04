@@ -1,5 +1,5 @@
 PODS:
-  - AnyFormatKit (2.3.0)
+  - AnyFormatKit (2.4.0)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AnyFormatKit: c3c214deb03a53dee974bfd671f7fba9c568e3b7
+  AnyFormatKit: 2ca2ad3f6fa0f6862a650342141d2bcaa42e9186
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
 PODFILE CHECKSUM: 3b2233463479c8716321bdf1faf9974b8abd16c7
