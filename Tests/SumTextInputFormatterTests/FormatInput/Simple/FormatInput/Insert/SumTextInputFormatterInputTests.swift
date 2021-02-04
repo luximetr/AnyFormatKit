@@ -182,5 +182,14 @@ class SumTextInputFormatterInputTests: XCTestCase {
     let expectedResult = FormattedTextValue(formattedText: "1,234.56", caretBeginOffset: 5)
     XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
   }
-
+    
+    // 12,345,678,901,234|.56  ->  12,345,678,901,234|.56
+    func test18() {
+        let actualResult = formatter.formatInput(
+            currentText: "12,345,678,901,234.56",
+            range: NSRange(location: 18, length: 0),
+            replacementString: "9")
+        let expectedResult = FormattedTextValue(formattedText: "12,345,678,901,234.56", caretBeginOffset: 18)
+        XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+    }
 }
