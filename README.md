@@ -46,6 +46,7 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 
 - [AnyFormatKit 0.2.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%200.2.0%20MigrationGuide.md)
 - [AnyFormatKit 1.0.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%201.0.0%20MigrationGuide.md)
+- [AnyFormatKit 2.4.0 MigrationGuide](https://github.com/luximetr/AnyFormatKit/blob/master/Documentation/AnyFormatKit%202.4.0%20MigrationGuide.md)
 
 ## Installation
 

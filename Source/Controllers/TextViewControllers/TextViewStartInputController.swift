@@ -1,5 +1,5 @@
 //
-//  TextViewPlaceholderInputController.swift
+//  TextViewStartInputController.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 27.01.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextViewPlaceholderInputController: NSObject, UITextViewDelegate {
+class TextViewStartInputController: NSObject, UITextViewDelegate {
     
     open var formatter: (TextInputFormatter & CaretPositioner)?
     
