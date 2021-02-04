@@ -17,10 +17,19 @@ open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnforma
     
     // MARK: - Properties
     
-    public var prefix: String? { textFormatter.prefix }
-    public var suffix: String? { textFormatter.suffix }
-    public var decimalSeparator: String { textFormatter.decimalSeparator }
-    public var numberFormatter: NumberFormatter { textFormatter.numberFormatter }
+    open var maximumIntegerCharacters: Int {
+        set { textFormatter.maximumIntegerCharacters = newValue }
+        get { textFormatter.maximumIntegerCharacters }
+    }
+    open var maximumDecimalCharacters: Int { textFormatter.maximumDecimalCharacters }
+    open var prefix: String? { textFormatter.prefix }
+    open var suffix: String? { textFormatter.suffix }
+    open var groupingSeparator: String { textFormatter.groupingSeparator }
+    open var decimalSeparator: String { textFormatter.decimalSeparator }
+    open var groupingSize: Int { textFormatter.groupingSize }
+    open var numberFormatter: NumberFormatter { textFormatter.numberFormatter }
+    
+    private let negativePrefix = "-"
     
     // MARK: - Life cycle
     /**
@@ -76,7 +85,8 @@ open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnforma
         if unformatted == decimalSeparator {
             return (prefix ?? "") + decimalSeparator + (suffix ?? "")
         } else {
-            return textFormatter.format(unformatted)
+            let correctedUnformatted = correctUnformatted(unformatted, maximumIntegerDigits: maximumIntegerCharacters, decimalSeparator: decimalSeparator, negativePrefix: negativePrefix)
+            return textFormatter.format(correctedUnformatted)
         }
     }
     
@@ -131,5 +141,26 @@ open class SumTextInputFormatter: TextInputFormatter, TextFormatter, TextUnforma
         }
         
         return convertedRange
+    }
+    
+    // MARK: - Correct unformatted
+    
+    private func correctUnformatted(_ unformatted: String, maximumIntegerDigits: Int, decimalSeparator: String, negativePrefix: String) -> String {
+        let decimalPart = unformatted.sliceBefore(substring: decimalSeparator)
+        let floatingPart = unformatted.sliceAfter(substring: decimalSeparator)
+        let correctedDecimalPart = correctUnformattedDecimalPart(decimalPart, maximumIntegerDigits: maximumIntegerDigits, negativePrefix: negativePrefix)
+        if unformatted.contains(decimalSeparator) {
+            return correctedDecimalPart + decimalSeparator + floatingPart
+        } else {
+            return correctedDecimalPart
+        }
+    }
+
+    private func correctUnformattedDecimalPart(_ decimalPart: String, maximumIntegerDigits: Int, negativePrefix: String) -> String {
+        if !negativePrefix.isEmpty && decimalPart.contains(negativePrefix) {
+            return decimalPart.leftSlice(limit: maximumIntegerDigits + negativePrefix.count)
+        } else {
+            return decimalPart.leftSlice(limit: maximumIntegerDigits)
+        }
     }
 }
