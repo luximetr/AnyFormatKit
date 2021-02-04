@@ -1,4 +1,4 @@
-# AnyFormatKit 2.3.0 Migration Guide
+# AnyFormatKit 2.4.0 Migration Guide
 
 ## Breaking Changes
 

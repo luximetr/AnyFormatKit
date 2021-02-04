@@ -121,7 +121,7 @@
 		0210847825B5854900DE16E4 /* SumTextInputFormatterUnformatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextInputFormatterUnformatTests.swift; sourceTree = "<group>"; };
 		022766DB25BF4DD500740DFE /* PlaceholderCaretPositionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCaretPositionCalculator.swift; sourceTree = "<group>"; };
 		02330C7025B2493500DE9EB8 /* DefaultTextInputFormatterPhoneEmojisInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatterPhoneEmojisInputTests.swift; sourceTree = "<group>"; };
-		024A797625C73D3400478A15 /* AnyFormatKit 2.3.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 2.3.0 MigrationGuide.md"; sourceTree = "<group>"; };
+		024A797625C73D3400478A15 /* AnyFormatKit 2.4.0 MigrationGuide.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "AnyFormatKit 2.4.0 MigrationGuide.md"; sourceTree = "<group>"; };
 		025AAB0E25C873B100CDA81D /* TextNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNumberFormatter.swift; sourceTree = "<group>"; };
 		026A487425C1E0CB000A38C7 /* CaretPositioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretPositioner.swift; sourceTree = "<group>"; };
 		026A487A25C1E11F000A38C7 /* TextFieldStartInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStartInputController.swift; sourceTree = "<group>"; };
@@ -726,7 +726,7 @@
 				30D7EAAC229D56D20014E31B /* README.md */,
 				30D7EAAA229D55A20014E31B /* AnyFormatKit 0.2.0 MigrationGuide.md */,
 				30EB6CBB22BBA0A000447D5A /* AnyFormatKit 1.0.0 MigrationGuide.md */,
-				024A797625C73D3400478A15 /* AnyFormatKit 2.3.0 MigrationGuide.md */,
+				024A797625C73D3400478A15 /* AnyFormatKit 2.4.0 MigrationGuide.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
