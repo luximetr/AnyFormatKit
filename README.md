@@ -43,6 +43,10 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 - Swift 4.0+
 - Xcode 9.0+
 
+## SwiftUI
+
+AnyFormatKit has SwiftUI version, that exists as separate framework [AnyFormatKitSwiftUI](https://github.com/luximetr/AnyFormatKitSwiftUI)
+
 ## Migration Guides
 
 - [AnyFormatKit 0.2.0 MigrationGuide](Documentation/AnyFormatKit%200.2.0%20MigrationGuide.md)
