@@ -2,9 +2,10 @@
 
 
 [![CI Status](http://img.shields.io/travis/luximetr/AnyFormatKit.svg?style=flat)](https://travis-ci.org/luximetr/AnyFormatKit)
-[![Version](https://img.shields.io/cocoapods/v/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
+[![Pod Version](https://img.shields.io/cocoapods/v/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 [![License](https://img.shields.io/cocoapods/l/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
 [![Platform](https://img.shields.io/cocoapods/p/AnyFormatKit.svg?style=flat)](http://cocoapods.org/pods/AnyFormatKit)
+[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 ![Swift](https://img.shields.io/badge/%20in-swift%205.0-brightgreen.svg)
 
 Text formatting framework written on Swift 5.0.
@@ -41,6 +42,10 @@ To run the example project, clone the repo and run `pod install` from the Exampl
 - iOS 8.0+
 - Swift 4.0+
 - Xcode 9.0+
+
+## SwiftUI
+
+AnyFormatKit has SwiftUI version, that exists as separate framework [AnyFormatKitSwiftUI](https://github.com/luximetr/AnyFormatKitSwiftUI)
 
 ## Migration Guides
 
