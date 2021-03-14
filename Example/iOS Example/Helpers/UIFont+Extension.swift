@@ -15,8 +15,6 @@ extension UIFont {
             return UIFont.monospacedSystemFont(ofSize: ofSize, weight: .regular)
         } else if #available(iOS 9.0, *) {
             return UIFont.monospacedDigitSystemFont(ofSize: ofSize, weight: .regular)
-        } else if #available(iOS 8.2, *) {
-            return UIFont.systemFont(ofSize: ofSize)
         } else {
             return UIFont.init(name: "Helvetica Neue", size: ofSize) ?? UIFont()
         }
