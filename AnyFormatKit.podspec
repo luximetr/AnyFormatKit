@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'AnyFormatKit'
-  s.version          = '2.5.0'
+  s.version          = '2.5.1'
   s.summary          = 'Simple text formatting in Swift.'
 
   s.description      = <<-DESC
