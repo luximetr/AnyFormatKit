@@ -21,6 +21,10 @@ open class TextFieldStartInputController: NSObject, UITextFieldDelegate {
         )
         textField.text = result.formattedText
         textField.setCursorLocation(result.caretBeginOffset)
+        textField.sendActions(for: .editingChanged)
+        NotificationCenter.default.post(
+            name: UITextField.textDidChangeNotification, object: textField
+        )
         return false
     }
     
