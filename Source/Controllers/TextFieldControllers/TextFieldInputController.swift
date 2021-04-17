@@ -9,23 +9,28 @@
 import UIKit
 
 open class TextFieldInputController: NSObject, UITextFieldDelegate {
-  
-  open var formatter: TextInputFormatter?
-  
-  open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    guard let formatter = formatter else { return true }
-    let result = formatter.formatInput(
-      currentText: textField.text ?? "",
-      range: range,
-      replacementString: string
-    )
-    textField.text = result.formattedText
-    textField.setCursorLocation(result.caretBeginOffset)
-    textField.sendActions(for: .editingChanged)
-    NotificationCenter.default.post(
-        name: UITextField.textDidChangeNotification, object: textField
-    )
-    return false
-  }
-  
+    
+    open var formatter: TextInputFormatter?
+    
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let formatter = formatter else { return true }
+        let result = formatter.formatInput(
+            currentText: textField.text ?? "",
+            range: range,
+            replacementString: string
+        )
+        textField.text = result.formattedText
+        textField.setCursorLocation(result.caretBeginOffset)
+        notifyEditingChanged(at: textField)
+        return false
+    }
+    
+    private func notifyEditingChanged(at textField: UITextField) {
+        textField.sendActions(for: .editingChanged)
+        NotificationCenter.default.post(
+            name: UITextField.textDidChangeNotification,
+            object: textField
+        )
+    }
+    
 }

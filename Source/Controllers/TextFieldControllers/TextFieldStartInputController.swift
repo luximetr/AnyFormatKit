@@ -21,10 +21,7 @@ open class TextFieldStartInputController: NSObject, UITextFieldDelegate {
         )
         textField.text = result.formattedText
         textField.setCursorLocation(result.caretBeginOffset)
-        textField.sendActions(for: .editingChanged)
-        NotificationCenter.default.post(
-            name: UITextField.textDidChangeNotification, object: textField
-        )
+        notifyEditingChanged(at: textField)
         return false
     }
     
@@ -32,6 +29,14 @@ open class TextFieldStartInputController: NSObject, UITextFieldDelegate {
         guard let formatter = formatter else { return }
         let offset = formatter.getCaretOffset(for: textField.text ?? "")
         textField.setCursorLocation(offset)
+    }
+    
+    private func notifyEditingChanged(at textField: UITextField) {
+        textField.sendActions(for: .editingChanged)
+        NotificationCenter.default.post(
+            name: UITextField.textDidChangeNotification,
+            object: textField
+        )
     }
     
 }
