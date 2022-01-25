@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AnyFormatKit",
+        "repositoryURL": "https://github.com/luximetr/AnyFormatKit",
+        "state": {
+          "branch": null,
+          "revision": "27b35c984c1c81e74c8be5273f7b2dc5250cb5cc",
+          "version": "2.5.1"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit",
+        "state": {
+          "branch": null,
+          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
