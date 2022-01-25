@@ -3,7 +3,7 @@ PODS:
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
-  - AnyFormatKit (from `../`)
+  - AnyFormatKit (from `../../`)
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
@@ -12,12 +12,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   AnyFormatKit:
-    :path: "../"
+    :path: "../../"
 
 SPEC CHECKSUMS:
   AnyFormatKit: 4ef60ad3f48c69962d482bb2de0a6d3214e8527b
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: afe7865278056f1dbc75d408d34c37e46e870b78
+PODFILE CHECKSUM: 64ea4beb092a0aaf133ee0f812f932e72d0f81b1
 
 COCOAPODS: 1.10.1
