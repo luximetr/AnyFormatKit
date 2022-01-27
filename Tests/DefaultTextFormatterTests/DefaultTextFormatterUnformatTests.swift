@@ -50,4 +50,18 @@ class DefaultTextFormatterUnformatTests: XCTestCase {
         let expectedResult: String? = nil
         XCTAssertEqual(result, expectedResult)
     }
+    
+    func test6() {
+        let formatter = DefaultTextFormatter(textPattern: "##-##-##")
+        let result = formatter.unformat("12-##")
+        let expectedResult = "12##"
+        XCTAssertEqual(result, expectedResult)
+    }
+    
+    func test7() {
+        let formatter = DefaultTextFormatter(textPattern: "##-##-##")
+        let result = formatter.unformat("12-ab")
+        let expectedResult = "12ab"
+        XCTAssertEqual(result, expectedResult)
+    }
 }

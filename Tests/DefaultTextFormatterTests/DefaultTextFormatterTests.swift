@@ -90,4 +90,11 @@ class DefaultTextFormatterTests: XCTestCase {
         let expectedResult = "a1-b2"
         XCTAssertEqual(result, expectedResult)
     }
+    
+    func test11() {
+        let formatter = DefaultTextFormatter(textPattern: "##-##-##")
+        let result = formatter.format("a1#b#2")
+        let expectedResult = "a1-#b-#2"
+        XCTAssertEqual(result, expectedResult)
+    }
 }

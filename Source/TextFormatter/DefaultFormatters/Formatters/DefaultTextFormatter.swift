@@ -78,7 +78,7 @@ open class DefaultTextFormatter: TextFormatter, TextUnformatter {
       if let formattedCharacter = formatted.characterAt(formattedIndex) {
         if formattedIndex >= textPattern.count {
           unformatted.append(formattedCharacter)
-        } else if formattedCharacter != textPattern.characterAt(formattedIndex) {
+        } else if formattedCharacter != textPattern.characterAt(formattedIndex) || formattedCharacter == patternSymbol {
           unformatted.append(formattedCharacter)
         }
         formattedIndex += 1

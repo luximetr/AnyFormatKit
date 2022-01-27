@@ -211,4 +211,22 @@ class DefaultTextInputFormatterInputTests: XCTestCase {
         let expectedResult = FormattedTextValue(formattedText: "12 34 50", caretBeginOffset: 8)
         XCTAssertEqual(result, expectedResult)
     }
+    
+    func test20() {
+        let actualResult = formatter.formatInput(
+            currentText: "12 34",
+            range: NSRange(location: 5, length: 0),
+            replacementString: "#")
+        let expectedResult = FormattedTextValue(formattedText: "12 34 #", caretBeginOffset: 7)
+        XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+    }
+    
+    func test21() {
+        let actualResult = formatter.formatInput(
+            currentText: "12 34 #",
+            range: NSRange(location: 7, length: 0),
+            replacementString: "#")
+        let expectedResult = FormattedTextValue(formattedText: "12 34 ##", caretBeginOffset: 8)
+        XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+    }
 }
