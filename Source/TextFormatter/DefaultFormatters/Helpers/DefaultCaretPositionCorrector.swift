@@ -1,5 +1,5 @@
 //
-//  CaretPositionCorrector.swift
+//  DefaultCaretPositionCorrector.swift
 //  AnyFormatKit
 //
 //  Created by Oleksandr Orlov on 02.04.2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CaretPositionCorrector {
+class DefaultCaretPositionCorrector {
     
     let textPattern: String
     let patternSymbol: Character

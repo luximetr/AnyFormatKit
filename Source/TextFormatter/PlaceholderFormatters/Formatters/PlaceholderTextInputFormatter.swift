@@ -14,7 +14,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
     
     private let caretPositionCorrector: PlaceholderCaretPositionCalculator
     private let textFormatter: PlaceholderTextFormatter
-    private let stringCalculator: StringCalculator
+    private let rangeCalculator: PlaceholderRangeCalculator
     
     // MARK: - Properties
     
@@ -35,7 +35,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
             textPattern: textPattern,
             patternSymbol: patternSymbol
         )
-        self.stringCalculator = StringCalculator()
+        self.rangeCalculator = PlaceholderRangeCalculator()
     }
     
     // MARK: - TextInputFormatter
@@ -44,7 +44,7 @@ open class PlaceholderTextInputFormatter: TextInputFormatter, TextFormatter, Tex
         guard let swiftRange = Range(range, in: currentText) else { return .zero }
         let oldUnformattedText = textFormatter.unformat(currentText) ?? ""
         
-        let unformattedCurrentTextRange = stringCalculator.unformattedRange(currentText: currentText, textPattern: textPattern, from: swiftRange)
+        let unformattedCurrentTextRange = rangeCalculator.unformattedRange(currentText: currentText, textPattern: textPattern, from: swiftRange)
         let unformattedRange = oldUnformattedText.getSameRange(asIn: currentText, sourceRange: unformattedCurrentTextRange)
         
         let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)

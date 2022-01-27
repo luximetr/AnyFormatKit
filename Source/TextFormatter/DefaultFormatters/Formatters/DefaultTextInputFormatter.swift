@@ -11,7 +11,7 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
     
     // MARK: - Dependencies
     
-    private let caretPositionCorrector: CaretPositionCorrector
+    private let caretPositionCorrector: DefaultCaretPositionCorrector
     private let textFormatter: DefaultTextFormatter
     private let rangeCalculator: DefaultRangeCalculator
     
@@ -33,7 +33,7 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
         textPattern: String,
         patternSymbol: Character = "#"
     ) {
-        self.caretPositionCorrector = CaretPositionCorrector(
+        self.caretPositionCorrector = DefaultCaretPositionCorrector(
             textPattern: textPattern,
             patternSymbol: patternSymbol
         )
