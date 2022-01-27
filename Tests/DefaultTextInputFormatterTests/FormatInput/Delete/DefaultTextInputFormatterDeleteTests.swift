@@ -182,4 +182,13 @@ class DefaultTextInputFormatterDeleteTests: XCTestCase {
         let expectedResult = FormattedTextValue(formattedText: "😊👍 🙈😡 😱", caretBeginOffset: 12)
         XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
     }
+    
+    func test19() {
+        let actualResult = formatter.formatInput(
+          currentText: "12 ##",
+          range: NSRange(location: 4, length: 1),
+          replacementString: "")
+        let expectedResult = FormattedTextValue(formattedText: "12 #", caretBeginOffset: 4)
+        XCTAssert(actualResult == expectedResult, "\n\(actualResult) must be equal to\n\(expectedResult)")
+    }
 }

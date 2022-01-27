@@ -13,7 +13,7 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
     
     private let caretPositionCorrector: CaretPositionCorrector
     private let textFormatter: DefaultTextFormatter
-    private let stringCalculator: StringCalculator
+    private let rangeCalculator: DefaultRangeCalculator
     
     // MARK: - Properties
     
@@ -41,7 +41,7 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
             textPattern: textPattern,
             patternSymbol: patternSymbol
         )
-        self.stringCalculator = StringCalculator()
+        self.rangeCalculator = DefaultRangeCalculator()
     }
     
     // MARK: - TextInputFormatter
@@ -51,13 +51,27 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
         
         let oldUnformattedText = textFormatter.unformat(currentText) ?? ""
         
-        let unformattedCurrentTextRange = stringCalculator.unformattedRange(currentText: currentText, textPattern: textPattern, from: swiftRange)
-        let unformattedRange = oldUnformattedText.getSameRange(asIn: currentText, sourceRange: unformattedCurrentTextRange)
+        let unformattedCurrentTextRange = rangeCalculator.unformattedRange(
+            currentText: currentText,
+            textPattern: textPattern,
+            from: swiftRange,
+            patternSymbol: patternSymbol
+        )
+        let unformattedRange = oldUnformattedText.getSameRange(
+            asIn: currentText,
+            sourceRange: unformattedCurrentTextRange
+        )
         
-        let newText = oldUnformattedText.replacingCharacters(in: unformattedRange, with: text)
+        let newText = oldUnformattedText.replacingCharacters(
+            in: unformattedRange,
+            with: text
+        )
         
         let formattedText = textFormatter.format(newText) ?? ""
-        let formattedTextRange = formattedText.getSameRange(asIn: currentText, sourceRange: swiftRange)
+        let formattedTextRange = formattedText.getSameRange(
+            asIn: currentText,
+            sourceRange: swiftRange
+        )
         
         let caretOffset = getCorrectedCaretPosition(
             newText: formattedText,
@@ -65,7 +79,10 @@ open class DefaultTextInputFormatter: TextInputFormatter, TextFormatter, TextUnf
             replacementString: text
         )
         
-        return FormattedTextValue(formattedText: formattedText, caretBeginOffset: caretOffset)
+        return FormattedTextValue(
+            formattedText: formattedText,
+            caretBeginOffset: caretOffset
+        )
     }
     
     // MARK: - TextFormatter
